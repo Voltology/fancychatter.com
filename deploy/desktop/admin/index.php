@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require("../../.local.inc.php");
 ?>
@@ -74,3 +75,6 @@ require("../../.local.inc.php");
     <br />
   </body>
 </html>
+=======
+Admin
+>>>>>>> dev
