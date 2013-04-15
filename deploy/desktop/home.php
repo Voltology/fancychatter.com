@@ -1,1 +1,1 @@
-Search
+Search <input type="text" />

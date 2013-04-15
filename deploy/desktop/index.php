@@ -6,7 +6,9 @@ $page = $_REQUEST['p'] ? $_REQUEST['p'] : "home";
 <html>
 	<head>
     <meta charset='utf-8'>
-		<link rel="styleshet"  href="/css/styles.css"></script>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type' />
+    <title>FancyChatter.com - Find local deals in real time!</title>
+		<link rel="stylesheet"  href="/css/styles.css" />
 	</head>
 	<body>
     <?php

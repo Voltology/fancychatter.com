@@ -4,12 +4,10 @@ var ajax = {
       type: 'GET',
       url: url,
       data: query,
-      dataType: 'jsonp',
+      dataType: 'json',
       success: function(response) {
         callback(response);
-      },
-      jsonp: 'jsonp',
-      jsonpCallback: 'json'
+      }
     });
   },
   send : function(url, query) {
@@ -17,8 +15,7 @@ var ajax = {
       type: 'GET',
       url: url,
       data: query,
-      dataType: 'jsonp',
-      jsonpCallback: 'json'
+      dataType: 'json'
     });
   }
 };
