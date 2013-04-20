@@ -32,7 +32,7 @@ if (ENV === "dev") {
   define("DESKTOP_URL", "http://fancychatter/");
   define("MOBILE_URL", "http://dev.m.fancychatter.com/");
 
-  define("LIB_PATH", "/Users/christopher.vuletich/Development/Web/php/fancychatter/deploy/libs/");
+  define("LIB_PATH", __DIR__ . "/libs/");
   define("JQUERY_VERSION", "1.9.0");
 } else if (ENV === "staging") {
   define("DB_HOST", "localhost");
