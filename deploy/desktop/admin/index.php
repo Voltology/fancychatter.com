@@ -1,5 +1,7 @@
 <?php
 require("../../.local.inc.php");
+$page = $_GET['p'] ? $_GET['p'] : "home";
+$action = $_GET['a'] ? $_GET['a'] : null;
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,7 +9,11 @@ require("../../.local.inc.php");
     <title>FancyChatter &raquo; Admin</title>
     <meta charset='utf-8'>
     <link rel="stylesheet" href="/css/admin.css" />
+    <link rel="stylesheet" href="/css/font-awesome.css">
     <script src="/js/admin.js"></script>
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/css/global/font-awesome-ie7.min.css">
+    <![endif]-->
   </head>
   <body>
     <table width="100%" cellspacing="0" cellpadding="0">
@@ -23,10 +29,19 @@ require("../../.local.inc.php");
         <td valign="top" class="sidebar-cell" width="120">
           <div id="sidebar" style="line-height: 1.3em;">
           <?php
-          if ($user->isLoggedIn()) {
+          if ($user->getIsLoggedIn()) {
           ?>
-          test
-          <a href="/logout.php">Log Out</a>
+            <div class="<?php if ($page === "home") { echo "active"; } ?>menuitem"><a href="?p=home">Home</a></div>
+            <div class="menuheader tableheader">LiveChatter</div>
+            <div class="menuheader tableheader">ChitChat</div>
+            <div class="submenu">
+              <div class="<?php if ($page === "archive" && $brand === "pb") { echo "active"; } ?>submenuitem"><a href="?p=archive">Archive</a></div>
+            </div>
+            <div class="<?php if ($page === "merchants") { echo "active"; } ?>menuitem"><a href="?p=merchants">Merchants</a></div>
+            <div class="<?php if ($page === "users") { echo "active"; } ?>menuitem"><a href="?p=users">Users</a></div>
+            <div class="<?php if ($page === "messages") { echo "active"; } ?>menuitem"><a href="?p=messages">Messages</a></div>
+            <div class="<?php if ($page === "settings") { echo "active"; } ?>menuitem"><a href="?p=settings">Settings</a></div>
+            <a href="/logout.php" class="logout">Log Out</a>
           <?php
           }
           ?>
@@ -34,32 +49,7 @@ require("../../.local.inc.php");
         </td>
         <td valign="top" align="left" class="page">
         <?php
-        if (!$user->isLoggedIn()) {
-        ?>
-          <h3>Log In</h3>
-          <form method="post" action="/login.php">
-            <table class="edit-table">
-              <tr>
-                <td class="edit-label">Email</td>
-                <td class="edit-field"><input type="text" name="email" value="" /></td>
-              </tr>
-              <tr>
-                <td class="edit-label">Password</td>
-                <td class="edit-field"><input type="password" name="password" /></td>
-              </tr>
-              <tr>
-                <td class="edit-label">Keep me logged in</td>
-                <td class="edit-field"><input type="checkbox" name="remme" value="true" /></td>
-              </tr>
-            </table>
-            <input type="hidden" name="logintype" value="admin" />
-            <input type="submit" value="Log In" />
-          </form>
-          <br />
-          <br />
-        <?php
-        } else {
-        }
+        require($page . ".php");
         ?>
         </td>
       </tr>
