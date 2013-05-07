@@ -1,5 +1,7 @@
 var dialog = {
   close: function() {
+    $('#dialog').css('display', 'none');
+    $('#dialog-blanket').css('display', 'none');
   },
   open : function(type, header, height, width) {
     $('#dialog').css({
@@ -10,6 +12,9 @@ var dialog = {
       'width' : width
     });
     $('#dialog-blanket').css('display', 'block');
+    $('#dialog-blanket').click(function() {
+      dialog.close();
+    });
     $('#dialog-header').html(header);
   },
   reposition : function() {

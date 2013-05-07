@@ -8,6 +8,7 @@ switch($_SERVER['HTTP_HOST']) {
   case "dev.m.fancychatter.com":
     define("ENV", "dev");
     break;
+  case "173.203.81.65":
   case "staging.fancychater.com":
   case "staging.api.fancychater.com":
   case "staging.m.fancychater.com":
@@ -25,7 +26,7 @@ switch($_SERVER['HTTP_HOST']) {
 if (ENV === "dev") {
   define("DB_HOST", "localhost");
   define("DB_NAME", "dev_fancychatter");
-  define("DB_USER", "fancychatter");
+  define("DB_USER", "dev_fancychatter");
   define("DB_PASS", "3CwdJQ%glgZg");
 
   define("API_URL", "http://api.fancychatter/");
@@ -61,6 +62,7 @@ if (ENV === "dev") {
 }
 
 require(LIB_PATH . "Database.class.php");
+require(LIB_PATH . "Merchant.class.php");
 require(LIB_PATH . "User.class.php");
 
 $db = new Database();

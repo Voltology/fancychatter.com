@@ -187,7 +187,9 @@ select {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ef2409', endColorstr='#ef7f77',GradientType=0 ); /* IE6-9 */
 }
 .page .error {
+  background-color: #ffbbbb;
   border: 2px solid #f00;
+  border-radius: 4px;
   font-size: 13px;
   margin: 5px auto;
   padding: 5px;
@@ -195,7 +197,9 @@ select {
   width: 350px;
 }
 .page .success {
+  background-color: #bbffbb;
   border: 2px solid #76bb22;
+  border-radius: 4px;
   font-size: 13px;
   margin: 5px auto;
   padding: 5px;

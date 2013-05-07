@@ -1,7 +1,7 @@
 <?php
 if ($user->getIsLoggedIn()) {
 ?>
-  <h1>Welcome, <?php $user->getFirstName(); ?></h1>
+  <h1>Welcome, <?php echo $user->getFirstName(); ?>!</h1>
   <table border="0" cellpadding="0" cellspacing="0" class="edit-table">
     <tr class="tableheader">
       <th colspan="2">User Information</th>
@@ -24,10 +24,10 @@ if ($user->getIsLoggedIn()) {
     </tr>
     <tr>
       <td class="edit-label">Role</td>
-      <td class="edit-field"><?php echo $user->getRole(); ?></td>
+      <td class="edit-field"><?php echo ucwords($user->getRole()); ?></td>
     </tr>
   </table>
-  <a href="?p=settings">Edit Settings</a>
+  <i class="icon-pencil"></i> <a href="?p=settings">Edit Settings</a>
 <?php
 } else {
 ?>

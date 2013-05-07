@@ -32,14 +32,14 @@ $action = $_GET['a'] ? $_GET['a'] : null;
           if ($user->getIsLoggedIn()) {
           ?>
             <div class="<?php if ($page === "home") { echo "active"; } ?>menuitem"><a href="?p=home">Home</a></div>
-            <div class="menuheader tableheader">LiveChatter</div>
+            <div class="<?php if ($page === "livechatter") { echo "active"; } ?>menuitem"><a href="?p=livechatter">LiveChatter</a></div>
             <div class="menuheader tableheader">ChitChat</div>
             <div class="submenu">
               <div class="<?php if ($page === "archive" && $brand === "pb") { echo "active"; } ?>submenuitem"><a href="?p=archive">Archive</a></div>
             </div>
             <div class="<?php if ($page === "merchants") { echo "active"; } ?>menuitem"><a href="?p=merchants">Merchants</a></div>
             <div class="<?php if ($page === "users") { echo "active"; } ?>menuitem"><a href="?p=users">Users</a></div>
-            <div class="<?php if ($page === "messages") { echo "active"; } ?>menuitem"><a href="?p=messages">Messages</a></div>
+            <div class="<?php if ($page === "messages") { echo "active"; } ?>menuitem"><a href="?p=messages">Messages (1)</a></div>
             <div class="<?php if ($page === "settings") { echo "active"; } ?>menuitem"><a href="?p=settings">Settings</a></div>
             <a href="/logout.php" class="logout">Log Out</a>
           <?php
