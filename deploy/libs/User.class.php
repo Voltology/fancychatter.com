@@ -4,28 +4,34 @@ class User {
   private $_lastname;
   private $_email;
   private $_role;
+  private $_gmtoffset;
+
+  private $_merchantid;
   private $_isloggedin;
 
-  public function addUser($email, $password, $firstname, $lastname, $role) {
-    $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s'",
+  public function addUser($email, $password, $firstname, $lastname, $role = 1) {
+    $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s', creation='%s'",
       mysql_real_escape_string($email),
       mysql_real_escape_string(md5($password)),
       mysql_real_escape_string($firstname),
       mysql_real_escape_string($lastname),
-      mysql_real_escape_string($role));
+      mysql_real_escape_string($role),
+      mysql_real_escape_string(time()));
     mysql_query($query);
   }
 
   public function checkPassword($email, $password) {
-    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
+    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
       mysql_real_escape_string($email),
       mysql_real_escape_string($password));
     $query = mysql_query($query);
     if (mysql_num_rows($query) > 0) {
       $row = mysql_fetch_assoc($query);
       $this->setUser($row);
-      $this->setIsLoggedIn(true);
       $this->setRole($row['role']);
+      $this->setMerchantId($row['merchant_id']);
+      $this->setGmtOffset($row['gmt_offset']);
+      $this->setIsLoggedIn(true);
       return true;
     } else {
       $this->setIsLoggedIn(false);
@@ -39,7 +45,7 @@ class User {
     mysql_query($query);
   }
 
-  public function getCreationDate() {
+  public function getCreation() {
     return 0;
   }
 
@@ -49,6 +55,14 @@ class User {
 
   public function getFirstName() {
     return $this->_firstname;
+  }
+
+  public function getGmtOffset() {
+    return $this->_gmtoffset;
+  }
+
+  public function getMerchantId() {
+    return $this->_merchantid;
   }
 
   public function getIsLoggedIn() {
@@ -89,8 +103,16 @@ class User {
     $this->_firstname = $firstname;
   }
 
+  public function setGmtOffset($gmtoffset) {
+    $this->_gmtoffset = $gmtoffset;
+  }
+
   public function setLastName($lastname) {
     $this->_lastname = $lastname;
+  }
+
+  public function setMerchantId($merchantid) {
+    $this->_merchantid = $merchantid;
   }
 
   public function setUserById($id) {

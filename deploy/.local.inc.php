@@ -62,6 +62,8 @@ if (ENV === "dev") {
 }
 
 require(LIB_PATH . "Database.class.php");
+require(LIB_PATH . "ChitChat.class.php");
+require(LIB_PATH . "LiveChatter.class.php");
 require(LIB_PATH . "Merchant.class.php");
 require(LIB_PATH . "User.class.php");
 

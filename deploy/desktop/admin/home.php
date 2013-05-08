@@ -8,7 +8,7 @@ if ($user->getIsLoggedIn()) {
     </tr>
     <tr>
       <td class="edit-label">Member Since</td>
-      <td class="edit-field"><?php echo $user->getCreationDate(); ?></td>
+      <td class="edit-field"><?php echo $user->getCreation(); ?></td>
     </tr>
     <tr>
       <td class="edit-label">Email</td>

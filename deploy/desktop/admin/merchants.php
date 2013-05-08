@@ -1,5 +1,5 @@
 <?php
-if (in_array($user->getRole(), array("administrator", "merchant"))) {
+if (in_array($user->getRole(), array("administrator"))) {
   switch($action) {
     case null:
     case 'delete':
