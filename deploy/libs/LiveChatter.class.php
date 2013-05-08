@@ -10,24 +10,39 @@ class LiveChatter {
   public function LiveChatter($id, $merchantid) {
     $this->_id = $id;
     $this->_merchantid = $merchantid;
-    $this->setLiveChatter();
+    $this->set();
   }
 
-  public static function addLiveChatter($merchant_id, $body, $starttime, $endtime) {
-    $query = sprintf("INSERT INTO livechatter SET merchant_id='%s', body='%s', starttime='%s', endtime='%s', creation='%s'",
+  public function activate() {
+    $query = sprintf("UPDATE livechatter SET status = (SELECT id FROM livechatter_statuses WHERE livechatter_statuses.status='activated' LIMIT 1) WHERE id='%s' AND merchant_id='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($this->_merchantid));
+    mysql_query($query);
+  }
+
+  public static function add($merchant_id, $body, $starttime, $endtime, $gmtoffset) {
+    $offset = $gmtoffset * 60 * 60;
+    $query = sprintf("INSERT INTO livechatter SET merchant_id='%s', body='%s', starttime='%s', endtime='%s', status='1', creation='%s'",
       mysql_real_escape_string($merchant_id),
       mysql_real_escape_string($body),
-      mysql_real_escape_string($starttime),
-      mysql_real_escape_string($endtime),
-      mysql_real_escape_string(time()));
+      mysql_real_escape_string($starttime + $offset),
+      mysql_real_escape_string($endtime + $offset),
+      mysql_real_escape_string(time() + $offset));
     $query = mysql_query($query);
   }
 
-  public function deleteLiveChatter() {
-    $query = sprintf("DELETE FROM livechatter WHERE merchant_id='%s' AND id='%s' LIMIT 1",
-      mysql_real_escape_string($this->_merchantid),
-      mysql_real_escape_string($this->_id));
-    $query = mysql_query($query);
+  public function deactivate() {
+    $query = sprintf("UPDATE livechatter SET status = (SELECT id FROM livechatter_statuses WHERE livechatter_statuses.status='deactivated' LIMIT 1) WHERE id='%s' AND merchant_id='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($this->_merchantid));
+    mysql_query($query);
+  }
+
+  public function delete() {
+    $query = sprintf("UPDATE livechatter SET status = (SELECT id FROM livechatter_statuses WHERE livechatter_statuses.status='deleted' LIMIT 1) WHERE id='%s' AND merchant_id='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($this->_merchantid));
+    mysql_query($query);
   }
 
   public function getBody() {
@@ -42,9 +57,9 @@ class LiveChatter {
     return $this->_id;
   }
 
-  public static function getLiveChatterByMerchantId($merchantid) {
+  public static function getByMerchantId($merchantid) {
     $livechatter = array();
-    $query = sprintf("SELECT id,body,starttime,endtime,status FROM livechatter WHERE merchant_id='%s' ORDER BY creation DESC",
+    $query = sprintf("SELECT livechatter.id,body,starttime,endtime,livechatter_statuses.status AS status FROM livechatter LEFT JOIN livechatter_statuses ON livechatter.status=livechatter_statuses.id WHERE merchant_id='%s' AND livechatter_statuses.status != 'deleted' ORDER BY creation DESC",
       mysql_real_escape_string($merchantid));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
@@ -55,6 +70,13 @@ class LiveChatter {
 
   public function getStartTime() {
     return $this->_starttime;
+  }
+
+  public function pause() {
+    $query = sprintf("UPDATE livechatter SET status = (SELECT id FROM livechatter_statuses WHERE livechatter_statuses.status='paused' LIMIT 1) WHERE id='%s' AND merchant_id='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($this->_merchantid));
+    mysql_query($query);
   }
 
   public function save() {
@@ -79,7 +101,7 @@ class LiveChatter {
     $this->_id = $id;
   }
 
-  public function setLiveChatter() {
+  public function set() {
     $query = sprintf("SELECT body,starttime,endtime,status FROM livechatter WHERE merchant_id='%s' AND id='%s' LIMIT 1",
       mysql_real_escape_string($this->_merchantid),
       mysql_real_escape_string($this->_id));
@@ -107,6 +129,9 @@ class LiveChatter {
 
   public static function validate($body, $starttime, $endtime) {
     $errors = array();
+    if (trim($body) === "") { $errors[] = "The body cannot be blank."; }
+    if ($endtime < $starttime) { $errors[] = "The end date cannot be before the start date."; }
+    if ($endtime < time()) { $errors[] = "The end date must be later than the current date."; }
     return $errors;
   }
 }

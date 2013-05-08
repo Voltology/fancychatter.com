@@ -1,7 +1,7 @@
 <?php
 require("../../.local.inc.php");
 $page = $_GET['p'] ? $_GET['p'] : "home";
-$action = $_GET['a'] ? $_GET['a'] : $_POST['a'];
+$action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -58,7 +58,7 @@ class User {
   }
 
   public function getGmtOffset() {
-    return $this->_gmtoffset;
+    return $this->_gmtoffset * 60 * 60;
   }
 
   public function getMerchantId() {

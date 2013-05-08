@@ -25,8 +25,8 @@ switch($_SERVER['HTTP_HOST']) {
 
 if (ENV === "dev") {
   define("DB_HOST", "localhost");
-  define("DB_NAME", "dev_fancychatter");
-  define("DB_USER", "dev_fancychatter");
+  define("DB_NAME", "dev_fc");
+  define("DB_USER", "dev_fc");
   define("DB_PASS", "3CwdJQ%glgZg");
 
   define("API_URL", "http://api.fancychatter/");
@@ -34,11 +34,11 @@ if (ENV === "dev") {
   define("MOBILE_URL", "http://dev.m.fancychatter.com/");
 
   define("LIB_PATH", __DIR__ . "/libs/");
-  define("JQUERY_VERSION", "1.9.0");
+  define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "staging") {
   define("DB_HOST", "localhost");
-  define("DB_NAME", "staging_fancychatter");
-  define("DB_USER", "fancychatter");
+  define("DB_NAME", "staging_fc");
+  define("DB_USER", "staging_fc");
   define("DB_PASS", "gXf3RPcvFiEh");
 
   define("API_URL", "staging.api.fancychatter.com/");
@@ -46,7 +46,7 @@ if (ENV === "dev") {
   define("MOBILE_URL", "staging.m.fancychatter.com/");
 
   define("LIB_PATH", __DIR__ . "/libs/");
-  define("JQUERY_VERSION", "1.9.0");
+  define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "production") {
   define("DB_HOST", "localhost");
   define("DB_NAME", "fancychatter");
@@ -58,7 +58,7 @@ if (ENV === "dev") {
   define("MOBILE_URL", "m.fancychatter.com/");
 
   define("LIB_PATH", __DIR__ . "/libs/");
-  define("JQUERY_VERSION", "1.9.0");
+  define("JQUERY_VERSION", "1.9.1");
 }
 
 require(LIB_PATH . "Database.class.php");
@@ -66,6 +66,7 @@ require(LIB_PATH . "ChitChat.class.php");
 require(LIB_PATH . "LiveChatter.class.php");
 require(LIB_PATH . "Merchant.class.php");
 require(LIB_PATH . "User.class.php");
+require(LIB_PATH . "Utilities.php");
 
 $db = new Database();
 session_start();
