@@ -71,6 +71,23 @@ if (in_array($user->getRole(), array("administrator"))) {
             <td class="edit-field"><input type="text" name="name" value="<?php echo $_POST['name'] ? $_POST['name'] : $merchant['name']; ?>" /></td>
           </tr>
           <tr>
+            <td class="edit-label">Logo</td>
+            <td class="edit-field"><input type="file" /></td>
+          </tr>
+          <tr>
+            <td class="edit-label">Category</td>
+            <td class="edit-field">
+              <select name="category">
+                <?php
+                $categories = getCategories();
+                foreach ($categories as $category) {
+                  echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
+                }
+                ?>
+              </select>
+            </td>
+          </tr>
+          <tr>
             <td class="edit-label">Admin Email</td>
             <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : $merchant['email']; ?>" /></td>
           </tr>

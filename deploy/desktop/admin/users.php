@@ -35,7 +35,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           <td><?php echo ucwords(preg_replace('/_/', " ", $u['role'])); ?></td>
           <td><?php echo date("F j, Y, g:i a", $u['creation']); ?></td>
           <td align="right">
-            <i class="icon-pencil"></i> <a href="?p=users&a=edit&id=<?php echo $u['id']; ?>"> Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-remove"></i> <a href="#" onclick="admin.confirm('delete', 'user', '?p=users&a=delete&id=<?php echo $u['id']; ?>')">Delete</a>
+            <i class="icon-pencil"></i> <a href="?p=users&a=edit&id=<?php echo $u['id']; ?>"> Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-remove"></i> <a href="?p=users&a=delete&id=<?php echo $u['id']; ?>">Delete</a>
           </td>
         </tr>
         <?php
@@ -55,7 +55,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
         if ($action === "add") {
           $errors = User::validate($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
           if (count($errors) === 0) {
-            User::add($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname'], $_POST['role']);
+            User::add($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], $_POST['role']);
             echo "<div class=\"success\"><i class=\"icon-ok\"></i> User saved successfully.<br /><a href=\"?p=users\">Click here if you are done editing</a></div>";
           } else {
             echo "<div class=\"error\">";
@@ -98,7 +98,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           <tr>
             <td class="edit-label">GMT Offset</td>
             <td class="edit-field">
-              <select name="role">
+              <select>
                 <option value="null">Select Offset</option>
                 <?php
                 for ($i = -12; $i <= 14; $i++) {
@@ -111,8 +111,8 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           <tr>
             <td class="edit-label">Role</td>
             <td class="edit-field">
-              <select>
-                <option>Select Role</option>
+              <select name="role">
+                <option value="null">Select Role</option>
                 <?php
                 $roles = getRoles();
                 foreach ($roles as $role) {

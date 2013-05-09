@@ -30,6 +30,9 @@ if ($user->getIsLoggedIn()) {
   <i class="icon-pencil"></i> <a href="?p=settings">Edit Settings</a>
 <?php
 } else {
+  if ($_GET['error'] === "true") {
+    echo "<div class=\"error\"><i class=\"icon-remove\"></i> Username/password incorrect.</div>";
+  }
 ?>
   <h1>Log In</h1>
   <form method="post" action="/login.php">

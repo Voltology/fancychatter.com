@@ -34,9 +34,6 @@ class User {
     if (mysql_num_rows($query) > 0) {
       $row = mysql_fetch_assoc($query);
       $this->set($row);
-      $this->setRole($row['role']);
-      $this->setMerchantId($row['merchant_id']);
-      $this->setGmtOffset($row['gmt_offset']);
       $this->setIsLoggedIn(true);
       return true;
     } else {
@@ -52,7 +49,7 @@ class User {
   }
 
   public function getCreation() {
-    return 0;
+    return $this->_creation;
   }
 
   public function getEmail() {
@@ -98,7 +95,7 @@ class User {
   }
 
   public function save() {
-    $query = "UPDATE";
+    $query = sprintf("UPDATE");
   }
 
   public function setEmail($email) {
@@ -133,6 +130,9 @@ class User {
     $this->setFirstName($data['firstname']);
     $this->setLastName($data['lastname']);
     $this->setEmail($data['email']);
+    $this->setRole($data['role']);
+    $this->setMerchantId($data['merchant_id']);
+    $this->setGmtOffset($data['gmt_offset']);
   }
 
   public function update($id, $email, $password, $firstname, $lastname) {
