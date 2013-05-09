@@ -59,34 +59,6 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
           }
         }
       }
-      /*
-      if ($_SERVER['REQUEST_METHOD'] === "POST" && $action === "edit") {
-      } else if ($action){
-        $lc = new LiveChatter($id, $user->getMerchantId());
-        if ($action === "add") {
-          $start = jQueryTimeToUnixTime($_POST['starttime']);
-          $end = jQueryTimeToUnixTime($_POST['endtime']);
-          $errors = LiveChatter::addLiveChatter($user->getMerchantId(), $_POST['body'], $start, $end, $user->getGmtOffset());
-          echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been added.</div>";
-        } else if ($lc->getId()) {
-          if ($action === "activate") {
-            $lc->activateLiveChatter();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been activated.</div>";
-          } else if ($action === "deactivate") {
-            $lc->deactivateLiveChatter();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been deactivated.</div>";
-          } else if ($action === "delete") {
-            $lc->deleteLiveChatter();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been deleted.</div>";
-          } else if ($action === "pause") {
-            $lc->pauseLiveChatter();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been paused.</div>";
-          }
-        } else {
-          echo "<div class=\"error\"><i class=\"icon-remove\"></i> That LiveChatter ID does not exist.</div>";
-        }
-      }
-      */
       $livechatter = LiveChatter::getByMerchantId($user->getMerchantId());
       ?>
       <h1>LiveChatter</h1>

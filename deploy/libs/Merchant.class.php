@@ -1,118 +1,79 @@
 <?php
 class Merchant {
-  private $_firstname;
-  private $_lastname;
-  private $_email;
-  private $_role;
-  private $_isloggedin;
+  private $_id;
+  private $_name;
+  private $_latitude;
+  private $_longitude;
+  private $_creation;
 
-  public function addMerchant($email, $password, $firstname, $lastname, $role) {
-    $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s'",
-      mysql_real_escape_string($email),
-      mysql_real_escape_string(md5($password)),
-      mysql_real_escape_string($firstname),
-      mysql_real_escape_string($lastname),
-      mysql_real_escape_string($role));
+  public function LiveChatter($id) {
+    $this->_id = $id;
+    $this->set();
+  }
+
+  public function add($name, $latitude, $longitude) {
+    $query = sprintf("INSERT INTO merchant SET name='%s', latitude='%s', longitude='%s'",
+      mysql_real_escape_string($name),
+      mysql_real_escape_string($latitude),
+      mysql_real_escape_string($longitude));
     mysql_query($query);
   }
 
-  public function checkPassword($email, $password) {
-    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
-      mysql_real_escape_string($email),
-      mysql_real_escape_string($password));
-    $query = mysql_query($query);
-    if (mysql_num_rows($query) > 0) {
-      $row = mysql_fetch_assoc($query);
-      $this->setMerchant($row);
-      $this->setIsLoggedIn(true);
-      $this->setRole($row['role']);
-      return true;
-    } else {
-      $this->setIsLoggedIn(false);
-      return false;
-    }
-  }
-
-  public function deleteMerchantById($id) {
-    $query = sprintf("DELETE FROM users WHERE id='%s'",
+  public function delete($id) {
+    $query = sprintf("DELETE FROM merchant WHERE id='%s'",
       mysql_real_escape_string($id));
     mysql_query($query);
   }
 
-  public function getCreationDate() {
-    return 0;
-  }
-
-  public function getEmail() {
-    return $this->_email;
-  }
-
-  public function getFirstName() {
-    return $this->_firstname;
-  }
-
-  public function getIsLoggedIn() {
-    return $this->_isloggedin;
-  }
-
-  public function getLastName() {
-    return $this->_lastname;
-  }
-
-  public function getRole() {
-    return $this->_role;
+  public function getCreation() {
+    return $this->_creation;
   }
 
   public static function getMerchants($count = 20, $index = "0", $order = "creation", $direction = "ASC") {
-    $users = array();
-    $query = sprintf("SELECT users.id,email,firstname,lastname,creation,roles.role as role FROM users JOIN roles ON users.role=roles.id ORDER BY %s %s LIMIT %s,%s",
+    $merchant = array();
+    $query = sprintf("SELECT id,name,latitude,longitude,creations FROM merchant ORDER BY %s %s LIMIT %s,%s",
       mysql_real_escape_string($order),
       mysql_real_escape_string($direction),
       mysql_real_escape_string($index),
       mysql_real_escape_string($count));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
-      array_push($users, $row);
+      array_push($merchant, $row);
     }
-    return $users;
+    return $merchant;
+  }
+
+  public function getName() {
+    return $this->_name;
   }
 
   public function save() {
     $query = "UPDATE";
   }
-
-  public function setEmail($email) {
-    $this->_email = $email;
+  public function setId($id) {
+    $this->_id = $id;
   }
 
-  public function setFirstName($firstname) {
-    $this->_firstname = $firstname;
+  public function setName($name) {
+    $this->_name = $name;
   }
 
-  public function setLastName($lastname) {
-    $this->_lastname = $lastname;
+  public function set($id) {
+    $query = sprintf("SELECT id,name,latitude,longitude FROM merchant WHERE id='%s' LIMIT 1",
+      mysql_real_escape_string($this->_id));
+    $query = mysql_query($query);
+    if (mysql_num_rows($query) > 0) {
+      $merchant = mysql_fetch_assoc($query);
+      $this->setName($merchant['name']);
+      return true;
+    } else {
+      $this->setId(null);
+      return false;
+    }
   }
 
-  public function setMerchantById($id) {
-    return false;
-  }
-
-  public function setIsLoggedIn($isloggedin) {
-    $this->_isloggedin = $isloggedin;
-  }
-
-  public function setRole($role) {
-    $this->_role = $role;
-  }
-
-  public function setMerchant($data) {
-    $this->setFirstName($data['firstname']);
-    $this->setLastName($data['lastname']);
-    $this->setEmail($data['email']);
-  }
-
-  public function updateMerchant($id, $email, $password, $firstname, $lastname) {
-    $query = sprintf("UPDATE users SET email='%s', password='%s', firstname='%s', lastname='%s' WHERE id='%s'",
+  public function update($name, $latitude, $longitude) {
+    $query = sprintf("UPDATE merchant SET email='%s', password='%s', firstname='%s', lastname='%s' WHERE id='%s'",
       mysql_real_escape_string($email),
       mysql_real_escape_string(md5($password)),
       mysql_real_escape_string($firstname),

@@ -4,7 +4,8 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
     case null:
     case 'delete':
       if ($action === "delete") {
-        User::deleteUserById($_GET['id']);
+        $u = new User($_GET['id']);
+        $u->delete();
         echo "<div class=\"success\"><i class=\"icon-ok\"></i> The user has been successfully deleted.</div>";
       }
   ?>
@@ -31,7 +32,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           <td><?php echo "<a href=\"mailto:" . $u['email'] . "\">" . $u['email'] . "</a>"; ?></td>
           <td><?php echo $u['firstname']; ?></td>
           <td><?php echo $u['lastname']; ?></td>
-          <td><?php echo ucwords($u['role']); ?></td>
+          <td><?php echo ucwords(preg_replace('/_/', " ", $u['role'])); ?></td>
           <td><?php echo date("F j, Y, g:i a", $u['creation']); ?></td>
           <td align="right">
             <i class="icon-pencil"></i> <a href="?p=users&a=edit&id=<?php echo $u['id']; ?>"> Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-remove"></i> <a href="#" onclick="admin.confirm('delete', 'user', '?p=users&a=delete&id=<?php echo $u['id']; ?>')">Delete</a>
@@ -52,11 +53,19 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
     case "edit":
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($action === "add") {
-          User::addUser($brand, $_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname'], 2);
-          echo "<div class=\"success\"><i class=\"icon-ok\"></i> User saved successfully.</div>";
+          $errors = User::validate($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
+          if (count($errors) === 0) {
+            User::add($_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname'], $_POST['role']);
+            echo "<div class=\"success\"><i class=\"icon-ok\"></i> User saved successfully.<br /><a href=\"?p=users\">Click here if you are done editing</a></div>";
+          } else {
+            echo "<div class=\"error\">";
+            foreach ($errors as $error) {
+              echo "<i class=\"icon-remove\"></i> " . $error . "<br />";
+            }
+            echo "</div>";
+          }
         } else if ($action === "edit") {
-          $euser = new User;
-          $euser->setUserById($_GET['id']);
+          $u = new User;
         }
       }
   ?>
@@ -87,10 +96,29 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
             <td class="edit-field"><input type="password" name="password2" /></td>
           </tr>
           <tr>
+            <td class="edit-label">GMT Offset</td>
+            <td class="edit-field">
+              <select name="role">
+                <option value="null">Select Offset</option>
+                <?php
+                for ($i = -12; $i <= 14; $i++) {
+                  echo "<option value=\"" . $i . "\">" . $i . ":00</option>";
+                }
+                ?>
+              </select>
+            </td>
+          </tr>
+          <tr>
             <td class="edit-label">Role</td>
             <td class="edit-field">
               <select>
                 <option>Select Role</option>
+                <?php
+                $roles = getRoles();
+                foreach ($roles as $role) {
+                  echo "<option value=\"" . $role['id'] . "\">" . ucwords(preg_replace('/_/', " ", $role['role'])) . "</option>";
+                }
+                ?>
               </select>
             </td>
           </tr>

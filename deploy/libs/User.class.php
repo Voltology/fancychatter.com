@@ -1,5 +1,6 @@
 <?php
 class User {
+  private $_id;
   private $_firstname;
   private $_lastname;
   private $_email;
@@ -9,7 +10,12 @@ class User {
   private $_merchantid;
   private $_isloggedin;
 
-  public function addUser($email, $password, $firstname, $lastname, $role = 1) {
+  public function User($id) {
+    $this->_id = $id;
+    $this->set();
+  }
+
+  public function add($email, $password, $firstname, $lastname, $role) {
     $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s', creation='%s'",
       mysql_real_escape_string($email),
       mysql_real_escape_string(md5($password)),
@@ -27,7 +33,7 @@ class User {
     $query = mysql_query($query);
     if (mysql_num_rows($query) > 0) {
       $row = mysql_fetch_assoc($query);
-      $this->setUser($row);
+      $this->set($row);
       $this->setRole($row['role']);
       $this->setMerchantId($row['merchant_id']);
       $this->setGmtOffset($row['gmt_offset']);
@@ -39,9 +45,9 @@ class User {
     }
   }
 
-  public function deleteUserById($id) {
+  public function delete() {
     $query = sprintf("DELETE FROM users WHERE id='%s'",
-      mysql_real_escape_string($id));
+      mysql_real_escape_string($this->_id));
     mysql_query($query);
   }
 
@@ -115,10 +121,6 @@ class User {
     $this->_merchantid = $merchantid;
   }
 
-  public function setUserById($id) {
-    return false;
-  }
-
   public function setIsLoggedIn($isloggedin) {
     $this->_isloggedin = $isloggedin;
   }
@@ -127,13 +129,13 @@ class User {
     $this->_role = $role;
   }
 
-  public function setUser($data) {
+  public function set($data) {
     $this->setFirstName($data['firstname']);
     $this->setLastName($data['lastname']);
     $this->setEmail($data['email']);
   }
 
-  public function updateUser($id, $email, $password, $firstname, $lastname) {
+  public function update($id, $email, $password, $firstname, $lastname) {
     $query = sprintf("UPDATE users SET email='%s', password='%s', firstname='%s', lastname='%s' WHERE id='%s'",
       mysql_real_escape_string($email),
       mysql_real_escape_string(md5($password)),
@@ -141,6 +143,17 @@ class User {
       mysql_real_escape_string($lastname),
       mysql_real_escape_string($id));
     mysql_query($query);
+  }
+
+  public static function validate($firstname, $lastname, $email, $password1, $password2, $role) {
+    $errors = array();
+    if ($firstname === "") { $errors[] = "You must enter a first name."; }
+    if ($lastname === "") { $errors[] = "You must enter a last name."; }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) { $errors[] = "You must enter a valid email."; }
+    if (strlen($password1) < 6) { $errors[] = "The password must be at least 6 characters."; }
+    if ($password1 != $password2) { $errors[] = "The passwords must match."; }
+    if ($role === "null") { $errors[] = "You must select a role."; }
+    return $errors;
   }
 }
 ?>

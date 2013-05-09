@@ -41,7 +41,7 @@ if (in_array($user->getRole(), array("administrator"))) {
           $count++;
         }
         if ($count === 0) {
-          echo "<tr><td colspan=\"6\">There are currently no merchants.</td></tr>";
+          echo "<tr><td colspan=\"6\" align=\"center\">There are currently no merchants.</td></tr>";
         }
         ?>
       </table>
