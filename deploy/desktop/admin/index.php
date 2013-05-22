@@ -59,6 +59,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
     <![endif]-->
   </head>
   <body>
+    <div style="position: absolute; top: 5px; right: 5px;"><?php echo date("F j, Y, g:i a", time()); ?></div>
     <table width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="2" valign="middle" class="header">
@@ -110,3 +111,10 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
     <br />
   </body>
 </html>
+<?php
+if ($_GET['debug'] === "true" || ($_SESSION['debug'] === "true" && $_GET['debug'] !== "false")) {
+  $mtime = explode(' ', microtime());
+  $totaltime = $mtime[0] + $mtime[1] - $starttime;
+  printf("<div style=\"background-color: #fff; color; #000; text-align: center;\">Page loaded in %.3f seconds.</div>", $totaltime);
+}
+?>

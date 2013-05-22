@@ -8,7 +8,7 @@ if ($user->getIsLoggedIn()) {
     </tr>
     <tr>
       <td class="edit-label">Member Since</td>
-      <td class="edit-field"><?php echo $user->getCreation(); ?></td>
+      <td class="edit-field"><?php echo date("m/d/Y h:i", $user->getCreation()); ?></td>
     </tr>
     <tr>
       <td class="edit-label">Email</td>
@@ -24,7 +24,7 @@ if ($user->getIsLoggedIn()) {
     </tr>
     <tr>
       <td class="edit-label">Role</td>
-      <td class="edit-field"><?php echo ucwords($user->getRole()); ?></td>
+      <td class="edit-field"><?php echo ucwords(preg_replace('/_/', " ", $user->getRole())); ?></td>
     </tr>
   </table>
   <i class="icon-pencil"></i> <a href="?p=settings">Edit Settings</a>

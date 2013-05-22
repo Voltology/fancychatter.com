@@ -4,7 +4,7 @@ if (in_array($user->getRole(), array("administrator"))) {
     case null:
     case 'delete':
       if ($action === "delete") {
-        Merchant::deleteMerchantById($_GET['id']);
+        Merchant::delete($_GET['id']);
         echo "<div class=\"success\"><i class=\"icon-ok\"></i> The user has been successfully deleted.</div>";
       }
   ?>
@@ -15,8 +15,11 @@ if (in_array($user->getRole(), array("administrator"))) {
           <th>#</th>
           <th><a href="">Merchant</a></th>
           <th><a href="">Contat Email</a></th>
-          <th><a href="">Last Name</a></th>
-          <th><a href="">Role</a></th>
+          <th><a href="">Address</a></th>
+          <th><a href="">City</a></th>
+          <th><a href="">State</a></th>
+          <th><a href="">Zip Code</a></th>
+          <th><a href="">Phone</a></th>
           <th><a href="">Joined</a> <i class="icon-chevron-up"></i></th>
           <th>&nbsp;</th>
         </tr>
@@ -24,16 +27,23 @@ if (in_array($user->getRole(), array("administrator"))) {
         $merchants = Merchant::getMerchants();
         $bgclass = array("odd","even");
         $count = 0;
-        foreach ($merchants as $u) {
+        foreach ($merchants as $merchant) {
         ?>
         <tr class="<?php echo $bgclass[$count % 2]; ?>">
-          <td><?php echo ($count + 1); ?></td>
-          <td><?php echo "<a href=\"mailto:" . $merchant['email'] . "\">" . $merchant['email'] . "</a>"; ?></td>
-          <td><?php echo $merchant['firstname']; ?></td>
-          <td><?php echo $merchant['lastname']; ?></td>
-          <td><?php echo ucwords($merchant['role']); ?></td>
-          <td><?php echo date("F j, Y, g:i a", $merchant['creation']); ?></td>
-          <td align="right">
+          <td valign="top"><?php echo ($count + 1); ?></td>
+          <td valign="top"><?php echo $merchant['name']; ?></td>
+          <td valign="top"><?php echo "<a href=\"mailto:" . $merchant['contact_email'] . "\">" . $merchant['contact_email'] . "</a>"; ?></td>
+          <td>
+            <?php
+            echo $merchant['address1'];
+            if ($merchant['address2']) { echo "<br />" . $merchant['address2']; }
+            ?></td>
+          <td valign="top"><?php echo $merchant['city']; ?></td>
+          <td valign="top"><?php echo $merchant['state']; ?></td>
+          <td valign="top"><?php echo ucwords($merchant['zipcode']); ?></td>
+          <td valign="top"><?php echo ucwords($merchant['phone']); ?></td>
+          <td valign="top"><?php echo date("F j, Y, g:i a", $merchant['creation']); ?></td>
+          <td align="right" valign="top">
             <i class="icon-pencil"></i> <a href="?p=merchants&a=edit&id=<?php echo $merchant['id']; ?>"> Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-remove"></i> <a href="#" onclick="admin.confirm('delete', 'user', '?p=users&a=delete&id=<?php echo $merchant['id']; ?>')">Delete</a>
           </td>
         </tr>
@@ -50,29 +60,63 @@ if (in_array($user->getRole(), array("administrator"))) {
       break;
     case "add":
     case "edit":
+      $logo_path = "../uploads/logos/";
+      $merchant = new Merchant($_GET['id']);
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($action === "add") {
-          Merchant::addMerchant($brand, $_POST['email'], $_POST['password'], $_POST['firstname'], $_POST['lastname'], 2);
-          echo "<div class=\"success\"><i class=\"icon-ok\"></i> Merchant saved successfully.</div>";
+          if (!empty($_FILES['logo']['name'])) {
+            $filename = slugify($_POST['name']);
+            $file = uploadImage($_FILES['logo'], $filename, $logo_path);
+          }
+          $errors = Merchant::validate($_POST['name'], $file, $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
+          if (count($errors) === 0) {
+            $mid = Merchant::add($_POST['name'], $file, $_POST['latitude'], $_POST['longitude']);
+            $uid = User::add($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], "merchant_admin");
+            echo "<div class=\"success\"><i class=\"icon-ok\"></i> Merchant added successfully.</div>";
+          } else {
+            echo "<div class=\"error\"><i class=\"icon-remove\"></i></div>";
+          }
         } else if ($action === "edit") {
-          $merchant = new Merchant;
-          $merchant->setMerchantById($_GET['id']);
+          if (!empty($_FILES['logo']['name'])) {
+            $filename = slugify($_POST['name']);
+            $file = uploadImage($_FILES['logo'], $filename, $logo_path);
+          }
+          $errors = Merchant::validate($_POST['name'], $file, $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
+          if (count($errors) === 0) {
+            $merchant->setName($_POST['name']);
+            $merchant->setLogo($file);
+            $merchant->save();
+            echo "<div class=\"success\"><i class=\"icon-ok\"></i> Merchant saved successfully.</div>";
+          } else {
+            echo "<div class=\"error\">";
+            foreach ($errors as $error) {
+              echo "<i class=\"icon-remove\"></i> " . $error . "<br />";
+            }
+            echo "</div>";
+          }
         }
+      } else if ($action === "edit") {
+        $merchant = new Merchant($_GET['id']);
       }
   ?>
       <h1><?php echo ucwords($action); ?> Merchant</h1>
-      <form action="" method="post">
+      <form action="" method="post" enctype="multipart/form-data">
         <table border="0" cellpadding="2" cellspacing="0" width="500" class="edit-table">
           <tr class="tableheader">
             <th colspan="2">Merchant Information</th>
           </tr>
           <tr>
             <td class="edit-label">Merchant Name</td>
-            <td class="edit-field"><input type="text" name="name" value="<?php echo $_POST['name'] ? $_POST['name'] : $merchant['name']; ?>" /></td>
+            <td class="edit-field"><input type="text" name="name" value="<?php echo $_POST['name'] ? $_POST['name'] : $merchant->getName(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Logo</td>
-            <td class="edit-field"><input type="file" /></td>
+            <td class="edit-field">
+              <input type="file" name="logo" /><br />
+              <?php if ($merchant->getLogo()) { ?>
+              <img src="<?php echo $logo_path . $merchant->getLogo(); ?>" height="100" />
+              <?php } ?>
+            </td>
           </tr>
           <tr>
             <td class="edit-label">Category</td>
@@ -88,8 +132,16 @@ if (in_array($user->getRole(), array("administrator"))) {
             </td>
           </tr>
           <tr>
+            <td class="edit-label">Admin First Name</td>
+            <td class="edit-field"><input type="text" name="firstname" value="<?php echo $_POST['firstname'] ? $_POST['firstname'] : ""; ?>" /></td>
+          </tr>
+          <tr>
+            <td class="edit-label">Admin Last Name</td>
+            <td class="edit-field"><input type="text" name="lastname" value="<?php echo $_POST['lastname'] ? $_POST['lastname'] : ""; ?>" /></td>
+          </tr>
+          <tr>
             <td class="edit-label">Admin Email</td>
-            <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : $merchant['email']; ?>" /></td>
+            <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : ""; ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Admin Password</td>
@@ -101,23 +153,27 @@ if (in_array($user->getRole(), array("administrator"))) {
           </tr>
           <tr>
             <td class="edit-label">Address Line 1</td>
-            <td class="edit-field"><input type="text" name="address1" /></td>
+            <td class="edit-field"><input type="text" name="address1" value="<?php echo $_POST['address1'] ? $_POST['address1'] : ""; ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Address Line 2</td>
-            <td class="edit-field"><input type="text" name="address2" /></td>
+            <td class="edit-field"><input type="text" name="address2" value="<?php echo $_POST['address2'] ? $_POST['address2'] : ""; ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">City</td>
-            <td class="edit-field"><input type="text" name="city" /></td>
+            <td class="edit-field"><input type="text" name="city" value="<?php echo $_POST['city'] ? $_POST['city'] : ""; ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">State</td>
-            <td class="edit-field"><input type="text" name="state" /></td>
+            <td class="edit-field">
+              <select>
+                <option>Select State</option>
+              </select>
+            </td>
           </tr>
           <tr>
             <td class="edit-label">Zip</td>
-            <td class="edit-field"><input type="text" name="zipcode" /></td>
+            <td class="edit-field"><input type="text" name="zipcode" value="<?php echo $_POST['zipcode'] ? $_POST['zipcode'] : ""; ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Country</td>
@@ -129,10 +185,15 @@ if (in_array($user->getRole(), array("administrator"))) {
           </tr>
           <tr>
             <td class="edit-label">Phone</td>
-            <td class="edit-field"><input type="text" name="phone" /></td>
+            <td class="edit-field"><input type="text" name="phone" value="<?php echo $_POST['phone'] ? $_POST['phone'] : ""; ?>" /></td>
           </tr>
           <tr>
             <td class="edit-field" colspan="2" align="right">
+              <?php if ($_GET['a'] === "add") { ?>
+              <input type="hidden" name="a" value="add" />
+              <?php } else if ($_GET['a'] === "edit") { ?>
+              <input type="hidden" name="a" value="edit" />
+              <?php } ?>
               <button type="submit" class="button"><i class="icon-save"></i> Save Merchant</button>
               <button type="button" class="button" onclick="document.location='?p=merchants'"><i class="icon-remove-sign"></i> Cancel</button>
             </td>

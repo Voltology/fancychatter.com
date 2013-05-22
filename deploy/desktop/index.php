@@ -1,5 +1,6 @@
 <?php
 require("../.local.inc.php");
+include("header.php");
 $page = $_GET['p'] ? $_GET['p'] : null;
 ?>
 <!DOCTYPE html>
@@ -12,11 +13,13 @@ $page = $_GET['p'] ? $_GET['p'] : null;
     <meta name="author" content="">
 
     <!-- Le styles -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/<?php echo JQUERY_VERSION; ?>/jquery.min.js"></script>
+    <link rel="stylesheet" href="/css/font-awesome.css">
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <style type="text/css">
       body {
-        padding-top: 20px;
+        background-color: #fafafa;
         padding-bottom: 60px;
       }
 
@@ -26,35 +29,68 @@ $page = $_GET['p'] ? $_GET['p'] : null;
         max-width: 1000px;
       }
       .container > hr {
-        margin: 60px 0;
+        margin: 30px 0 10px 0;
       }
 
       /* Main marketing message and sign up button */
+      .masthead {
+        background-color: #f3f3f3; /* Old browsers */
+        border-radius: 0 0 8px 8px;
+        margin-bottom: 12px;
+      }
+      .masthead a {
+        color: #000;
+        font-weight: bold;
+      }
       .jumbotron {
-        margin: 40px 0;
-        text-align: center;
+        background-color: #000;
+        border-radius: 8px;
+        color: #fff;
+        min-height: 360px;
+        overflow: hidden;
+        position: relative;
+      }
+      #banner {
+        background-image: url(../img/carousel/1.jpg);
+        min-height: 360px;
+        overflow: hidden;
+        padding: 40px 0;
+        position: absolute;
+        width: 100%;
+        z-index: 50;
       }
       .jumbotron h1 {
-        font-size: 100px;
+        font-size: 40px;
         line-height: 1;
+        margin: 100px 20px 0 84px;
+        position: relative;
+        text-align; left;
+        text-shadow: 0px 0px 12px #000;
+        z-index: 100;
+      }
+      .jumbotron h2 {
+        font-size: 20px;
+        line-height: 1;
+        margin: 4px 20px 0 86px;
+        position: relative;
+        text-align; left;
+        text-shadow: 0px 0px 12px #000;
+        z-index: 100;
       }
       .jumbotron .lead {
+        box-shadow: 0px 0px 6px #000;
         font-size: 24px;
         line-height: 1.25;
+        margin: 8px auto;
+        padding: 6px 0;
+        position: relative;
+        width: 828px;
+        z-index: 100;
       }
       .jumbotron .btn {
         font-size: 21px;
-        padding: 14px 24px;
+        padding: 7px 24px;
       }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
-
 
       /* Customize the navbar links to be fill the entire space of the .navbar */
       .navbar .navbar-inner {
@@ -85,49 +121,62 @@ $page = $_GET['p'] ? $_GET['p'] : null;
         border-radius: 0 3px 3px 0;
       }
     </style>
+    <script>
+    $(document).ready(function() {
+      var count = 1;
+      var $element = $('#banner');
+      setInterval(function () {
+          $element.fadeIn(500).delay(0).fadeOut(500, function() {
+            $element.css('background-image', 'url(../img/carousel/' + count + '.jpg)');
+          });
+          $element.fadeIn(500);
+          count++;
+          if (count > 2) { count = 1; }
+      }, 5000);
+    });
+    </script>
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="../assets/js/html5shiv.js"></script>
     <![endif]-->
-
-    <!-- Fav and touch icons -->
   </head>
 
   <body>
 
     <div class="container">
-    <!--
-    <form>
-      <label for="email">Email</label>
-      <input type="text" id="email" name="email" />
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" />
-      <input type="button" value="Log In" onclick="user.login()" />
-    </form>
-    -->
-      <div class="masthead">
-        <h3 class="muted"><img src="img/logo.png" /></h3>
+      <div class="masthead" style="padding: 4px; 0; border: 1px solid #ccc;">
+        <div style="display: inline-block; margin: 5px 5px;"><img src="img/logo.png" width="140" /></div>
+        <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;">
+          <a href="">Sign Up</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Log In</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Help</a>
+        </div>
+        <!--
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
                 <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
-                <li<?php if ($page === "livechatter") { echo " class=\"active\""; } ?>><a href="/livechatter">Search</a></li>
                 <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile</a></li>
                 <li<?php if ($page === "about") { echo " class=\"active\""; } ?>><a href="/about">About</a></li>
                 <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="/contact">Contact</a></li>
               </ul>
             </div>
           </div>
-        </div><!-- /.navbar -->
+        </div>
+        -->
       </div>
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h1>Realtime Deals</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <a class="btn btn-large btn-success" href="#" onclick="dialog.open('login', 'Log In', 180, 400);">Get started today</a>
+        <div id="banner"></div>
+          <h1>Get what you want, when you want it</h1>
+          <h2>Search for deals in your area in real time</h2>
+          <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
+            <input type="text" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
+            <select><option>What are you looking for?</option></select>
+            <select><option>How far do you want to go?</option></select>
+            <a href="#" class="btn btn-mini btn-success" onclick="dialog.open('login', 'Log In', 180, 400);"><i class="icon-search" style="vertical-align: bottom;"></i> Search</a>
+          </div>
       </div>
 
 
@@ -163,13 +212,12 @@ $page = $_GET['p'] ? $_GET['p'] : null;
         <p>&copy; <a href="http://www.fancychatter.com">FancyChatter.com</a> 2013</p>
       </div>
 
-    </div> <!-- /container -->
+    </div>
     <div class="dialog" id="dialog">
       <div class="dialog-header" id="dialog-header"></div>
       <div class="dialog-body" id="dialog-body">test</div>
     </div>
     <div class="dialog-blanket" id="dialog-blanket"></div>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/<?php echo JQUERY_VERSION; ?>/jquery.min.js"></script>
     <script src="/js/ajax.js"></script>
     <script src="/js/alerts.js"></script>
     <script src="/js/chitchat.js"></script>
@@ -181,4 +229,6 @@ $page = $_GET['p'] ? $_GET['p'] : null;
     <script src="/js/utilities.js"></script>
   </body>
 </html>
-
+<?php
+include("footer.php");
+?>

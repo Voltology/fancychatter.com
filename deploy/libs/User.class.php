@@ -6,13 +6,22 @@ class User {
   private $_email;
   private $_role;
   private $_gmtoffset;
+  private $_creation;
+  private $_dst = true;
 
   private $_merchantid;
   private $_isloggedin;
 
-  public function User($id) {
-    $this->_id = $id;
-    $this->set();
+  function __construct($id = null) {
+    if ($id !== null) {
+      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
+        mysql_real_escape_string($email),
+        mysql_real_escape_string($password));
+      $query = mysql_query($query);
+      $row = mysql_fetch_assoc($query);
+      $this->_id = $id;
+      $this->set($row);
+    }
   }
 
   public function add($email, $password, $firstname, $lastname, $role) {
@@ -34,6 +43,7 @@ class User {
     if (mysql_num_rows($query) > 0) {
       $row = mysql_fetch_assoc($query);
       $this->set($row);
+      $this->setId($row['id']);
       $this->setIsLoggedIn(true);
       return true;
     } else {
@@ -43,7 +53,7 @@ class User {
   }
 
   public function delete() {
-    $query = sprintf("DELETE FROM users WHERE id='%s'",
+    $query = sprintf("UPDATE users SET role='0' WHERE id='%s'",
       mysql_real_escape_string($this->_id));
     mysql_query($query);
   }
@@ -95,7 +105,21 @@ class User {
   }
 
   public function save() {
-    $query = sprintf("UPDATE");
+    $query = sprintf("UPDATE users SET email='%s', firstname='%s', lastname='%s' WHERE id='%s'",
+      mysql_real_escape_string($user->_email),
+      mysql_real_escape_string($user->_firstname),
+      mysql_real_escape_string($user->_lastname),
+      mysql_real_escape_string($user->_id));
+    mysql_query($query);
+  }
+
+  public function set($data = null) {
+    $this->setFirstName($data['firstname']);
+    $this->setLastName($data['lastname']);
+    $this->setEmail($data['email']);
+    $this->setRole($data['role']);
+    $this->setMerchantId($data['merchant_id']);
+    $this->setGmtOffset($data['gmt_offset']);
   }
 
   public function setEmail($email) {
@@ -110,6 +134,14 @@ class User {
     $this->_gmtoffset = $gmtoffset;
   }
 
+  public function setId($id) {
+    $this->_id = $id;
+  }
+
+  public function setIsLoggedIn($isloggedin) {
+    $this->_isloggedin = $isloggedin;
+  }
+
   public function setLastName($lastname) {
     $this->_lastname = $lastname;
   }
@@ -118,21 +150,8 @@ class User {
     $this->_merchantid = $merchantid;
   }
 
-  public function setIsLoggedIn($isloggedin) {
-    $this->_isloggedin = $isloggedin;
-  }
-
   public function setRole($role) {
     $this->_role = $role;
-  }
-
-  public function set($data) {
-    $this->setFirstName($data['firstname']);
-    $this->setLastName($data['lastname']);
-    $this->setEmail($data['email']);
-    $this->setRole($data['role']);
-    $this->setMerchantId($data['merchant_id']);
-    $this->setGmtOffset($data['gmt_offset']);
   }
 
   public function update($id, $email, $password, $firstname, $lastname) {

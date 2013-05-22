@@ -65,7 +65,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
             echo "</div>";
           }
         } else if ($action === "edit") {
-          $u = new User;
+          $u = new User($_GET['id']);
         }
       }
   ?>
@@ -77,15 +77,15 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           </tr>
           <tr>
             <td class="edit-label">First Name</td>
-            <td class="edit-field"><input type="text" name="firstname" value="<?php echo $_POST['firstname'] ? $_POST['firstname'] : $u['firstname']; ?>" /></td>
+            <td class="edit-field"><input type="text" name="firstname" value="<?php echo $_POST['firstname'] ? $_POST['firstname'] : $user->getFirstName(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Last Name</td>
-            <td class="edit-field"><input type="text" name="lastname" value="<?php echo $_POST['lastname'] ? $_POST['lastname'] : $u['lastname']; ?>" /></td>
+            <td class="edit-field"><input type="text" name="lastname" value="<?php echo $_POST['lastname'] ? $_POST['lastname'] : $user->getLastName(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Email</td>
-            <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : $u['email']; ?>" /></td>
+            <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : $user->getEmail(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Password</td>
@@ -105,7 +105,8 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                   echo "<option value=\"" . $i . "\">" . $i . ":00</option>";
                 }
                 ?>
-              </select>
+              </select><br />
+              <input type="checkbox" name="dst" checked /> Daylight Savings Time
             </td>
           </tr>
           <tr>

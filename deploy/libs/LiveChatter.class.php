@@ -7,7 +7,7 @@ class LiveChatter {
   private $_endtime;
   private $_creation;
 
-  public function LiveChatter($id, $merchantid) {
+  public function __construct($id, $merchantid) {
     $this->_id = $id;
     $this->_merchantid = $merchantid;
     $this->set();
@@ -87,6 +87,16 @@ class LiveChatter {
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($this->_merchantid));
     mysql_query($query);
+  }
+
+  public function search($citystatezip, $category, $page, $amount) {
+    $livechatter = array();
+    $query = sprintf("SELECT id, SQRT((69.1*(" . $lat . " - latitude)*69.1*(" . $lat . "-latitude))+(53*(" . $long . "-longitude)*53*(" . $long . "-longitude))) AS distance,body FROM livechatter ORDER BY distance ASC");
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($livechatter, $row);
+    }
+    return $livechatter;
   }
 
   public function setBody($body) {
