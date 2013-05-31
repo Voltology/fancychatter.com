@@ -89,9 +89,10 @@ class LiveChatter {
     mysql_query($query);
   }
 
-  public function search($citystatezip, $category, $page, $amount) {
+  public static function search($citystatezip, $category, $page, $amount) {
     $livechatter = array();
-    $query = sprintf("SELECT id, SQRT((69.1*(" . $lat . " - latitude)*69.1*(" . $lat . "-latitude))+(53*(" . $long . "-longitude)*53*(" . $long . "-longitude))) AS distance,body FROM livechatter ORDER BY distance ASC");
+    //$query = sprintf("SELECT id, SQRT((69.1*(" . $lat . " - latitude)*69.1*(" . $lat . "-latitude))+(53*(" . $long . "-longitude)*53*(" . $long . "-longitude))) AS distance,body FROM livechatter ORDER BY distance ASC");
+    $query = sprintf("SELECT id,body FROM livechatter ORDER BY creation DESC");
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($livechatter, $row);

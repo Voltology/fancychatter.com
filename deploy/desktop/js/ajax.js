@@ -1,7 +1,7 @@
 var ajax = {
   get : function(url, query, callback) {
     jQuery.ajax({
-      type: 'GET',
+      type: 'POST',
       url: url,
       data: query,
       dataType: 'json',

@@ -15,6 +15,13 @@ function getCategories() {
   }
   return $categories;
 }
+function getCategoryById($id) {
+  $query = sprintf("SELECT category FROM livechatter_categories WHERE id='%s' LIMIT 1",
+    mysql_real_escape_string($id));
+  $query = mysql_query($query);
+  $result = mysql_fetch_assoc($query);
+  return $result['category'];
+}
 
 function getRoles() {
   $roles = array();

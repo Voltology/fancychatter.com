@@ -14,11 +14,6 @@ class User {
 
   function __construct($id = null) {
     if ($id !== null) {
-      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
-        mysql_real_escape_string($email),
-        mysql_real_escape_string($password));
-      $query = mysql_query($query);
-      $row = mysql_fetch_assoc($query);
       $this->_id = $id;
       $this->set($row);
     }
@@ -42,12 +37,12 @@ class User {
     $query = mysql_query($query);
     if (mysql_num_rows($query) > 0) {
       $row = mysql_fetch_assoc($query);
+      $this->_id = $row['id'];
+      $this->_isloggedin = true;
       $this->set($row);
-      $this->setId($row['id']);
-      $this->setIsLoggedIn(true);
       return true;
     } else {
-      $this->setIsLoggedIn(false);
+      $this->_isloggedin = false;
       return false;
     }
   }
@@ -72,6 +67,10 @@ class User {
 
   public function getGmtOffset() {
     return $this->_gmtoffset * 60 * 60;
+  }
+
+  public function getId() {
+    return $this->_id;
   }
 
   public function getMerchantId() {
@@ -113,13 +112,21 @@ class User {
     mysql_query($query);
   }
 
-  public function set($data = null) {
-    $this->setFirstName($data['firstname']);
-    $this->setLastName($data['lastname']);
-    $this->setEmail($data['email']);
-    $this->setRole($data['role']);
-    $this->setMerchantId($data['merchant_id']);
-    $this->setGmtOffset($data['gmt_offset']);
+  public function set($data= null) {
+    if (!$data) {
+      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
+        mysql_real_escape_string($email),
+        mysql_real_escape_string($password));
+      $query = mysql_query($query);
+      $data = mysql_fetch_assoc($query);
+    }
+    $this->_firstname = $data['firstname'];
+    $this->_lastname = $data['lastname'];
+    $this->_email = $data['email'];
+    $this->_id = $data['email'];
+    $this->_role = $data['role'];
+    $this->_merchantid = $data['merchant_id'];
+    $this->_gmtoffset = $data['gmt_offset'];
   }
 
   public function setEmail($email) {

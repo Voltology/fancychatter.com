@@ -288,6 +288,7 @@ a:focus {
   width: 380px;
 }
 .span4 {
+  padding: 8px;
   width: 300px;
 }
 .span3 {
@@ -3440,7 +3441,7 @@ input[type="submit"].btn.btn-mini {
 }
 .navbar {
   overflow: visible;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   *position: relative;
   *z-index: 2;
 }
@@ -3965,6 +3966,9 @@ input[type="submit"].btn.btn-mini {
   display: inherit !important;
 }
 @media (min-width: 768px) and (max-width: 979px) {
+  .navbar {
+    display: inherit !important;
+  }
   .hidden-desktop {
     display: inherit !important;
   }
@@ -3979,6 +3983,12 @@ input[type="submit"].btn.btn-mini {
   }
 }
 @media (max-width: 767px) {
+  .jumbotron {
+    display: none;
+  }
+  .navbar {
+    display: inherit !important;
+  }
   .hidden-desktop {
     display: inherit !important;
   }
