@@ -25,6 +25,13 @@ class ChitChat {
     return $chitchat;
   }
 
+  public static function getCount() {
+    $chitchat = array();
+    $query = sprintf("SELECT id,user_id,category_id,body,creation FROM chitchat ORDER BY creation DESC");
+    $query = mysql_query($query);
+    return mysql_num_rows($query);
+  }
+
   public function getResponses() {
     return $this->_responses;
   }

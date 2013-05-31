@@ -25,7 +25,12 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                 </li>
                 <li>
                   <ul>
-                    <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 540px;"><textarea style="height: 80px; width: 500px; margin: 15px 0 10px 20px;"></textarea></li>
+                    <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 540px;">
+                      <form>
+                        <textarea style="height: 80px; width: 500px; margin: 15px 0 5px 20px;"></textarea>
+                        <button class="button" style="margin: 0 0 10px 20px;">Send Response</button>
+                      </form>
+                    </li>
                   </ul>
                 </li>
               <?php

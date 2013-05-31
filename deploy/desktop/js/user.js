@@ -15,10 +15,12 @@ var user = {
       }
     });
   },
-  register : function() {
-    ajax.get(API_URL, '&action=register', function(json) {
-      if (json.result === 'success') {
+  signup : function(email, password1, password2, firstname, lastname) {
+    ajax.get(API_URL, '&action=signup', function(response) {
+      if (response.result === 'success') {
+        document.location = './';
       } else {
+        alert('error');
       }
     });
   }

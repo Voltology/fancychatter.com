@@ -89,6 +89,16 @@ class User {
     return $this->_role;
   }
 
+  public function getSavedSearches() {
+    $searches = array();
+    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id ORDER BY searches.creation DESC");
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($searches, $row);
+    }
+    return $searches;
+  }
+
   public static function getUsers($count = 20, $index = "0", $order = "creation", $direction = "ASC") {
     $users = array();
     $query = sprintf("SELECT users.id,email,firstname,lastname,creation,roles.role as role FROM users JOIN roles ON users.role=roles.id ORDER BY %s %s LIMIT %s,%s",
@@ -111,6 +121,17 @@ class User {
       mysql_real_escape_string($user->_id));
     mysql_query($query);
   }
+
+  public function saveSearch($location, $category, $distance, $saved = 0) {
+    $query = sprintf("INSERT INTO searches SET location='%s', category_id='%s', distance='%s', saved='%s', creation='%s'",
+      mysql_real_escape_string($location),
+      mysql_real_escape_string($category),
+      mysql_real_escape_string($distance),
+      mysql_real_escape_string($saved),
+      mysql_real_escape_string(time()));
+    $query = mysql_query($query);
+  }
+
 
   public function set($data= null) {
     if (!$data) {
@@ -171,7 +192,7 @@ class User {
     mysql_query($query);
   }
 
-  public static function validate($firstname, $lastname, $email, $password1, $password2, $role) {
+  public static function validate($email, $password1, $password2, $firstname, $lastname, $role = 1) {
     $errors = array();
     if ($firstname === "") { $errors[] = "You must enter a first name."; }
     if ($lastname === "") { $errors[] = "You must enter a last name."; }
