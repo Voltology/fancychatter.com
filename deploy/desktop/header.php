@@ -38,6 +38,16 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
       <div class="masthead" style="padding: 4px; 0; border: 1px solid #ccc;">
         <div style="display: inline-block; margin: 5px 5px;"><a href="<?php echo DESKTOP_URL; ?>"><img src="img/logo.png" width="140" border="0" /></a></div>
         <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;">
-          <a href="/profile">My Profile</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="dialog.open('signup', 'Sign Up', 302, 310);">Sign Up</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick="dialog.open('login', 'Log In', 172, 310);">Log In</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="">Help</a>
+          <?php if ($user->getIsLoggedIn()) { ?>
+          <a href="/profile">My Profile</a>&nbsp;&nbsp;|&nbsp;
+            <?php if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor", "merchant_publisher"))) { ?>
+            <a href="/admin/">Admin Area</a>&nbsp;&nbsp;|&nbsp;
+            <?php } ?>
+            <a href="/logout.php">Log Out</a>
+          <?php } else { ?>
+          <a href="#" onclick="dialog.open('login', 'Log In', 172, 310);">Log In</a>&nbsp;&nbsp;|&nbsp;
+          <a href="#" onclick="dialog.open('signup', 'Sign Up', 302, 310);">Sign Up</a>&nbsp;&nbsp;|&nbsp;
+          <a href="">Help</a>
+          <?php } ?>
         </div>
       </div>

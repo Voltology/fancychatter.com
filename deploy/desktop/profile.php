@@ -8,7 +8,7 @@
             </div>
             <div class="span6">
               <div class="profile-data">
-                <h4 style="margin: 0;">Firstname Lastname</h4>
+                <h4 style="margin: 0;"><?php echo $user->getFirstName(); ?> <?php $user->getLastName(); ?></h4>
                 <p>Chicago, IL</p>
                 <p><i class="icon-pencil"></i> <a href="#" onclick="profile.edit()">Edit Profile</a></p>
               </div>

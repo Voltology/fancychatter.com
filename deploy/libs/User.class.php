@@ -31,7 +31,7 @@ class User {
   }
 
   public function checkPassword($email, $password) {
-    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
+    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
       mysql_real_escape_string($email),
       mysql_real_escape_string($password));
     $query = mysql_query($query);
@@ -135,7 +135,7 @@ class User {
 
   public function set($data= null) {
     if (!$data) {
-      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
+      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
         mysql_real_escape_string($email),
         mysql_real_escape_string($password));
       $query = mysql_query($query);
@@ -148,6 +148,7 @@ class User {
     $this->_role = $data['role'];
     $this->_merchantid = $data['merchant_id'];
     $this->_gmtoffset = $data['gmt_offset'];
+    $this->_creation = $data['creation'];
   }
 
   public function setEmail($email) {

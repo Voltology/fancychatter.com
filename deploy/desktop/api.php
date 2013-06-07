@@ -19,6 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       if (!$user->checkPassword($_POST['email'], md5($_POST['password']))) {
         $json['result'] = "failed";
         array_push($json['errors'], "Incorrect Username/Password");
+      } else {
+        setcookie("email", $_POST['email']);
+        setcookie("password", md5($_POST['password']));
       }
       break;
     case "signup":

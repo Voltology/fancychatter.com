@@ -52,14 +52,18 @@ select {
 .header-admin {
   color: #333;
   display: block;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 400;
-  left: 300px;
+  left: 208px;
   position: absolute;
-  top: 64px;
+  top: 39px;
 }
 .header-logo {
   margin: 10px 0 0 10px;
+}
+.header-logo img {
+  height: 45px;
+  width: 150px;
 }
 .sidebar-cell {
   background-color: #e9e9e9;
