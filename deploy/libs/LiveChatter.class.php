@@ -3,6 +3,9 @@ class LiveChatter {
   private $_id;
   private $_merchantid;
   private $_body;
+  private $_latitude;
+  private $_logo;
+  private $_longitude;
   private $_starttime;
   private $_endtime;
   private $_creation;
@@ -20,14 +23,16 @@ class LiveChatter {
     mysql_query($query);
   }
 
-  public static function add($merchant_id, $body, $starttime, $endtime, $gmtoffset) {
+  public static function add($merchant_id, $body, $latitude, $longitude, $starttime, $endtime, $gmtoffset) {
     $offset = $gmtoffset * 60 * 60;
-    $query = sprintf("INSERT INTO livechatter SET merchant_id='%s', body='%s', starttime='%s', endtime='%s', status='1', creation='%s'",
+    $query = sprintf("INSERT INTO livechatter SET merchant_id='%s', body='%s', latitude='%s', longitude='%s', starttime='%s', endtime='%s', status='1', creation='%s'",
       mysql_real_escape_string($merchant_id),
       mysql_real_escape_string($body),
-      mysql_real_escape_string($starttime + $offset),
-      mysql_real_escape_string($endtime + $offset),
-      mysql_real_escape_string(time() + $offset));
+      mysql_real_escape_string($latitude),
+      mysql_real_escape_string($longitude),
+      mysql_real_escape_string($starttime),
+      mysql_real_escape_string($endtime),
+      mysql_real_escape_string(time()));
     $query = mysql_query($query);
   }
 
@@ -55,6 +60,18 @@ class LiveChatter {
 
   public function getId() {
     return $this->_id;
+  }
+
+  public function getLatitude() {
+    return $this->_latitude;
+  }
+
+  public function getLogo() {
+    return $this->_logo;
+  }
+
+  public function getLongitude() {
+    return $this->_longitude;
   }
 
   public static function getByMerchantId($merchantid) {
@@ -89,15 +106,41 @@ class LiveChatter {
     mysql_query($query);
   }
 
-  public static function search($citystatezip, $category, $page, $amount) {
+  public static function search($citystatezip, $category, $distance, $amount) {
+    $location = getLatLongByZip($citystatezip);
     $livechatter = array();
-    //$query = sprintf("SELECT id, SQRT((69.1*(" . $lat . " - latitude)*69.1*(" . $lat . "-latitude))+(53*(" . $long . "-longitude)*53*(" . $long . "-longitude))) AS distance,body FROM livechatter ORDER BY distance ASC");
-    $query = sprintf("SELECT id,body FROM livechatter ORDER BY creation DESC");
+    $query = sprintf("SELECT livechatter.id,merchant_id,body,endtime,SQRT((69.1 * (%s - livechatter.latitude) * 69.1 * (%s - livechatter.latitude)) + (53 * (%s - livechatter.longitude) * 53 * (%s - livechatter.longitude))) AS distance,merchants.name AS merchant_name,merchants.logo AS logo,merchants.category_id AS category FROM livechatter LEFT JOIN merchants ON merchants.id=livechatter.merchant_id WHERE livechatter.status='1' HAVING category='%s' AND distance < %s ORDER BY distance ASC, livechatter.creation DESC",
+      mysql_real_escape_string($location['latitude']),
+      mysql_real_escape_string($location['latitude']),
+      mysql_real_escape_string($location['longitude']),
+      mysql_real_escape_string($location['longitude']),
+      mysql_real_escape_string($category),
+      mysql_real_escape_string($distance));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($livechatter, $row);
     }
     return $livechatter;
+  }
+
+  public function set() {
+    $query = sprintf("SELECT body,latitude,longitude,starttime,endtime,status FROM livechatter WHERE merchant_id='%s' AND id='%s' LIMIT 1",
+      mysql_real_escape_string($this->_merchantid),
+      mysql_real_escape_string($this->_id));
+    $query = mysql_query($query);
+    if (mysql_num_rows($query) > 0) {
+      $lc = mysql_fetch_assoc($query);
+      $this->setBody($lc['body']);
+      $this->setLatitude($lc['latitude']);
+      $this->setLongitude($lc['longitude']);
+      $this->setStartTime($lc['starttime']);
+      $this->setEndTime($lc['endtime']);
+      return true;
+    } else {
+      $this->setId(null);
+      $this->setMerchantId(null);
+      return false;
+    }
   }
 
   public function setBody($body) {
@@ -112,22 +155,12 @@ class LiveChatter {
     $this->_id = $id;
   }
 
-  public function set() {
-    $query = sprintf("SELECT body,starttime,endtime,status FROM livechatter WHERE merchant_id='%s' AND id='%s' LIMIT 1",
-      mysql_real_escape_string($this->_merchantid),
-      mysql_real_escape_string($this->_id));
-    $query = mysql_query($query);
-    if (mysql_num_rows($query) > 0) {
-      $lc = mysql_fetch_assoc($query);
-      $this->setBody($lc['body']);
-      $this->setStartTime($lc['starttime']);
-      $this->setEndTime($lc['endtime']);
-      return true;
-    } else {
-      $this->setId(null);
-      $this->setMerchantId(null);
-      return false;
-    }
+  public function setLatitude($latitude) {
+    $this->_latitude = $latitude;
+  }
+
+  public function setLongitude($longitude) {
+    $this->_longitude = $longitude;
   }
 
   public function setMerchantId($merchantid) {

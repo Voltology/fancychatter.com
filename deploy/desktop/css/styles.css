@@ -160,9 +160,23 @@ a {
   width: 100%;
   z-index: 10000;
 }
+.dialog-close {
+  cursor: pointer;
+  font-size: 16px;
+  position: absolute;
+  right: 8px;
+  top: 6px;
+}
 .dialog-header {
-  background-color: #ccc;
-  border-bottom: 1px solid #aaa;
+  background-color: #bababa;
+  background: -moz-linear-gradient(top, #eeeeee 0%, #bababa 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#bababa));
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#bababa 100%);
+  background: -o-linear-gradient(top, #eeeeee 0%,#bababa 100%);
+  background: -ms-linear-gradient(top, #eeeeee 0%,#bababa 100%);
+  background: linear-gradient(to bottom, #eeeeee 0%,#bababa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#bababa',GradientType=0 );
+  border-bottom: 1px solid #999;
   border-radius: 6px 6px 0 0;
   font-size: 18px;
   font-weight: bold;

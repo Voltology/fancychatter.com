@@ -23,6 +23,16 @@ function getCategoryById($id) {
   return $result['category'];
 }
 
+function getLatLongByZip($zip) {
+  $query = sprintf("SELECT latitude,longitude FROM locations WHERE zipcode='%s' LIMIT 1",
+    mysql_real_escape_string($zip));
+  $query = mysql_query($query);
+  return mysql_fetch_assoc($query);
+}
+
+function getLatLongByCityState($city, $state) {
+}
+
 function getRoles() {
   $roles = array();
   $query = sprintf("SELECT id,role FROM roles ORDER BY role ASC");
@@ -31,6 +41,16 @@ function getRoles() {
     array_push($roles, $row);
   }
   return $roles;
+}
+
+function getStates() {
+  $states = array();
+  $query = sprintf("SELECT DISTINCT state FROM locations ORDER BY state ASC");
+  $query = mysql_query($query);
+  while ($row = mysql_fetch_assoc($query)) {
+    array_push($states, $row);
+  }
+  return $states;
 }
 
 function slugify($str, $limit = 240, $delimiter = "-") {

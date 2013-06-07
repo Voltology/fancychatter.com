@@ -17,7 +17,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
         $errors = LiveChatter::validate($_POST['body'], $start, $end);
         if ($action === "add") {
           if (count($errors) === 0) {
-            $errors = LiveChatter::add($user->getMerchantId(), $_POST['body'], $start, $end, $user->getGmtOffset());
+            $errors = LiveChatter::add($user->getMerchantId(), $_POST['body'], $merchant->getLatitude(), $merchant->getLongitude(), $start, $end, $user->getGmtOffset());
             echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been added.</div>";
           } else {
             echo "<div class=\"error\">";
@@ -79,7 +79,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
                 <tr>
                   <td class="edit-label">Start Time</td>
                   <td class="edit-field">
-                    <input type="text" class="field-time" id="starttime" name="starttime" value="<?php if (count($errors) > 0) { echo $_POST['starttime']; } else if ($action === "edit" && $lc->getId()) { echo date("m/d/Y h:i", $lc->getStartTime()); } ?>" placeholder="Enter start time" />
+                    <input type="text" class="field-time" id="starttime" name="starttime" value="<?php if (count($errors) > 0) { echo $_POST['starttime']; } else if ($action === "edit" && $lc->getId()) { echo date("m/d/Y h:i", $lc->getStartTime()); } ?>" placeholder="Enter start time" /> <input type="checkbox" name="now" value="true" /> <span><strong>Now</strong></span>
                   </td>
                 </tr>
                 <tr>

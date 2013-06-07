@@ -1,5 +1,11 @@
 <?php
 require("../../.local.inc.php");
+if ($user->getMerchantId() != "") {
+  if (!isset($_SESSION['merchant'])) {
+      $_SESSION['merchant'] = new Merchant($user->getMerchantId());
+  }
+  $merchant =& $_SESSION['merchant'];
+}
 $page = $_GET['p'] ? $_GET['p'] : "home";
 $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
 ?>

@@ -9,8 +9,8 @@ class User {
   private $_creation;
   private $_dst = true;
 
-  private $_merchantid;
-  private $_isloggedin;
+  private $_merchantid = null;
+  private $_isloggedin = false;
 
   function __construct($id = null) {
     if ($id !== null) {

@@ -27,20 +27,23 @@ var dialog = {
         chitchat.send($('#chitchat-field').val());
       });
     } else if (type === 'login') {
-      var html = '<input type="text" placeholder="Email Address" /><br />';
-      html += '<input type="password" placeholder="Password" /><br />';
-      html += '<button class="btn btn-mini btn-success dialog-btn">Log In</button>';
+      var html = '<input type="text" placeholder="Email Address" id="email" /><br />';
+      html += '<input type="password" placeholder="Password" id="password" /><br />';
+      html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Log In</button>';
       $('#dialog-body').html(html);
+      $('#dialog-button').on('click', function() {
+        user.login($('#email').val(), $('#password').val());
+      });
     } else if (type === 'signup') {
       var html = '<input type="text" placeholder="First Name" id="firstname" /><br />';
       html += '<input type="text" placeholder="Last Name" id="lastname" /><br />';
       html += '<input type="text" placeholder="Email Address" id="email" /><br />';
       html += '<input type="password" placeholder="Password" id="password1" /><br />';
       html += '<input type="password" placeholder="Re-enter Password" id="password2" /><br />';
-      html += '<button class="btn btn-mini btn-success dialog-btn">Sign Up</button>';
+      html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Sign Up</button>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
-        user.signup($('#email').val(), $('#password1').val(), $('#password2').val(), $('#fistname').val(), $('#lastname').val());
+        user.signup($('#email').val(), $('#password1').val(), $('#password2').val(), $('#firstname').val(), $('#lastname').val());
       });
     }
   },

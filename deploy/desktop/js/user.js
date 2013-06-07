@@ -1,26 +1,34 @@
 var user = {
   login : function() {
-    ajax.get(API_URL, '&action=login&email=' + $('#email').val() + '&password=' + $('#password').val(), function(json) {
-      if (json.result === 'success') {
-        document.location = '/home';
+    ajax.get('api.php', '&a=login&email=' + $('#email').val() + '&password=' + $('#password').val(), function(response) {
+      if (response.result === 'success') {
+        document.location = './';
       } else {
-        alert('error');
+        var errors = '';
+        $.each(response.errors, function(key, value) {
+          errors += value + '\n';
+        });
+        alert(errors);
       }
     });
   },
   logout : function() {
-    ajax.get(API_URL, '&action=logout', function(json) {
+    ajax.get('api.php', '&action=logout', function(response) {
       if (json.result === 'success') {
       } else {
       }
     });
   },
   signup : function(email, password1, password2, firstname, lastname) {
-    ajax.get(API_URL, '&action=signup', function(response) {
+    ajax.get('api.php', '&a=signup&email=' + email + '&password1=' + password1 + '&password2=' + password2 + '&firstname=' + firstname + '&lastname=' + lastname, function(response) {
       if (response.result === 'success') {
         document.location = './';
       } else {
-        alert('error');
+        var errors = '';
+        $.each(response.errors, function(key, value) {
+          errors += value + '\n';
+        });
+        alert(errors);
       }
     });
   }
