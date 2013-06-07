@@ -10,8 +10,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Jumbotron -->
       <div class="jumbotron">
         <div id="banner"></div>
           <h1>Get what you want, when you want it</h1>
@@ -38,21 +36,19 @@
             </form>
           </div>
       </div>
-
-
       <div class="row-fluid">
         <div class="span4">
-          <h2>Go Mobile</h2>
+          <h3>What is FancyChatter?</h3>
+          <p>Fancychatter.com makes your area's businesses available to everyone. At the center of Fancychatter.com is a network of leading businesses from: Restaurants, Grocery Stores, Auto Dealerships and Doctors... you name it. You connect with them immediately and they respond. Fancychatter.com is available to anyone who needs help when making a buying decision.</p>
+          <p><a class="btn" href="/about">View details &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h3>Go Mobile!</h3>
           <p>The Fancychatter.com mobile and iphone application was developed and is designed to enhance your purchasing experience by engaging the merchant you choose, by category, as you travel. This isn't your ordinary, "find the best deal" application. If getting what you want, when you want, and at the right price are important to you. Then Fancychatter.com is for you.</p>
           <p><a class="btn" href="/mobile">Go Mobile &raquo;</a></p>
         </div>
         <div class="span4">
-          <h2>Another Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span4">
-          <h2>FAQ</h2>
+          <h3>FAQ</h3>
           <p>
             <a href="?p=about">What is FancyChatter?</a><br />
             <a href="?p=suggest">Suggest a Business</a><br />

@@ -10,9 +10,17 @@
           </div>
         </div>
       </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <div id="banner"></div>
+        <h1>Get what you want, when you want it</h1>
+        <h2>Connect with local businesses in real time</h2>
+      </div>
       <div class="row-fluid">
         <div class="span12">
-          <h2>Go Mobile</h2>
-          <p></p>
+          <h2>Privacy Policy</h2>
+          <p>
+          </p>
         </div>
       </div>

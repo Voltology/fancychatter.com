@@ -45,7 +45,10 @@
         </div>
         <div class="span9">
           <div class="results" style="margin-top: 12px;">
-            <div style="font-size: 14px">Found <strong>x</strong> results searching for <strong><?php echo getCategoryById($_POST['what']); ?></strong> within <strong><?php echo $_POST['distance']; ?></strong> miles of <strong><?php echo $_POST['where']; ?></strong>!</div>
+            <?php
+            $livechatters = LiveChatter::search($_POST['where'], $_POST['what'], $_POST['distance'], 20);
+            ?>
+            <div style="font-size: 14px">Found <strong><?php echo count($livechatters); ?></strong> results searching for <strong><?php echo getCategoryById($_POST['what']); ?></strong> within <strong><?php echo $_POST['distance']; ?></strong> miles of <strong><?php echo $_POST['where']; ?></strong>!</div>
             <div style="font-size: 14px; margin-bottom: 5px;">Didn't find what you were looking for?  Click the button below to send a ChitChat!</div>
             <div style="margin-bottom: 8px;"><a href="#" class="btn btn-mini btn-success search-btn" style="margin: 0 auto;" onclick="dialog.open('chitchat', 'ChitChat', 340, 480);">Send ChitChat</a></div>
             <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0;">
@@ -54,11 +57,10 @@
               <li class="distance" style="display: inline-block; vertical-align: top;"><strong>Distance</strong></li>
             </ul>
             <?php
-            $livechatters = LiveChatter::search($_POST['where'], $_POST['what'], $_POST['distance'], 20);
             foreach ($livechatters as $livechatter) {
             ?>
             <ul class="livechatter" style="position: relative; min-height: 80px; border: 1px solid #ccc; padding: 6px; background-color: #f9f9f9; margin: 0;">
-              <li class="logo" style="display: inline-block; width: 70px; border: 1px solid #ccc; margin-right: 10px;"><a href="profile?mid="><img src="/uploads/logos/<?php if ($livechatter['logo'] == "") { echo "default.png"; } else { echo $livechatter['logo']; } ?>" /></a></li>
+              <li class="logo" style="display: inline-block; width: 70px; border: 1px solid #ccc; margin-right: 10px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><img src="/uploads/logos/<?php if ($livechatter['logo'] == "") { echo "default.png"; } else { echo $livechatter['logo']; } ?>" /></a></li>
               <li class="body" style="display: inline-block; width: 70%; vertical-align: top;"><strong><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong><br /><?php echo $livechatter['body']; ?></li>
               <li class="distance" style="display: inline-block; vertical-align: top;"><?php echo round($livechatter['distance'], 2); ?> miles</li>
             </ul>
