@@ -33,7 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $user = new User();
       $errors = $user->validate($_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['firstname'], $_POST['lastname'], 1);
       if (count($errors) === 0) {
-        $user->add($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], 1);
+        $id = $user->add($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], 1);
+        $user->setId($id);
+        $user->set();
       } else {
         $json['result'] = "failed";
         foreach ($errors as $error) {

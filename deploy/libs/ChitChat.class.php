@@ -28,7 +28,7 @@ class ChitChat {
   public static function getByUserId($id) {
     $chitchat = array();
     $query = sprintf("SELECT id,user_id,category_id,body,creation FROM chitchat WHERE user_id='%s' ORDER BY creation DESC",
-      mysql_fetch_assoc($id));
+      mysql_real_escape_string($id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($chitchat, $row);

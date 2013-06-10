@@ -140,6 +140,11 @@ a {
   margin: 4px;
   width: 290px;
 }
+.dialog-body input[type='hidden'] {
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
 .dialog-body textarea {
   height: 100px;
   width: 460px;

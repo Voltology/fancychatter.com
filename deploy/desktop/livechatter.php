@@ -34,7 +34,7 @@
       <div class="row-fluid">
         <div class="span3">
           <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 16px 0 0 0; border-radius: 8px 8px 0 0; width: 100%;">
-            <li class="saved" style="display: inline-block; width: 100%; margin-right: 10px; font-weight: bold;">Saved Searches</li>
+            <li class="saved" style="display: inline-block; width: 100%; margin-right: 10px; font-weight: bold;">My Favorite Five</li>
           </ul>
           <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #f9f9f9; margin: 0;">
             <li style="min-height: 200px; display: inline-block; width: 100%; margin-right: 10px;">

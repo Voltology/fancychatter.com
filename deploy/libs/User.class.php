@@ -28,6 +28,7 @@ class User {
       mysql_real_escape_string($role),
       mysql_real_escape_string(time()));
     mysql_query($query);
+    return mysql_insert_id();
   }
 
   public function checkPassword($email, $password) {
@@ -133,11 +134,10 @@ class User {
   }
 
 
-  public function set($data= null) {
+  public function set($data = null) {
     if (!$data) {
       $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
-        mysql_real_escape_string($email),
-        mysql_real_escape_string($password));
+        mysql_real_escape_string($this->_id));
       $query = mysql_query($query);
       $data = mysql_fetch_assoc($query);
     }

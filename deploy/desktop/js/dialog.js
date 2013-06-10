@@ -3,7 +3,7 @@ var dialog = {
     $('#dialog').css('display', 'none');
     $('#dialog-blanket').css('display', 'none');
   },
-  open : function(type, header, height, width) {
+  open : function(type, header, height, width, searchwall) {
     $('#dialog').css({
       'display' : 'block',
       'height' : height,
@@ -29,7 +29,9 @@ var dialog = {
     } else if (type === 'login') {
       var html = '<input type="text" placeholder="Email Address" id="email" /><br />';
       html += '<input type="password" placeholder="Password" id="password" /><br />';
+      if (searchwall) { html += '<input type="hidden" id="search-wall" value="true" />'; }
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Log In</button>';
+      html += '<div style="margin-left: 4px;"><strong>Don\'t have an account? <a href="#" onclick="dialog.open(\'signup\', \'Sign Up\', 320, 330, ' + searchwall + ');">Click here to sign up!</a></strong></div>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
         user.login($('#email').val(), $('#password').val());
@@ -45,7 +47,9 @@ var dialog = {
       html += '<input type="text" placeholder="Email Address" id="email" /><br />';
       html += '<input type="password" placeholder="Password" id="password1" /><br />';
       html += '<input type="password" placeholder="Re-enter Password" id="password2" /><br />';
+      if (searchwall) { html += '<input type="hidden" id="search-wall" value="true" />'; }
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Sign Up</button>';
+      html += '<div style="margin-left: 4px;"><strong>Already have an account? <a href="#" onclick="dialog.open(\'login\', \'Log In\', 190, 310, ' + searchwall + ');">Click here to log in!</a></strong></div>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
         user.signup($('#email').val(), $('#password1').val(), $('#password2').val(), $('#firstname').val(), $('#lastname').val());

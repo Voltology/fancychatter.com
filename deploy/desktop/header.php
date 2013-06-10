@@ -47,8 +47,8 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
             <a href="/help">Help</a>&nbsp;&nbsp;|&nbsp;
             <a href="/logout">Log Out</a>
           <?php } else { ?>
-          <a href="#" onclick="dialog.open('login', 'Log In', 172, 310);">Log In</a>&nbsp;&nbsp;|&nbsp;
-          <a href="#" onclick="dialog.open('signup', 'Sign Up', 302, 310);">Sign Up</a>&nbsp;&nbsp;|&nbsp;
+          <a href="#" onclick="dialog.open('login', 'Log In', 190, 310);">Log In</a>&nbsp;&nbsp;|&nbsp;
+          <a href="#" onclick="dialog.open('signup', 'Sign Up', 320, 310);">Sign Up</a>&nbsp;&nbsp;|&nbsp;
           <a href="">Help</a>
           <?php } ?>
         </div>
