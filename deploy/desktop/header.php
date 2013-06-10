@@ -25,7 +25,7 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
           });
           $element.fadeIn(500);
           count++;
-          if (count > 2) { count = 1; }
+          if (count > 3) { count = 1; }
       }, 5000);
     });
     </script>

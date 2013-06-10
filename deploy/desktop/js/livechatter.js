@@ -1,7 +1,9 @@
 var livechatter = {
-  search : function(cityzip) {
-    ajax.get(API_URL, '&action=search&cityzip=' + cityzip, function() {
-      alert('test');
-    });
+  search : function() {
+    if ($('#where').val() === '' || $('#what').val() === 'null' || $('#distance').val() === 'null') {
+      alert('Make sure all search fields have been filled out');
+    } else {
+      $('#livechatter-search').submit();
+    }
   }
 };

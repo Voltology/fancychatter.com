@@ -2,11 +2,16 @@
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
         User::saveSearch($_POST['where'], $_POST['what'], $_POST['distance'], 1);
       }
+      if (isset($_GET['search_id'])) {
+        $livechatters = LiveChatter::searchById($_GET['search_id']);
+      } else {
+        $livechatters = LiveChatter::search($_POST['where'], $_POST['what'], $_POST['distance'], 20);
+      }
       ?>
       <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
-        <form method="post" action="/livechatter" >
-          <input type="text" name="where" value="<?php echo $_POST['where']; ?>" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
-          <select name="what">
+        <form method="post" action="/livechatter" id="livechatter-search">
+          <input type="text" name="where" id="where" value="<?php echo $_POST['where']; ?>" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
+          <select name="what" id="what">
             <option value="null">What are you looking for?</option>
             <?php
             $categories = getCategories();
@@ -17,13 +22,13 @@
             }
             ?>
           </select>
-          <select name="distance">
+          <select name="distance" id="distance">
             <option value="null">How far do you want to go?</option>
             <?php for ($i = 5; $i <= 25; $i += 5) { ?>
             <option value="<?php echo $i; ?>"<?php if ($_POST['distance'] == $i) { echo " selected"; } ?>><?php echo $i; ?> Miles</option>
             <?php } ?>
           </select>
-          <button type="submit" class="btn btn-mini btn-success search-btn"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+          <button type="button" class="btn btn-mini btn-success search-btn" onclick="livechatter.search();"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
         </form>
       </div>
       <div class="row-fluid">
@@ -45,12 +50,9 @@
         </div>
         <div class="span9">
           <div class="results" style="margin-top: 12px;">
-            <?php
-            $livechatters = LiveChatter::search($_POST['where'], $_POST['what'], $_POST['distance'], 20);
-            ?>
             <div style="font-size: 14px">Found <strong><?php echo count($livechatters); ?></strong> results searching for <strong><?php echo getCategoryById($_POST['what']); ?></strong> within <strong><?php echo $_POST['distance']; ?></strong> miles of <strong><?php echo $_POST['where']; ?></strong>!</div>
             <div style="font-size: 14px; margin-bottom: 5px;">Didn't find what you were looking for?  Click the button below to send a ChitChat!</div>
-            <div style="margin-bottom: 8px;"><a href="#" class="btn btn-mini btn-success search-btn" style="margin: 0 auto;" onclick="dialog.open('chitchat', 'ChitChat', 340, 480);">Send ChitChat</a></div>
+            <div style="margin-bottom: 8px;"><a href="#" class="btn btn-mini btn-success search-btn" style="margin: 0 auto;" onclick="dialog.open('chitchat', 'ChitChat', 340, 480);"><i class="icon-reply" style="vertical-align: bottom;"></i> Send ChitChat</a></div>
             <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0;">
               <li class="logo" style="display: inline-block; width: 70px; margin-right: 10px; overflow-hidden;"></li>
               <li class="body" style="display: inline-block; width: 70%; vertical-align: top;"><strong>Business Name/Message</strong></li>

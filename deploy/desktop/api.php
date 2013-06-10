@@ -12,8 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       break;
     case "chitchat-send":
       $msg = $_POST['msg'];
-      $chitchat = new ChitChat();
-      $chitchat->send($user->getId(), 1, $msg);
+      if ($msg == "") {
+        $json['result'] = "failed";
+        array_push($json['errors'], "ChitChat message cannot be blank");
+      } else {
+        $chitchat = new ChitChat();
+        $chitchat->send($user->getId(), 1, $msg);
+      }
       break;
     case "login":
       if (!$user->checkPassword($_POST['email'], md5($_POST['password']))) {

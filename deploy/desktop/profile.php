@@ -3,12 +3,12 @@
           <div class="row-fluid">
             <div class="span6">
               <div class="profile-image" style="border: 1px solid #ccc; width: 100%;">
-                <img src="" />
+                <img src="/uploads/profile/default.png" />
               </div>
             </div>
             <div class="span6">
               <div class="profile-data">
-                <h4 style="margin: 0;"><?php echo $user->getFirstName(); ?> <?php $user->getLastName(); ?></h4>
+                <h4 style="margin: 0;"><?php echo $user->getFirstName(); ?> <?php echo $user->getLastName(); ?></h4>
                 <p>Chicago, IL</p>
                 <p><i class="icon-pencil"></i> <a href="#" onclick="profile.edit()">Edit Profile</a></p>
               </div>
@@ -16,37 +16,55 @@
           </div>
           <div class="row-fluid">
             <div class="span12">
-              <div class="profile-recent-activity" style="border: 1px solid #ccc; width: 100%; min-height: 400px;">
+              <div class="profile-recent-activity" style="width: 100%; min-height: 400px;">
                 <h4>Recent Activity</h4>
               </div>
             </div>
           </div>
         </div>
         <div class="span8">
+          <h4>Your Recent ChitChats</h4>
           <div class="chitchat">
+            <?php
+            $chitchats = ChitChat::getByUserId($user->getId());
+            foreach ($chitchats as $chitchat) {
+            ?>
             <ul style="margin: 0; list-style-type: none; padding: 5px;">
-              <li style="display: inline-block; width: 15%; vertical-align: top; margin-right: 5px;">
-                <div style="height: 40px; width: 100%; border: 1px solid #ccc;"></div>
+              <li style="display: inline-block; width: 13%; vertical-align: top; margin-right: 5px;">
+                <div style="min-height: 8px; width: 80px; border: 1px solid #ccc; overflow: hidden;">
+                  <img src="/uploads/profile/default.png" />
+                </div>
               </li>
-              <li style="display: inline-block; width: 75%; position: relative; border-bottom: 1px solid #ccc;">
-                <strong>Local Business Name</strong><br />Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                <div style="position: absolute; top: 0px; right: 5px; color: #666;">12:45 pm</div>
-              </li>
-              <li>
-                <ul style="margin-left: 15%; list-style-type: none; border-bottom: 1px solid #ccc; padding: 5px;">
-                  <li style="display: inline-block; width: 17%; vertical-align: top; margin-right: 5px;">
-                    <div style="height: 40px; width: 100%; border: 1px solid #ccc;"></div>
-                  </li>
-                  <li style="display: inline-block; width: 72%;"><strong>Local Business Name</strong><br />Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                </ul>
+              <li style="display: inline-block; min-height: 84px; width: 84%; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+                <strong><?php echo $user->getFirstName(); ?> <?php echo $user->getLastName(); ?></strong><br />
+                <div style="color: #aaa; font-style: italic; margin-top: -6px;">Sent to Automotive within 25 miles of 60611</div>
+                <?php echo $chitchat['body']; ?>
+                <div style="position: absolute; top: 0px; right: 5px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
               </li>
             </ul>
-            <ul style="margin: 0; list-style-type: none; border-bottom: 1px solid #ccc; padding: 5px;">
-              <li style="display: inline-block; width: 15%; vertical-align: top; margin-right: 5px;">
-                <div style="height: 40px; width: 100%; border: 1px solid #ccc;"></div>
-              </li>
-              <li style="display: inline-block; width: 75%;"><strong>Local Business Name</strong><br />Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-            </ul>
+            <?php
+              $responses = ChitChat::getResponsesById($chitchat['id']);
+//              foreach ($responses as $responses) {
+              for ($i = 0; $i < 2; $i++) {
+              ?>
+              <ul>
+                <li style="list-style-type: none;">
+                  <ul style="margin-left: 13%; list-style-type: none; border-bottom: 1px solid #ccc; padding: 5px;">
+                    <li style="display: inline-block; width: 16%; vertical-align: top; margin-right: 5px;">
+                      <div style="min-height: 8px; width: 80px; border: 1px solid #ccc; overflow: hidden;">
+                        <img src="/uploads/profile/default.png" />
+                      </div>
+                    </li>
+                    <li style="display: inline-block; position: relative; width: 78%;"><strong>Local Business Name</strong><br />Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      <div style="position: absolute; top: 0px; right: -7px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <?php
+              }
+            }
+            ?>
           </div>
         </div>
       </div>

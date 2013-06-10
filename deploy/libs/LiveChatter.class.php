@@ -123,6 +123,29 @@ class LiveChatter {
     return $livechatter;
   }
 
+  public static function searchById($id) {
+  echo "got";
+    $livechatter = array();
+    $query = sprintf("SELECT location,category_id,distance FROM searches WHERE id='%s' LIMIT 1",
+      mysql_real_escape_string($id));
+    $query = mysql_query($query);
+    $search = mysql_fetch_assoc($query);
+    $location = getLatLongByZip($search['location']);
+    $query = sprintf("SELECT livechatter.id,merchant_id,body,endtime,SQRT((69.1 * (%s - livechatter.latitude) * 69.1 * (%s - livechatter.latitude)) + (53 * (%s - livechatter.longitude) * 53 * (%s - livechatter.longitude))) AS distance,merchants.name AS merchant_name,merchants.logo AS logo,merchants.category_id AS category FROM livechatter LEFT JOIN merchants ON merchants.id=livechatter.merchant_id WHERE livechatter.status='1' HAVING category='%s' AND distance < %s ORDER BY distance ASC, livechatter.creation DESC",
+      mysql_real_escape_string($location['latitude']),
+      mysql_real_escape_string($location['latitude']),
+      mysql_real_escape_string($location['longitude']),
+      mysql_real_escape_string($location['longitude']),
+      mysql_real_escape_string($search['category']),
+      mysql_real_escape_string($search['distance']));
+      echo $query;
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($livechatter, $row);
+    }
+    return $livechatter;
+  }
+
   public function set() {
     $query = sprintf("SELECT body,latitude,longitude,starttime,endtime,status FROM livechatter WHERE merchant_id='%s' AND id='%s' LIMIT 1",
       mysql_real_escape_string($this->_merchantid),

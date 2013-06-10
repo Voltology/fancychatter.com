@@ -34,6 +34,11 @@ var dialog = {
       $('#dialog-button').on('click', function() {
         user.login($('#email').val(), $('#password').val());
       });
+      $("#email, #password").keypress(function(event) {
+        if (event.which == 13) {
+          user.login($('#email').val(), $('#password').val());
+         }
+      });
     } else if (type === 'signup') {
       var html = '<input type="text" placeholder="First Name" id="firstname" /><br />';
       html += '<input type="text" placeholder="Last Name" id="lastname" /><br />';
@@ -44,6 +49,11 @@ var dialog = {
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
         user.signup($('#email').val(), $('#password1').val(), $('#password2').val(), $('#firstname').val(), $('#lastname').val());
+      });
+      $("#email, #password1, #password2, #firstname, #lastname").keypress(function(event) {
+        if (event.which == 13) {
+          user.signup($('#email').val(), $('#password1').val(), $('#password2').val(), $('#firstname').val(), $('#lastname').val());
+         }
       });
     }
   },

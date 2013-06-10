@@ -25,15 +25,36 @@ class ChitChat {
     return $chitchat;
   }
 
+  public static function getByUserId($id) {
+    $chitchat = array();
+    $query = sprintf("SELECT id,user_id,category_id,body,creation FROM chitchat WHERE user_id='%s' ORDER BY creation DESC",
+      mysql_fetch_assoc($id));
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($chitchat, $row);
+    }
+    return $chitchat;
+  }
+
   public static function getCount() {
     $chitchat = array();
-    $query = sprintf("SELECT id,user_id,category_id,body,creation FROM chitchat ORDER BY creation DESC");
+    $query = sprintf("SELECT id FROM chitchat ORDER BY creation DESC");
     $query = mysql_query($query);
     return mysql_num_rows($query);
   }
 
-  public function getResponses() {
-    return $this->_responses;
+  public function getResponsesById($id) {
+    $responses = array();
+    $query = sprintf("SELECT id,user_id,body,creation FROM chitchat_responses WHERE chitchat_id='%s' ORDER BY creation DESC",
+      mysql_fetch_assoc($id));
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($responses, $row);
+    }
+    return $responses;
+  }
+
+  public static function respond($merchant, $category, $msg) {
   }
 
   public static function send($user, $category, $msg) {

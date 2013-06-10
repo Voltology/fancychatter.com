@@ -15,9 +15,9 @@
           <h1>Get what you want, when you want it</h1>
           <h2>Connect with local businesses in real time</h2>
           <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
-            <form method="post" action="/livechatter" >
-              <input type="text" name="where" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
-              <select name="what">
+            <form method="post" action="/livechatter" id="livechatter-search">
+              <input type="text" name="where" id="where" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
+              <select name="what" id="what">
                 <option value="null">What are you looking for?</option>
                 <?php
                 $categories = getCategories();
@@ -26,13 +26,13 @@
                 }
                 ?>
               </select>
-              <select name="distance">
+              <select name="distance" id="distance">
                 <option value="null">How far do you want to go?</option>
                 <?php for ($i = 5; $i <= 25; $i+=5) { ?>
                 <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
                 <?php } ?>
               </select>
-              <button type="submit" class="btn btn-mini btn-success search-btn"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+              <button type="button" class="btn btn-mini btn-success search-btn" onclick="livechatter.search();"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
             </form>
           </div>
       </div>
@@ -48,14 +48,13 @@
           <p><a class="btn" href="/mobile">Go Mobile &raquo;</a></p>
         </div>
         <div class="span4">
-          <h3>FAQ</h3>
+          <h3>Links</h3>
           <p>
-            <a href="?p=about">What is FancyChatter?</a><br />
-            <a href="?p=suggest">Suggest a Business</a><br />
-            <a href="?p=contact">Contact Us</a>
-            <a href="?p=faq">Frequently Asked Questions</a><br />
-            <a href="?p=addbusiness">Add Your Business</a><br />
-            <a href="<?php echo ADMIN_PATH; ?>">Merchant Administration Area</a>
+            <a href="/suggest">Suggest a Business</a><br />
+            <a href="/contact">Contact Us</a>
+            <a href="/faq">Frequently Asked Questions</a><br />
+            <a href="/add">Add Your Business</a><br />
+            <a href="/admin/">Merchant Administration Area</a>
           </p>
           <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
