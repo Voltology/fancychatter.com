@@ -1,3 +1,8 @@
+      <?php
+      if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        ChitChat::respond($_POST['cc-id'], $user->getId(), null, $_POST['body']);
+      }
+      ?>
       <div class="row-fluid">
         <div class="span4">
           <div class="row-fluid">
@@ -44,8 +49,47 @@
             </ul>
             <?php
               $responses = ChitChat::getResponsesById($chitchat['id']);
-//              foreach ($responses as $responses) {
-              for ($i = 0; $i < 2; $i++) {
+              foreach ($responses as $response) {
+              ?>
+              <ul>
+                <li style="list-style-type: none;">
+                  <ul style="margin-left: 13%; list-style-type: none; border-bottom: 1px solid #ccc; padding: 5px;">
+                    <li style="display: inline-block; width: 16%; vertical-align: top; margin-right: 5px;">
+                      <div style="min-height: 8px; width: 80px; border: 1px solid #ccc; overflow: hidden;">
+                        <?php
+                        if ($response['user_id'] > 0) {
+                        ?>
+                          <img src="/uploads/profile/default.png" />
+                        <?php
+                        } else {
+                        ?>
+                          <img src="/uploads/logos/<?php echo $response['logo']; ?>" />
+                        <?php
+                        }
+                        ?>
+                      </div>
+                    </li>
+                    <li style="display: inline-block; position: relative; width: 78%;">
+                      <?php
+                      if ($response['user_id'] > 0) {
+                      ?>
+                      <strong><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
+                      <?php
+                      } else {
+                      ?>
+                      <strong><?php echo $response['merchant_name']; ?></strong><br />
+                      <?php
+                      }
+                      ?>
+                      <?php echo $response['body']; ?>
+                      <div style="position: absolute; top: 0px; right: -7px; color: #666;"><?php echo date("F j, Y, g:i a", $response['creation']); ?></div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <?php
+              }
+              if ($response['merchant_id'] > 0) {
               ?>
               <ul>
                 <li style="list-style-type: none;">
@@ -55,13 +99,17 @@
                         <img src="/uploads/profile/default.png" />
                       </div>
                     </li>
-                    <li style="display: inline-block; position: relative; width: 78%;"><strong>Local Business Name</strong><br />Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      <div style="position: absolute; top: 0px; right: -7px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
+                    <li style="display: inline-block; position: relative; width: 78%;">
+                      <form method="post">
+                        <textarea name="body" style="width: 100%;"></textarea>
+                        <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" />
+                        <button type="submit" class="btn btn-mini btn-success search-btn" onclick="livechatter.search();"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Response</button>
+                      </form>
                     </li>
                   </ul>
                 </li>
               </ul>
-              <?php
+            <?php
               }
             }
             ?>

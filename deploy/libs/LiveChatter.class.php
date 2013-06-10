@@ -124,7 +124,6 @@ class LiveChatter {
   }
 
   public static function searchById($id) {
-  echo "got";
     $livechatter = array();
     $query = sprintf("SELECT location,category_id,distance FROM searches WHERE id='%s' LIMIT 1",
       mysql_real_escape_string($id));
@@ -138,7 +137,6 @@ class LiveChatter {
       mysql_real_escape_string($location['longitude']),
       mysql_real_escape_string($search['category']),
       mysql_real_escape_string($search['distance']));
-      echo $query;
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($livechatter, $row);

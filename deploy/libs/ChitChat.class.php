@@ -45,8 +45,8 @@ class ChitChat {
 
   public function getResponsesById($id) {
     $responses = array();
-    $query = sprintf("SELECT id,user_id,body,creation FROM chitchat_responses WHERE chitchat_id='%s' ORDER BY creation DESC",
-      mysql_fetch_assoc($id));
+    $query = sprintf("SELECT chitchat_responses.id,user_id,chitchat_responses.merchant_id,body,users.firstname,users.lastname,merchants.name AS merchant_name,merchants.logo,chitchat_responses.creation FROM chitchat_responses LEFT JOIN users ON users.id=chitchat_responses.user_id LEFT JOIN merchants ON merchants.id=chitchat_responses.merchant_id WHERE chitchat_id='%s' ORDER BY creation ASC",
+      mysql_real_escape_string($id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($responses, $row);
@@ -54,7 +54,14 @@ class ChitChat {
     return $responses;
   }
 
-  public static function respond($merchant, $category, $msg) {
+  public static function respond($ccid, $uid, $mid, $msg) {
+    $query = sprintf("INSERT INTO chitchat_responses SET chitchat_id='%s', user_id='%s', merchant_id='%s', body='%s', creation='%s'",
+      mysql_real_escape_string($ccid),
+      mysql_real_escape_string($uid),
+      mysql_real_escape_string($mid),
+      mysql_real_escape_string($msg),
+      mysql_real_escape_string(time()));
+    $query = mysql_query($query);
   }
 
   public static function send($user, $category, $msg) {

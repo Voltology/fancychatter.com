@@ -144,7 +144,7 @@ class User {
     $this->_firstname = $data['firstname'];
     $this->_lastname = $data['lastname'];
     $this->_email = $data['email'];
-    $this->_id = $data['email'];
+    $this->_id = $data['id'];
     $this->_role = $data['role'];
     $this->_merchantid = $data['merchant_id'];
     $this->_gmtoffset = $data['gmt_offset'];
