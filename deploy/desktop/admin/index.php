@@ -70,7 +70,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
       <tr>
         <td colspan="2" valign="middle" class="header">
           <div class="header-logo">
-            <a href="<?php echo DESKTOP_URL; ?>"><img src="/img/logo-admin.png" /></a>
+            <a href="/"><img src="/img/logo-admin.png" /></a>
           </div>
           <div class="header-admin">Administration Area</div>
         </td>

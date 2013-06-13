@@ -17,7 +17,7 @@ class ChitChat {
 
   public static function getAll() {
     $chitchat = array();
-    $query = sprintf("SELECT id,user_id,category_id,body,creation FROM chitchat ORDER BY creation DESC");
+    $query = sprintf("SELECT chitchat.id,user_id,category_id,body,chitchat.creation,users.firstname,users.lastname FROM chitchat LEFT JOIN users ON users.id=chitchat.user_id ORDER BY creation DESC");
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($chitchat, $row);

@@ -19,22 +19,36 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
               $chitchats = ChitChat::getAll();
               foreach ($chitchats as $chitchat) {
               ?>
-                <li style="display: inline-block; width: 50px; vertical-align: top; margin-right: 5px;">
-                  <div style="background-color: #eee; height: 50px; width: 100%; border: 1px solid #ccc;"><img src="/uploads/logos/<?php echo $merchant->getLogo(); ?>" width="50px" /></div>
-                </li>
-                <li style="display: inline-block; width: 75%; position: relative; border-bottom: 1px solid #ccc;">
-                  <strong>chris@fancychatter.com</strong><br /><p><?php echo $chitchat['body']; ?></p>
-                  <div style="position: absolute; top: 0px; right: 5px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
-                </li>
+                <ul style="margin: 0; padding: 0;">
+                  <li style="display: inline-block; width: 54px; vertical-align: top; margin-right: 5px;">
+                    <div style="background-color: #eee; height: 50px; width: 50px; border: 1px solid #ccc;"><img src="/uploads/profile/default.png" height="100%" width="100%" /></div>
+                  </li>
+                  <li style="display: inline-block; width: 80%; position: relative; border-bottom: 1px solid #ccc; min-height: 80px; padding: 5px;">
+                    <strong><?php echo $chitchat['firstname']; ?> <?php echo $chitchat['lsatname']; ?></strong><br /><p><?php echo $chitchat['body']; ?></p>
+                    <div style="position: absolute; top: 5px; right: 5px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
+                  </li>
+                </ul>
                 <?php
                 $responses = ChitChat::getResponsesById($chitchat['id']);
                 foreach ($responses as $response) {
+                  $lastresponse = $response['user_id'];
                 ?>
-                  <li style="padding-left: 20px; min-height: 60px;">
+                <ul>
+                  <li style="padding-left: 0; min-height: 60px; list-style-type: none;">
                     <ul>
                       <li style="list-style-type: none; padding: 4px 0; width: 55px; display: inline-block;">
                         <div style="height: 50px; width: 50px; border: 1px solid #ccc; overflow: hidden;">
+                          <?php
+                          if ($response['user_id'] > 0) {
+                          ?>
                           <img src="/uploads/profile/default.png" width="50" />
+                          <?php
+                          } else {
+                          ?>
+                          <img src="/uploads/logos/<?php echo $merchant->getLogo(); ?>" width="50" />
+                          <?php
+                          }
+                          ?>
                         </div>
                       </li>
                       <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 440px; display: inline-block; vertical-align: top; padding: 4px 0;">
@@ -53,17 +67,18 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                       </li>
                     </ul>
                   </li>
+                </ul>
                 <?php
                 }
-                if ($response['user_id'] > 0) {
+                if ($response['user_id'] > 0 || count($responses) === 0) {
                 ?>
                 <li>
                   <ul>
-                    <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 540px;">
+                    <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 640px;">
                       <form method="post">
-                        <textarea name="body" style="height: 80px; width: 440px; margin: 15px 0 5px 80px;"></textarea>
-                        <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" />
-                        <button type="submit" class="button" style="margin: 0 0 10px 80px;">Send Response</button>
+                        <textarea name="body" style="height: 80px; width: 440px; margin: 15px 0 5px 40px;"></textarea>
+                        <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" /><br />
+                        <button type="submit" class="button" style="margin: 0 0 10px 40px;">Send Response</button>
                       </form>
                     </li>
                   </ul>

@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       $user = new User();
       $errors = $user->validate($_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['firstname'], $_POST['lastname'], 1);
       if (count($errors) === 0) {
+        setcookie("email", $_POST['email']);
+        setcookie("password", md5($_POST['password1']));
         $id = $user->add($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], 1);
         $user->setId($id);
         $user->set();

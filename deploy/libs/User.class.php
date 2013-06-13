@@ -92,7 +92,7 @@ class User {
 
   public function getSavedSearches() {
     $searches = array();
-    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id ORDER BY searches.creation DESC");
+    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id ORDER BY searches.creation DESC LIMIT 5");
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($searches, $row);
@@ -136,11 +136,12 @@ class User {
 
   public function set($data = null) {
     if (!$data) {
-      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE id='%s' LIMIT 1",
+      $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,merchant_id,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE users.id='%s' LIMIT 1",
         mysql_real_escape_string($this->_id));
       $query = mysql_query($query);
       $data = mysql_fetch_assoc($query);
     }
+    $this->_isloggedin = true;
     $this->_firstname = $data['firstname'];
     $this->_lastname = $data['lastname'];
     $this->_email = $data['email'];
