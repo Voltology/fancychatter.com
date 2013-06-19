@@ -88,6 +88,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
             <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator"))) { ?>
               <div class="<?php if ($page === "merchants") { echo "active"; } ?>menuitem"><a href="?p=merchants">Merchants</a></div>
+              <div class="<?php if ($page === "applications") { echo "active"; } ?>menuitem"><a href="?p=applications">Applications</a></div>
             <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator", "merchant_admin"))) { ?>
               <div class="<?php if ($page === "users") { echo "active"; } ?>menuitem"><a href="?p=users">Users</a></div>

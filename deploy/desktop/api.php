@@ -20,6 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $chitchat->send($user->getId(), 1, $msg);
       }
       break;
+    case "follow":
+      break;
     case "login":
       if (!$user->checkPassword($_POST['email'], md5($_POST['password']))) {
         $json['result'] = "failed";

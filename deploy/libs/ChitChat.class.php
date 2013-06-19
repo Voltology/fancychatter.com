@@ -11,6 +11,12 @@ class ChitChat {
     }
   }
 
+  public function delete() {
+    $query = sprintf("DELETE FROM chitchat WHERE id='%s'",
+      mysql_real_escape_string($this->_id));
+    mysql_query($query);
+  }
+
   public function get() {
     return $this->_chitchat;
   }

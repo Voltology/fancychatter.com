@@ -40,7 +40,9 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
         <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;">
           <a href="/">Home</a>&nbsp;&nbsp;|&nbsp;
           <?php if ($user->getIsLoggedIn()) { ?>
-          <a href="/profile">My Profile</a>&nbsp;&nbsp;|&nbsp;
+            <?php if (in_array($user->getRole(), array("administrator", "user"))) { ?>
+              <a href="/profile">My Profile</a>&nbsp;&nbsp;|&nbsp;
+            <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor", "merchant_publisher"))) { ?>
             <a href="/admin/">Admin Area</a>&nbsp;&nbsp;|&nbsp;
             <?php } ?>
