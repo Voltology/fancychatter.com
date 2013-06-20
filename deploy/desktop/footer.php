@@ -16,6 +16,7 @@
     <script src="/js/dialog.js"></script>
     <script src="/js/maps.js"></script>
     <script src="/js/livechatter.js"></script>
+    <script src="/js/profile.js"></script>
     <script src="/js/user.js"></script>
     <script src="/js/utilities.js"></script>
   </body>

@@ -39,6 +39,17 @@ a {
   text-align: center;
   width: 350px;
 }
+.container .neutral {
+  background-color: #eee;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  font-size: 13px;
+  margin: 5px auto;
+  padding: 5px;
+  text-align: center;
+  width: 350px;
+}
 .container .success {
   background-color: #bbffbb;
   border: 2px solid #76bb22;
@@ -108,6 +119,10 @@ a {
   font-size: 21px;
   padding: 7px 24px;
 }
+.search-result:hover {
+  background-color: #666;
+  color: #fff;
+}
 
 /* Customize the navbar links to be fill the entire space of the .navbar */
 .navbar {
@@ -139,6 +154,20 @@ a {
 .navbar .nav li:last-child a {
   border-right: 0;
   border-radius: 0 3px 3px 0;
+}
+.favorite-box {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px 6px;
+  cursor: pointer;
+  padding: 5px 8px;
+  margin-bottom: 4px;
+}
+.favorite-box:hover {
+  background-color: #f3f3f3;
+}
+.favorite-box a {
+  color: #333;
 }
 .dialog {
   background-color: #eee;

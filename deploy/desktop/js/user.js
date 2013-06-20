@@ -1,4 +1,17 @@
 var user = {
+  follow : function() {
+    ajax.get('api.php', '&a=follow&id=', function(response) {
+      if (response.result === 'success') {
+        $button = $('#follow-button');
+        $button.removeClass('btn-success').addClass('btn-danger').html('<i class="icon-minus" style="vertical-align: bottom;"></i> Unfollow');
+        $button.unbind('click');
+        $button.on('click', function() {
+          user.unfollow();
+        });
+      } else {
+      }
+    });
+  },
   login : function() {
     ajax.get('api.php', '&a=login&email=' + $('#email').val() + '&password=' + $('#password').val(), function(response) {
       if (response.result === 'success') {
@@ -37,6 +50,19 @@ var user = {
           errors += value + '\n';
         });
         alert(errors);
+      }
+    });
+  },
+  unfollow : function() {
+    ajax.get('api.php', '&a=unfollow&id=', function(response) {
+      if (response.result === 'success') {
+        $button = $('#follow-button');
+        $button.removeClass('btn-danger').addClass('btn-success').html('<i class="icon-plus" style="vertical-align: bottom;"></i> Follow');
+        $button.unbind('click');
+        $button.on('click', function() {
+          user.follow();
+        });
+      } else {
       }
     });
   }

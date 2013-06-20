@@ -36,12 +36,12 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
   <body>
     <div class="container">
       <div class="masthead" style="padding: 4px; 0; border: 1px solid #ccc;">
-        <div style="display: inline-block; margin: 5px 5px;"><a href="<?php echo DESKTOP_URL; ?>"><img src="img/logo.png" width="140" border="0" /></a></div>
+        <div style="display: inline-block; margin: 5px 5px;"><a href="/"><img src="img/logo.png" width="140" border="0" /></a></div>
         <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;">
           <a href="/">Home</a>&nbsp;&nbsp;|&nbsp;
           <?php if ($user->getIsLoggedIn()) { ?>
             <?php if (in_array($user->getRole(), array("administrator", "user"))) { ?>
-              <a href="/profile">My Profile</a>&nbsp;&nbsp;|&nbsp;
+              <a href="/profile">My Profile (<?php echo ChitChat::getCount(); ?>)</a>&nbsp;&nbsp;|&nbsp;
             <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor", "merchant_publisher"))) { ?>
             <a href="/admin/">Admin Area</a>&nbsp;&nbsp;|&nbsp;
