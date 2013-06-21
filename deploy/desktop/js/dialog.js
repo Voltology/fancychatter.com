@@ -22,15 +22,20 @@ var dialog = {
       html += '<strong>Example 2:</strong> Does any grocery store currently have a sale on fresh lobster?';
       html += '<textarea id="chitchat-field"></textarea><br />';
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Send ChitChat</button>';
+      html += '<button class="btn btn-mini btn-danger dialog-btn" id="dialog-button" onclick="dialog.close();">Cancel</button>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
         chitchat.send($('#chitchat-field').val());
       });
+    } else if (type === 'error') {
+      var html = 'Error';
+      $('#dialog-body').html(html);
     } else if (type === 'login') {
-      var html = '<input type="text" placeholder="Email Address" id="email" /><br />';
+      var html = '<input type="text" placeholder="Email" id="email" /><br />';
       html += '<input type="password" placeholder="Password" id="password" /><br />';
       if (searchwall) { html += '<input type="hidden" id="search-wall" value="true" />'; }
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Log In</button>';
+      html += '<button class="btn btn-mini btn-danger dialog-btn" id="dialog-button" onclick="dialog.close();">Cancel</button>';
       html += '<div style="margin-left: 4px;"><strong>Don\'t have an account? <a href="#" onclick="dialog.open(\'signup\', \'Sign Up\', 320, 330, ' + searchwall + ');">Click here to sign up!</a></strong></div>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
@@ -49,6 +54,7 @@ var dialog = {
       html += '<input type="password" placeholder="Re-enter Password" id="password2" /><br />';
       if (searchwall) { html += '<input type="hidden" id="search-wall" value="true" />'; }
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Sign Up</button>';
+      html += '<button class="btn btn-mini btn-danger dialog-btn" id="dialog-button" onclick="dialog.close();">Cancel</button>';
       html += '<div style="margin-left: 4px;"><strong>Already have an account? <a href="#" onclick="dialog.open(\'login\', \'Log In\', 190, 310, ' + searchwall + ');">Click here to log in!</a></strong></div>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {

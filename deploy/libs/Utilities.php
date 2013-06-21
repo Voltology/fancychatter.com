@@ -30,7 +30,41 @@ function getLatLongByZip($zip) {
   return mysql_fetch_assoc($query);
 }
 
-function getLatLongByCityState($city, $state) {
+function getLatLongByCityState($city, $state, $zip) {
+  if (preg_match('/^[0-9]{5}$/', $zip)) {
+    return getLatLongByZip($zip);
+  } else {
+    $query = sprintf("SELECT latitude,longitude FROM locations WHERE city='%s' AND state='%s' LIMIT 1",
+      mysql_real_escape_string($city),
+      mysql_real_escape_string($state),
+      mysql_real_escape_string($zipcode));
+    $query = mysql_query($query);
+    return mysql_fetch_assoc($query);
+  }
+}
+
+function getLocationsByCity($city, $limit = 8) {
+  $locations = array();
+  $query = sprintf("SELECT DISTINCT CONCAT(CONCAT(UCASE(LEFT(city, 1)), LCASE(SUBSTRING(city, 2))), ', ', UPPER(state)) AS location FROM locations WHERE city LIKE '%s%%' ORDER BY city ASC LIMIT %s",
+    mysql_real_escape_string($city),
+    mysql_real_escape_string($limit));
+  $query = mysql_query($query);
+  while ($row = mysql_fetch_assoc($query)) {
+    array_push($locations, $row);
+  }
+  return $locations;
+}
+
+function getLocationsByZip($zip, $limit = 8) {
+  $locations = array();
+  $query = sprintf("SELECT zipcode AS location FROM locations WHERE zipcode LIKE '%s%%' ORDER BY zipcode ASC LIMIT %s",
+    mysql_real_escape_string($zip),
+    mysql_real_escape_string($limit));
+  $query = mysql_query($query);
+  while ($row = mysql_fetch_assoc($query)) {
+    array_push($locations, $row);
+  }
+  return $locations;
 }
 
 function getRoles() {
@@ -51,6 +85,18 @@ function getStates() {
     array_push($states, $row);
   }
   return $states;
+}
+
+function getUsersAndMerchants($search) {
+  $results = array();
+  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,state FROM users WHERE firstname LIKE '%s%%' OR lastname LIKE '%s%%' ORDER BY id ASC",
+    mysql_real_escape_string($search),
+    mysql_real_escape_string($search));
+  $query = mysql_query($query);
+  while ($row = mysql_fetch_assoc($query)) {
+    array_push($results, $row);
+  }
+  return $results;
 }
 
 function slugify($str, $limit = 240, $delimiter = "-") {

@@ -6,6 +6,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   $json['result'] = "success";
   $action = $_POST['a'] ? $_POST['a'] : null;
   switch($action) {
+    case "autocomplete-profile":
+      $json['results'] = getUsersAndMerchants($_POST['search']);
+      break;
+    case "autocomplete-where":
+      if (preg_match('/[0-9]+/', $_POST['where'])) {
+        $json['locations'] = getLocationsByZip($_POST['where']);
+      } else {
+        $json['locations'] = getLocationsByCity($_POST['where']);
+      }
+      break;
     case "chitchat-respond":
       $chitchat = new ChitChat();
       //$chitchat->respone($user->getId(), 1, $msg);

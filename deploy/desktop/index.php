@@ -13,13 +13,14 @@ include("header.php");
     </div>
   </div>
 </div>
+<div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
 <div class="jumbotron">
   <div id="banner"></div>
     <h1>Get what you want, when you want it</h1>
     <h2>Connect with local businesses in real time</h2>
-    <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
+    <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center; display: relative; overflow: visible;">
       <form method="post" action="/livechatter" id="livechatter-search">
-        <input type="text" name="where" id="where" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
+        <input type="text" name="where" id="where" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
         <select name="what" id="what">
           <option value="null">What are you looking for?</option>
           <?php

@@ -107,7 +107,12 @@ class LiveChatter {
   }
 
   public static function search($citystatezip, $category, $distance, $amount) {
-    $location = getLatLongByZip($citystatezip);
+    if (preg_match('/^[0-9]{5}$/', $_POST['where'])) {
+      $location = getLatLongByZip($citystatezip);
+    } else {
+      list($city, $state, $zip) = preg_split('/,\s?|\s/', $citystatezip);
+      $location = getLatLongByCityState($city, $state, $zip);
+    }
     $livechatter = array();
     $query = sprintf("SELECT livechatter.id,merchant_id,body,endtime,SQRT((69.1 * (%s - livechatter.latitude) * 69.1 * (%s - livechatter.latitude)) + (53 * (%s - livechatter.longitude) * 53 * (%s - livechatter.longitude))) AS distance,merchants.name AS merchant_name,merchants.logo AS logo,merchants.category_id AS category FROM livechatter LEFT JOIN merchants ON merchants.id=livechatter.merchant_id WHERE livechatter.status='1' HAVING category='%s' AND distance < %s ORDER BY distance ASC, livechatter.creation DESC",
       mysql_real_escape_string($location['latitude']),

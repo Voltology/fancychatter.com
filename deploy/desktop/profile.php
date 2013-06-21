@@ -1,7 +1,12 @@
 <?php
 include("header.php");
-$id = $_GET['id'] ? $_GET['id'] : null;
+if ($user->getId() != $_GET['id']) {
+  $id = $_GET['id'] ? $_GET['id'] : null;
+} else {
+  $id = null;
+}
 $cid = $_GET['cid'] ? $_GET['cid'] : null;
+$mid = $_GET['mid'] ? $_GET['mid'] : null;
 $action = $_GET['a'] ? $_GET['a'] : null;
 $profile = $id ? new User($id) : $user;
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
@@ -63,11 +68,10 @@ if (!$profile->getId()) {
           $chitchat->delete();
         }
         ?>
-        <div id="search-container">
-          <input type="text" id="search-field" style="margin-top: 14px; width: 100%;" placeholder="Enter the name of a friend or a local business..." onkeyup="profile.autocomplete();" />
-          <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; width: 100%; z-index: 1000;"></div>
-        </div>
+        <input type="text" id="search-field" style="margin-top: 14px; width: 100%;" placeholder="Enter the name of a friend or a local business..." onkeyup="profile.autocomplete();" />
+        <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; width: 100%; z-index: 1000;"></div>
         <h4><?php echo $id ? $profile->getFirstName() . "'s" : "Your"; ?> Recent Interactions</h4>
+        <textarea style="width: 100%;" placeholder="Post something on <?php echo $id ? $profile->getFirstName() . "'s" : "your"; ?> profile..."></textarea>
         <div class="chitchat">
           <?php
           $count = 0;
@@ -155,7 +159,8 @@ if (!$profile->getId()) {
           $count++;
         }
         if ($count === 0) {
-          echo "<div class=\"neutral\"><strong>You have no recent interactions.</strong></div>";
+          $who = $id ? $profile->getFirstName() . " has " : "You have";
+          echo "<div class=\"neutral\"><strong>" . $who . " no recent interactions.</strong></div>";
         }
         echo "</div>";
         break;
@@ -223,6 +228,14 @@ if (!$profile->getId()) {
           </div>
         </form>
         <?php
+        break;
+      case "invite":
+        ?>
+          <h4>Invite a Friend</h4>
+          Email: <input type="text" />
+          <button type="submit" class="btn btn-mini btn-success search-btn"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Invite</button>
+          <button type="submit" class="btn btn-mini btn-danger search-btn"><i class="icon-reply" style="vertical-align: bottom;"></i> Cancel</button>
+        <? 
         break;
 
     }

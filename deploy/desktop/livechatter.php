@@ -8,10 +8,11 @@ $what = $_POST['what'] ? $_POST['what'] : $_GET['what'];
 $distance = $_POST['distance'] ? $_POST['distance'] : $_GET['distance'];
 $livechatters = LiveChatter::search($where, $what, $distance, 20);
 ?>
+<div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
 <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
   <form method="post" action="/livechatter" id="livechatter-search">
-    <input type="text" name="where" id="where" value="<?php echo $where; ?>" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" />
-    <select name="what" id="what">
+      <input type="text" name="where" id="where" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
+  <select name="what" id="what">
       <option value="null">What are you looking for?</option>
       <?php
       $categories = getCategories();
@@ -41,8 +42,10 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
         <?php
         $searches = $user->getSavedSearches();
         foreach ($searches as $search) {
+          echo "<div class=\"favorite-box\" onclick=\"document.location='/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "'\">";
           echo "<input type=\"checkbox\" checked />&nbsp;";
-          echo "<a href=\"/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "\"><strong>" . $search['category'] . "</strong><br />Within " . $search['distance'] . " miles of " . $search['location'] . "</a><br />";
+          echo "<a href=\"/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "\"><strong>" . $search['category'] . "</strong><br />Within " . $search['distance'] . " miles of " . $search['location'] . "</a>";
+          echo "</div>";
         }
         ?>
       </li>
