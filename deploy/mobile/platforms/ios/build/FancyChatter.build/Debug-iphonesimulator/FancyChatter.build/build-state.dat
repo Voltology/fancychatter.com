@@ -1,0 +1,1120 @@
+TFancyChatter
+v5
+r1
+cCheck dependencies
+cProcessInfoPlistFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Info.plist FancyChatter/FancyChatter-Info.plist
+cPhaseScriptExecution "Copy www directory" /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+cCpResource FancyChatter/Resources/icons/icon.png build/FancyChatter.app/icon.png
+cCpResource FancyChatter/Resources/icons/icon-72.png build/FancyChatter.app/icon-72.png
+cCpResource FancyChatter/Resources/icons/icon@2x.png build/FancyChatter.app/icon@2x.png
+cCpResource FancyChatter/config.xml build/FancyChatter.app/config.xml
+cCpResource FancyChatter/Resources/Capture.bundle build/FancyChatter.app/Capture.bundle
+cCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/en.lproj/Localizable.strings FancyChatter/Resources/en.lproj/Localizable.strings
+cCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/es.lproj/Localizable.strings FancyChatter/Resources/es.lproj/Localizable.strings
+cCompileXIB /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.xib
+cCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/de.lproj/Localizable.strings FancyChatter/Resources/de.lproj/Localizable.strings
+cCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/se.lproj/Localizable.strings FancyChatter/Resources/se.lproj/Localizable.strings
+cCpResource FancyChatter/Resources/splash/Default-Landscape@2x~ipad.png build/FancyChatter.app/Default-Landscape@2x~ipad.png
+cCpResource FancyChatter/Resources/splash/Default-Landscape~ipad.png build/FancyChatter.app/Default-Landscape~ipad.png
+cCpResource FancyChatter/Resources/splash/Default-Portrait@2x~ipad.png build/FancyChatter.app/Default-Portrait@2x~ipad.png
+cCpResource FancyChatter/Resources/splash/Default-Portrait~ipad.png build/FancyChatter.app/Default-Portrait~ipad.png
+cCpResource FancyChatter/Resources/splash/Default~iphone.png build/FancyChatter.app/Default~iphone.png
+cCpResource FancyChatter/Resources/splash/Default@2x~iphone.png build/FancyChatter.app/Default@2x~iphone.png
+cCpResource FancyChatter/Resources/splash/Default-568h@2x~iphone.png build/FancyChatter.app/Default-568h@2x~iphone.png
+cCpResource FancyChatter/Resources/icons/icon-72@2x.png build/FancyChatter.app/icon-72@2x.png
+cProcessPCH /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.pth FancyChatter/FancyChatter-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter normal i386
+cGenerateDSYMFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter
+cTouch /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk
+c0000000050EDEAFB0000000000000110
+t1357769467
+s272
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AVFoundation.framework/AVFoundation
+c0000000051E4B61800000000001EB540
+t1373943320
+s2012480
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AddressBook.framework/AddressBook
+c0000000051E4B61700000000000C1030
+t1373943319
+s790576
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AddressBookUI.framework/AddressBookUI
+c0000000051E4B6170000000000193640
+t1373943319
+s1652288
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AssetsLibrary.framework/AssetsLibrary
+c0000000051E4B61700000000000226E0
+t1373943319
+s141024
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c0000000051E4B61800000000003D4DF0
+t1373943320
+s4017648
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CFNetwork.framework/CFNetwork
+c0000000051E4B6180000000000215DB0
+t1373943320
+s2186672
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c0000000051E4B6180000000000228FE0
+t1373943320
+s2265056
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreLocation.framework/CoreLocation
+c0000000051E4B618000000000009C590
+t1373943320
+s640400
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/CoreMedia.framework/CoreMedia
+c0000000051E4B6180000000000085620
+t1373943320
+s546336
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c0000000051E4B61A00000000003DDFA0
+t1373943322
+s4054944
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/ImageIO.framework/ImageIO
+c0000000051E4B61B00000000002CFBE0
+t1373943323
+s2948064
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/MediaPlayer.framework/MediaPlayer
+c0000000051E4B61C00000000002DBA50
+t1373943324
+s2996816
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+c0000000051E4B61D00000000000BCC20
+t1373943325
+s773152
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/OpenAL.framework/OpenAL
+c0000000051E4B61C0000000000030EB0
+t1373943324
+s200368
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/QuartzCore.framework/QuartzCore
+c0000000051E4B61D00000000001D5750
+t1373943325
+s1922896
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+c0000000051E4B61D000000000006CC50
+t1373943325
+s445520
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c0000000051E4B61F0000000000AB6230
+t1373943327
+s11231792
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.m
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.xib
+c0000000051E4B8FE0000000000001759
+t1373944062
+s5977
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/FancyChatter-Prefix.pch
+c0000000051E4B8FE00000000000003C9
+t1373944062
+s969
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/Capture.bundle
+c0000000051E4B8FE000000000000030E
+t1373944062
+s782
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/de.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004BF
+t1373944062
+s1215
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/en.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004AA
+t1373944062
+s1194
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/es.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004B7
+t1373944062
+s1207
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon-72.png
+c0000000051E4B8FE0000000000001350
+t1373944062
+s4944
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon-72@2x.png
+c0000000051E4B8FE0000000000002DBA
+t1373944062
+s11706
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon.png
+c0000000051E4B8FE0000000000000F3E
+t1373944062
+s3902
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon@2x.png
+c0000000051E4B8FE0000000000001EBD
+t1373944062
+s7869
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/se.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004AB
+t1373944062
+s1195
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-568h@2x~iphone.png
+c0000000051E4B8FE00000000000085B1
+t1373944062
+s34225
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Landscape@2x~ipad.png
+c0000000051E4B8FE0000000000012DF4
+t1373944062
+s77300
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Landscape~ipad.png
+c0000000051E4B8FE0000000000008877
+t1373944062
+s34935
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Portrait@2x~ipad.png
+c0000000051E4B8FE0000000000012B02
+t1373944062
+s76546
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Portrait~ipad.png
+c0000000051E4B8FE00000000000085E6
+t1373944062
+s34278
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default@2x~iphone.png
+c0000000051E4B8FE0000000000007323
+t1373944062
+s29475
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default~iphone.png
+c0000000051E4B8FE000000000000289A
+t1373944062
+s10394
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/config.xml
+c0000000051E4BDDC0000000000000CFC
+t1373945308
+s3324
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/main.m
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app
+t1373945097
+s782
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app.dSYM
+t1373945039
+s102
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Capture.bundle
+t1373945035
+s782
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-568h@2x~iphone.png
+t1373945035
+s34225
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Landscape@2x~ipad.png
+t1373945035
+s77300
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Landscape~ipad.png
+t1373945035
+s34935
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Portrait@2x~ipad.png
+t1373945035
+s76546
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Portrait~ipad.png
+t1373945035
+s34278
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default@2x~iphone.png
+t1373945035
+s29475
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default~iphone.png
+t1373945035
+s10394
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter
+t1373945039
+s941956
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Info.plist
+t1373945097
+s1053
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/MainViewController.nib
+t1373945038
+s822
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/PkgInfo
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/config.xml
+t1373945097
+s3324
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/de.lproj/Localizable.strings
+t1373945035
+s280
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/en.lproj/Localizable.strings
+t1373945035
+s166
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/es.lproj/Localizable.strings
+t1373945035
+s334
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon-72.png
+t1373945035
+s4944
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon-72@2x.png
+t1373945035
+s11706
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon.png
+t1373945035
+s3902
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon@2x.png
+t1373945035
+s7869
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/se.lproj/Localizable.strings
+t1373945035
+s283
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o
+t1373945038
+s98420
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/FancyChatter.LinkFileList
+c0000000051E4BCCB0000000000000240
+t1373945035
+s576
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o
+t1373945038
+s79804
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o
+t1373945038
+s3248
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+c0000000051E4BCCB000000000000051A
+t1373945035
+s1306
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVAvailability.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVCommandDelegate.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVCommandDelegateImpl.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVCommandQueue.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVInvokedUrlCommand.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVPlugin.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVPluginResult.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVScreenOrientationDelegate.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVViewController.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVWhitelist.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/NSMutableArray+QueueAdditions.h
+c00000000000000000000000000000000
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/libCordova.a
+c0000000051E4BCCB0000000000370A78
+t1373945035
+s3607160
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.h
+c0000000051E4B8FE00000000000005BD
+t1373944062
+s1469
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m
+c0000000051E4B8FE00000000000013DE
+t1373944062
+s5086
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.h
+c0000000051E4B8FE00000000000004D2
+t1373944062
+s1234
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.m
+c0000000051E4B8FE000000000000126D
+t1373944062
+s4717
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.xib
+c0000000051E4B8FE0000000000001759
+t1373944062
+s5977
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/FancyChatter-Prefix.pch
+c0000000051E4B8FE00000000000003C9
+t1373944062
+s969
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/Capture.bundle
+c0000000051E4B8FE000000000000030E
+t1373944062
+s782
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/de.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004BF
+t1373944062
+s1215
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/en.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004AA
+t1373944062
+s1194
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/es.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004B7
+t1373944062
+s1207
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/icons/icon-72.png
+c0000000051E4B8FE0000000000001350
+t1373944062
+s4944
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/icons/icon-72@2x.png
+c0000000051E4B8FE0000000000002DBA
+t1373944062
+s11706
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/icons/icon.png
+c0000000051E4B8FE0000000000000F3E
+t1373944062
+s3902
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/icons/icon@2x.png
+c0000000051E4B8FE0000000000001EBD
+t1373944062
+s7869
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/se.lproj/Localizable.strings
+c0000000051E4B8FE00000000000004AB
+t1373944062
+s1195
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default-568h@2x~iphone.png
+c0000000051E4B8FE00000000000085B1
+t1373944062
+s34225
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default-Landscape@2x~ipad.png
+c0000000051E4B8FE0000000000012DF4
+t1373944062
+s77300
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default-Landscape~ipad.png
+c0000000051E4B8FE0000000000008877
+t1373944062
+s34935
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default-Portrait@2x~ipad.png
+c0000000051E4B8FE0000000000012B02
+t1373944062
+s76546
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default-Portrait~ipad.png
+c0000000051E4B8FE00000000000085E6
+t1373944062
+s34278
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default@2x~iphone.png
+c0000000051E4B8FE0000000000007323
+t1373944062
+s29475
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Resources/splash/Default~iphone.png
+c0000000051E4B8FE000000000000289A
+t1373944062
+s10394
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/config.xml
+c0000000051E4CED50000000000000CFC
+t1373949653
+s3324
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m
+c0000000051E4B8FE000000000000045E
+t1373944062
+s1118
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app
+t1373949598
+s782
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM
+t1373949598
+s102
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Capture.bundle
+t1373945035
+s782
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default-568h@2x~iphone.png
+t1373945035
+s34225
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default-Landscape@2x~ipad.png
+t1373945035
+s77300
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default-Landscape~ipad.png
+t1373945035
+s34935
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default-Portrait@2x~ipad.png
+t1373945035
+s76546
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default-Portrait~ipad.png
+t1373945035
+s34278
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default@2x~iphone.png
+t1373945035
+s29475
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Default~iphone.png
+t1373945035
+s10394
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter
+t1373949598
+s941020
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Info.plist
+t1373949597
+s1053
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/MainViewController.nib
+t1373945038
+s822
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/PkgInfo
+t2
+s0
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/config.xml
+t1373949597
+s3324
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/de.lproj/Localizable.strings
+t1373945035
+s280
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/en.lproj/Localizable.strings
+t1373945035
+s166
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/es.lproj/Localizable.strings
+t1373945035
+s334
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/icon-72.png
+t1373945035
+s4944
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/icon-72@2x.png
+t1373945035
+s11706
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/icon.png
+t1373945035
+s3902
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/icon@2x.png
+t1373945035
+s7869
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/se.lproj/Localizable.strings
+t1373945035
+s283
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o
+t1373949597
+s98364
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/FancyChatter.LinkFileList
+c0000000051E4CE9D0000000000000216
+t1373949597
+s534
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o
+t1373949597
+s79748
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o
+t1373949597
+s3208
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+c0000000051E4BCCB000000000000051A
+t1373945035
+s1306
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVAvailability.h
+c0000000051E4BCC80000000000000C47
+t1373945032
+s3143
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVCommandDelegate.h
+c0000000051E4BCC800000000000008BA
+t1373945032
+s2234
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVCommandDelegateImpl.h
+c0000000051E4BCC80000000000000473
+t1373945032
+s1139
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVCommandQueue.h
+c0000000051E4BCC80000000000000501
+t1373945032
+s1281
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVInvokedUrlCommand.h
+c0000000051E4BCC80000000000000906
+t1373945032
+s2310
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVPlugin.h
+c0000000051E4BCC80000000000000892
+t1373945032
+s2194
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVPluginResult.h
+c0000000051E4BCC80000000000000C13
+t1373945032
+s3091
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVScreenOrientationDelegate.h
+c0000000051E4BCC80000000000000408
+t1373945032
+s1032
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVViewController.h
+c0000000051E4BCC80000000000000B67
+t1373945032
+s2919
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVWhitelist.h
+c0000000051E4BCC800000000000004B4
+t1373945032
+s1204
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/NSMutableArray+QueueAdditions.h
+c0000000051E4BCC800000000000003A0
+t1373945032
+s928
+
+N/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/libCordova.a
+c0000000051E4CE9D00000000003703E0
+t1373949597
+s3605472
+
+N/var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.pth
+t1373949597
+s4681200
+
+N/var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.pth
+t1373945038
+s4681324
+
+NFancyChatter/FancyChatter-Info.plist
+c0000000051E4CED50000000000000747
+t1373949653
+s1863
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependenciesf9daf3580695b741^7632f4580695b741^---0#1#0#--18"Check dependencies36"5B17654F-5061-49E4-88AA-D983E47A688B-
+
+CCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395637838.811952
+e395637838.917086
+r1
+xCompileC
+xbuild/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m:80:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]
+o    self.viewController.useSplashScreen = YES;
+o                        ^
+o/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVViewController.h:46:47: note: 'useSplashScreen' declared here
+o@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");
+o                                              ^
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection134"Compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.mca1bd04ef494b741^26c6ea4ef494b741^-776"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m:80:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]    self.viewController.useSplashScreen = YES;                        ^/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include/Cordova/CDVViewController.h:46:47: note: 'useSplashScreen' declared here@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");                                              ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property.-395637838#18446744073709551615#0#1(2@31"'useSplashScreen' declared here-395637838#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@146"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/CordovaLib/Classes/CDVViewController.h0000000000000000^45#46#45#46#1826#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@142"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m0000000000000000^79#24#79#24#2697#0#12"Deprecations--0#0#0#-19%DVTDocumentLocation4@142"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m0000000000000000^4350"CompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o FancyChatter/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -include /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch -MMD -MT dependencies -MF /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/AppDelegate.m -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o36"6FF8CAC4-859A-4655-BD88-035D64F753B6-
+
+CCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395642397.914091
+e395642398.009425
+r1
+xCompileC
+xbuild/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+o/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m:80:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]
+o    self.viewController.useSplashScreen = YES;
+o                        ^
+o/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVViewController.h:46:47: note: 'useSplashScreen' declared here
+o@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");
+o                                              ^
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m4c36ea1d0695b741^f967021e0695b741^-748"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m:80:25: warning: 'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property. [-Wdeprecated-declarations]    self.viewController.useSplashScreen = YES;                        ^/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include/Cordova/CDVViewController.h:46:47: note: 'useSplashScreen' declared here@property (nonatomic, readwrite, assign) BOOL useSplashScreen CDV_DEPRECATED(2.5, "Add/Remove the SplashScreen plugin instead of setting this property.");                                              ^1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@128"'useSplashScreen' is deprecated: Deprecated in Cordova 2.5. Add/Remove the SplashScreen plugin instead of setting this property.-395642398#18446744073709551615#0#1(2@31"'useSplashScreen' declared here-395642398#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@132"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/CordovaLib/Classes/CDVViewController.h0000000000000000^45#46#45#46#1826#0#14"Semantic Issue--1#27"com.apple.dt.IDE.diagnostic3@128"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m0000000000000000^79#24#79#24#2697#0#12"Deprecations--0#0#0#-19%DVTDocumentLocation4@128"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m0000000000000000^4126"CompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o FancyChatter/Classes/AppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -include /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch -MMD -MT dependencies -MF /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.d --serialize-diagnostics /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/AppDelegate.m -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/AppDelegate.o36"53E57182-56FC-4624-98DE-B48EBE924280-
+
+CCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395637838.812033
+e395637838.899790
+r1
+xCompileC
+xbuild/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection141"Compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.m6b2dd04ef494b741^a857e64ef494b741^---0#0#0#-19%DVTDocumentLocation2@149"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.m0000000000000000^4392"CompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o FancyChatter/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -include /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch -MMD -MT dependencies -MF /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.m -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o36"6B587E6A-5830-4F61-A80A-AA904E3CF74A-
+
+CCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395642397.914083
+e395642397.991075
+r1
+xCompileC
+xbuild/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection127"Compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.mf432ea1d0695b741^5fb6fd1d0695b741^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.m0000000000000000^4168"CompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o FancyChatter/Classes/MainViewController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -include /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch -MMD -MT dependencies -MF /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.d --serialize-diagnostics /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.m -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/MainViewController.o36"D8A5173D-6F2D-4B81-AFD9-BD720A58BD08-
+
+CCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395637838.812045
+e395637838.852968
+r1
+xCompileC
+xbuild/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection119"Compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/main.mc72fd04ef494b741^465eda4ef494b741^---0#0#0#-19%DVTDocumentLocation2@127"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/main.m0000000000000000^4292"CompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o FancyChatter/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -include /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch -MMD -MT dependencies -MF /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/main.m -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o36"3F86BC11-D274-4F6D-9C88-DC99008206A2-
+
+CCompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395642397.914060
+e395642397.945083
+r1
+xCompileC
+xbuild/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection105"Compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m9928ea1d0695b741^2cf0f11d0695b741^---0#0#0#-19%DVTDocumentLocation2@113"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m0000000000000000^4068"CompileC build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o FancyChatter/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -include /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch -MMD -MT dependencies -MF /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.d --serialize-diagnostics /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/main.m -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/main.o36"070774AD-288E-40C0-BCFA-F9D9207B3573-
+
+CCompileXIB /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.xib
+s395637835.509351
+e395637838.520397
+r1
+xCompileXIB
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.xib
+o2013-07-15 22:23:57.919 Interface Builder Cocoa Touch Tool[8645:f07] CFPreferences: user home directory at file://localhost/Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection145"Compiling /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.xibfd85824bf494b741^f437854ef494b741^-241"2013-07-15 22:23:57.919 Interface Builder Cocoa Touch Tool[8645:f07] CFPreferences: user home directory at file://localhost/Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.-0#0#0#-19%DVTDocumentLocation2@151"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.xib0000000000000000^1101"CompileXIB FancyChatter/Classes/MainViewController.xib    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    setenv XCODE_DEVELOPER_USR_PATH /Applications/Xcode.app/Contents/Developer/usr/bin/..    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/MainViewController.nib /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Classes/MainViewController.xib --sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk36"1189B4FD-D7D0-453F-BDEF-701929851315-
+
+CCompileXIB /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/Classes/MainViewController.xib
+r0
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/de.lproj/Localizable.strings FancyChatter/Resources/de.lproj/Localizable.strings
+s395637835.514002
+e395637835.521835
+r1
+xCopyStringsFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/de.lproj/Localizable.strings
+xFancyChatter/Resources/de.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy FancyChatter/Resources/de.lproj/Localizable.strings84bb834bf494b741^4e97854bf494b741^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/de.lproj/Localizable.strings0000000000000000^717"CopyStringsFile build/FancyChatter.app/de.lproj/Localizable.strings FancyChatter/Resources/de.lproj/Localizable.strings    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/de.lproj -- FancyChatter/Resources/de.lproj/Localizable.strings36"1ECEF70E-1D16-4EAE-AB55-E97C9FA26D08-
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/en.lproj/Localizable.strings FancyChatter/Resources/en.lproj/Localizable.strings
+s395637835.506898
+e395637835.512705
+r1
+xCopyStringsFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/en.lproj/Localizable.strings
+xFancyChatter/Resources/en.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy FancyChatter/Resources/en.lproj/Localizable.strings5de1814bf494b741^4f40834bf494b741^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/en.lproj/Localizable.strings0000000000000000^717"CopyStringsFile build/FancyChatter.app/en.lproj/Localizable.strings FancyChatter/Resources/en.lproj/Localizable.strings    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/en.lproj -- FancyChatter/Resources/en.lproj/Localizable.strings36"662471AF-F33C-4A0A-BD56-72C40CDB8B03-
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/es.lproj/Localizable.strings FancyChatter/Resources/es.lproj/Localizable.strings
+s395637835.509340
+e395637835.513364
+r1
+xCopyStringsFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/es.lproj/Localizable.strings
+xFancyChatter/Resources/es.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy FancyChatter/Resources/es.lproj/Localizable.strings3485824bf494b741^7a70834bf494b741^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/es.lproj/Localizable.strings0000000000000000^717"CopyStringsFile build/FancyChatter.app/es.lproj/Localizable.strings FancyChatter/Resources/es.lproj/Localizable.strings    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/es.lproj -- FancyChatter/Resources/es.lproj/Localizable.strings36"6DCD60D5-4091-46CD-A63A-48E652AA09BC-
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/se.lproj/Localizable.strings FancyChatter/Resources/se.lproj/Localizable.strings
+s395637835.514041
+e395637835.517199
+r1
+xCopyStringsFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/se.lproj/Localizable.strings
+xFancyChatter/Resources/se.lproj/Localizable.strings
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy FancyChatter/Resources/se.lproj/Localizable.stringsb4b0834bf494b741^e466844bf494b741^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/se.lproj/Localizable.strings0000000000000000^717"CopyStringsFile build/FancyChatter.app/se.lproj/Localizable.strings FancyChatter/Resources/se.lproj/Localizable.strings    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copyStrings --validate --inputencoding utf-8 --outputencoding binary --outdir /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/se.lproj -- FancyChatter/Resources/se.lproj/Localizable.strings36"47168314-264A-47F4-B211-27F28CC83354-
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/de.lproj/Localizable.strings FancyChatter/Resources/de.lproj/Localizable.strings
+r0
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/en.lproj/Localizable.strings FancyChatter/Resources/en.lproj/Localizable.strings
+r0
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/es.lproj/Localizable.strings FancyChatter/Resources/es.lproj/Localizable.strings
+r0
+
+CCopyStringsFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/se.lproj/Localizable.strings FancyChatter/Resources/se.lproj/Localizable.strings
+r0
+
+CCpResource FancyChatter/Resources/Capture.bundle build/FancyChatter.app/Capture.bundle
+s395637835.506889
+e395637835.553539
+r1
+xCpResource
+xFancyChatter/Resources/Capture.bundle
+xbuild/FancyChatter.app/Capture.bundle
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection42"Copy build/FancyChatter.app/Capture.bundle28d6814bf494b741^07b78d4bf494b741^---0#0#0#-19%DVTDocumentLocation2@145"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Capture.bundle000000000080d041^772"CpResource FancyChatter/Resources/Capture.bundle build/FancyChatter.app/Capture.bundle    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/Capture.bundle /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"3DDDCAA6-320F-40C7-A2D8-B50B28FE3A21-
+
+CCpResource FancyChatter/Resources/icons/icon-72.png build/FancyChatter.app/icon-72.png
+s395637835.502797
+e395637835.506715
+r1
+xCpResource
+xFancyChatter/Resources/icons/icon-72.png
+xbuild/FancyChatter.app/icon-72.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection39"Copy build/FancyChatter.app/icon-72.png58e3804bf494b741^a1ba814bf494b741^---0#0#0#-19%DVTDocumentLocation2@142"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon-72.png000000000080d041^775"CpResource FancyChatter/Resources/icons/icon-72.png build/FancyChatter.app/icon-72.png    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon-72.png /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"BA3F3B10-6E10-45CD-B7EC-2E46DB727630-
+
+CCpResource FancyChatter/Resources/icons/icon-72@2x.png build/FancyChatter.app/icon-72@2x.png
+s395637835.539348
+e395637835.544479
+r1
+xCpResource
+xFancyChatter/Resources/icons/icon-72@2x.png
+xbuild/FancyChatter.app/icon-72@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection42"Copy build/FancyChatter.app/icon-72@2x.png0e318a4bf494b741^b7628b4bf494b741^---0#0#0#-19%DVTDocumentLocation2@145"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon-72@2x.png000000000080d041^790"CpResource "FancyChatter/Resources/icons/icon-72@2x.png" "build/FancyChatter.app/icon-72@2x.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon-72@2x.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"B390AB0C-8EC2-4EB2-99C0-D43B7D23C2C9-
+
+CCpResource FancyChatter/Resources/icons/icon.png build/FancyChatter.app/icon.png
+s395637835.502813
+e395637835.508041
+r1
+xCpResource
+xFancyChatter/Resources/icons/icon.png
+xbuild/FancyChatter.app/icon.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection36"Copy build/FancyChatter.app/icon.pnga3e9804bf494b741^6f0f824bf494b741^---0#0#0#-19%DVTDocumentLocation2@139"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon.png000000000080d041^766"CpResource FancyChatter/Resources/icons/icon.png build/FancyChatter.app/icon.png    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon.png /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"99474F60-EC1F-487D-A304-17CE3323F2E1-
+
+CCpResource FancyChatter/Resources/icons/icon@2x.png build/FancyChatter.app/icon@2x.png
+s395637835.503531
+e395637835.509081
+r1
+xCpResource
+xFancyChatter/Resources/icons/icon@2x.png
+xbuild/FancyChatter.app/icon@2x.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection39"Copy build/FancyChatter.app/icon@2x.pngf700814bf494b741^e754824bf494b741^---0#0#0#-19%DVTDocumentLocation2@142"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/icon@2x.png000000000080d041^781"CpResource "FancyChatter/Resources/icons/icon@2x.png" "build/FancyChatter.app/icon@2x.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/icons/icon@2x.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"802CB246-551B-47A0-8652-126C9B79A1AE-
+
+CCpResource FancyChatter/Resources/splash/Default-568h@2x~iphone.png build/FancyChatter.app/Default-568h@2x~iphone.png
+s395637835.534776
+e395637835.539478
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default-568h@2x~iphone.png
+xbuild/FancyChatter.app/Default-568h@2x~iphone.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection54"Copy build/FancyChatter.app/Default-568h@2x~iphone.png43ff884bf494b741^70228a4bf494b741^---0#0#0#-19%DVTDocumentLocation2@157"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-568h@2x~iphone.png000000000080d041^828"CpResource "FancyChatter/Resources/splash/Default-568h@2x~iphone.png" "build/FancyChatter.app/Default-568h@2x~iphone.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-568h@2x~iphone.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"76191418-FDF6-40DA-9978-852E51993383-
+
+CCpResource FancyChatter/Resources/splash/Default-Landscape@2x~ipad.png build/FancyChatter.app/Default-Landscape@2x~ipad.png
+s395637835.518687
+e395637835.522846
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default-Landscape@2x~ipad.png
+xbuild/FancyChatter.app/Default-Landscape@2x~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection57"Copy build/FancyChatter.app/Default-Landscape@2x~ipad.png37df844bf494b741^a1d9854bf494b741^---0#0#0#-19%DVTDocumentLocation2@160"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Landscape@2x~ipad.png000000000080d041^837"CpResource "FancyChatter/Resources/splash/Default-Landscape@2x~ipad.png" "build/FancyChatter.app/Default-Landscape@2x~ipad.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Landscape@2x~ipad.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"6F7C073D-252C-4353-9F88-C92510E89C45-
+
+CCpResource FancyChatter/Resources/splash/Default-Landscape~ipad.png build/FancyChatter.app/Default-Landscape~ipad.png
+s395637835.523178
+e395637835.527930
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default-Landscape~ipad.png
+xbuild/FancyChatter.app/Default-Landscape~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection54"Copy build/FancyChatter.app/Default-Landscape~ipad.pnge90a864bf494b741^fe27874bf494b741^---0#0#0#-19%DVTDocumentLocation2@157"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Landscape~ipad.png000000000080d041^828"CpResource "FancyChatter/Resources/splash/Default-Landscape~ipad.png" "build/FancyChatter.app/Default-Landscape~ipad.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Landscape~ipad.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"C367BEF7-C3EF-47D1-ADC3-474DCBE23187-
+
+CCpResource FancyChatter/Resources/splash/Default-Portrait@2x~ipad.png build/FancyChatter.app/Default-Portrait@2x~ipad.png
+s395637835.523168
+e395637835.527013
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default-Portrait@2x~ipad.png
+xbuild/FancyChatter.app/Default-Portrait@2x~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection56"Copy build/FancyChatter.app/Default-Portrait@2x~ipad.png1501864bf494b741^18ec864bf494b741^---0#0#0#-19%DVTDocumentLocation2@159"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Portrait@2x~ipad.png000000000080d041^834"CpResource "FancyChatter/Resources/splash/Default-Portrait@2x~ipad.png" "build/FancyChatter.app/Default-Portrait@2x~ipad.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Portrait@2x~ipad.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"14DF081C-D546-4F8F-A34F-C024215193D5-
+
+CCpResource FancyChatter/Resources/splash/Default-Portrait~ipad.png build/FancyChatter.app/Default-Portrait~ipad.png
+s395637835.528211
+e395637835.533418
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default-Portrait~ipad.png
+xbuild/FancyChatter.app/Default-Portrait~ipad.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection53"Copy build/FancyChatter.app/Default-Portrait~ipad.png5456874bf494b741^658f884bf494b741^---0#0#0#-19%DVTDocumentLocation2@156"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default-Portrait~ipad.png000000000080d041^825"CpResource "FancyChatter/Resources/splash/Default-Portrait~ipad.png" "build/FancyChatter.app/Default-Portrait~ipad.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default-Portrait~ipad.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"E5DD94FE-F10C-4A19-A00E-E9C60F292D9C-
+
+CCpResource FancyChatter/Resources/splash/Default@2x~iphone.png build/FancyChatter.app/Default@2x~iphone.png
+s395637835.528219
+e395637835.532329
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default@2x~iphone.png
+xbuild/FancyChatter.app/Default@2x~iphone.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection49"Copy build/FancyChatter.app/Default@2x~iphone.png0e4f874bf494b741^5246884bf494b741^---0#0#0#-19%DVTDocumentLocation2@152"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default@2x~iphone.png000000000080d041^813"CpResource "FancyChatter/Resources/splash/Default@2x~iphone.png" "build/FancyChatter.app/Default@2x~iphone.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default@2x~iphone.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"6DF48733-6D76-4992-B0B4-058891FFB666-
+
+CCpResource FancyChatter/Resources/splash/Default~iphone.png build/FancyChatter.app/Default~iphone.png
+s395637835.533616
+e395637835.538001
+r1
+xCpResource
+xFancyChatter/Resources/splash/Default~iphone.png
+xbuild/FancyChatter.app/Default~iphone.png
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection46"Copy build/FancyChatter.app/Default~iphone.png0fba884bf494b741^1fb9894bf494b741^---0#0#0#-19%DVTDocumentLocation2@149"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Default~iphone.png000000000080d041^804"CpResource "FancyChatter/Resources/splash/Default~iphone.png" "build/FancyChatter.app/Default~iphone.png"    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks "/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/Resources/splash/Default~iphone.png" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"49FBA526-7D26-4DC4-8173-B494B49AE620-
+
+CCpResource FancyChatter/config.xml build/FancyChatter.app/config.xml
+s395642457.296081
+e395642457.299149
+r1
+xCpResource
+xFancyChatter/config.xml
+xbuild/FancyChatter.app/config.xml
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection38"Copy build/FancyChatter.app/config.xmlf6ee4b590695b741^ea974c590695b741^---0#0#0#-19%DVTDocumentLocation2@127"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/config.xml0000000000000000^698"CpResource FancyChatter/config.xml build/FancyChatter.app/config.xml    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/config.xml /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app36"3FF46DD7-6AFF-457B-88A3-33071B37D229-
+
+CGenerateDSYMFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app.dSYM /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter
+s395637839.217338
+e395637839.344786
+r1
+xGenerateDSYMFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app.dSYM
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection128"Generate /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app.dSYMd2c4374ff494b741^ea42584ff494b741^---0#0#0#-19%DVTDocumentLocation2@135"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app.dSYM000000000080d041^760"GenerateDSYMFile build/FancyChatter.app.dSYM build/FancyChatter.app/FancyChatter    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app.dSYM36"E96FDAD0-79C9-41F7-905A-C2C21367A4EA-
+
+CGenerateDSYMFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter
+s395642398.367223
+e395642398.502479
+r1
+xGenerateDSYMFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection114"Generate /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM0c225e1e0695b741^7fa4801e0695b741^---0#0#0#-19%DVTDocumentLocation2@122"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM/0000000000000000^718"GenerateDSYMFile build/FancyChatter.app.dSYM build/FancyChatter.app/FancyChatter    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app.dSYM36"3CEFFFD8-312A-4ACD-B233-A0503CD0BA78-
+
+CLd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter normal i386
+s395637838.923676
+e395637839.210380
+r1
+xLd
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection132"Link /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChattere4a0ec4ef494b741^62dc354ff494b741^---0#0#0#--2124"Ld build/FancyChatter.app/FancyChatter normal i386    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -L/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -filelist /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/FancyChatter.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/libCordova.a -ObjC -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework CoreLocation -framework ImageIO -framework OpenAL -framework AssetsLibrary /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/libCordova.a -framework Foundation -weak_framework UIKit -framework CoreGraphics -framework AddressBook -framework AddressBookUI -framework AudioToolbox -weak_framework AVFoundation -framework CFNetwork -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration -framework MobileCoreServices -weak_framework CoreMedia -framework CoreLocation -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/FancyChatter36"C2AD60F4-A648-492A-855E-E0C9D0BBA95F-
+
+CLd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter normal i386
+s395642398.016429
+e395642398.360229
+r1
+xLd
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter
+xnormal
+xi386
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection118"Link /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter5858041e0695b741^15395c1e0695b741^---0#0#0#--2026"Ld build/FancyChatter.app/FancyChatter normal i386    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -L/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -filelist /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/FancyChatter.LinkFileList -Xlinker -objc_abi_version -Xlinker 2 -weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/libCordova.a -ObjC -fobjc-arc -fobjc-link-runtime -Xlinker -no_implicit_dylibs -mios-simulator-version-min=5.0 -framework CoreLocation -framework ImageIO -framework OpenAL -framework AssetsLibrary /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/libCordova.a -framework Foundation -weak_framework UIKit -framework CoreGraphics -framework AddressBook -framework AddressBookUI -framework AudioToolbox -weak_framework AVFoundation -framework CFNetwork -framework MediaPlayer -framework QuartzCore -framework SystemConfiguration -framework MobileCoreServices -weak_framework CoreMedia -framework CoreLocation -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/FancyChatter36"716571CE-6A00-4F49-87A8-EB812218544A-
+
+CPhaseScriptExecution "Copy www directory" /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+s395638111.780781
+e395638112.084428
+r1
+xPhaseScriptExecution
+xCopy www directory
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+o
+oreal	0m0.280s
+ouser	0m0.121s
+osys	0m0.143s
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'd2e2c85ff594b741^bea41560f594b741^-42"real	0m0.280suser	0m0.121ssys	0m0.143s3(21%IDEActivityLogMessage2@14"real	0m0.280s-395638112#1#14#-0#-----2@14"user	0m0.121s-395638112#15#14#-0#-----2@13"sys	0m0.143s-395638112#29#13#-0#-----0#0#0#--23110"PhaseScriptExecution "Copy www directory" build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER cvuletich    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv BUILD_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv CACHE_ROOT /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLANG_ENABLE_OBJC_ARC YES    setenv CLANG_WARN_CONSTANT_CONVERSION YES    setenv CLANG_WARN_ENUM_CONVERSION YES    setenv CLANG_WARN_INT_CONVERSION YES    setenv CLANG_WARN__DUPLICATE_METHOD_MATCH YES    setenv CLASS_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv CONFIGURATION_TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator    setenv CONTENTS_FOLDER_PATH FancyChatter.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH FancyChatter.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/FancyChatter.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME FancyChatter.app.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH FancyChatter.app/Executables    setenv EXECUTABLE_FOLDER_PATH FancyChatter.app    setenv EXECUTABLE_NAME FancyChatter    setenv EXECUTABLE_PATH FancyChatter.app/FancyChatter    setenv FILE_LIST /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH FancyChatter.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME FancyChatter.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER FancyChatter/FancyChatter-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_THUMB_SUPPORT NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNINITIALIZED_AUTOS YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include\" \"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/usr/local/lib/include\" \"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/UninstalledProducts/include\" \"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build\""    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE FancyChatter/FancyChatter-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH FancyChatter.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH FancyChatter.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/FancyChatter.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER cvuletich    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/FancyChatter.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH FancyChatter.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/FancyChatter.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH FancyChatter.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 12E3067    setenv MAC_OS_X_VERSION_ACTUAL 1084    setenv MAC_OS_X_VERSION_MAJOR 1080    setenv MAC_OS_X_VERSION_MINOR 0804    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal    setenv OBJROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/libCordova.a -ObjC"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH FancyChatter.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/PkgInfo    setenv PKGINFO_PATH FancyChatter.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 10B141    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 60100    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH FancyChatter.app/PlugIns    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH FancyChatter.app/PrivateHeaders    setenv PRODUCT_NAME FancyChatter    setenv PRODUCT_SETTINGS_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/FancyChatter-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT FancyChatter    setenv PROJECT_DERIVED_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/DerivedSources    setenv PROJECT_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PROJECT_FILE_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter.xcodeproj    setenv PROJECT_NAME FancyChatter    setenv PROJECT_TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build    setenv PROJECT_TEMP_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv PUBLIC_HEADERS_FOLDER_PATH FancyChatter.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH FancyChatter.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_NAME iphonesimulator6.1    setenv SDK_PRODUCT_BUILD_VERSION 10B141    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH FancyChatter.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH FancyChatter.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv SRCROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1,2    setenv TARGETNAME FancyChatter    setenv TARGET_BUILD_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv TARGET_NAME FancyChatter    setenv TARGET_TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_FILES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build    setenv TEST_AFTER_BUILD NO    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH FancyChatter.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER cvuletich    setenv USER_APPS_DIR /Users/cvuletich/Applications    setenv USER_LIBRARY_DIR /Users/cvuletich/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH FancyChatter.app/version.plist    setenv VERSION_INFO_BUILDER cvuletich    setenv VERSION_INFO_FILE FancyChatter_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:FancyChatter  PROJECT:FancyChatter-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME FancyChatter.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4H1503    setenv XCODE_VERSION_ACTUAL 0463    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0460    setenv YACC yacc    /bin/sh -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh36"52BF7DA8-EE01-499B-AA74-560880C84F0B-
+
+CPhaseScriptExecution "Copy www directory" /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+s395642456.977779
+e395642457.287763
+r1
+xPhaseScriptExecution
+xCopy www directory
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh
+o
+oreal	0m0.281s
+ouser	0m0.120s
+osys	0m0.139s
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Run custom shell script 'Copy www directory'3fa8fb580695b741^61aa49590695b741^-42"real	0m0.281suser	0m0.120ssys	0m0.139s3(21%IDEActivityLogMessage2@14"real	0m0.281s-395642457#1#14#-0#-----2@14"user	0m0.120s-395642457#15#14#-0#-----2@13"sys	0m0.139s-395642457#29#13#-0#-----0#0#0#--22438"PhaseScriptExecution "Copy www directory" build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER cvuletich    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_UNIVERSAL_IPHONE_OS i386    setenv AVAILABLE_PLATFORMS "iphonesimulator macosx iphoneos"    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv BUILD_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv BUILD_STYLE     setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv CACHE_ROOT /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501    setenv CCHROOT /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLANG_ENABLE_OBJC_ARC YES    setenv CLANG_WARN_CONSTANT_CONVERSION YES    setenv CLANG_WARN_ENUM_CONVERSION YES    setenv CLANG_WARN_INT_CONVERSION YES    setenv CLANG_WARN__DUPLICATE_METHOD_MATCH YES    setenv CLASS_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/CompositeSDKs    setenv COMPRESS_PNG_FILES YES    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv CONFIGURATION_TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator    setenv CONTENTS_FOLDER_PATH FancyChatter.app    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf-with-dsym    setenv DEFAULT_COMPILER com.apple.compilers.llvm.clang.1_0    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Applications/Xcode.app/Contents/Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Applications/Xcode.app/Contents/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/Developer/Library    setenv DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Tools    setenv DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH FancyChatter.app/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/FancyChatter.dst    setenv DT_TOOLCHAIN_DIR /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain    setenv DWARF_DSYM_FILE_NAME FancyChatter.app.dSYM    setenv DWARF_DSYM_FILE_SHOULD_ACCOMPANY_PRODUCT NO    setenv DWARF_DSYM_FOLDER_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv EFFECTIVE_PLATFORM_NAME -iphonesimulator    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".DS_Store .svn .git .hg CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH FancyChatter.app/Executables    setenv EXECUTABLE_FOLDER_PATH FancyChatter.app    setenv EXECUTABLE_NAME FancyChatter    setenv EXECUTABLE_PATH FancyChatter.app/FancyChatter    setenv FILE_LIST /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH FancyChatter.app/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME FancyChatter.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD c99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OBJC_LEGACY_DISPATCH YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER FancyChatter/FancyChatter-Prefix.pch    setenv GCC_SYMBOLS_PRIVATE_EXTERN YES    setenv GCC_THUMB_SUPPORT NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNINITIALIZED_AUTOS YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include\" \"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/usr/local/lib/include\" \"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/UninstalledProducts/include\" \"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build\""    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE FancyChatter/FancyChatter-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT binary    setenv INFOPLIST_PATH FancyChatter.app/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH FancyChatter.app/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/FancyChatter.dst/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER cvuletich    setenv INSTALL_PATH /Applications    setenv INSTALL_ROOT /tmp/FancyChatter.dst    setenv IPHONEOS_DEPLOYMENT_TARGET 5.0    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH FancyChatter.app/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-LinkMap-normal-i386.txt    setenv LD_NO_PIE NO    setenv LEGACY_DEVELOPER_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer    setenv LEX lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal/i386/FancyChatter.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH FancyChatter.app/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 12E3067    setenv MAC_OS_X_VERSION_ACTUAL 1084    setenv MAC_OS_X_VERSION_MAJOR 1080    setenv MAC_OS_X_VERSION_MINOR 0804    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL x86_64    setenv NO_COMMON YES    setenv OBJC_ABI_VERSION 2    setenv OBJECT_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Objects-normal    setenv OBJROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv ONLY_ACTIVE_ARCH NO    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv OTHER_LDFLAGS "-weak_framework CoreFoundation -weak_framework UIKit -weak_framework AVFoundation -weak_framework CoreMedia -weak-lSystem -force_load /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/libCordova.a -ObjC"    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin:/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/bin:/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/local/bin:/Applications/Xcode.app/Contents/Developer/Tools:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Applications/Xcode.app/Contents/Developer/Headers /Applications/Xcode.app/Contents/Developer/SDKs /Applications/Xcode.app/Contents/Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH FancyChatter.app/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/PkgInfo    setenv PKGINFO_PATH FancyChatter.app/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr    setenv PLATFORM_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform    setenv PLATFORM_NAME iphonesimulator    setenv PLATFORM_PREFERRED_ARCH i386    setenv PLATFORM_PRODUCT_BUILD_VERSION 10B141    setenv PLATFORM_VERSION_AVAILABILITY_H_FORMAT 60100    setenv PLIST_FILE_OUTPUT_FORMAT binary    setenv PLUGINS_FOLDER_PATH FancyChatter.app/PlugIns    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH FancyChatter.app/PrivateHeaders    setenv PRODUCT_NAME FancyChatter    setenv PRODUCT_SETTINGS_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/FancyChatter-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT FancyChatter    setenv PROJECT_DERIVED_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/DerivedSources    setenv PROJECT_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv PROJECT_FILE_PATH /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter.xcodeproj    setenv PROJECT_NAME FancyChatter    setenv PROJECT_TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build    setenv PROJECT_TEMP_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv PUBLIC_HEADERS_FOLDER_PATH FancyChatter.app/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_HG_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH FancyChatter.app/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_DIR /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk    setenv SDK_NAME iphonesimulator6.1    setenv SDK_PRODUCT_BUILD_VERSION 10B141    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHALLOW_BUNDLE YES    setenv SHARED_DERIVED_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH FancyChatter.app/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH FancyChatter.app/SharedSupport    setenv SKIP_INSTALL NO    setenv SOURCE_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv SRCROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv STRINGS_FILE_OUTPUT_ENCODING binary    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SUPPORTED_DEVICE_FAMILIES "1 2"    setenv SUPPORTED_PLATFORMS "iphonesimulator iphoneos"    setenv SYMROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Applications/Xcode.app/Contents/Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Applications/Xcode.app/Contents/Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Applications/Xcode.app/Contents/Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Applications/Xcode.app/Contents/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Applications/Xcode.app/Contents/Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Applications/Xcode.app/Contents/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Applications/Xcode.app/Contents/Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Applications/Xcode.app/Contents/Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETED_DEVICE_FAMILY 1,2    setenv TARGETNAME FancyChatter    setenv TARGET_BUILD_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv TARGET_NAME FancyChatter    setenv TARGET_TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_FILES_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_FILE_DIR /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build    setenv TEMP_ROOT /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build    setenv TEST_AFTER_BUILD NO    setenv TOOLCHAINS com.apple.dt.toolchain.XcodeDefault    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH FancyChatter.app    setenv UNSTRIPPED_PRODUCT NO    setenv USER cvuletich    setenv USER_APPS_DIR /Users/cvuletich/Applications    setenv USER_LIBRARY_DIR /Users/cvuletich/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS i386    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH FancyChatter.app/version.plist    setenv VERSION_INFO_BUILDER cvuletich    setenv VERSION_INFO_FILE FancyChatter_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:FancyChatter  PROJECT:FancyChatter-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME FancyChatter.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Applications/Xcode.app/Contents/Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 4H1503    setenv XCODE_VERSION_ACTUAL 0463    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0460    setenv YACC yacc    /bin/sh -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/Script-304B58A110DAC018002A0835.sh36"6D472E90-9286-4885-8E83-0560112FF6D6-
+
+CProcessInfoPlistFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Info.plist FancyChatter/FancyChatter-Info.plist
+s395638111.767798
+e395638111.772423
+r1
+xProcessInfoPlistFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Info.plist
+xFancyChatter/FancyChatter-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Process FancyChatter/FancyChatter-Info.plistdcb9c45ff594b741^99bcc55ff594b741^---0#0#0#-19%DVTDocumentLocation2@144"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/FancyChatter-Info.plist0000000000000000^812"ProcessInfoPlistFile build/FancyChatter.app/Info.plist FancyChatter/FancyChatter-Info.plist    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-infoPlistUtility FancyChatter/FancyChatter-Info.plist -genpkginfo /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app/Info.plist36"7351766C-D3B6-46FD-9818-3B6C446146D1-
+
+CProcessInfoPlistFile /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Info.plist FancyChatter/FancyChatter-Info.plist
+s395642456.964715
+e395642456.968979
+r1
+xProcessInfoPlistFile
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Info.plist
+xFancyChatter/FancyChatter-Info.plist
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection44"Process FancyChatter/FancyChatter-Info.plist791ff7580695b741^6210f8580695b741^---0#0#0#-19%DVTDocumentLocation2@130"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/FancyChatter-Info.plist0000000000000000^770"ProcessInfoPlistFile build/FancyChatter.app/Info.plist FancyChatter/FancyChatter-Info.plist    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    builtin-infoPlistUtility FancyChatter/FancyChatter-Info.plist -genpkginfo /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app/Info.plist36"C7DD6342-92D6-4480-AFF4-DB5C490D38B0-
+
+CProcessPCH /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.pth FancyChatter/FancyChatter-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395642397.673599
+e395642397.907079
+r1
+xProcessPCH
+x/var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.pth
+xFancyChatter/FancyChatter-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection47"Precompile FancyChatter/FancyChatter-Prefix.pch1aa4ac1d0695b741^2635e81d0695b741^---0#0#0#-19%DVTDocumentLocation2@130"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/FancyChatter-Prefix.pch0000000000000000^4009"ProcessPCH /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.pth FancyChatter/FancyChatter-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build --serialize-diagnostics /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/FancyChatter/FancyChatter-Prefix.pch -o /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-cvbbundwmjpeohguloasudvqdoet/FancyChatter-Prefix.pch.d36"F86FF382-8480-4A15-A1DA-29828EA44975-
+
+CProcessPCH /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.pth FancyChatter/FancyChatter-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s395637838.528255
+e395637838.805088
+r1
+xProcessPCH
+x/var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.pth
+xFancyChatter/FancyChatter-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection47"Precompile FancyChatter/FancyChatter-Prefix.pchde59874ef494b741^2e1ace4ef494b741^---0#0#0#-19%DVTDocumentLocation2@144"file://localhost/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/FancyChatter-Prefix.pch0000000000000000^4191"ProcessPCH /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.pth FancyChatter/FancyChatter-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv LANG en_US.US-ASCII    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -std=c99 -fobjc-arc -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-implicit-atomic-properties -Wno-receiver-is-weak -Wduplicate-method-match -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wno-empty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wno-shorten-64-to-32 -Wpointer-sign -Wno-newline-eof -Wno-selector -Wno-strict-selector-match -Wno-undeclared-selector -Wno-deprecated-implementations -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator6.1.sdk -fexceptions -fasm-blocks -fstrict-aliasing -Wprotocol -Wdeprecated-declarations -g -fvisibility=hidden -Wno-sign-conversion -fobjc-abi-version=2 -fobjc-legacy-dispatch -mios-simulator-version-min=5.0 -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-generated-files.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-own-target-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-all-target-headers.hmap -iquote /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/FancyChatter-project-headers.hmap -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/usr/local/lib/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/UninstalledProducts/include -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources/i386 -I/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.build/Debug-iphonesimulator/FancyChatter.build/DerivedSources -F/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build --serialize-diagnostics /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.dia -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/FancyChatter/FancyChatter-Prefix.pch -o /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.pth -MMD -MT dependencies -MF /var/folders/8h/jzz42cyn2l5_5xtvvbdngfnw0000gn/C/com.apple.Xcode.501/SharedPrecompiledHeaders/FancyChatter-Prefix-fefxvnwqpvouhycikqcbgtbjfkgz/FancyChatter-Prefix.pch.d36"C316750B-1208-4B62-AD87-06D4B597933A-
+
+CTouch /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app
+s395638112.135025
+e395638112.141408
+r1
+xTouch
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection120"Touch /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app64b02260f594b741^db322460f594b741^---0#0#0#--494"Touch build/FancyChatter.app    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /usr/bin/touch -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/android/FancyChatter/platforms/ios/build/FancyChatter.app36"5EA28AE0-6A16-40F5-A20A-03E8D1AA2D24-
+
+CTouch /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app
+s395642457.338228
+e395642457.347429
+r1
+xTouch
+x/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection106"Touch /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.appe6b156590695b741^28f258590695b741^---0#0#0#--466"Touch build/FancyChatter.app    cd /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios    setenv PATH "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin"    /usr/bin/touch -c /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/platforms/ios/build/FancyChatter.app36"49AFB820-2214-48FC-A2A5-83B6E3FC1F1F-
+

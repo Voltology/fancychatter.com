@@ -46,8 +46,8 @@ switch($_SERVER['HTTP_HOST']) {
 
 if (ENV === "dev") {
   define("DB_HOST", "localhost");
-  define("DB_NAME", "dev_fc");
-  define("DB_USER", "dev_fc");
+  define("DB_NAME", "dev_fancychatter");
+  define("DB_USER", "dev_fancychatter");
   define("DB_PASS", "3CwdJQ%glgZg");
 
   define("API_URL", "http://api.fancychatter/");

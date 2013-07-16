@@ -68,6 +68,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
         <li class="logo" style="display: inline-block; width: 70px; border: 1px solid #ccc; margin-right: 10px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><img src="/uploads/logos/<?php if ($livechatter['logo'] == "") { echo "default.png"; } else { echo $livechatter['logo']; } ?>" /></a></li>
         <li class="body" style="display: inline-block; width: 70%; vertical-align: top;"><strong><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong><br /><?php echo $livechatter['body']; ?></li>
         <li class="distance" style="display: inline-block; vertical-align: top;"><?php echo round($livechatter['distance'], 2); ?> miles</li>
+        <li style="vertical-align: top;"><button class="btn btn-mini btn-success search-btn">I want this</button></li>
       </ul>
       <?php
       }
