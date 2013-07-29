@@ -1,7 +1,7 @@
 <?php
 include("header.php");
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-  User::saveSearch($_POST['where'], $_POST['what'], $_POST['distance'], 1);
+  $user->saveSearch($_POST['where'], $_POST['what'], $_POST['distance'], 1);
 }
 $where = $_POST['where'] ? $_POST['where'] : $_GET['where'];
 $what = $_POST['what'] ? $_POST['what'] : $_GET['what'];
@@ -11,8 +11,8 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
 <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
 <div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
   <form method="post" action="/livechatter" id="livechatter-search">
-      <input type="text" name="where" id="where" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
-  <select name="what" id="what">
+    <input type="text" name="where" id="where" value="<?php echo $where; ?>" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
+    <select name="what" id="what">
       <option value="null">What are you looking for?</option>
       <?php
       $categories = getCategories();

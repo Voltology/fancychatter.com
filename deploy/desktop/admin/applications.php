@@ -9,7 +9,7 @@ if (in_array($user->getRole(), array("administrator"))) {
       }
   ?>
       <h1>Applications</h1>
-      <button type="button" class="button" onclick="document.location='?p=merchants&a=add'"><i class="icon-plus"></i> Add Merchant</button>
+      <button type="button" class="button" onclick="document.location='?p=merchants&a=add'"><i class="icon-plus"></i> Add Application</button>
       <table border="0" cellpadding="4" cellspacing="0" width="100%" class="edit-table">
         <tr class="tableheader">
           <th>#</th>
@@ -24,38 +24,38 @@ if (in_array($user->getRole(), array("administrator"))) {
           <th>&nbsp;</th>
         </tr>
         <?php
-        $merchants = Merchant::getMerchants();
+        $applications = Application::getAll();
         $bgclass = array("odd","even");
         $count = 0;
-        foreach ($merchants as $merch) {
+        foreach ($applications as $application) {
         ?>
         <tr class="<?php echo $bgclass[$count % 2]; ?>">
           <td valign="top"><?php echo ($count + 1); ?></td>
-          <td valign="top"><?php echo $merch['name']; ?></td>
-          <td valign="top"><?php echo "<a href=\"mailto:" . $merch['contact_email'] . "\">" . $merch['contact_email'] . "</a>"; ?></td>
+          <td valign="top"><?php echo $applications['name']; ?></td>
+          <td valign="top"><?php echo "<a href=\"mailto:" . $application['contact_email'] . "\">" . $application['contact_email'] . "</a>"; ?></td>
           <td>
             <?php
-            echo $merch['address1'];
-            if ($merch['address2']) { echo "<br />" . $merch['address2']; }
+            echo $application['address1'];
+            if ($application['address2']) { echo "<br />" . $application['address2']; }
             ?></td>
-          <td valign="top"><?php echo $merch['city']; ?></td>
-          <td valign="top"><?php echo $merch['state']; ?></td>
-          <td valign="top"><?php echo ucwords($merch['zipcode']); ?></td>
-          <td valign="top"><?php echo ucwords($merch['phone']); ?></td>
-          <td valign="top"><?php echo date("F j, Y, g:i a", $merch['creation']); ?></td>
+          <td valign="top"><?php echo $application['city']; ?></td>
+          <td valign="top"><?php echo $application['state']; ?></td>
+          <td valign="top"><?php echo ucwords($application['zipcode']); ?></td>
+          <td valign="top"><?php echo ucwords($application['phone']); ?></td>
+          <td valign="top"><?php echo date("F j, Y, g:i a", $application['creation']); ?></td>
           <td align="right" valign="top">
-            <i class="icon-pencil"></i> <a href="?p=merchants&a=edit&id=<?php echo $merch['id']; ?>"> Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-remove"></i> <a href="#" onclick="admin.confirm('delete', 'user', '?p=users&a=delete&id=<?php echo $merch['id']; ?>')">Delete</a>
+            <i class="icon-pencil"></i> <a href="?p=applications&a=edit&id=<?php echo $application['id']; ?>"> Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-remove"></i> <a href="#" onclick="admin.confirm('delete', 'user', '?p=users&a=delete&id=<?php echo $application['id']; ?>')">Delete</a>
           </td>
         </tr>
         <?php
           $count++;
         }
         if ($count === 0) {
-          echo "<tr><td colspan=\"6\" align=\"center\">There are currently no merchants.</td></tr>";
+          echo "<tr><td colspan=\"6\" align=\"center\">There are currently no applications.</td></tr>";
         }
         ?>
       </table>
-      <button type="button" class="button" onclick="document.location='?p=merchants&a=add'"><i class="icon-plus"></i> Add Merchant</button>
+      <button type="button" class="button" onclick="document.location='?p=applications&a=add'"><i class="icon-plus"></i> Add Application</button>
       <?php
       break;
     case "add":

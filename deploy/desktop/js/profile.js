@@ -1,9 +1,9 @@
 var profile = {
   autocomplete : function() {
-    $searchfield = $('#search-field');
+    var $searchfield = $('#search-field');
     ajax.get('api.php', '&a=autocomplete-profile&search=' + $searchfield.val(), function(response) {
       if (response.result === 'success') {
-        $autocompletebox = $('#autocomplete-box');
+        var $autocompletebox = $('#autocomplete-box');
         $autocompletebox.html('');
         $autocompletebox.css({
           'display' : 'block',
@@ -29,6 +29,12 @@ var profile = {
           $autocompletebox.append('<div style="padding: 3px 5px; text-align: center;">No results found<br /><a href="/profile?a=invite">Invite a friend to FancyChatter</a></div>');
         } 
       }
+    });
+  },
+  post : function() {
+    var $container = $('#interactions');
+    ajax.get('api.php', '&a=post', function(response) {
+      $container.prepend('<div>Test</div>');
     });
   }
 };
