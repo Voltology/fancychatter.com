@@ -2,6 +2,7 @@
 define("LIB_PATH", __DIR__ . "/libs/");
 
 require(LIB_PATH . "Database.class.php");
+require(LIB_PATH . "Application.class.php");
 require(LIB_PATH . "ChitChat.class.php");
 require(LIB_PATH . "LiveChatter.class.php");
 require(LIB_PATH . "Merchant.class.php");

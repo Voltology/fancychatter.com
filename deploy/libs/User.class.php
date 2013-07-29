@@ -105,7 +105,8 @@ class User {
 
   public function getSavedSearches() {
     $searches = array();
-    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id ORDER BY searches.creation DESC LIMIT 5");
+    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id WHERE searches.user_id='%s' ORDER BY searches.creation DESC LIMIT 5",
+      mysql_real_escape_string($this->_id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($searches, $row);
@@ -138,7 +139,8 @@ class User {
   }
 
   public function saveSearch($location, $category, $distance, $saved = 0) {
-    $query = sprintf("INSERT INTO searches SET location='%s', category_id='%s', distance='%s', saved='%s', creation='%s'",
+    $query = sprintf("INSERT INTO searches SET user_id='%s', location='%s', category_id='%s', distance='%s', saved='%s', creation='%s'",
+      mysql_real_escape_string($this->_id),
       mysql_real_escape_string($location),
       mysql_real_escape_string($category),
       mysql_real_escape_string($distance),
@@ -146,7 +148,6 @@ class User {
       mysql_real_escape_string(time()));
     $query = mysql_query($query);
   }
-
 
   public function set($data = null) {
     if (!$data) {

@@ -89,7 +89,7 @@ function getStates() {
 
 function getUsersAndMerchants($search) {
   $results = array();
-  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,state FROM users WHERE firstname LIKE '%s%%' OR lastname LIKE '%s%%' ORDER BY id ASC",
+  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,UPPER(state) AS state FROM users WHERE firstname LIKE '%s%%' OR lastname LIKE '%s%%' ORDER BY id ASC",
     mysql_real_escape_string($search),
     mysql_real_escape_string($search));
   $query = mysql_query($query);
