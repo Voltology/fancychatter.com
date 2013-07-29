@@ -53,7 +53,13 @@ if (!$profile->getId()) {
             echo "</div>";
           }
           ?>
-          <!--<h4>Recent Activity</h4>-->
+          <h4>Following</h4>
+          <?php
+          $following = $profile->getFollowers();
+          foreach ($following as $follow) {
+            echo "<div style=\"height: 40px; width: 40px;\"><img src=\"" . $follow['profile_img'] . "\" /></div>";
+          }
+          ?>
         </div>
       </div>
     </div>

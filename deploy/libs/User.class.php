@@ -86,7 +86,7 @@ class User {
   }
 
   public function getFollowers() {
-    $query = sprintf("SELECT followee_id FROM followers WHERE follower_id='%s'",
+    $query = sprintf("SELECT followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id  WHERE follower_id='%s' LIMIT 6",
       mysql_real_escape_string($this->_id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
@@ -149,6 +149,15 @@ class User {
       array_push($users, $row);
     }
     return $users;
+  }
+
+  public function post($id, $message) {
+    $query = sprintf("INSERT INTO posts SET user_id='%s', poster_id='%s', message='%s', status='1', creation='%s'",
+      mysql_real_escape_string($id),
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($message),
+      mysql_real_escape_string(time()));
+    mysql_query($query);
   }
 
   public function save() {
