@@ -1,12 +1,12 @@
 var user = {
-  follow : function() {
-    ajax.get('api.php', '&a=follow&id=', function(response) {
+  follow : function(id) {
+    ajax.get('api.php', '&a=follow&id=' + id, function(response) {
       if (response.result === 'success') {
         $button = $('#follow-button');
         $button.removeClass('btn-success').addClass('btn-danger').html('<i class="icon-minus" style="vertical-align: bottom;"></i> Unfollow');
         $button.unbind('click');
         $button.on('click', function() {
-          user.unfollow();
+          user.unfollow(id);
         });
       } else {
       }
@@ -53,8 +53,8 @@ var user = {
       }
     });
   },
-  unfollow : function() {
-    ajax.get('api.php', '&a=unfollow&id=', function(response) {
+  unfollow : function(id) {
+    ajax.get('api.php', '&a=unfollow&id=' + id, function(response) {
       if (response.result === 'success') {
         $button = $('#follow-button');
         $button.removeClass('btn-danger').addClass('btn-success').html('<i class="icon-plus" style="vertical-align: bottom;"></i> Follow');

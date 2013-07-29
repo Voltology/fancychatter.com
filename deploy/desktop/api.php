@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       }
       break;
     case "follow":
-      $id = $_POST['id'];
+      $user->follow($_POST['id']);
       break;
     case "login":
       if (!$user->checkPassword($_POST['email'], md5($_POST['password']))) {
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       }
       break;
     case "unfollow":
-      $id = $_POST['id'];
+      $user->unfollow($_POST['id']);
       break;
     default:
       $json['result'] = "failed";

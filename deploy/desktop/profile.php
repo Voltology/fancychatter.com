@@ -35,7 +35,7 @@ if (!$profile->getId()) {
             <p><i class="icon-pencil"></i> <a href="?a=edit">Edit Profile</a></p>
             <?php } ?>
           <?php } else { ?>
-          <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow();"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
+          <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $profile->getId() ?>);"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
           <?php } ?>
         </div>
       </div>

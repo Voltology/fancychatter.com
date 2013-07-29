@@ -16,6 +16,7 @@ class User {
   private $_merchantid = null;
   private $_isloggedin = false;
   private $_savequery = null;
+  private $_followers = array();
 
   function __construct($id = null) {
     if ($id !== null) {
@@ -59,6 +60,15 @@ class User {
     mysql_query($query);
   }
 
+  public function follow($id) {
+    $query = sprintf("INSERT INTO followers SET follower_id='%s', followee_id='%s', creation='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($id),
+      mysql_real_escape_string(time()));
+    $query = mysql_query($query);
+    $this->_followers[] = $id;
+  }
+
   public function getCity() {
     return $this->_city;
   }
@@ -73,6 +83,16 @@ class User {
 
   public function getFirstName() {
     return $this->_firstname;
+  }
+
+  public function getFollowers() {
+    $query = sprintf("SELECT followee_id FROM followers WHERE follower_id='%s'",
+      mysql_real_escape_string($this->_id));
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($this->_followers, $row);
+    }
+    return $this->_followers;
   }
 
   public function getGmtOffset() {
@@ -218,6 +238,14 @@ class User {
 
   public function setRole($role) {
     $this->_role = $role;
+  }
+
+  public function unfollow($id) {
+    $query = sprintf("DELETE FROM followers WHERE follower_id='%s', followee_id='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($id),
+      mysql_real_escape_string(time()));
+    $query = mysql_query($query);
   }
 
   public function update($id, $email, $password, $firstname, $lastname) {
