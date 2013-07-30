@@ -7,7 +7,7 @@ var alerts = {
       if (response.result === 'success') {
         var html = '';
         $.each(response.alerts, function(key, value) {
-          html += '<tr><td style="border-bottom: 1px solid #ccc; font-size: 14px;"><i class="icon-comment-alt"></i> <a href="profile.html">' + value.message + '</a></td></tr>';
+          html += '<tr><td style="border-bottom: 1px solid #ccc; font-size: 13px;"><i class="icon-comment-alt"></i> <a href="profile.html">' + value.message + '</a></td></tr>';
         });
         $('#alerts-table').html(html);
 

@@ -16,11 +16,11 @@
 <body id="livechatter">
 <nav class="main-nav" id="main-nav">
   <p style="color: white;">&nbsp;Welcome, <span id="nav-firstname"></span>!</p>
-  <a href="livechatter.html">LiveChatter</a>
-  <a href="profile.html">Profile</a>
-  <a href="alerts.html">Alerts (<span id="alert-count"></span>)</a>
-  <a href="settings.html">Settings</a>
-  <a href="#" class="transition" onclick="system.deletesession();">Log Out</a>
+  <a href="livechatter.html"><i class="icon-comments"></i>&nbsp;&nbsp;LiveChatter</a>
+  <a href="profile.html"><i class="icon-user"></i>&nbsp;&nbsp;&nbsp;Profile</a>
+  <a href="alerts.html"><i class="icon-bell-alt"></i>&nbsp;&nbsp;&nbsp;Alerts (<span id="alert-count"></span>)</a>
+  <a href="settings.html"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;Settings</a>
+  <a href="#" class="transition" onclick="system.deletesession();"><i class="icon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Log Out</a>
 </nav>
 <div class="page-wrap" onclick="document.location='#'">
   <header>
@@ -30,7 +30,7 @@
   <div id="livechatter-search">
     <h2>Search LiveChatter</h2>
     <label for="where">Where are you?</label>
-    <input type="text" name="where" id="where" placeholder="Enter zipcode or City, State" />
+    <input type="text" name="where" id="where" placeholder="Enter Zip Code or City, State" />
     <label for="what">What are you looking for?</label>
     <select name="what" id="what">
       <option>Select Category</option>
@@ -45,12 +45,13 @@
       <option value="20">20 miles</option>
       <option value="25">25 miles</option>
     </select>
-    <input type="submit" value="Search" onclick="livechatter.search()" />
+    <button onclick="livechatter.search()"><i class="icon-search"></i> Search</button>
+
   </div>
   <div id="livechatter-results" style="display: none;">
     <h2>LiveChatter Results</h2>
     <h3 id="livechatter-info"></h3>
-    <a href="#" onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');">ChitChat</a>
+    &nbsp;<a href="#" onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');" style="font-size: 12px; margin-left; 5px;">See nothing you like? Click here to send a ChitChat!</a>
     <table cellpadding="2" cellspacing="2" border="0" width="100%" id="livechatter-results-table">
     </table>
   </div>
