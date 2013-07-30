@@ -2,6 +2,7 @@
 define("LIB_PATH", __DIR__ . "/libs/");
 
 require(LIB_PATH . "Database.class.php");
+require(LIB_PATH . "Alerts.class.php");
 require(LIB_PATH . "Application.class.php");
 require(LIB_PATH . "ChitChat.class.php");
 require(LIB_PATH . "LiveChatter.class.php");
@@ -21,9 +22,16 @@ if ($_GET['debug'] === "true" || ($_SESSION['debug'] === "true" && $_GET['debug'
   $_SESSION['debug'] = "false";
 }
 
+if ($_SERVER['HTTP_HOST'] === "b2b.fancychatter") {
+  define("B2B", true);
+} else {
+  define("B2B", false);
+}
+
 switch($_SERVER['HTTP_HOST']) {
   case "fancychatter":
   case "api.fancychatter":
+  case "b2b.fancychatter":
   case "m.fancychatter":
   case "dev.fancychatter.com":
   case "dev.api.fancychatter.com":
@@ -44,6 +52,7 @@ switch($_SERVER['HTTP_HOST']) {
   default:
     //die("An error has occurred.  No environment has been set.");
 }
+
 
 if (ENV === "dev") {
   define("DB_HOST", "localhost");

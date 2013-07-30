@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "chitchat-respond":
       $chitchat = new ChitChat();
-      //$chitchat->respone($user->getId(), 1, $msg);
+      $chitchat->respond($_REQUEST['cc-id'], $profile->getId(), null, $_REQUEST['body']);
       break;
     case "chitchat-send":
       $msg = $_REQUEST['msg'];
@@ -27,31 +27,98 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         array_push($json['errors'], "ChitChat message cannot be blank");
       } else {
         $chitchat = new ChitChat();
-        $chitchat->send($user->getId(), 1, $msg);
+        $chitchat->send($user->getId(), $_REQUEST['location'], $_REQUEST['category'], $_REQUEST['distance'], $msg);
       }
       break;
     case "follow":
       $user->follow($_REQUEST['id']);
       break;
+    case "getalerts":
+      $json['alerts'] = Alerts::get($id);
+      break;
+    case "getfeed":
+      $json['feed']['chitchats'] = ChitChat::getByUserId($_REQUEST['id']);
+      //$json['feed']['posts'] = 
+      //$json['feed']['redemptions'] = 
+      break;
+    case "getmerchant":
+      $json['user'] = User::getById($_REQUEST['id']);
+      break;
+    case "getuser":
+      $json['user'] = User::getById($_REQUEST['id']);
+      break;
+    case "livechatter":
+      $json['category_name'] = getCategoryById($_REQUEST['what']);
+      $json['livechatter'] = LiveChatter::search($_REQUEST['where'], $_REQUEST['what'], $_REQUEST['distance'], 20);
+      break;
     case "login":
-      if (!$user->checkPassword($_REQUEST['email'], md5($_REQUEST['password']))) {
+      if (!$user->login($_POST['email'], md5($_POST['password']))) {
         $json['result'] = "failed";
         array_push($json['errors'], "Incorrect Username/Password");
       } else {
-        setcookie("email", $_REQUEST['email']);
-        setcookie("password", md5($_REQUEST['password']));
+        if (!B2B) {
+          setcookie("email", $_POST['email']);
+          setcookie("password", md5($_POST['password']));
+        } else if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor"))) {
+          setcookie("email", $_POST['email']);
+          setcookie("password", md5($_POST['password']));
+        } else {
+          $json['result'] = "failed";
+          array_push($json['errors'], "You are not authorized for this site.");
+        }
+      }
+      break;
+    case "login-app":
+      if (!$user->checkPassword($_GET['email'], md5($_GET['password']))) {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Incorrect Username/Password");
+      } else {
+        $json['id'] = $user->getId();
+        $json['email'] = $_GET['email'];
+        $json['firstname'] = $_GET['firstname'];
+        $json['password'] = md5($_GET['password']);
       }
       break;
     case "post":
-      $user->post($id, $msg);
+      if ($user->getId() != $_REQUEST['id']) {
+        Alerts::add($_REQUEST['id'], $user->getFirstName() . " " . $user->getLastName() . " has posted something on your profile!");
+      }
+      $user->post($_REQUEST['id'], $_REQUEST['msg']);
+      $json['post']['profile_img'] = $user->getProfileImage() !== "" ? $user->getProfileImage() : "default.png";
+      $json['post']['name'] = $user->getFirstName() . " " . $user->getLastName();
+      $json['post']['timestamp'] = date("F j, Y, g:i a", time());
+      break;
+    case "profile":
+      $json['profile'] = new User(1);
+      break;
+    case "redeem":
+      $user->redeem($id);
       break;
     case "signup":
       $user = new User();
-      $errors = $user->validate($_REQUEST['email'], $_REQUEST['password1'], $_REQUEST['password2'], $_REQUEST['firstname'], $_REQUEST['lastname'], 1);
+      $data = $_POST;
+      $errors = $user->validate($data);
       if (count($errors) === 0) {
         setcookie("email", $_REQUEST['email']);
         setcookie("password", md5($_REQUEST['password1']));
         $id = $user->add($_REQUEST['email'], $_REQUEST['password1'], $_REQUEST['firstname'], $_REQUEST['lastname'], 1);
+        $user->setId($id);
+        $user->set();
+      } else {
+        $json['result'] = "failed";
+        foreach ($errors as $error) {
+          array_push($json['errors'], $error);
+        }
+      }
+      break;
+    case "signup-app":
+      $user = new User();
+      $data = $_POST;
+      $errors = $user->validate($data);
+      if (count($errors) === 0) {
+        setcookie("email", $_GET['email']);
+        setcookie("password", md5($_GET['password1']));
+        $id = $user->add($_GET['email'], $_GET['password1'], $_GET['firstname'], $_GET['lastname'], 1);
         $user->setId($id);
         $user->set();
       } else {
@@ -73,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
   $json['result'] = "failed";
   array_push($json['errors'], "Not authorized");
 }
-if ($_SERVER['REQUEST_METHOD'] === "POST") { 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
   echo json_encode($json);
 } else if ($_SERVER['REQUEST_METHOD'] === "GET") {
   echo $_GET['callback'] . "(" . json_encode($json) . ")";

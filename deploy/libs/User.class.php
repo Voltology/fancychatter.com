@@ -21,16 +21,16 @@ class User {
   function __construct($id = null) {
     if ($id !== null) {
       $this->_id = $id;
-      $this->set($row);
+      $this->set();
     }
   }
 
-  public function add($email, $password, $firstname, $lastname, $role) {
+  public function add($data, $role = 1) {
     $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s', creation='%s'",
-      mysql_real_escape_string($email),
-      mysql_real_escape_string(md5($password)),
-      mysql_real_escape_string($firstname),
-      mysql_real_escape_string($lastname),
+      mysql_real_escape_string($data['email']),
+      mysql_real_escape_string(md5($data['password'])),
+      mysql_real_escape_string($data['firstname']),
+      mysql_real_escape_string($data['lastname']),
       mysql_real_escape_string($role),
       mysql_real_escape_string(time()));
     mysql_query($query);
@@ -66,7 +66,19 @@ class User {
       mysql_real_escape_string($id),
       mysql_real_escape_string(time()));
     $query = mysql_query($query);
-    $this->_followers[] = $id;
+    $query = sprintf("SELECT followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id WHERE follower_id='%s' AND followee_id='%s' LIMIT 1",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($id));
+    $query = mysql_query($query);
+    $this->_followers[] = mysql_fetch_assoc($query);
+  }
+
+  public static function getById($id) {
+    $users = array();
+    $query = sprintf("SELECT id,email,firstname,lastname,profile_img,city,state,creation FROM users WHERE id='%s' LIMIT 1",
+      mysql_real_escape_string($id));
+    $query = mysql_query($query);
+    return mysql_fetch_assoc($query);
   }
 
   public function getCity() {
@@ -86,12 +98,6 @@ class User {
   }
 
   public function getFollowers() {
-    $query = sprintf("SELECT followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id  WHERE follower_id='%s' LIMIT 6",
-      mysql_real_escape_string($this->_id));
-    $query = mysql_query($query);
-    while ($row = mysql_fetch_assoc($query)) {
-      array_push($this->_followers, $row);
-    }
     return $this->_followers;
   }
 
@@ -113,6 +119,9 @@ class User {
 
   public function getLastName() {
     return $this->_lastname;
+  }
+
+  public function getPosts() {
   }
 
   public function getProfileImage() {
@@ -152,11 +161,52 @@ class User {
     return $users;
   }
 
-  public function post($id, $message) {
+  public static function getUsersByMerchant($id, $count = 20, $index = "0", $order = "creation", $direction = "ASC") {
+    $users = array();
+    $query = sprintf("SELECT users.id,email,firstname,lastname,creation,roles.role as role FROM users JOIN roles ON users.role=roles.id WHERE merchant_id='%s' ORDER BY %s %s LIMIT %s,%s",
+      mysql_real_escape_string($id),
+      mysql_real_escape_string($order),
+      mysql_real_escape_string($direction),
+      mysql_real_escape_string($index),
+      mysql_real_escape_string($count));
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($users, $row);
+    }
+    return $users;
+  }
+
+  public function login($email, $password) {
+    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,password,profile_img,city,state,merchant_id,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
+      mysql_real_escape_string($email),
+      mysql_real_escape_string($password));
+    $query = mysql_query($query);
+    if (mysql_num_rows($query) > 0) {
+      $row = mysql_fetch_assoc($query);
+      $this->_id = $row['id'];
+      $this->_isloggedin = true;
+      $this->set($row);
+      $this->setFollowers();
+      return true;
+    } else {
+      $this->_isloggedin = false;
+      return false;
+    }
+  }
+
+  public function post($id, $msg) {
     $query = sprintf("INSERT INTO posts SET user_id='%s', poster_id='%s', message='%s', status='1', creation='%s'",
       mysql_real_escape_string($id),
       mysql_real_escape_string($this->_id),
-      mysql_real_escape_string($message),
+      mysql_real_escape_string($msg),
+      mysql_real_escape_string(time()));
+    mysql_query($query);
+  }
+
+  public function redeem($id) {
+    $query = sprintf("INSERT INTO redemptions SET user_id='%s', livechatter_id='%s', creation='%s'",
+      mysql_real_escape_string($this->_id),
+      mysql_real_escape_string($id),
       mysql_real_escape_string(time()));
     mysql_query($query);
   }
@@ -184,6 +234,7 @@ class User {
         mysql_real_escape_string($this->_id));
       $query = mysql_query($query);
       $data = mysql_fetch_assoc($query);
+      $this->setFollowers();
     }
     $this->_id = $data['id'];
     $this->_isloggedin = true;
@@ -219,6 +270,19 @@ class User {
     $this->_firstname = $firstname;
   }
 
+  public function setFollowers($followers = null) {
+    if ($followers) {
+      $this->_followers = $followers;
+    } else {
+      $query = sprintf("SELECT type,followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id WHERE follower_id='%s' ORDER BY RAND() LIMIT 8",
+        mysql_real_escape_string($this->_id));
+      $query = mysql_query($query);
+      while ($row = mysql_fetch_assoc($query)) {
+        array_push($this->_followers, $row);
+      }
+    }
+  }
+
   public function setGmtOffset($gmtoffset) {
     $this->_gmtoffset = $gmtoffset;
   }
@@ -250,11 +314,17 @@ class User {
   }
 
   public function unfollow($id) {
-    $query = sprintf("DELETE FROM followers WHERE follower_id='%s', followee_id='%s'",
+    $query = sprintf("DELETE FROM followers WHERE follower_id='%s' AND followee_id='%s'",
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($id),
       mysql_real_escape_string(time()));
     $query = mysql_query($query);
+    for ($i = 0; $i < count($this->_followers); $i++) {
+      if ($this->_followers[$i]['followee_id'] === $id) {
+        array_splice($this->_followers, $i, 1);
+        break;
+      }
+    }
   }
 
   public function update($id, $email, $password, $firstname, $lastname) {
@@ -267,13 +337,13 @@ class User {
     mysql_query($query);
   }
 
-  public static function validate($email, $password1, $password2, $firstname, $lastname, $role = 1, $fields = null) {
+  public static function validate($data, $role = 1, $fields = null) {
     $errors = array();
-    if ($firstname === "" && !($fields)) { $errors[] = "You must enter a first name."; }
-    if ($lastname === "" && !($fields)) { $errors[] = "You must enter a last name."; }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !($fields)) { $errors[] = "You must enter a valid email."; }
-    if (strlen($password1) < 6 && !($fields)) { $errors[] = "The password must be at least 6 characters."; }
-    if ($password1 != $password2 && !($fields)) { $errors[] = "The passwords must match."; }
+    if ($data['firstname'] === "" && !($fields)) { $errors[] = "You must enter a first name."; }
+    if ($data['lastname'] === "" && !($fields)) { $errors[] = "You must enter a last name."; }
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL) && !($fields)) { $errors[] = "You must enter a valid email."; }
+    if (strlen($data['password1']) < 6 && !($fields)) { $errors[] = "The password must be at least 6 characters."; }
+    if ($data['password1'] != $data['password2'] && !($fields)) { $errors[] = "The passwords must match."; }
     if ($role === "null" && !($fields)) { $errors[] = "You must select a role."; }
     return $errors;
   }

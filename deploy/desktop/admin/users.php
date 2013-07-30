@@ -22,7 +22,11 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           <th>&nbsp;</th>
         </tr>
         <?php
-        $users = User::getUsers();
+        if ($user->getRole() === "administrator") {
+          $users = User::getUsers();
+        } else {
+          $users = User::getUsersByMerchant($merchant->getId());
+        }
         $bgclass = array("odd","even");
         $count = 0;
         foreach ($users as $u) {
@@ -51,11 +55,13 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
       break;
     case "add":
     case "edit":
+      $euser = new User();
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        $data = $_POST;
         if ($action === "add") {
-          $errors = User::validate($_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
+          $errors = User::validate($data, $_POST['role']);
           if (count($errors) === 0) {
-            User::add($_POST['email'], $_POST['password1'], $_POST['firstname'], $_POST['lastname'], $_POST['role']);
+            User::add($data, $_POST['role']);
             echo "<div class=\"success\"><i class=\"icon-ok\"></i> User saved successfully.<br /><a href=\"?p=users\">Click here if you are done editing</a></div>";
           } else {
             echo "<div class=\"error\">";
@@ -65,8 +71,11 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
             echo "</div>";
           }
         } else if ($action === "edit") {
-          $u = new User($_GET['id']);
+          $euser = new User($_GET['id']);
         }
+      }
+      if ($action === "edit") {
+        $euser = new User($_GET['id']);
       }
   ?>
       <h1><?php echo ucwords($action); ?> User</h1>
@@ -77,15 +86,15 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           </tr>
           <tr>
             <td class="edit-label">First Name</td>
-            <td class="edit-field"><input type="text" name="firstname" value="<?php echo $_POST['firstname'] ? $_POST['firstname'] : $user->getFirstName(); ?>" /></td>
+            <td class="edit-field"><input type="text" name="firstname" value="<?php echo $_POST['firstname'] ? $_POST['firstname'] : $euser->getFirstName(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Last Name</td>
-            <td class="edit-field"><input type="text" name="lastname" value="<?php echo $_POST['lastname'] ? $_POST['lastname'] : $user->getLastName(); ?>" /></td>
+            <td class="edit-field"><input type="text" name="lastname" value="<?php echo $_POST['lastname'] ? $_POST['lastname'] : $euser->getLastName(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Email</td>
-            <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : $user->getEmail(); ?>" /></td>
+            <td class="edit-field"><input type="text" name="email" value="<?php echo $_POST['email'] ? $_POST['email'] : $euser->getEmail(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-label">Password</td>
@@ -117,7 +126,10 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                 <?php
                 $roles = getRoles();
                 foreach ($roles as $role) {
-                  echo "<option value=\"" . $role['id'] . "\">" . ucwords(preg_replace('/_/', " ", $role['role'])) . "</option>";
+                  echo "<option value=\"" . $role['id'] . "\"";
+                  $selection = $_POST['role'] ? $_POST['role'] : $euser->getRole();
+                  if ($selection === $role['role']) { echo " selected"; }
+                  echo ">" . ucwords(preg_replace('/_/', " ", $role['role'])) . "</option>";
                 }
                 ?>
               </select>

@@ -1,6 +1,6 @@
       <hr>
       <div class="footer">
-        <p style="margin: 0;"><a href="/terms">Terms of Service</a> &bull; <a href="/privacy">Privacy Policy</a> &bull; <a href="/sitemap">Site Map</a></p>
+        <p style="margin: 0;"><!--<a href="/terms">Terms of Service</a> &bull; --><a href="/privacy">Privacy Policy</a><!-- &bull; <a href="/sitemap">Site Map</a>--></p>
         <p>&copy; <?php echo date("Y"); ?> <a href="http://www.fancychatter.com">FancyChatter.com</a> All Rights Reserved.</p>
       </div>
     <div class="dialog" id="dialog">
@@ -13,7 +13,7 @@
     <script src="/js/alerts.js"></script>
     <script src="/js/chitchat.js"></script>
     <script src="/js/constants.js"></script>
-    <script src="/js/dialog.js"></script>
+    <script src="/js/dialog<?php if (B2B) { echo "-b2b"; } ?>.js"></script>
     <script src="/js/maps.js"></script>
     <script src="/js/livechatter.js"></script>
     <script src="/js/profile.js"></script>

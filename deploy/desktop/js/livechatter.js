@@ -31,6 +31,14 @@ var livechatter = {
       }
     });
   },
+  redeem: function(id) {
+    ajax.get('api.php', '&a=redeem&id=' + id, function(response) {
+      if (response.result === 'success') {
+        $('#redeem-' + id).remove();
+        alert('You have redeemed this LiveChatter! It has been posted to your profile.');
+      }
+    });
+  },
   search : function() {
     if ($('#where').val() === '' || $('#what').val() === 'null' || $('#distance').val() === 'null') {
       alert('Make sure all search fields have been filled out');

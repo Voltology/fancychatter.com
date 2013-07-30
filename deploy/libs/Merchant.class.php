@@ -17,6 +17,8 @@ class Merchant {
   private $_longitude;
   private $_creation;
 
+  private $_followers = array();
+
   function __construct($id = null) {
     if ($id) {
       $this->_id = $id;
@@ -24,18 +26,19 @@ class Merchant {
     }
   }
 
-  public function add($name, $category, $logo, $latitude, $longitude, $address1, $address2, $city, $state, $zipcode) {
-    $query = sprintf("INSERT INTO merchants SET name='%s', category_id='%s', logo='%s', latitude='%s', longitude='%s', address1='%s', address2='%s', city='%s', state='%s', zipcode='%s', creation='%s'",
-      mysql_real_escape_string($name),
-      mysql_real_escape_string($category),
-      mysql_real_escape_string($logo),
-      mysql_real_escape_string($latitude),
-      mysql_real_escape_string($longitude),
-      mysql_real_escape_string($address1),
-      mysql_real_escape_string($address2),
-      mysql_real_escape_string($city),
-      mysql_real_escape_string($state),
-      mysql_real_escape_string($zipcode),
+  public function add($data) {
+    $query = sprintf("INSERT INTO merchants SET name='%s', category_id='%s', logo='%s', latitude='%s', longitude='%s', address1='%s', address2='%s', city='%s', state='%s', zipcode='%s', phone='%s', creation='%s'",
+      mysql_real_escape_string($data['name']),
+      mysql_real_escape_string($data['category']),
+      mysql_real_escape_string($data['logo']),
+      mysql_real_escape_string($data['latitude']),
+      mysql_real_escape_string($data['longitude']),
+      mysql_real_escape_string($data['address1']),
+      mysql_real_escape_string($data['address2']),
+      mysql_real_escape_string($data['city']),
+      mysql_real_escape_string($data['state']),
+      mysql_real_escape_string($data['zipcode']),
+      mysql_real_escape_string($data['phone']),
       mysql_real_escape_string(time()));
     mysql_query($query);
     return mysql_insert_id();
@@ -55,6 +58,10 @@ class Merchant {
     return $this->_address2;
   }
 
+  public function getCategory() {
+    return $this->_category;
+  }
+
   public function getCity() {
     return $this->_city;
   }
@@ -71,8 +78,19 @@ class Merchant {
     return $this->_firstname;
   }
 
+  public function getFollowers() {
+    return $this->_followers;
+  }
+
   public function getId() {
     return $this->_id;
+  }
+
+  public function getJSONData() {
+    $query = sprintf("SELECT id,name,logo,address1,address2,city,state,zipcode,phone FROM merchants WHERE merchants.id='%s' LIMIT 1",
+      mysql_real_escape_string($this->_id));
+    $query = mysql_query($query);
+    return mysql_fetch_assoc($query);
   }
 
   public function getLastName() {
@@ -105,6 +123,10 @@ class Merchant {
     return $merchant;
   }
 
+  public function getPhone() {
+    return $this->_phone;
+  }
+
   public function getName() {
     return $this->_name;
   }
@@ -127,7 +149,7 @@ class Merchant {
   }
 
   public function set() {
-    $query = sprintf("SELECT merchants.id,name,merchants.category_id,logo,latitude,longitude,users.firstname,users.lastname,users.email FROM merchants LEFT JOIN users ON users.merchant_id=merchants.id WHERE merchants.id='%s' LIMIT 1",
+    $query = sprintf("SELECT merchants.id,name,merchants.category_id,logo,address1,address2,merchants.city,merchants.state,zipcode,latitude,longitude,phone,users.firstname,users.lastname,users.email FROM merchants LEFT JOIN users ON users.merchant_id=merchants.id WHERE merchants.id='%s' LIMIT 1",
       mysql_real_escape_string($this->_id));
     $query = mysql_query($query);
     if (mysql_num_rows($query) > 0) {
@@ -135,8 +157,14 @@ class Merchant {
       $this->_name = $merchant['name'];
       $this->_category= $merchant['category_id'];
       $this->_firstname = $merchant['firstname'];
-      $this->_lastname= $merchant['lastname'];
-      $this->_email= $merchant['email'];
+      $this->_lastname = $merchant['lastname'];
+      $this->_email = $merchant['email'];
+      $this->_address1 = $merchant['address1'];
+      $this->_address2 = $merchant['address2'];
+      $this->_city = $merchant['city'];
+      $this->_state = $merchant['state'];
+      $this->_zipcode = $merchant['zipcode'];
+      $this->_phone = $merchant['phone'];
       $this->_latitude = $merchant['latitude'];
       $this->_longitude = $merchant['longitude'];
       $this->_logo = $merchant['logo'];
@@ -163,23 +191,30 @@ class Merchant {
     $this->_name = $name;
   }
 
-  public function update($name, $latitude, $longitude) {
-    $query = sprintf("UPDATE merchant SET email='%s', password='%s', firstname='%s', lastname='%s' WHERE id='%s'",
-      mysql_real_escape_string($email),
-      mysql_real_escape_string(md5($password)),
-      mysql_real_escape_string($firstname),
-      mysql_real_escape_string($lastname),
-      mysql_real_escape_string($id));
+  public function update($data) {
+    $query = sprintf("UPDATE merchants SET name='%s', category_id='%s', logo='%s', latitude='%s', longitude='%s', address1='%s', address2='%s', city='%s', state='%s', zipcode='%s', phone='%s' WHERE id='%s'",
+      mysql_real_escape_string($data['name']),
+      mysql_real_escape_string($data['category']),
+      mysql_real_escape_string($data['logo']),
+      mysql_real_escape_string($data['latitude']),
+      mysql_real_escape_string($data['longitude']),
+      mysql_real_escape_string($data['address1']),
+      mysql_real_escape_string($data['address2']),
+      mysql_real_escape_string($data['city']),
+      mysql_real_escape_string($data['state']),
+      mysql_real_escape_string($data['zipcode']),
+      mysql_real_escape_string($data['phone']),
+      mysql_real_escape_string($this->_id));
     mysql_query($query);
   }
 
-  public function validate($action, $name, $logo, $firstname, $lastname, $email, $password1, $password2, $role) {
+  public function validate($action, $data) {
     $errors = array();
-    if ($firstname === "") { $errors[] = "You must enter a first name."; }
-    if ($lastname === "") { $errors[] = "You must enter a last name."; }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL) && $action === "add") { $errors[] = "You must enter a valid email."; }
-    if (strlen($password1) < 6 && $action === "add") { $errors[] = "The password must be at least 6 characters."; }
-    if ($password1 != $password2 && $action === "add") { $errors[] = "The passwords must match."; }
+    if ($data['firstname'] === "") { $errors[] = "You must enter a first name."; }
+    if ($data['lastname'] === "") { $errors[] = "You must enter a last name."; }
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL) && $action === "add") { $errors[] = "You must enter a valid email."; }
+    if (strlen($data['password1']) < 6 && $action === "add") { $errors[] = "The password must be at least 6 characters."; }
+    if ($data['password1'] != $data['password2'] && $action === "add") { $errors[] = "The passwords must match."; }
     return $errors;
   }
 }

@@ -88,12 +88,12 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
             <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator"))) { ?>
               <div class="<?php if ($page === "merchants") { echo "active"; } ?>menuitem"><a href="?p=merchants">Merchants</a></div>
-              <div class="<?php if ($page === "applications") { echo "active"; } ?>menuitem"><a href="?p=applications">Applications</a></div>
+              <!--<div class="<?php if ($page === "applications") { echo "active"; } ?>menuitem"><a href="?p=applications">Applications</a></div>-->
             <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator", "merchant_admin"))) { ?>
               <div class="<?php if ($page === "users") { echo "active"; } ?>menuitem"><a href="?p=users">Users</a></div>
             <?php } ?>
-            <div class="<?php if ($page === "messages") { echo "active"; } ?>menuitem"><a href="?p=messages">Messages <span class="green">(1)</span></a></div>
+            <!--<div class="<?php if ($page === "messages") { echo "active"; } ?>menuitem"><a href="?p=messages">Messages <span class="green">(1)</span></a></div>-->
             <div class="<?php if ($page === "settings") { echo "active"; } ?>menuitem"><a href="?p=settings">Settings</a></div>
             <a href="/logout.php" class="logout">Log Out</a>
           <?php

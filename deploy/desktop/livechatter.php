@@ -55,31 +55,42 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
     <div class="results" style="margin-top: 12px;">
       <div style="font-size: 14px">Found <strong><?php echo count($livechatters); ?></strong> results searching for <strong><?php echo getCategoryById($what); ?></strong> within <strong><?php echo $distance; ?></strong> miles of <strong><?php echo $where; ?></strong>!</div>
       <div style="font-size: 14px; margin-bottom: 5px;">Didn't find what you were looking for?  Click the button below to send a ChitChat!</div>
+      <input type="hidden" id="hidden-location" value="<?php echo $where; ?>" />
+      <input type="hidden" id="hidden-category" value="<?php echo $what; ?>" />
+      <input type="hidden" id="hidden-distance" value="<?php echo $distance; ?>" />
       <div style="margin-bottom: 8px;"><a href="#" class="btn btn-mini btn-success search-btn" style="margin: 0 auto;" onclick="dialog.open('chitchat', 'ChitChat', 340, 480);"><i class="icon-reply" style="vertical-align: bottom;"></i> Send ChitChat</a></div>
-      <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0;">
-        <li class="logo" style="display: inline-block; width: 70px; margin-right: 10px; overflow-hidden;"></li>
-        <li class="body" style="display: inline-block; width: 70%; vertical-align: top;"><strong>Business Name/Message</strong></li>
-        <li class="distance" style="display: inline-block; vertical-align: top;"><strong>Distance</strong></li>
-      </ul>
+      <table cellpadding="8" cellspacing="2" border="0" width="100%" style="border: 1px solid #ccc; padding: 6px; margin: 0; border-radius: 8px 8px 0 0;">
+        <tr style="border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0;"><th width="80"></th><th align="left">Business Name/Message</th><th align="left">Distance</th></tr>
       <?php
+      $count = 0;
       foreach ($livechatters as $livechatter) {
       ?>
-      <ul class="livechatter" style="position: relative; min-height: 80px; border: 1px solid #ccc; padding: 6px; background-color: #f9f9f9; margin: 0;">
-        <li class="logo" style="display: inline-block; width: 70px; border: 1px solid #ccc; margin-right: 10px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><img src="/uploads/logos/<?php if ($livechatter['logo'] == "") { echo "default.png"; } else { echo $livechatter['logo']; } ?>" /></a></li>
-        <li class="body" style="display: inline-block; width: 70%; vertical-align: top;"><strong><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong><br /><?php echo $livechatter['body']; ?></li>
-        <li class="distance" style="display: inline-block; vertical-align: top;"><?php echo round($livechatter['distance'], 2); ?> miles</li>
-        <li style="vertical-align: top;"><button class="btn btn-mini btn-success search-btn">I want this</button></li>
-      </ul>
+        <tr style="background-color: #fff;">
+          <td valign="top">
+            <div style="overflow: hidden; width: 70px;">
+              <a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>">
+                <img src="/uploads/logos/<?php if ($livechatter['logo'] == "") { echo "default.png"; } else { echo $livechatter['logo']; } ?>" style="width: 100%;" />
+              </a>
+            </div>
+          </td>
+          <td valign="top">
+            <strong><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong><br /><?php echo $livechatter['body']; ?>
+          </td>
+          <td valign="top">
+            <?php echo round($livechatter['distance'], 2); ?> miles
+          </td>
+        </tr>
       <?php
       }
+      ?>
+      <?
       if (count($livechatter) === 0) {
       ?>
-      <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #f9f9f9; margin: 0;">
-        <li class="body" style="display: inline-block; width: 100%; text-align: center;"><strong>No LiveChatter found</strong></li>
-      </ul>
+      <td colspan="3" align="center"><strong>There are no LiveChatters that match this search.</strong></td>
       <?php
       }
       ?>
+      </table>
       <div style="font-size: 14px;">Didn't find what you were looking for?  <a href="#" onclick="dialog.open('chitchat', 'ChitChat', 340, 480);">Click here</a> to send a ChitChat</div>
     </div>
   </div>

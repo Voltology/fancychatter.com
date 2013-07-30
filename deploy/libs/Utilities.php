@@ -89,11 +89,20 @@ function getStates() {
 
 function getUsersAndMerchants($search) {
   $results = array();
-  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,UPPER(state) AS state FROM users WHERE firstname LIKE '%s%%' OR lastname LIKE '%s%%' ORDER BY id ASC",
+  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,UPPER(state) AS state FROM users WHERE (firstname LIKE '%s%%' OR lastname LIKE '%s%%') AND role='1' ORDER BY id ASC",
     mysql_real_escape_string($search),
     mysql_real_escape_string($search));
   $query = mysql_query($query);
   while ($row = mysql_fetch_assoc($query)) {
+    $row['type'] = 'user';
+    array_push($results, $row);
+  }
+  $query = sprintf("SELECT id,name,logo,city,UPPER(state) AS state FROM merchants WHERE name LIKE '%s%%' ORDER BY id ASC",
+    mysql_real_escape_string($search),
+    mysql_real_escape_string($search));
+  $query = mysql_query($query);
+  while ($row = mysql_fetch_assoc($query)) {
+    $row['type'] = 'merchant';
     array_push($results, $row);
   }
   return $results;

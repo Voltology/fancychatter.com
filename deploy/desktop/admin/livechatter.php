@@ -12,7 +12,11 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
       $id = $_POST['id'] ? $_POST['id'] : $_GET['id'];
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $lc = new LiveChatter($id, $user->getMerchantId());
-        $start = jQueryTimeToUnixTime($_POST['starttime']);
+        if ($_POST['now'] == "true") {
+          $start = time();
+        } else {
+          $start = jQueryTimeToUnixTime($_POST['starttime']);
+        }
         $end = jQueryTimeToUnixTime($_POST['endtime']);
         $errors = LiveChatter::validate($_POST['body'], $start, $end);
         if ($action === "add") {

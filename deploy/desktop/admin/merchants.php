@@ -14,7 +14,6 @@ if (in_array($user->getRole(), array("administrator"))) {
         <tr class="tableheader">
           <th>#</th>
           <th><a href="">Merchant</a></th>
-          <th><a href="">Contat Email</a></th>
           <th><a href="">Address</a></th>
           <th><a href="">City</a></th>
           <th><a href="">State</a></th>
@@ -32,14 +31,13 @@ if (in_array($user->getRole(), array("administrator"))) {
         <tr class="<?php echo $bgclass[$count % 2]; ?>">
           <td valign="top"><?php echo ($count + 1); ?></td>
           <td valign="top"><?php echo $merch['name']; ?></td>
-          <td valign="top"><?php echo "<a href=\"mailto:" . $merch['contact_email'] . "\">" . $merch['contact_email'] . "</a>"; ?></td>
           <td>
             <?php
             echo $merch['address1'];
             if ($merch['address2']) { echo "<br />" . $merch['address2']; }
             ?></td>
           <td valign="top"><?php echo $merch['city']; ?></td>
-          <td valign="top"><?php echo $merch['state']; ?></td>
+          <td valign="top"><?php echo strtoupper($merch['state']); ?></td>
           <td valign="top"><?php echo ucwords($merch['zipcode']); ?></td>
           <td valign="top"><?php echo ucwords($merch['phone']); ?></td>
           <td valign="top"><?php echo date("F j, Y, g:i a", $merch['creation']); ?></td>
@@ -64,13 +62,14 @@ if (in_array($user->getRole(), array("administrator"))) {
       $merch = new Merchant($_GET['id']);
       if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if ($action === "add") {
+          $data = $_POST;
           if (!empty($_FILES['logo']['name'])) {
             $filename = slugify($_POST['name']);
-            $file = uploadImage($_FILES['logo'], $filename, $logo_path);
+            $data['logo'] = uploadImage($_FILES['logo'], $filename, $logo_path);
           }
-          $errors = $merch->validate($action, $_POST['name'], $file, $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
+          $errors = $merch->validate($action, $data);
           if (count($errors) === 0) {
-            $mid = $merch->add($_POST['name'], $_POST['category'], $file, $_POST['latitude'], $_POST['longitude'], $_POST['address1'], $_POST['address2'], $_POST['city'], $_POST['state'], $_POST['zipcode']);
+            $mid = $merch->add($data);
             $uid = User::add($_POST['email'], $_POST['password1'], $_POST['firstname'], "merchant_admin");
             echo "<div class=\"success\"><i class=\"icon-ok\"></i> Merchant added successfully.</div>";
           } else {
@@ -81,16 +80,14 @@ if (in_array($user->getRole(), array("administrator"))) {
             echo "</div>";
           }
         } else if ($action === "edit") {
+          $data = $_POST;
           if (!empty($_FILES['logo']['name'])) {
             $filename = slugify($_POST['name']);
-            $file = uploadImage($_FILES['logo'], $filename, $logo_path);
+            $data['logo'] = uploadImage($_FILES['logo'], $filename, $logo_path);
           }
-          $errors = $merch->validate($action, $_POST['name'], $file, $_POST['firstname'], $_POST['lastname'], $_POST['email'], $_POST['password1'], $_POST['password2'], $_POST['role']);
+          $errors = $merch->validate($action, $data);
           if (count($errors) === 0) {
-            $merch->setName($_POST['name']);
-            $merch->setCategory($_POST['category']);
-            $merch->setLogo($file);
-            $merch->save();
+            $merch->update($data);
             echo "<div class=\"success\"><i class=\"icon-ok\"></i> Merchant saved successfully.</div>";
           } else {
             echo "<div class=\"error\">";
@@ -116,8 +113,8 @@ if (in_array($user->getRole(), array("administrator"))) {
             <td class="edit-label">Logo</td>
             <td class="edit-field">
               <input type="file" name="logo" /><br />
-              <?php if ($merch->getLogo()) { ?>
-              <img src="<?php echo $logo_path . $merch->getLogo(); ?>" height="100" />
+              <?php if ($merch->getLogo() || $data['logo']) { ?>
+              <img src="<?php echo $logo_path;  echo $data['logo'] ? $data['logo'] : $merch->getLogo(); ?>" height="100" />
               <?php } ?>
             </td>
           </tr>
@@ -128,7 +125,10 @@ if (in_array($user->getRole(), array("administrator"))) {
                 <?php
                 $categories = getCategories();
                 foreach ($categories as $category) {
-                  echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
+                  $cat = $_POST['category'] ? $_POST['category'] : $merch->getCategory();
+                  echo "<option value=\"" . $category['id'] . "\"";
+                  if ($cat === $category['id']) { echo " selected"; }
+                  echo ">" . $category['category'] . "</option>";
                 }
                 ?>
               </select>
@@ -179,10 +179,10 @@ if (in_array($user->getRole(), array("administrator"))) {
                 <option>Select State</option>
                 <?php
                 $states = getStates();
-                var_dump($states);
                 foreach ($states as $state) {
                   echo "<option value=\"" . $state['state'] . "\"";
-                  if ($merch->getState() === $state['state']) { echo " selected"; }
+                  $selection = $data['state'] ? $data['state'] : $merch->getState();
+                  if ($selection === $state['state']) { echo " selected"; }
                   echo ">" . strtoupper($state['state']) . "</option>";
                 }
                 ?>
@@ -190,7 +190,7 @@ if (in_array($user->getRole(), array("administrator"))) {
             </td>
           </tr>
           <tr>
-            <td class="edit-label">Zip</td>
+            <td class="edit-label">Zip Code</td>
             <td class="edit-field"><input type="text" name="zipcode" value="<?php echo $_POST['zipcode'] ? $_POST['zipcode'] : $merch->getZipCode(); ?>" /></td>
           </tr>
           <!--
@@ -205,7 +205,15 @@ if (in_array($user->getRole(), array("administrator"))) {
           -->
           <tr>
             <td class="edit-label">Phone</td>
-            <td class="edit-field"><input type="text" name="phone" value="<?php echo $_POST['phone'] ? $_POST['phone'] : ""; ?>" /></td>
+            <td class="edit-field"><input type="text" name="phone" value="<?php echo $_POST['phone'] ? $_POST['phone'] : $merch->getPhone(); ?>" /></td>
+          </tr>
+          <tr>
+            <td class="edit-label">Latitude</td>
+            <td class="edit-field"><input type="text" name="latitude" value="<?php echo $_POST['latitude'] ? $_POST['latitude'] : $merch->getLatitude(); ?>" /></td>
+          </tr>
+          <tr>
+            <td class="edit-label">Longitude</td>
+            <td class="edit-field"><input type="text" name="longitude" value="<?php echo $_POST['longitude'] ? $_POST['longitude'] : $merch->getLongitude(); ?>" /></td>
           </tr>
           <tr>
             <td class="edit-field" colspan="2" align="right">

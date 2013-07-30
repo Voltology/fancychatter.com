@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<link rel="stylesheet" href="css/styles.css" />
+<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/livechatter.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+<script>
+$(document).ready(function() {
+  
+});
+</script>
+</head>
+<body>
+<nav class="main-nav" id="main-nav">
+  <a href="search.html">LiveChatter</a>
+  <a href="settings">Settings</a>
+  <a href="login.html" class="transition">Log Out</a>
+</nav>
+<div class="page-wrap" onclick="document.location='#'">
+  <header>
+    <a href="#main-nav" class="open-menu">Open</a>
+    <a href="#" class="close-menu">Close</a>
+  </header>
+  <h2>Sign Up</h2>
+  <label for="firstname">First Name</label>
+  <input type="text" name="firstname" id="firstname" />
+  <label for="lastname">Last Name</label>
+  <input type="text" name="lasttname" id="lastname" />
+  <label for="email">Email</label>
+  <input type="text" name="email" id="email" />
+  <label for="password1">Password</label>
+  <input type="password" name="password1" id="password1" />
+  <label for="password2">Verify Password</label>
+  <input type="password" name="password2" id="password2" />
+  <input type="submit" value="Sign Up!" onclick="user.signup();" />
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<link rel="stylesheet" href="css/styles.css" />
+<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/livechatter.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+<script>
+$(document).ready(function() {
+  
+});
+</script>
+</head>
+<body id="livechatter">
+<nav class="main-nav" id="main-nav">
+  <a href="search.html">LiveChatter</a>
+  <a href="settings">Settings</a>
+  <a href="login.html" class="transition">Log Out</a>
+</nav>
+<div class="page-wrap" onclick="document.location='#'">
+  <header>
+    <a href="#main-nav" class="button open-menu">Open</a>
+    <a href="#" class="close-menu">Close</a>
+  </header>
+  <div id="livechatter-search">
+    <h2>Search LiveChatter</h2>
+    <label for="where">Where are you?</label>
+    <input type="text" name="where" id="where" placeholder="Enter zipcode or City, State" />
+    <label for="what">What are you looking for?</label>
+    <select name="what" id="what">
+      <option>Select Category</option>
+      <option value="1">Automotive</option><option value="2">Community</option><option value="3">Dental</option><option value="4">Grocery</option><option value="5">Home & Garden</option><option value="6">Restaurants</option><option value="7">Sports & Outdoor</option>        
+    </select>
+    <label for="what">How far do you want to go?</label>
+    <select name="distance" id="distance">
+      <option>Select Distance</option>
+      <option value="5">5 miles</option>
+      <option value="10">10 miles</option>
+      <option value="15">15 miles</option>
+      <option value="20">20 miles</option>
+      <option value="25">25 miles</option>
+    </select>
+    <input type="submit" value="Search" onclick="livechatter.search()" />
+  </div>
+  <div id="livechatter-results" style="display: none;">
+    <h2>LiveChatter Results</h2>
+    <h3 id="livechatter-info"></h3>
+    <table cellpadding="10" cellspacing="2" border="0" width="100%" id="livechatter-results-table">
+    </table>
+  </div>
+</div>
+</body>
+</html>

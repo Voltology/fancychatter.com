@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<link rel="stylesheet" href="css/styles.css" />
+<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/livechatter.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+<script>
+$(document).ready(function() {
+  
+});
+</script>
+</head>
+<body>
+
+<nav class="main-nav" id="main-nav">
+  <a href="search.html">LiveChatter</a>
+  <a href="settings">Settings</a>
+  <a href="login.html" class="transition">Log Out</a>
+</nav>
+<div class="page-wrap" onclick="document.location='#'">
+  <header>
+    <a href="#main-nav" class="button open-menu">Open</a>
+    <a href="#" class="close-menu">Close</a>
+  </header>
+  <label for="where">Where are you?</label>
+  <input type="text" name="where" id="where" />
+  <label for="what">What are you looking for?</label>
+  <select name="what" id="what">
+  </select>
+  <label for="what">How far do you want to go?</label>
+  <select name="distance" id="distance">
+    <option>5 miles</option>
+    <option>10 miles</option>
+    <option>15 miles</option>
+    <option>20 miles</option>
+    <option>25 miles</option>
+  </select>
+  <input type="submit" value="Search" onclick="transition('search.html');" />
+</div>
+</body>
+</html>

@@ -36,7 +36,7 @@ include("header.php");
           <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
           <?php } ?>
         </select>
-        <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+        <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
       </form>
     </div>
 </div>
