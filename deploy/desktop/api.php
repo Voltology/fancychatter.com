@@ -6,6 +6,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
   $json['result'] = "success";
   $action = $_REQUEST['a'] ? $_REQUEST['a'] : null;
   switch($action) {
+    case "activatesearch":
+      $user->activateSearch($_REQUEST['id']);
+      break;
     case "autocomplete-profile":
       $json['results'] = getUsersAndMerchants($_REQUEST['search']);
       break;
@@ -87,6 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $json['logout'] = true;
       }
       break;
+    case "inactivatesearch":
+      $user->inactivateSearch($_REQUEST['id']);
+      break;
     case "livechatter":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
         $json['category_name'] = getCategoryById($_REQUEST['what']);
@@ -152,9 +158,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $data = $_POST;
       $errors = $user->validate($data);
       if (count($errors) === 0) {
-        setcookie("email", $_REQUEST['email']);
-        setcookie("password", md5($_REQUEST['password1']));
-        $id = $user->add($_REQUEST['email'], $_REQUEST['password1'], $_REQUEST['firstname'], $_REQUEST['lastname'], 1);
+        setcookie("email", $_POST['email']);
+        setcookie("password", md5($_POST['password1']));
+        $id = $user->add($data, 1);
         $user->setId($id);
         $user->set();
       } else {

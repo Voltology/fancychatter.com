@@ -25,10 +25,17 @@ class User {
     }
   }
 
+  public function activateSearch($id) {
+    $query = sprintf("UPDATE searches SET active='1' WHERE id='%s' AND user_id='%s'",
+      mysql_real_escape_string($id),
+      mysql_real_escape_string($this->_id));
+    mysql_query($query);
+  }
+
   public function add($data, $role = 1) {
     $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s', creation='%s'",
       mysql_real_escape_string($data['email']),
-      mysql_real_escape_string(md5($data['password'])),
+      mysql_real_escape_string(md5($data['password1'])),
       mysql_real_escape_string($data['firstname']),
       mysql_real_escape_string($data['lastname']),
       mysql_real_escape_string($role),
@@ -134,7 +141,7 @@ class User {
 
   public function getSavedSearches() {
     $searches = array();
-    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id WHERE searches.user_id='%s' ORDER BY searches.creation DESC LIMIT 5",
+    $query = sprintf("SELECT searches.id,searches.location,searches.category_id,searches.distance,searches.saved,searches.active,searches.creation,livechatter_categories.category AS category FROM searches LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id WHERE searches.user_id='%s' AND searches.saved='1' ORDER BY searches.creation DESC LIMIT 5",
       mysql_real_escape_string($this->_id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
@@ -174,6 +181,13 @@ class User {
       array_push($users, $row);
     }
     return $users;
+  }
+
+  public function inactivateSearch($id) {
+    $query = sprintf("UPDATE searches SET active='0' WHERE id='%s' AND user_id='%s'",
+      mysql_real_escape_string($id),
+      mysql_real_escape_string($this->_id));
+    mysql_query($query);
   }
 
   public function login($email, $password) {
@@ -217,13 +231,14 @@ class User {
     $this->_savequery = null;
   }
 
-  public function saveSearch($location, $category, $distance, $saved = 0) {
-    $query = sprintf("INSERT INTO searches SET user_id='%s', location='%s', category_id='%s', distance='%s', saved='%s', creation='%s'",
+  public function saveSearch($location, $category, $distance, $saved = 0, $active = 0) {
+    $query = sprintf("INSERT INTO searches SET user_id='%s', location='%s', category_id='%s', distance='%s', saved='%s', active='%s', creation='%s'",
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($location),
       mysql_real_escape_string($category),
       mysql_real_escape_string($distance),
       mysql_real_escape_string($saved),
+      mysql_real_escape_string($active),
       mysql_real_escape_string(time()));
     $query = mysql_query($query);
   }
@@ -339,8 +354,12 @@ class User {
 
   public static function validate($data, $role = 1, $fields = null) {
     $errors = array();
+    $query = sprintf("SELECT id FROM users WHERE email='%s' LIMIT 1",
+      mysql_real_escape_string($data['email']));
+    $query = mysql_query($query);
     if ($data['firstname'] === "" && !($fields)) { $errors[] = "You must enter a first name."; }
     if ($data['lastname'] === "" && !($fields)) { $errors[] = "You must enter a last name."; }
+    if (mysql_num_rows($query) > 0) { $errors[] = "That email address is already in use."; }
     if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL) && !($fields)) { $errors[] = "You must enter a valid email."; }
     if (strlen($data['password1']) < 6 && !($fields)) { $errors[] = "The password must be at least 6 characters."; }
     if ($data['password1'] != $data['password2'] && !($fields)) { $errors[] = "The passwords must match."; }

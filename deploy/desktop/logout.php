@@ -1,6 +1,5 @@
 <?php
-unset($_SESSION['user']);
-unset($_SESSION['merchant']);
+session_destroy();
 setcookie("password");
 header("Location: /");
 ?>

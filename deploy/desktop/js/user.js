@@ -39,6 +39,7 @@ var user = {
   signup : function(email, password1, password2, firstname, lastname) {
     ajax.get('api.php', '&a=signup&email=' + email + '&password1=' + password1 + '&password2=' + password2 + '&firstname=' + firstname + '&lastname=' + lastname, function(response) {
       if (response.result === 'success') {
+        alert('Thank you for signing up for FancyChatter!');
         if ($('#search-wall').val() === 'true') {
           livechatter.search();
         } else {

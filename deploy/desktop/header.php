@@ -11,7 +11,8 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
     <meta name="description" content="">
     <meta name="author" content="">
 
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/<?php echo JQUERY_VERSION; ?>/jquery.min.js"></script>
+		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/<?php echo JQUERY_VERSION; ?>/jquery.min.js"></script>-->
+		<script src="/js/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -38,7 +39,7 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
     <div class="container">
       <div class="masthead" style="padding: 4px; 0; border: 1px solid #ccc;">
         <div style="display: inline-block; margin: 5px 5px;"><a href="/"><img src="img/logo.png" width="140" border="0" /></a></div>
-        <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;">
+        <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;" class="hidden-tablet hidden-phone">
           <a href="/">Home</a>&nbsp;&nbsp;|&nbsp;
           <?php if ($user->getIsLoggedIn()) { ?>
             <?php if (in_array($user->getRole(), array("administrator", "user"))) { ?>

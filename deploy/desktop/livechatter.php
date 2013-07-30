@@ -1,17 +1,53 @@
 <?php
 include("header.php");
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-  $user->saveSearch($_POST['where'], $_POST['what'], $_POST['distance'], 1);
+  $user->saveSearch($_POST['where'], $_POST['what'], $_POST['distance'], 1, 1);
 }
 $where = $_POST['where'] ? $_POST['where'] : $_GET['where'];
 $what = $_POST['what'] ? $_POST['what'] : $_GET['what'];
 $distance = $_POST['distance'] ? $_POST['distance'] : $_GET['distance'];
 $livechatters = LiveChatter::search($where, $what, $distance, 20);
 ?>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+        <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
+        <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile (<?php echo Alerts::count($user->getId()); ?>)</a></li>
+        <li<?php if ($page === "about") { echo " class=\"active\""; } ?>><a href="/about">About</a></li>
+        <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="mobile-search hidden-desktop hidden-tablet">
+  <div class="search-container">
+    <label for="where">Where are you?</label>
+    <input type="text" name="where" id="where" placeholder="Enter a Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete();" />
+    <label for="what">What are you looking for?</label>
+    <select name="what" id="what">
+      <option value="null">Select Category</option>
+      <?php
+      $categories = getCategories();
+      foreach ($categories as $category) {
+        echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
+      }
+      ?>
+    </select>
+    <label for="distanc">How far do you want to go?</label>
+    <select name="distance" id="distance">
+      <option value="null">Select Distance</option>
+      <?php for ($i = 5; $i <= 25; $i+=5) { ?>
+      <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
+      <?php } ?>
+    </select>
+    <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+  </div>
+</div>
 <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
-<div class="lead" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
+<div class="lead hidden-phone" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
   <form method="post" action="/livechatter" id="livechatter-search">
-    <input type="text" name="where" id="where" value="<?php echo $where; ?>" style="font-size: 16px; padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
+    <input type="text" name="where" id="where" value="<?php echo $where; ?>" style="padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
     <select name="what" id="what">
       <option value="null">What are you looking for?</option>
       <?php
@@ -33,7 +69,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
   </form>
 </div>
 <div class="row-fluid">
-  <div class="span3">
+  <div class="span3 hidden-phone">
     <ul class="livechatter" style="position: relative; border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 16px 0 0 0; border-radius: 8px 8px 0 0; width: 100%;">
       <li class="saved" style="display: inline-block; width: 100%; margin-right: 10px; font-weight: bold;">My Favorite Five</li>
     </ul>

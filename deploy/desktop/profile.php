@@ -21,6 +21,17 @@ if (!$profile && !$merchant) {
     ChitChat::respond($_POST['cc-id'], $profile->getId(), null, $_POST['body']);
   }
 ?>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+        <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
+        <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile</a></li>
+        <li<?php if ($page === "logout") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 <div class="row-fluid">
   <div class="span4">
     <div class="row-fluid">
@@ -32,7 +43,15 @@ if (!$profile && !$merchant) {
       <div class="span6">
         <div class="profile-data">
           <h4 style="margin: 0;"><?php echo $profile->getFirstName(); ?> <?php echo $profile->getLastName(); ?></h4>
-          <p><?php echo $profile->getCity(); ?>, <?php echo strtoupper($profile->getState()); ?></p>
+          
+          <p>
+            <?php
+            if ($profile->getCity() && $profile->getState()) {
+              echo $profile->getCity(); ?>, <?php echo strtoupper($profile->getState());
+            } else {
+              echo $profile->getCity() . $profile->getState();
+            } ?>
+          </p>
           <?php if (!$id) { ?>
             <?php if ($action === "edit") { ?>
             <p><a href="/profile">Back to Profile</a></p>
@@ -68,19 +87,33 @@ if (!$profile && !$merchant) {
           <h4><?php echo $id ? $profile->getFirstName($profile->getId()) . "'s" : "My"; ?> Favorite Five</h4>
           <?php
           $searches = $profile->getSavedSearches();
+          $count = 0;
           foreach ($searches as $search) {
-            echo "<div class=\"favorite-box\" onclick=\"document.location='/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "'\">";
-            echo "<input type=\"checkbox\" checked />&nbsp;";
-            echo "<a href=\"/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "\"><strong>" . $search['category'] . "</strong><br />Within " . $search['distance'] . " miles of " . $search['location'] . "</a>";
+            echo "<div class=\"favorite-box\">";
+            if ($search['active'] == 1) {
+              echo "<input type=\"checkbox\" id=\"saved-search-" . $search['id'] . "\" onclick=\"profile.inactivatesearch('" . $search['id'] . "')\" checked />&nbsp;";
+            } else {
+              echo "<input type=\"checkbox\" id=\"saved-search-" . $search['id'] . "\" onclick=\"profile.activatesearch('" . $search['id'] . "')\" />&nbsp;";
+            }
+            echo "<a href=\"/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "\"><strong>" . $search['category'] . "</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Within " . $search['distance'] . " miles of " . $search['location'] . "</a>";
             echo "</div>";
+            $count++;
+          }
+          if ($count === 0) {
+            echo "<p>You do not have any saved searches.</p>";
           }
           $following = $profile->getFollowers();
+          $count = 0;
           echo "<h4>Following (" . count($following) . ")</h4>";
           echo "<ul style=\"list-style-type: none; margin: 0 -4px;\">";
           foreach ($following as $follow) {
             echo "<li style=\"display: inline-block; height: 80px; margin: 0 5px; width: 64px;\"><a href=\"/profile?id=" . $follow['followee_id'] . "\"><img src=\"/uploads/profile/" . ($follow['profile_img'] ? $follow['profile_img'] : "default.png") . "\" style=\"width: 100%;\" /></a></li>";
+            $count++;
           }
           echo "</ul>";
+          if ($count === 0) {
+            echo "<p>You are not following anyone.</p>";
+          }
           ?>
         </div>
       </div>
