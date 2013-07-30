@@ -1,23 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Cordova</title>
-<link rel="stylesheet" href="css/styles.css" />
-<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
-<script>
-$(document).ready(function() {
-  setTimeout(function(){
-    $("body").fadeOut(300, redirectPage);
-    function redirectPage() {
-      window.location = 'login.html';
-    }
-  }, 5000);
-});
-</script>
-</head>
-<body>
-  <img src="img/logo.png" style="display: block; margin: 45% auto auto auto;" />
-</body>
+  <title>Cordova</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.cookie.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+  <script>
+  $(document).ready(function() {
+    setTimeout(function(){
+      $("body").fadeOut(300, redirectPage);
+      function redirectPage() {
+        window.location = 'login.html';
+      }
+    }, 5000);
+  });
+  </script>
+  </head>
+  <body>
+    <img src="img/logo.png" style="display: block; margin: 45% auto auto auto;" />
+  </body>
 </html>

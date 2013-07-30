@@ -1,9 +1,12 @@
 var user = {
   login : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=login&email=' + $('#email').val() + '&password=' + $('#password').val(), 'user.login');
+      ajax('http://fancychatter/api.php?a=login-app&email=' + $('#email').val() + '&password=' + $('#password').val(), 'user.login');
     } else {
       if (response.result === 'success') {
+        $.cookie('id', response.id, { expires: 365 });
+        $.cookie('email', response.email, { expires: 365 });
+        $.cookie('password', response.password, { expires: 365 });
         transition('search.html');
       } else {
         var errors = '';
@@ -16,7 +19,7 @@ var user = {
   },
   signup : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=signup&firstname=' + $('#firstname').val() + '&lastname=' + $('#lastname').val() + '&email=' + $('#email').val() + '&password1=' + $('#password1').val() + '&password2=' + $('#password2').val(), 'user.signup');
+      ajax('http://fancychatter/api.php?a=signup&firstname=' + $('#firstname').val() + '&lastname=' + $('#lastname').val() + '&email=' + $('#email').val() + '&password1=' + $('#password1').val() + '&password2=' + $('#password2').val(), 'user.signup');
     } else {
       if (response.result === 'success') {
         alert('Thank you for signing up to FancyChatter!');
@@ -31,4 +34,3 @@ var user = {
     }
   }
 };
-

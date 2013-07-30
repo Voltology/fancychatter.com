@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-html, body { min-height: 100%; }
+html, body { -top: 40px; min-height: 100%; }
 a { text-decoration: none; }
 
 .main-header  a {
@@ -19,35 +19,6 @@ a { text-decoration: none; }
   transition: width 0.2s ease;
 }
 
-.main-nav {
-  position: fixed;
-  top: 0;
-  width: 0;
-  height: 100%;
-  background: #3B3B3B;
-  overflow-y: auto;
-  z-index: 20;
-  transition: width 0.2s ease;
-}
-.main-nav  a {
-    display: block;
-    background: linear-gradient(#3E3E3E, #383838);
-    border-top: 1px solid #484848;
-    border-bottom: 1px solid #2E2E2E;
-    padding: 15px;
-}
-.main-nav a:hover, .main-nav:focus {
-  background: linear-gradient(#484848, #383838);
-}
-.main-nav:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 34px;
-    background: linear-gradient(left, rgba(black, 0), rgba(black, 0.4));
-}
 
 .content {
   padding: 100px 20px 20px 20px;
@@ -57,7 +28,7 @@ a { text-decoration: none; }
 }
 html {
     margin: 0;
-    padding: 0;
+    padding: 46px 0 0 0;
 		font-size: 100%;
 		background-color: #fff;
 		}
@@ -125,7 +96,7 @@ a:focus {
       margin-left: 5%;
       font-size: 24px;
     }
-    h3 {
+    h3,h4 {
       margin-left: 5%;
     }
    input:focus, textarea:focus, select:focus {
@@ -207,11 +178,10 @@ header .button i{
   width: 30px;
   z-index: 5;
 }
-header a:link,a:visited {
-    color: #fff;
-    font-size: 16px;
-		text-decoration: none;
-		}
+#alerts a {
+  color: #000;
+  font-size: 14px;
+}
 #livechatter {
   font-size: 14px;
 }
@@ -229,4 +199,105 @@ header a:link,a:visited {
 }
 #livechatter .livechatter-results-header td {
   border-bottom: 1px solid #ccc;
+}
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: #3B3B3B;
+  overflow-y: auto;
+  z-index: 20;
+  transition: width 0.2s ease;
+}
+.main-nav  a {
+    color: #fff !important;
+    display: block;
+    background: linear-gradient(#3E3E3E, #383838);
+    border-top: 1px solid #484848;
+    border-bottom: 1px solid #2E2E2E;
+    padding: 15px;
+}
+.main-nav a:hover, .main-nav:focus {
+  background: linear-gradient(#484848, #383838);
+}
+.main-nav:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 34px;
+    background: linear-gradient(left, rgba(black, 0), rgba(black, 0.4));
+}
+.dialog {
+  background-color: #eee;
+  border: 1px solid #666;
+  border-radius: 6px 6px;
+  display: none;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  z-index: 10001;
+  -moz-box-shadow: 0px 0px 6px #000;
+  -webkit-box-shadow: 0px 0px 6px #000;
+  box-shadow: 0px 0px 6px #000;
+}
+.dialog-body {
+  padding: 4px;
+}
+.dialog-body input, textarea {
+  margin: 4px;
+  width: 290px;
+}
+.dialog-body input[type='hidden'] {
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+.dialog-body p {
+  font-size: 12px;
+}
+.dialog-body textarea {
+  height: 100px;
+  width: 100%;
+}
+.dialog-body button {
+  margin: 4px;
+}
+.dialog-blanket {
+  background-color: #333;
+  background-color: gray;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 25px, rgba(255,255,255,.5) 25px, rgba(255,255,255,.5) 50px);
+  display: none;
+  height: 100%;
+  left: 0px;
+  opacity: .3;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 10000;
+}
+.dialog-close {
+  cursor: pointer;
+  font-size: 16px;
+  position: absolute;
+  right: 8px;
+  top: 6px;
+}
+.dialog-header {
+  background-color: #bababa;
+  background: -moz-linear-gradient(top, #eeeeee 0%, #bababa 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#bababa));
+  background: -webkit-linear-gradient(top, #eeeeee 0%,#bababa 100%);
+  background: -o-linear-gradient(top, #eeeeee 0%,#bababa 100%);
+  background: -ms-linear-gradient(top, #eeeeee 0%,#bababa 100%);
+  background: linear-gradient(to bottom, #eeeeee 0%,#bababa 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#bababa',GradientType=0 );
+  border-bottom: 1px solid #999;
+  border-radius: 6px 6px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 4px;
+  width: 100%;
 }

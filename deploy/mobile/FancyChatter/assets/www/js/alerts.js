@@ -2,12 +2,12 @@ var alerts = {
   id : null,
   get: function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=getalerts&id=' + alerts.id, 'alerts.get');
+      ajax('http://173.203.81.65/api.php?a=getalerts&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + alerts.id, 'alerts.get');
     } else {
       if (response.result === 'success') {
         var html = '';
         $.each(response.alerts, function(key, value) {
-          html += '<tr><td align="center" style="border-bottom: 1px solid #ccc; font-size: 16px;"><strong>' + value.message + '</strong></td></tr>';
+          html += '<tr><td style="border-bottom: 1px solid #ccc; font-size: 14px;"><i class="icon-comment-alt"></i> <a href="profile.html">' + value.message + '</a></td></tr>';
         });
         $('#alerts-table').html(html);
 

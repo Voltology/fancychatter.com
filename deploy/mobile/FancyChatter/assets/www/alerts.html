@@ -3,15 +3,17 @@
 <head>
 <title>Cordova</title>
 <link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/font-awesome.css">
 <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
 <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/alerts.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/system.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
 <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
 <script>
 $(document).ready(function() {
-  alerts.id = $.cookie('id');
+  alerts.id = localStorage.getItem('id');
   alerts.get();
 });
 </script>
@@ -19,16 +21,16 @@ $(document).ready(function() {
 <body id="alerts">
 <nav class="main-nav" id="main-nav">
   <p style="color: white;">&nbsp;Welcome, Chris</p>
+  <a href="livechatter.html">LiveChatter</a>
   <a href="profile.html">Profile</a>
-  <a href="search.html">LiveChatter</a>
-  <a href="chitchat.html">ChitChat</a>
-  <a href="settings">Settings</a>
+  <a href="chitchat.html">Alerts</a>
+  <a href="settings.html">Settings</a>
   <a href="login.html" class="transition">Log Out</a>
 </nav>
 <div class="page-wrap" onclick="document.location='#'">
   <header>
-    <a href="#main-nav" class="button open-menu">Open</a>
-    <a href="#" class="close-menu">Close</a>
+    <a href="#main-nav" class="button open-menu"><i class="icon-reorder"></i></a>
+    <!--<a href="#" class="close-menu">Close</a>-->
   </header>
   <h2>Alerts</h2>
   <table cellpadding="10" cellspacing="2" border="0" width="100%" id="alerts-table"></table>

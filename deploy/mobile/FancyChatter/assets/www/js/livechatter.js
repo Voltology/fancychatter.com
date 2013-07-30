@@ -1,13 +1,16 @@
 var livechatter = {
   search : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65//api.php?a=livechatter&where=' + $('#where').val() + '&what=' + $('#what').val() + '&distance=' + $('#distance').val(), 'livechatter.search');
+      chitchat.distance = $('#distance').val();
+      chitchat.category = $('#what').val();
+      chitchat.location = $('#where').val();
+      ajax('http://173.203.81.65//api.php?a=livechatter&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&where=' + $('#where').val() + '&what=' + $('#what').val() + '&distance=' + $('#distance').val(), 'livechatter.search');
     } else {
       if (response.result === 'success') {
         if (response.livechatter.length === 0) {
           alert('Sorry, no LiveChatter was found for that search.');
         } else {
-          var html = '<tr class="livechatter-results-header"><td width="86"></td><td><strong>Business Name/Message</strong></td><td width="95" align="right"><strong>Distance</strong></td></tr>';
+          var html = '<tr class="livechatter-results-header"><td width="78"></td><td><strong>Business Name/Message</strong></td><td width="95" align="right"><strong>Distance</strong></td></tr>';
           var count = 0;
           $.each(response.livechatter, function(key, value) {
             html += '<tr style="background-color: #fff;" class="livechatter-results-row"><td valign="top"><div style="overflow: hidden; width: 70px;">';
@@ -28,7 +31,9 @@ var livechatter = {
         $.each(response.errors, function(key, value) {
           errors += value + '\n';
         });
-        alert(errors);
+        if (response.logout == true) {
+          system.deletesession();
+        }
       }
     }
   },

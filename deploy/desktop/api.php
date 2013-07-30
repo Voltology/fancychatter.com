@@ -30,26 +30,72 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $chitchat->send($user->getId(), $_REQUEST['location'], $_REQUEST['category'], $_REQUEST['distance'], $msg);
       }
       break;
+    case "chitchat-send-app":
+      $msg = $_REQUEST['msg'];
+      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        if ($msg == "") {
+          $json['result'] = "failed";
+          array_push($json['errors'], "ChitChat message cannot be blank");
+        } else {
+          $chitchat = new ChitChat();
+          $chitchat->send($user->getId(), $_GET['location'], $_GET['category'], $_GET['distance'], $msg);
+        }
+      } else {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Not authorized");
+        $json['logout'] = true;
+      }
+      break;
     case "follow":
       $user->follow($_REQUEST['id']);
       break;
     case "getalerts":
-      $json['alerts'] = Alerts::get($id);
+      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        $json['alerts'] = Alerts::get($id);
+      } else {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Not authorized");
+        $json['logout'] = true;
+      }
       break;
     case "getfeed":
-      $json['feed']['chitchats'] = ChitChat::getByUserId($_REQUEST['id']);
+      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        $json['feed']['chitchats'] = ChitChat::getByUserId($_REQUEST['id']);
       //$json['feed']['posts'] = 
       //$json['feed']['redemptions'] = 
+      } else {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Not authorized");
+        $json['logout'] = true;
+      }
       break;
     case "getmerchant":
-      $json['user'] = User::getById($_REQUEST['id']);
+      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        $json['user'] = User::getById($_REQUEST['id']);
+      } else {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Not authorized");
+        $json['logout'] = true;
+      }
       break;
     case "getuser":
-      $json['user'] = User::getById($_REQUEST['id']);
+      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        $json['user'] = User::getById($_REQUEST['id']);
+      } else {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Not authorized");
+        $json['logout'] = true;
+      }
       break;
     case "livechatter":
-      $json['category_name'] = getCategoryById($_REQUEST['what']);
-      $json['livechatter'] = LiveChatter::search($_REQUEST['where'], $_REQUEST['what'], $_REQUEST['distance'], 20);
+      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        $json['category_name'] = getCategoryById($_REQUEST['what']);
+        $json['livechatter'] = LiveChatter::search($_REQUEST['where'], $_REQUEST['what'], $_REQUEST['distance'], 20);
+      } else {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Not authorized");
+        $json['logout'] = true;
+      }
       break;
     case "login":
       if (!$user->login($_POST['email'], md5($_POST['password']))) {
@@ -75,8 +121,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       } else {
         $json['id'] = $user->getId();
         $json['email'] = $_GET['email'];
-        $json['firstname'] = $_GET['firstname'];
+        $json['firstname'] = $user->getFirstName();
         $json['password'] = md5($_GET['password']);
+        $json['alert_count'] = Alerts::count($user->getId());
+      }
+      break;
+    case "login-app-check":
+      if (!$user->checkPassword($_GET['email'], $_GET['password'])) {
+        $json['result'] = "failed";
+        array_push($json['errors'], "Incorrect Username/Password");
       }
       break;
     case "post":

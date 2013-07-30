@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Cordova</title>
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/font-awesome.css">
+<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/profile.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+<script>
+$(document).ready(function() {
+  profile.id = $.cookie('id');;
+  profile.getuser();
+  profile.getfeed();
+});
+</script>
+</head>
+<body id="livechatter">
+<nav class="main-nav" id="main-nav">
+  <p style="color: white;">&nbsp;Welcome, Chris</p>
+  <a href="profile.html">Profile</a>
+  <a href="search.html">LiveChatter</a>
+  <a href="chitchat.html">Alerts</a>
+  <a href="settings">Settings</a>
+  <a href="login.html" class="transition">Log Out</a>
+</nav>
+<div class="page-wrap" onclick="document.location='#'">
+  <header>
+    <a href="#main-nav" class="button open-menu"><i class="icon-reorder"></i></a>
+    <!--<a href="#" class="close-menu">Close</a>-->
+  </header>
+  <table cellpadding="10" width="100%">
+    <tr>
+      <td width="120">
+        <div style="max-height: 100px; width: 100px;"><img src="" id="profile-image" width="100%" style="margin: 0;" /></div>
+      </td>
+      <td valign="top" style="font-size: 16px;">
+        <strong><span id="profile-name"></span></strong><br />
+        <span id="profile-location"></span>
+      </td>
+    </tr>
+  </table>
+  <h3 style="margin: 0;">Recent Activity</h3>
+  <table cellpadding="10" cellspacing="2" border="0" width="100%" id="recent-activity-table">
+  </table>
+</div>
+</body>
+</html>
