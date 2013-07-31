@@ -1,17 +1,19 @@
 <?php
 include("header.php");
 if ($user->getId() != $_GET['id']) {
+  Alerts::view($user->getId());
   $id = $_GET['id'] ? $_GET['id'] : null;
 } else {
-  Alerts::view($user->getId());
   $id = null;
 }
 $mid = $_GET['mid'] ? $_GET['mid'] : null;
 $cid = $_GET['cid'] ? $_GET['cid'] : null;
 $action = $_GET['a'] ? $_GET['a'] : null;
 if ($mid) {
+  $proftype = "merchant";
   $merchant = new Merchant($mid);
 } else {
+  $proftype = "user";
   $profile = $id ? new User($id) : $user;
 }
 if (!$profile && !$merchant) {
@@ -21,17 +23,6 @@ if (!$profile && !$merchant) {
     ChitChat::respond($_POST['cc-id'], $profile->getId(), null, $_POST['body']);
   }
 ?>
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <ul class="nav">
-        <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
-        <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile</a></li>
-        <li<?php if ($page === "logout") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
 <div class="row-fluid">
   <div class="span4">
     <div class="row-fluid">
@@ -43,7 +34,6 @@ if (!$profile && !$merchant) {
       <div class="span6">
         <div class="profile-data">
           <h4 style="margin: 0;"><?php echo $profile->getFirstName(); ?> <?php echo $profile->getLastName(); ?></h4>
-          
           <p>
             <?php
             if ($profile->getCity() && $profile->getState()) {
@@ -70,11 +60,11 @@ if (!$profile && !$merchant) {
           }
           if ($followflag) {
           ?>
-          <button type="button" class="btn btn-mini btn-danger search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.unfollow(<?php echo $profile->getId() ?>);"><i class="icon-minus" style="vertical-align: bottom;"></i> Unollow</button>
+          <button type="button" class="btn btn-mini btn-danger search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.unfollow(<?php echo $profile->getId() ?>, '<?php echo $proftype; ?>');"><i class="icon-minus" style="vertical-align: bottom;"></i> Unfollow</button>
           <?php
           } else {
           ?>
-          <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $profile->getId() ?>);"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
+          <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $profile->getId() ?>, '<?php echo $proftype; ?>');"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
           <?php
           }
           } ?>
@@ -107,7 +97,7 @@ if (!$profile && !$merchant) {
           echo "<h4>Following (" . count($following) . ")</h4>";
           echo "<ul style=\"list-style-type: none; margin: 0 -4px;\">";
           foreach ($following as $follow) {
-            echo "<li style=\"display: inline-block; height: 80px; margin: 0 5px; width: 64px;\"><a href=\"/profile?id=" . $follow['followee_id'] . "\"><img src=\"/uploads/profile/" . ($follow['profile_img'] ? $follow['profile_img'] : "default.png") . "\" style=\"width: 100%;\" /></a></li>";
+            echo "<li style=\"display: inline-block; height: 80px; margin: 0 5px; width: 64px;\"><a href=\"/profile?id=" . $follow['followee_id'] . "\"><img src=\"/uploads/profile/" . ($follow['profile_img'] ? $follow['profile_img'] : "default.png") . "\" style=\"width: 100%;\" alt=\"" . $follow['firstname'] . " " . $follow['lastname'] . "\" title=\"" . $follow['firstname'] . " " . $follow['lastname'] . "\" /></a></li>";
             $count++;
           }
           echo "</ul>";
@@ -132,88 +122,123 @@ if (!$profile && !$merchant) {
         <input type="text" id="search-field" style="margin-top: 14px; width: 100%;" placeholder="Enter the name of a friend or a local business..." onkeyup="profile.autocomplete();" />
         <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; width: 100%; z-index: 1000;"></div>
         <h4><?php echo $id ? $profile->getFirstName() . "'s" : "Your"; ?> Recent Interactions</h4>
-        <!--
         <textarea style="height: 70px; width: 100%;" id="postbox" placeholder="Post something on <?php echo $id ? $profile->getFirstName($profile->getId()) . "'s" : "your"; ?> profile..."></textarea>
         <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px; margin-left: 4px;" onclick="profile.post(<?php echo $profile->getId(); ?>);">Submit</button>
-        -->
         <div class="interactions" id="interactions">
           <?php
           $count = 0;
+          $posts = $profile->getPosts();
+          foreach ($posts as $post) {
+          ?>
+            <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
+              <tr>
+                <td rowspan="2" width="80" style="padding-top: 8px;">
+                  <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                    <img src="/uploads/profile/<?php echo $post['profile_img'] !== null ? $post['profile_img']  : "default.png"; ?>" style="width: 100%;" />
+                  </div>
+                </td>
+                <td valign="top" style="padding-top: 8px;">
+                  <strong><?php echo $post['firstname']; ?> <?php echo $post['lastname']; ?></strong><br />
+                </td>
+                <td align="right" valign="top" style="padding: 8px;">
+                  <?php echo date("F j, Y, g:i a", $post['creation']); ?>
+                  <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&pid=<?php echo $post['id']; ?>'"><i class="icon-remove"></i></div>
+                </td>
+              </tr>
+              <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc;"><?php echo $post['message']; ?></td></tr>
+            </table>
+          <?php
+          }
           $chitchats = ChitChat::getByUserId($profile->getId());
           foreach ($chitchats as $chitchat) {
           ?>
-          <ul style="margin: 0; list-style-type: none; padding: 5px;">
-            <li style="display: inline-block; width: 13%; vertical-align: top; margin-right: 5px;">
-              <div style="min-height: 8px; max-height: 80px; width: 80px; border: 1px solid #ccc; overflow: hidden;">
-                <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
-              </div>
-            </li>
-            <li style="display: inline-block; min-height: 84px; width: 84%; position: relative; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
-              <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $chitchat['id']; ?>'"><i class="icon-remove"></i></div>
-              <strong><?php echo $profile->getFirstName(); ?> <?php echo $profile->getLastName(); ?></strong><br />
-              <div style="color: #aaa; font-style: italic; margin-top: -6px;">Sent to <?php echo $chitchat['category']; ?> within <?php echo $chitchat['distance']; ?> miles of <?php echo $chitchat['location']; ?></div>
-              <?php echo $chitchat['body']; ?>
-              <div style="position: absolute; top: 0px; right: 25px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
-            </li>
-          </ul>
-          <?php
-          $responses = ChitChat::getResponsesById($chitchat['id']);
-          foreach ($responses as $response) {
-          ?>
-          <ul>
-            <li style="list-style-type: none;">
-              <ul style="margin-left: 13%; list-style-type: none; border-bottom: 1px solid #ccc; padding: 5px;">
-                <li style="display: inline-block; width: 16%; vertical-align: top; margin-right: 5px;">
-                  <div style="min-height: 8px; max-height: 80px; width: 80px; border: 1px solid #ccc; overflow: hidden;">
-                    <?php if ($response['user_id'] > 0) { ?>
-                    <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
-                    <?php } else {?>
-                    <a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><img src="/uploads/logos/<?php echo $response['logo']; ?>" /></a>
-                    <?php } ?>
+            <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
+              <tr>
+                <td rowspan="2" width="80">
+                  <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                    <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" style="width: 100%;" />
                   </div>
-                </li>
-                <li style="display: inline-block; position: relative; width: 78%;">
-                  <?php if ($response['user_id'] > 0) { ?>
-                  <strong><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
-                  <?php } else { ?>
-                  <strong><a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><?php echo $response['merchant_name']; ?></a></strong><br />
-                  <?php } ?>
-                  <?php echo $response['body']; ?>
-                  <div style="position: absolute; top: 0px; right: -7px; color: #666;"><?php echo date("F j, Y, g:i a", $response['creation']); ?></div>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <?php
+                </td>
+                <td valign="top">
+                  <strong><?php echo $profile->getFirstName(); ?> <?php echo $profile->getLastName(); ?></strong><br />
+                  <div style="color: #aaa; font-style: italic; margin-top: -6px;">Sent to <?php echo $chitchat['category']; ?> within <?php echo $chitchat['distance']; ?> miles of <?php echo $chitchat['location']; ?></div>
+                </td>
+                <td align="right" valign="top">
+                  <?php echo date("F j, Y, g:i a", $chitchat['creation']); ?>
+                  <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $chitchat['id']; ?>'"><i class="icon-remove"></i></div>
+                </td>
+              </tr>
+              <tr><td colspan="2" valign="top"><?php echo $chitchat['body']; ?></td></tr>
+              <!--responses-->
+              <?php
+              $responses = ChitChat::getResponsesById($chitchat['id']);
+              foreach ($responses as $response) {
+              ?>
+              <tr>
+                <td>&nbsp;</td>
+                <td colspan="2">
+                  <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
+                    <tr>
+                      <td rowspan="2" width="80">
+                        <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                          <?php if ($response['user_id'] > 0) { ?>
+                          <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
+                          <?php } else {?>
+                          <a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><img src="/uploads/logos/<?php echo $response['logo']; ?>" /></a>
+                          <?php } ?>
+                        </div>
+                      </td>
+                      <td valign="top">
+                        <?php if ($response['user_id'] > 0) { ?>
+                        <strong><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
+                        <?php } else { ?>
+                        <strong><a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><?php echo $response['merchant_name']; ?></a></strong><br />
+                        <?php } ?>
+                      </td>
+                      <td align="right" valign="top">
+                        <?php echo date("F j, Y, g:i a", $response['creation']); ?>
+                        <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove"></i></div>
+                      </td>
+                    </tr>
+                    <tr><td colspan="2" valign="top"><?php echo $response['body']; ?></td></tr>
+                  </table>
+                  <?php
+                  ?>
+                </td>
+              </tr>
+              <?php
+              }
+              $count++;
+            }
+            if ($response['merchant_id'] > 0) {
+            ?>
+              <tr>
+                <td colspan="2">
+                  <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
+                    <tr>
+                      <td width="80" valign="top">
+                        <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                          <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
+                        </div>
+                      </td>
+                      <td valign="top">
+                        <form method="post">
+                          <textarea name="body" style="margin-bottom: 8px; height: 74px; width: 100%;"></textarea>
+                          <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" />
+                          <button type="submit" class="btn btn-mini btn-success search-btn" style="font-size: 18px;" onclick="livechatter.search();"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Response</button>
+                        </form>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            <?php
           }
-          if ($response['merchant_id'] > 0) {
-          ?>
-          <ul>
-            <li style="list-style-type: none;">
-              <ul style="margin-left: 13%; list-style-type: none; border-bottom: 1px solid #ccc; padding: 5px;">
-                <li style="display: inline-block; width: 16%; vertical-align: top; margin-right: 5px;">
-                  <div style="min-height: 8px; height: 80px; width: 80px; border: 1px solid #ccc; overflow: hidden;">
-                    <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
-                  </div>
-                </li>
-                <li style="display: inline-block; position: relative; width: 78%;">
-                  <form method="post">
-                    <textarea name="body" style="margin-bottom: 8px; width: 100%;"></textarea>
-                    <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" />
-                    <button type="submit" class="btn btn-mini btn-success search-btn" style="font-size: 18px;" onclick="livechatter.search();"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Response</button>
-                  </form>
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <?php
+          echo "</table>";
+          if ($count === 0) {
+            $who = $id ? $profile->getFirstName() . " has " : "You have";
+            echo "<div class=\"neutral\" id=\"no-interactions\" style=\"margin-top: 40px;\"><strong>" . $who . " no recent interactions.</strong></div>";
           }
-          $count++;
-        }
-        if ($count === 0) {
-          $who = $id ? $profile->getFirstName() . " has " : "You have";
-          echo "<div class=\"neutral\" id=\"no-interactions\"><strong>" . $who . " no recent interactions.</strong></div>";
-        }
         echo "</div>";
         break;
       case "edit":
@@ -275,7 +300,7 @@ if (!$profile && !$merchant) {
                 }
                 ?>
               </select><br /><br />
-              <button type="submit" class="btn btn-mini btn-success search-btn"><i class="icon-reply" style="vertical-align: bottom;"></i> Save Profile</button>
+              <button type="submit" class="btn btn-mini btn-success search-btn">Save Profile</button>
             </div>
           </div>
         </form>
@@ -285,8 +310,8 @@ if (!$profile && !$merchant) {
         ?>
           <h4>Invite a Friend</h4>
           Email: <input type="text" />
-          <button type="submit" class="btn btn-mini btn-success search-btn"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Invite</button>
-          <button type="submit" class="btn btn-mini btn-danger search-btn"><i class="icon-reply" style="vertical-align: bottom;"></i> Cancel</button>
+          <button type="submit" class="btn btn-mini btn-success search-btn">Send Invite</button>
+          <button type="button" class="btn btn-mini btn-danger search-btn" onclick="document.location='/profile'">Cancel</button>
         <? 
         break;
 

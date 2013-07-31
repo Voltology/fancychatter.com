@@ -1,6 +1,10 @@
 var livechatter = {
-  autocomplete : function() {
-    $searchfield = $('#where');
+  autocomplete : function(type) {
+    if (type === 'mobile') {
+      $searchfield = $('#where-mobile');
+    } else {
+      $searchfield = $('#where');
+    }
     ajax.get('api.php', '&a=autocomplete-where&where=' + $searchfield.val(), function(response) {
       if (response.result === 'success') {
         $autocompletebox = $('#autocomplete-box');
@@ -44,6 +48,13 @@ var livechatter = {
       alert('Make sure all search fields have been filled out');
     } else {
       $('#livechatter-search').submit();
+    }
+  },
+  searchmobile : function() {
+    if ($('#where-mobile').val() === '' || $('#what-mobile').val() === 'null' || $('#distance-mobile').val() === 'null') {
+      alert('Make sure all search fields have been filled out');
+    } else {
+      $('#livechatter-search-mobile').submit();
     }
   }
 };

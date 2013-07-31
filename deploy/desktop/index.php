@@ -1,41 +1,33 @@
 <?php
 include("header.php");
 ?>
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <ul class="nav">
-        <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
-        <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile (<?php echo Alerts::count($user->getId()); ?>)</a></li>
-        <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
 <div class="mobile-search hidden-desktop hidden-tablet">
   <div class="search-container">
-    <h3>Get what you want, when you want it.</h3>
-    <h4>Connect with local businesses in real time.</h4>
-    <label for="where">Where are you?</label>
-    <input type="text" name="where" id="where" placeholder="Enter a Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete();" />
-    <label for="what">What are you looking for?</label>
-    <select name="what" id="what">
-      <option value="null">Select Category</option>
-      <?php
-      $categories = getCategories();
-      foreach ($categories as $category) {
-        echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
-      }
-      ?>
-    </select>
-    <label for="distanc">How far do you want to go?</label>
-    <select name="distance" id="distance">
-      <option value="null">Select Distance</option>
-      <?php for ($i = 5; $i <= 25; $i+=5) { ?>
-      <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
-      <?php } ?>
-    </select>
-    <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+    <form method="post" action="/livechatter" id="livechatter-search-mobile">
+      <h3>Get what you want, when you want it.</h3>
+      <h4>Connect with local businesses in real time.</h4>
+      <label for="where">Where are you?</label>
+      <input type="text" name="where" id="where-mobile" placeholder="Enter a Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete('mobile');" />
+      <label for="what">What are you looking for?</label>
+      <select name="what" id="what-mobile">
+        <option value="null">Select Category</option>
+        <?php
+        $categories = getCategories();
+        foreach ($categories as $category) {
+          echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
+        }
+        ?>
+      </select>
+      <label for="distanc">How far do you want to go?</label>
+      <select name="distance" id="distance-mobile">
+        <option value="null">Select Distance</option>
+        <?php for ($i = 5; $i <= 25; $i+=5) { ?>
+        <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
+        <?php } ?>
+      </select>
+      <input type="hidden" name="mobile" value="true" />
+      <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.searchmobile();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+    </form>
   </div>
 </div>
 <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>

@@ -71,7 +71,8 @@ if (in_array($user->getRole(), array("administrator"))) {
           if (count($errors) === 0) {
             $mid = $merch->add($data);
             $data = $_POST;
-            $uid = User::add($data, "merchant_admin");
+            $data['merchant_id'] = $mid;
+            $uid = User::add($data, 3);
             echo "<div class=\"success\"><i class=\"icon-ok\"></i> Merchant added successfully.</div>";
           } else {
             echo "<div class=\"error\">";

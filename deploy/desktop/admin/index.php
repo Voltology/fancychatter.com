@@ -84,7 +84,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
             <div class="<?php if ($page === "home") { echo "active"; } ?>menuitem"><a href="?p=home">Home</a></div>
             <?php if (in_array($user->getRole(), array("merchant_admin", "merchant_editor", "merchant_publisher"))) { ?>
               <div class="<?php if ($page === "livechatter") { echo "active"; } ?>menuitem"><a href="?p=livechatter">LiveChatter</a></div>
-              <div class="<?php if ($page === "chitchat") { echo "active"; } ?>menuitem"><a href="?p=chitchat">ChitChat <span class="green">(<?php echo ChitChat::getCount(); ?>)</span></a></div>
+              <div class="<?php if ($page === "chitchat") { echo "active"; } ?>menuitem"><a href="?p=chitchat">ChitChat <span class="green">(<?php echo ChitChat::getCount($merchant->getCategory()); ?>)</span></a></div>
             <?php } ?>
             <?php if (in_array($user->getRole(), array("administrator"))) { ?>
               <div class="<?php if ($page === "merchants") { echo "active"; } ?>menuitem"><a href="?p=merchants">Merchants</a></div>

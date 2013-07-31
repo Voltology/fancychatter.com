@@ -33,11 +33,12 @@ class User {
   }
 
   public function add($data, $role = 1) {
-    $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', role='%s', creation='%s'",
+    $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', merchant_id='%s', role='%s', creation='%s'",
       mysql_real_escape_string($data['email']),
       mysql_real_escape_string(md5($data['password1'])),
       mysql_real_escape_string($data['firstname']),
       mysql_real_escape_string($data['lastname']),
+      mysql_real_escape_string($data['merchant_id']),
       mysql_real_escape_string($role),
       mysql_real_escape_string(time()));
     mysql_query($query);
@@ -129,6 +130,14 @@ class User {
   }
 
   public function getPosts() {
+    $posts = array();
+    $query = sprintf("SELECT posts.id,poster_id,message,posts.creation,users.firstname,users.lastname,users.profile_img FROM posts LEFT JOIN users ON poster_id=users.id WHERE user_id='%s' ORDER BY creation DESC",
+      mysql_real_escape_string($this->_id));
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($posts, $row);
+    }
+    return $posts;
   }
 
   public function getProfileImage() {

@@ -3,45 +3,42 @@ include("header.php");
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   $user->saveSearch($_POST['where'], $_POST['what'], $_POST['distance'], 1, 1);
 }
-$where = $_POST['where'] ? $_POST['where'] : $_GET['where'];
-$what = $_POST['what'] ? $_POST['what'] : $_GET['what'];
-$distance = $_POST['distance'] ? $_POST['distance'] : $_GET['distance'];
+if (!$_POST['mobile'] !== "true" && !$_GET['-mobile'] !== "true") {
+  $where = $_POST['where'] ? $_POST['where'] : $_GET['where'];
+  $what = $_POST['what'] ? $_POST['what'] : $_GET['what'];
+  $distance = $_POST['distance'] ? $_POST['distance'] : $_GET['distance'];
+} else {
+  $where = $_POST['where-mobile'] ? $_POST['where-mobile'] : $_GET['where-mobile'];
+  $what = $_POST['what-mobile'] ? $_POST['what-mobile'] : $_GET['what-mobile'];
+  $distance = $_POST['distance-mobile'] ? $_POST['distance-mobile'] : $_GET['distance-mobile'];
+}
 $livechatters = LiveChatter::search($where, $what, $distance, 20);
 ?>
-<div class="navbar">
-  <div class="navbar-inner">
-    <div class="container">
-      <ul class="nav">
-        <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
-        <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile (<?php echo Alerts::count($user->getId()); ?>)</a></li>
-        <li<?php if ($page === "about") { echo " class=\"active\""; } ?>><a href="/about">About</a></li>
-        <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
 <div class="mobile-search hidden-desktop hidden-tablet">
   <div class="search-container">
-    <label for="where">Where are you?</label>
-    <input type="text" name="where" id="where" placeholder="Enter a Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete();" />
-    <label for="what">What are you looking for?</label>
-    <select name="what" id="what">
-      <option value="null">Select Category</option>
-      <?php
-      $categories = getCategories();
-      foreach ($categories as $category) {
-        echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
-      }
-      ?>
-    </select>
-    <label for="distanc">How far do you want to go?</label>
-    <select name="distance" id="distance">
-      <option value="null">Select Distance</option>
-      <?php for ($i = 5; $i <= 25; $i+=5) { ?>
-      <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
-      <?php } ?>
-    </select>
-    <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+    <form method="post" action="/livechatter" id="livechatter-search-mobile">
+      <label for="where">Where are you?</label>
+      <input type="text" name="where" id="where-mobile" placeholder="Enter a Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete('mobile');" />
+      <label for="what">What are you looking for?</label>
+      <select name="what" id="what-mobile">
+        <option value="null">Select Category</option>
+        <?php
+        $categories = getCategories();
+        foreach ($categories as $category) {
+          echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
+        }
+        ?>
+      </select>
+      <label for="distanc">How far do you want to go?</label>
+      <select name="distance" id="distance-mobile">
+        <option value="null">Select Distance</option>
+        <?php for ($i = 5; $i <= 25; $i+=5) { ?>
+        <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
+        <?php } ?>
+      </select>
+      <input type="hidden" name="mobile" value="true" />
+      <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.searchmobile();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+    </form>
   </div>
 </div>
 <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
@@ -78,9 +75,13 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
         <?php
         $searches = $user->getSavedSearches();
         foreach ($searches as $search) {
-          echo "<div class=\"favorite-box\" onclick=\"document.location='/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "'\">";
-          echo "<input type=\"checkbox\" checked />&nbsp;";
-          echo "<a href=\"/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "\"><strong>" . $search['category'] . "</strong><br />Within " . $search['distance'] . " miles of " . $search['location'] . "</a>";
+          echo "<div class=\"favorite-box\">";
+          if ($search['active'] == 1) {
+            echo "<input type=\"checkbox\" id=\"saved-search-" . $search['id'] . "\" onclick=\"profile.inactivatesearch('" . $search['id'] . "')\" checked />&nbsp;";
+          } else {
+            echo "<input type=\"checkbox\" id=\"saved-search-" . $search['id'] . "\" onclick=\"profile.activatesearch('" . $search['id'] . "')\" />&nbsp;";
+          }
+          echo "<a href=\"/livechatter?where=" . $search['location'] . "&what=" . $search['category_id'] . "&distance=" . $search['distance'] . "\"><strong>" . $search['category'] . "</strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Within " . $search['distance'] . " miles of " . $search['location'] . "</a>";
           echo "</div>";
         }
         ?>

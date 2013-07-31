@@ -27,7 +27,7 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
           });
           $element.fadeIn(500);
           count++;
-          if (count > 3) { count = 1; }
+          if (count > 6) { count = 1; }
       }, 5000);
     });
     </script>
@@ -53,7 +53,25 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
           <?php } else { ?>
           <a href="#" onclick="dialog.open('login', 'Log In', 190, 310);">Log In</a>&nbsp;&nbsp;|&nbsp;
           <?php if (!B2B) { ?><a href="#" onclick="dialog.open('signup', 'Sign Up', 320, 310);">Sign Up</a>&nbsp;&nbsp;|&nbsp; <?php } ?>
-          <!--<a href="">Help</a>-->
+          <a href="">Help</a>
           <?php } ?>
+        </div>
+      </div>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav">
+              <?php if ($user->getIsLoggedIn()) { ?>
+              <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
+              <li<?php if ($page === "profile") { echo " class=\"active\""; } ?>><a href="/profile">Profile (<?php echo Alerts::count($user->getId()); ?>)</a></li>
+              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
+              <?php } else { ?>
+              <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
+              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="#" onclick="dialog.open('signup', 'Sign Up', 320, 310);">Sign Up</a></li>
+              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="#" onclick="dialog.open('login', 'Log In', 190, 310, true);">Log In</a></li>
+              <?php } ?>
+
+            </ul>
+          </div>
         </div>
       </div>

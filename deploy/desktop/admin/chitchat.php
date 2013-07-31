@@ -84,7 +84,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                     <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 640px;">
                       <form method="post">
                         <textarea name="body" style="height: 80px; width: 440px; margin: 15px 0 5px 40px;"></textarea>
-                        <input type="hidden" name="user-id" id="user-id" value="<?php echo $response['user_id']; ?>" /><br />
+                        <input type="hidden" name="user-id" id="user-id" value="<?php echo $chitchat['user_id']; ?>" /><br />
                         <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" /><br />
                         <button type="submit" class="button" style="margin: 0 0 10px 40px;">Send Response</button>
                       </form>

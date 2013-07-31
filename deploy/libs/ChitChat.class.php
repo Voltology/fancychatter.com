@@ -53,9 +53,10 @@ class ChitChat {
     return $chitchat;
   }
 
-  public static function getCount() {
+  public static function getCount($id) {
     $chitchat = array();
-    $query = sprintf("SELECT id FROM chitchat ORDER BY creation DESC");
+    $query = sprintf("SELECT id FROM chitchat WHERE category_id='%s' ORDER BY creation DESC",
+      mysql_real_escape_string($id));
     $query = mysql_query($query);
     return mysql_num_rows($query);
   }
