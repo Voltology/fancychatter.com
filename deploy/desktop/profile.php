@@ -79,7 +79,8 @@ if (!$profile && !$merchant) {
           $searches = $profile->getSavedSearches();
           $count = 0;
           foreach ($searches as $search) {
-            echo "<div class=\"favorite-box\">";
+            echo "<div class=\"favorite-box\" id=\"saved-search-box-" . $search['id'] . "\" style=\"position: relative;\">";
+            echo "<div style=\"cursor: pointer; position: absolute; top: 4px; right: 4px;\" alt=\"Remove\" title=\"Remove\" onclick=\"profile.removesearch('" . $search['id'] . "')\"><i class=\"icon-remove-sign\"></i></div>";
             if ($search['active'] == 1) {
               echo "<input type=\"checkbox\" id=\"saved-search-" . $search['id'] . "\" onclick=\"profile.inactivatesearch('" . $search['id'] . "')\" checked />&nbsp;";
             } else {
@@ -127,35 +128,68 @@ if (!$profile && !$merchant) {
         <div class="interactions" id="interactions">
           <?php
           $count = 0;
-          $posts = $profile->getPosts();
-          foreach ($posts as $post) {
-          ?>
-            <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
-              <tr>
-                <td rowspan="2" width="80" style="padding-top: 8px;">
-                  <div style="max-height: 80px; overflow: hidden; width: 80px;">
-                    <img src="/uploads/profile/<?php echo $post['profile_img'] !== null ? $post['profile_img']  : "default.png"; ?>" style="width: 100%;" />
-                  </div>
-                </td>
-                <td valign="top" style="padding-top: 8px;">
-                  <strong><?php echo $post['firstname']; ?> <?php echo $post['lastname']; ?></strong><br />
-                </td>
-                <td align="right" valign="top" style="padding: 8px;">
-                  <?php echo date("F j, Y, g:i a", $post['creation']); ?>
-                  <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&pid=<?php echo $post['id']; ?>'"><i class="icon-remove"></i></div>
-                </td>
-              </tr>
-              <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc;"><?php echo $post['message']; ?></td></tr>
-            </table>
-          <?php
+          $feeds = $profile->getFeed();
+          foreach ($feeds as $feed) {
+            switch($feed['type']) {
+              case "post": ?>
+                <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;" id="post-<?php echo $feed['id']; ?>">
+                  <tr>
+                    <td rowspan="2" width="60" style="padding-top: 4px;" valign="top">
+                      <div style="max-height: 60px; overflow: hidden; width: 60px;">
+                        <?php if ($feed['poster_id'] !== $profile->getId()) { ?>
+                          <a href="/profile?id=<?php echo $feed['poster_id']; ?>"><img src="/uploads/profile/<?php echo $feed['profile_img'] !== null ? $feed['profile_img']  : "default.png"; ?>" style="width: 100%;" /></a>
+                        <?php } else { ?>
+                          <img src="/uploads/profile/<?php echo $feed['profile_img'] !== null ? $feed['profile_img']  : "default.png"; ?>" style="width: 100%;" />
+                        <?php } ?>
+                        <img src="/uploads/profile/<?php echo $feed['profile_img'] !== null ? $feed['profile_img']  : "default.png"; ?>" style="width: 100%;" />
+                      </div>
+                    </td>
+                    <td valign="top" style="padding-top: 4px;">
+                      <?php if ($feed['poster_id'] !== $profile->getId()) { ?>
+                      <strong><a href="/profile?id=<?php echo $feed['poster_id']; ?>"><?php echo $feed['firstname']; ?> <?php echo $feed['lastname']; ?></a></strong><br />
+                      <?php } else { ?>
+                      <strong><?php echo $feed['firstname']; ?> <?php echo $feed['lastname']; ?></strong><br />
+                      <?php } ?>
+                    </td>
+                    <td align="right" valign="top" style="padding: 4px 30px 0 0;">
+                      <?php echo date("F j, Y, g:i a", $feed['creation']); ?>
+                      <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="profile.removepost(<?php echo $feed['id']; ?>)"><i class="icon-remove-sign"></i></div>
+                    </td>
+                  </tr>
+                  <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc;"><?php echo $feed['body']; ?></td></tr>
+                </table>
+                <?php
+                break;
+              case "chitchat":?>
+                <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
+                  <tr>
+                    <td rowspan="2" width="60" style="padding-top: 4px;">
+                      <div style="max-height: 60px; overflow: hidden; width: 60px;">
+                        <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" style="width: 100%;" />
+                      </div>
+                    </td>
+                    <td valign="top" style="padding-top: 4px;">
+                      <strong><?php echo $profile->getFirstName(); ?> <?php echo $profile->getLastName(); ?></strong><br />
+                      <div style="color: #aaa; font-style: italic; margin-top: -6px;">Sent to <?php echo $feed['category']; ?> within <?php echo $feed['distance']; ?> miles of <?php echo $feed['location']; ?></div>
+                    </td>
+                    <td align="right" valign="top" style="padding: 4px 30px 0 0;">
+                      <?php echo date("F j, Y, g:i a", $feed['creation']); ?>
+                      <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $feed['id']; ?>'"><i class="icon-remove-sign"></i></div>
+                    </td>
+                  </tr>
+                  <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc;"><?php echo $feed['body']; ?></td></tr>
+                  <!--Needs responses-->
+                </table>
+              <?php
+            }
           }
           $chitchats = ChitChat::getByUserId($profile->getId());
           foreach ($chitchats as $chitchat) {
           ?>
             <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
               <tr>
-                <td rowspan="2" width="80">
-                  <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                <td rowspan="2" width="60">
+                  <div style="max-height: 60px; overflow: hidden; width: 60px;">
                     <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" style="width: 100%;" />
                   </div>
                 </td>
@@ -165,7 +199,7 @@ if (!$profile && !$merchant) {
                 </td>
                 <td align="right" valign="top">
                   <?php echo date("F j, Y, g:i a", $chitchat['creation']); ?>
-                  <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $chitchat['id']; ?>'"><i class="icon-remove"></i></div>
+                  <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $chitchat['id']; ?>'"><i class="icon-remove-sign"></i></div>
                 </td>
               </tr>
               <tr><td colspan="2" valign="top"><?php echo $chitchat['body']; ?></td></tr>
@@ -179,8 +213,8 @@ if (!$profile && !$merchant) {
                 <td colspan="2">
                   <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
                     <tr>
-                      <td rowspan="2" width="80">
-                        <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                      <td rowspan="2" width="60">
+                        <div style="max-height: 60px; overflow: hidden; width: 60px;">
                           <?php if ($response['user_id'] > 0) { ?>
                           <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
                           <?php } else {?>
@@ -197,7 +231,7 @@ if (!$profile && !$merchant) {
                       </td>
                       <td align="right" valign="top">
                         <?php echo date("F j, Y, g:i a", $response['creation']); ?>
-                        <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove"></i></div>
+                        <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove-sign"></i></div>
                       </td>
                     </tr>
                     <tr><td colspan="2" valign="top"><?php echo $response['body']; ?></td></tr>
@@ -216,8 +250,8 @@ if (!$profile && !$merchant) {
                 <td colspan="2">
                   <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative;">
                     <tr>
-                      <td width="80" valign="top">
-                        <div style="max-height: 80px; overflow: hidden; width: 80px;">
+                      <td width="60" valign="top">
+                        <div style="max-height: 60px; overflow: hidden; width: 60px;">
                           <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
                         </div>
                       </td>
@@ -291,7 +325,6 @@ if (!$profile && !$merchant) {
                 <option>Select State</option>
                 <?php
                 $states = getStates();
-                var_dump($states);
                 foreach ($states as $state) {
                   echo "<option value=\"" . $state['state'] . "\"";
                   $curstate = $_POST['state'] ? strtolower($_POST['state']) : $profile->getState();

@@ -75,7 +75,8 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
         <?php
         $searches = $user->getSavedSearches();
         foreach ($searches as $search) {
-          echo "<div class=\"favorite-box\">";
+          echo "<div class=\"favorite-box\" id=\"saved-search-box-" . $search['id'] . "\" style=\"position: relative;\">";
+          echo "<div style=\"cursor: pointer; position: absolute; top: 4px; right: 4px;\" alt=\"Remove\" title=\"Remove\" onclick=\"profile.removesearch('" . $search['id'] . "')\"><i class=\"icon-remove-sign\"></i></div>";
           if ($search['active'] == 1) {
             echo "<input type=\"checkbox\" id=\"saved-search-" . $search['id'] . "\" onclick=\"profile.inactivatesearch('" . $search['id'] . "')\" checked />&nbsp;";
           } else {

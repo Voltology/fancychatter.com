@@ -89,22 +89,25 @@ function getStates() {
 
 function getUsersAndMerchants($search) {
   $results = array();
-  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,UPPER(state) AS state FROM users WHERE (firstname LIKE '%s%%' OR lastname LIKE '%s%%') AND role='1' ORDER BY id ASC",
+  $query = sprintf("SELECT id,firstname,lastname,profile_img,city,UPPER(state) AS state FROM users WHERE (firstname LIKE '%s%%' OR lastname LIKE '%s%%') AND role='1' ORDER BY id ASC LIMIT 5",
     mysql_real_escape_string($search),
     mysql_real_escape_string($search));
   $query = mysql_query($query);
   while ($row = mysql_fetch_assoc($query)) {
     $row['type'] = 'user';
+    $row['sortfield'] = $row['firstname'];
     array_push($results, $row);
   }
-  $query = sprintf("SELECT id,name,logo,city,UPPER(state) AS state FROM merchants WHERE name LIKE '%s%%' ORDER BY id ASC",
+  $query = sprintf("SELECT id,name,logo,city,UPPER(state) AS state FROM merchants WHERE name LIKE '%s%%' ORDER BY id ASC LIMIT 5",
     mysql_real_escape_string($search),
     mysql_real_escape_string($search));
   $query = mysql_query($query);
   while ($row = mysql_fetch_assoc($query)) {
     $row['type'] = 'merchant';
+    $row['sortfield'] = $row['name'];
     array_push($results, $row);
   }
+  usort($results, function($a, $b) { return $a['sortfield'] - $b['sortfield']; });
   return $results;
 }
 
@@ -113,6 +116,10 @@ function slugify($str, $limit = 240, $delimiter = "-") {
   $clean = strtolower(trim($clean, $delimiter));
   $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
   return substr($clean, 0, $limit) . $delimiter . substr(str_shuffle(str_repeat("0123456789abcdefghijklmnopqrstuvwxyz", 5)), 0, 5);
+}
+
+function sortFeed($a, $b) {
+    return $b['creation'] - $a['creation'];
 }
 
 function uploadImage($file, $filename, $upload_path) {

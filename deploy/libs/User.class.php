@@ -101,6 +101,15 @@ class User {
     return $this->_email;
   }
 
+  public function getFeed() {
+    $feed = array();
+    $feed = array_merge($feed, $this->getPosts());
+    $feed = array_merge($feed, ChitChat::getByUserId($this->_id));
+    $feed = array_merge($feed, $this->getRedemptions());
+    usort($feed, function($a, $b) { return $b['creation'] - $a['creation']; });
+    return $feed;
+  }
+
   public function getFirstName() {
     return $this->_firstname;
   }
@@ -131,10 +140,11 @@ class User {
 
   public function getPosts() {
     $posts = array();
-    $query = sprintf("SELECT posts.id,poster_id,message,posts.creation,users.firstname,users.lastname,users.profile_img FROM posts LEFT JOIN users ON poster_id=users.id WHERE user_id='%s' ORDER BY creation DESC",
+    $query = sprintf("SELECT posts.id,poster_id,body,posts.creation,users.firstname,users.lastname,users.profile_img FROM posts LEFT JOIN users ON poster_id=users.id WHERE user_id='%s' AND status='1' ORDER BY creation DESC LIMIT 10",
       mysql_real_escape_string($this->_id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
+      $row['type'] = "post";
       array_push($posts, $row);
     }
     return $posts;
@@ -142,6 +152,11 @@ class User {
 
   public function getProfileImage() {
     return $this->_profileimage;
+  }
+
+  public function getRedemptions() {
+    $redemptions = array();
+    return $redemptions;
   }
 
   public function getRole() {
@@ -218,7 +233,7 @@ class User {
   }
 
   public function post($id, $msg) {
-    $query = sprintf("INSERT INTO posts SET user_id='%s', poster_id='%s', message='%s', status='1', creation='%s'",
+    $query = sprintf("INSERT INTO posts SET user_id='%s', poster_id='%s', body='%s', status='1', creation='%s'",
       mysql_real_escape_string($id),
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($msg),
@@ -231,6 +246,20 @@ class User {
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($id),
       mysql_real_escape_string(time()));
+    mysql_query($query);
+  }
+
+  public function removePost($id) {
+    $query = sprintf("UPDATE posts SET status='0' WHERE id='%s' AND user_id='%s'",
+      mysql_real_escape_string($id),
+      mysql_real_escape_string($this->_id));
+    mysql_query($query);
+  }
+
+  public function removeSearch($id) {
+    $query = sprintf("UPDATE searches SET saved='0' WHERE id='%s' AND user_id='%s'",
+      mysql_real_escape_string($id),
+      mysql_real_escape_string($this->_id));
     mysql_query($query);
   }
 

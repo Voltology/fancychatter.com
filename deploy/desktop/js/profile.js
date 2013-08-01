@@ -60,7 +60,7 @@ var profile = {
         });
         if (count === 0) {
           $autocompletebox.append('<div style="padding: 3px 5px; text-align: center;">No results found<br /><a href="/profile?a=invite">Invite a friend to FancyChatter</a></div>');
-        } 
+        }
       }
     });
   },
@@ -81,5 +81,19 @@ var profile = {
         $('#no-interactions').remove();
       });
     }
+  },
+  removepost : function(id) {
+    ajax.get('api.php', '&a=removepost&id=' + id, function(response) {
+      $('#post-' + id).fadeOut(500, function() {
+        $(this).remove();
+      });
+    });
+  },
+  removesearch : function (id) {
+    ajax.get('api.php', '&a=removesearch&id=' + id, function(response) {
+      $('#saved-search-box-' + id).fadeOut(500, function() {
+        $(this).remove();
+      });
+    });
   }
 };

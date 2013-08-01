@@ -1,7 +1,7 @@
 <?php
 class Alerts {
 	public static function add($id, $msg) {
-    $query = sprintf("INSERT INTO alerts SET user_id='%s', message='%s', viewed='0', creation='%s'",
+    $query = sprintf("INSERT INTO alerts SET user_id='%s', body='%s', viewed='0', creation='%s'",
       mysql_real_escape_string($id),
       mysql_real_escape_string($msg),
       mysql_real_escape_string(time()));
@@ -17,10 +17,11 @@ class Alerts {
 
   public static function get($id) {
     $alerts = array();
-    $query = sprintf("SELECT id,message,viewed,creation FROM alerts WHERE user_id='%s' ORDER BY creation DESC",
+    $query = sprintf("SELECT id,body,viewed,creation FROM alerts WHERE user_id='%s' ORDER BY creation DESC",
       mysql_real_escape_string($id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
+      $row['type'] = "alert";
       array_push($alerts, $row);
     }
     return $alerts;

@@ -44,10 +44,11 @@ class ChitChat {
 
   public static function getByUserId($id) {
     $chitchat = array();
-    $query = sprintf("SELECT chitchat.id,user_id,category_id,livechatter_categories.category,body,location,distance,creation FROM chitchat LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id WHERE user_id='%s' ORDER BY creation DESC",
+    $query = sprintf("SELECT chitchat.id,user_id,category_id,livechatter_categories.category,body,location,distance,creation FROM chitchat LEFT JOIN livechatter_categories ON category_id=livechatter_categories.id WHERE user_id='%s' ORDER BY creation DESC LIMIT 10",
       mysql_real_escape_string($id));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
+      $row['type'] = "chitchat";
       array_push($chitchat, $row);
     }
     return $chitchat;

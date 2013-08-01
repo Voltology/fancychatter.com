@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
     case "getfeed":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
         $json['feed']['chitchats'] = ChitChat::getByUserId($_REQUEST['id']);
-      //$json['feed']['posts'] = 
+        $json['feed']['posts'] = $user->getPosts();
       //$json['feed']['redemptions'] = 
       } else {
         $json['result'] = "failed";
@@ -152,6 +152,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "redeem":
       $user->redeem($id);
+      break;
+    case "removepost":
+      $user->removePost($_REQUEST['id']);
+      break;
+    case "removesearch":
+      $user->removeSearch($_REQUEST['id']);
       break;
     case "signup":
       $user = new User();
