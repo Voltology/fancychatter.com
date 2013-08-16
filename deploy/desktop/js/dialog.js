@@ -36,7 +36,7 @@ var dialog = {
       if (searchwall) { html += '<input type="hidden" id="search-wall" value="true" />'; }
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Log In</button>';
       html += '<button class="btn btn-mini btn-danger dialog-btn" id="dialog-button" onclick="dialog.close();">Cancel</button>';
-      html += '<div style="margin-left: 4px;"><strong>Don\'t have an account? <a href="#" onclick="dialog.open(\'signup\', \'Sign Up\', 320, 330, ' + searchwall + ');">Click here to sign up!</a></strong></div>';
+      html += '<div style="margin-left: 4px;"><strong>Don\'t have an account? <a href="#" onclick="dialog.open(\'signup\', \'Sign Up\', 336, 316, ' + searchwall + ');">Click here to sign up!</a></strong></div>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
         user.login($('#email').val(), $('#password').val());
@@ -55,7 +55,7 @@ var dialog = {
       if (searchwall) { html += '<input type="hidden" id="search-wall" value="true" />'; }
       html += '<button class="btn btn-mini btn-success dialog-btn" id="dialog-button">Sign Up</button>';
       html += '<button class="btn btn-mini btn-danger dialog-btn" id="dialog-button" onclick="dialog.close();">Cancel</button>';
-      html += '<div style="margin-left: 4px;"><strong>Already have an account? <a href="#" onclick="dialog.open(\'login\', \'Log In\', 190, 310, ' + searchwall + ');">Click here to log in!</a></strong></div>';
+      html += '<div style="margin-left: 4px;"><strong>Already have an account? <a href="#" onclick="dialog.open(\'login\', \'Log In\', 206, 316, ' + searchwall + ');">Click here to log in!</a></strong></div>';
       $('#dialog-body').html(html);
       $('#dialog-button').on('click', function() {
         user.signup($('#email').val(), $('#password1').val(), $('#password2').val(), $('#firstname').val(), $('#lastname').val());

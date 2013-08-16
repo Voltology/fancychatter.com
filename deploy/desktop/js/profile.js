@@ -69,12 +69,12 @@ var profile = {
     var html = '';
     if ($('#postbox').val() !== '') {
       ajax.get('api.php', '&a=post&id=' + id + '&msg=' + $('#postbox').val(), function(response) {
-        html += '<table cellpadding="0" cellspacing="0" width="100%">';
-        html += '<tr><td valign="top" width="90" rowspan=2" style="padding: 6px;""><div style="min-height: 8px; max-height: 80px; width: 80px; border: 1px solid #ccc; overflow: hidden;">';
+        html += '<table cellpadding="2" cellspacing="0" width="100%" id="post-' + response.post.id + '" style="margin-top: 12px; position: relative;">';
+        html += '<tr><td valign="top" width="60" rowspan=2"><div style="min-height: 8px; max-height: 60px; width: 60px; border: 1px solid #ccc; overflow: hidden;">';
         html += '<img src="/uploads/profile/' + response.post.profile_img + '" width: 100%; /></div></td>';
-        html += '<td valign="top" colspan="2" style="padding: 6px 0 0 6px;"><strong>' + response.post.name + '</strong></td>'
-        html += '<td valign="top" align="right" style="color: #666; padding-top: 6px">' + response.post.timestamp + ' <i class="icon-remove-sign"></i></td></tr>';
-        html += '<tr><td valign="top" colspan="3" style="border-bottom: 1px solid #ccc; padding-left: 6px">' + $('#postbox').val() + '</td></tr>';
+        html += '<td valign="top" colspan="2" style="padding-top: 4px;"><strong style="font-size: 14px; padding-left: 3px;">' + response.post.name + '</strong></td>'
+        html += '<td align="right" valign="top" style="padding: 4px 30px 0 0;">' + response.post.timestamp + '<div style="position: absolute; top: 4px; right: 5px; cursor: pointer;" onclick="profile.removepost(' + response.post.id + ')"><i class="icon-remove-sign"></i></div></td></tr>';
+        html += '<tr><td valign="top" colspan="3" style="border-bottom: 1px solid #ccc; font-size: 13px; padding-left: 5px">' + $('#postbox').val() + '</td></tr>';
         html += '</table>';
         $container.prepend(html);
         $('#postbox').val('');

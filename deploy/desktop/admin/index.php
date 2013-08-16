@@ -65,7 +65,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
     <![endif]-->
   </head>
   <body>
-    <div style="position: absolute; top: 5px; right: 5px;"><strong><?php echo date("F j, Y, g:i a", time()); ?></strong></div>
+    <div style="position: absolute; top: 5px; right: 5px;"><strong><?php echo date("F j, Y, g:i a", time() - (7 * 3600)); ?></strong></div>
     <table width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="2" valign="middle" class="header">

@@ -75,60 +75,6 @@ include("header.php");
       11.  Indemnity
       You agree to defend, indemnify and hold Company and its affiliates, and its and their directors, employees and agents harmless from any and all liabilities, costs and expenses, including reasonable attorney fees related to or arising from (a) negligent acts or omissions by you in connection with the installations, use or maintenance of the product; (b) claims for infringement of patents arising from the use of the product by you other than for its intended purpose, and (c) claims of copyright infringement resulting from the use of the product by you other than for its intended purpose.
 
-      I have read the above agreement and I accept the terms.
-
-      User:  _______________________________________________________________________
-
-      Contact Name:  _______________________________________________________________
-
-      Signature:  ___________________________________________________________________
-
-      Date:  _______________________________________________________________________
-
-      Payment and Term Agreement
-      Client is bound by the terms and conditions of the User Agreement and License (the “Agreement”), which sets forth the terms and conditions under which Fancy Chatter provides Client services described below.
-
-      Client/Contracting Entity
-        Bill to Entity
-
-      Company:  
-
-
-
-      Address:   
-
-
-
-      Contact/Authorized Agent:  
-      Email:    
-
-      Phone:  
-        Company:  
-
-
-
-      Address:   
-
-
-
-      Contact/Authorized Agent:  
-      Email:    
-
-      Phone:  
-
-      Term of License
-
-      Initial Term:       ________________________________________________________________________
-      Renewal Term:  _______________________________________________________________________
-
-      Currency:  USD ($)
-      This Payment and Term Agreement is effective as of the date Fancy Chatter, countersigns below and shall remain in effect for the Initial Term.  Unless otherwise agreed in the Agreement, this Payment and Term Agreement will automatically renew for additional Renewal Terms thereafter until either party provides written notice of its intent to terminate at least 90 days prior to the expiration of the then current term.  Any such termination would take effect upon expiration of the then-current term.
-      Payment
-      Unit Charge Monthly Fee
-        
-
-
-
       IN WITNESS WHEREOF, the parties have caused this Term and Payment Agreement to be executed by their respective duly authorized representatives.
       Requested and Agreed to by Client Agreed to and Accepted by Fancy Chatter, 
       Client Authorized Signature:

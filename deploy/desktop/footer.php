@@ -1,6 +1,6 @@
       <hr>
       <div class="footer">
-        <p style="margin: 0;"><!--<a href="/terms">Terms of Service</a> &bull; --><a href="/privacy">Privacy Policy</a><!-- &bull; <a href="/sitemap">Site Map</a>--></p>
+        <p style="margin: 0;"><a href="/terms">Terms of Service</a> &bull; <a href="/privacy">Privacy Policy</a><!-- &bull; <a href="/sitemap">Site Map</a>--></p>
         <p>&copy; <?php echo date("Y"); ?> <a href="http://www.fancychatter.com">FancyChatter.com</a> All Rights Reserved.</p>
       </div>
     <div class="dialog" id="dialog">

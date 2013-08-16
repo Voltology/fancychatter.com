@@ -239,6 +239,7 @@ class User {
       mysql_real_escape_string($msg),
       mysql_real_escape_string(time()));
     mysql_query($query);
+    return mysql_insert_id();
   }
 
   public function redeem($id) {
@@ -250,8 +251,9 @@ class User {
   }
 
   public function removePost($id) {
-    $query = sprintf("UPDATE posts SET status='0' WHERE id='%s' AND user_id='%s'",
+    $query = sprintf("UPDATE posts SET status='0' WHERE id='%s' AND (user_id='%s' OR poster_id='%s')",
       mysql_real_escape_string($id),
+      mysql_real_escape_string($this->_id),
       mysql_real_escape_string($this->_id));
     mysql_query($query);
   }

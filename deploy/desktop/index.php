@@ -26,7 +26,7 @@ include("header.php");
         <?php } ?>
       </select>
       <input type="hidden" name="mobile" value="true" />
-      <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.searchmobile();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+      <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.searchmobile();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 336, 316, true);"; } else { echo "dialog.open('login', 'Log In', 206, 316, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
     </form>
   </div>
 </div>
@@ -53,19 +53,19 @@ include("header.php");
           <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
           <?php } ?>
         </select>
-        <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+        <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.search();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 336, 316, true);"; } else { echo "dialog.open('login', 'Log In', 206, 316, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
       </form>
     </div>
 </div>
 <div class="row-fluid">
   <div class="span4">
     <h3>What is FancyChatter?</h3>
-    <p>Fancychatter.com makes your area's businesses available to everyone. At the center of Fancychatter.com is a network of leading businesses from: Restaurants, Grocery Stores, Auto Dealerships and Doctors... you name it. You connect with them immediately and they respond. Fancychatter.com is available to anyone who needs help when making a buying decision.</p>
+    <p>FancyChatter makes your area's businesses available to everyone. At the center of FancyChatter is a network of leading businesses from: Restaurants, Grocery Stores, Auto Dealerships and Doctors... you name it. You connect with them immediately and they respond. FancyChatter is available to anyone who needs help when making a buying decision.</p>
     <p><a class="btn" href="/about">View details &raquo;</a></p>
   </div>
   <div class="span4">
     <h3>Go Mobile!</h3>
-    <p>The Fancychatter.com mobile and iphone application was developed and is designed to enhance your purchasing experience by engaging the merchant you choose, by category, as you travel. This isn't your ordinary, "find the best deal" application. If getting what you want, when you want, and at the right price are important to you. Then Fancychatter.com is for you.</p>
+    <p>The FancyChatter mobile application was developed and is designed to enhance your purchasing experience by engaging the merchant you choose, by category, as you travel. This isn't your ordinary, "find the best deal" application. If getting what you want, when you want, and at the right price are important to you, then FancyChatter is for you.</p>
     <p><a class="btn" href="/mobile">Go Mobile &raquo;</a></p>
   </div>
   <div class="span4">

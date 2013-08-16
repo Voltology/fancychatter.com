@@ -114,11 +114,13 @@ class LiveChatter {
       $location = getLatLongByCityState($city, $state, $zip);
     }
     $livechatter = array();
-    $query = sprintf("SELECT livechatter.id,merchant_id,body,endtime,SQRT((69.1 * (%s - livechatter.latitude) * 69.1 * (%s - livechatter.latitude)) + (53 * (%s - livechatter.longitude) * 53 * (%s - livechatter.longitude))) AS distance,merchants.name AS merchant_name,merchants.logo AS logo,merchants.category_id AS category FROM livechatter LEFT JOIN merchants ON merchants.id=livechatter.merchant_id WHERE livechatter.status='1' HAVING category='%s' AND distance < %s ORDER BY distance ASC, livechatter.creation DESC",
+    $query = sprintf("SELECT livechatter.id,merchant_id,body,endtime,SQRT((69.1 * (%s - livechatter.latitude) * 69.1 * (%s - livechatter.latitude)) + (53 * (%s - livechatter.longitude) * 53 * (%s - livechatter.longitude))) AS distance,merchants.name AS merchant_name,merchants.city,merchants.state,merchants.logo AS logo,merchants.category_id AS category FROM livechatter LEFT JOIN merchants ON merchants.id=livechatter.merchant_id WHERE livechatter.status='1' AND livechatter.starttime < %s AND livechatter.endtime > %s HAVING category='%s' AND distance < %s ORDER BY distance ASC, livechatter.creation DESC",
       mysql_real_escape_string($location['latitude']),
       mysql_real_escape_string($location['latitude']),
       mysql_real_escape_string($location['longitude']),
       mysql_real_escape_string($location['longitude']),
+      mysql_real_escape_string(time()),
+      mysql_real_escape_string(time()),
       mysql_real_escape_string($category),
       mysql_real_escape_string($distance));
     $query = mysql_query($query);

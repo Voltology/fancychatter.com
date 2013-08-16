@@ -10,7 +10,6 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
 		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/<?php echo JQUERY_VERSION; ?>/jquery.min.js"></script>-->
 		<script src="/js/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
@@ -39,7 +38,7 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
     <div class="container">
       <div class="masthead" style="padding: 4px; 0; border: 1px solid #ccc;">
         <div style="display: inline-block; margin: 5px 5px;"><a href="/"><img src="img/logo.png" width="140" border="0" /></a></div>
-        <div style="display: inline-block; float: right; color: #000; margin: 14px 14px;" class="hidden-tablet hidden-phone">
+        <div style="display: inline-block; float: right; color: #000; margin: 14px 14px; font-size: 13px;" class="hidden-tablet hidden-phone">
           <a href="/">Home</a>&nbsp;&nbsp;|&nbsp;
           <?php if ($user->getIsLoggedIn()) { ?>
             <?php if (in_array($user->getRole(), array("administrator", "user"))) { ?>
@@ -51,8 +50,8 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
             <!--<a href="/help">Help</a>&nbsp;&nbsp;|&nbsp;-->
             <a href="/logout">Log Out</a>
           <?php } else { ?>
-          <a href="#" onclick="dialog.open('login', 'Log In', 190, 310);">Log In</a>&nbsp;&nbsp;|&nbsp;
-          <?php if (!B2B) { ?><a href="#" onclick="dialog.open('signup', 'Sign Up', 320, 310);">Sign Up</a>&nbsp;&nbsp;|&nbsp; <?php } ?>
+          <a href="#" onclick="dialog.open('login', 'Log In', 206, 316);">Log In</a>&nbsp;&nbsp;|&nbsp;
+          <?php if (!B2B) { ?><a href="#" onclick="dialog.open('signup', 'Sign Up', 336, 316);">Sign Up</a>&nbsp;&nbsp;|&nbsp; <?php } ?>
           <a href="">Help</a>
           <?php } ?>
         </div>
@@ -67,8 +66,8 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
               <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="/logout">Log Out</a></li>
               <?php } else { ?>
               <li<?php if ($page === null) { echo " class=\"active\""; } ?>><a href="./">Home</a></li>
-              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="#" onclick="dialog.open('signup', 'Sign Up', 320, 310);">Sign Up</a></li>
-              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="#" onclick="dialog.open('login', 'Log In', 190, 310, true);">Log In</a></li>
+              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="#" onclick="dialog.open('signup', 'Sign Up', 336, 316);">Sign Up</a></li>
+              <li<?php if ($page === "contact") { echo " class=\"active\""; } ?>><a href="#" onclick="dialog.open('login', 'Log In', 206, 316);">Log In</a></li>
               <?php } ?>
 
             </ul>

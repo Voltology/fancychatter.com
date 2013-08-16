@@ -63,9 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "getfeed":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
-        $json['feed']['chitchats'] = ChitChat::getByUserId($_REQUEST['id']);
-        $json['feed']['posts'] = $user->getPosts();
-      //$json['feed']['redemptions'] = 
+        $json['feed'] = $user->getFeed();
       } else {
         $json['result'] = "failed";
         array_push($json['errors'], "Not authorized");
@@ -142,13 +140,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       if ($user->getId() != $_REQUEST['id']) {
         Alerts::add($_REQUEST['id'], $user->getFirstName() . " " . $user->getLastName() . " has posted something on your profile!");
       }
-      $user->post($_REQUEST['id'], $_REQUEST['msg']);
+      $json['post']['id'] = $user->post($_REQUEST['id'], $_REQUEST['msg']);
       $json['post']['profile_img'] = $user->getProfileImage() !== "" ? $user->getProfileImage() : "default.png";
       $json['post']['name'] = $user->getFirstName() . " " . $user->getLastName();
       $json['post']['timestamp'] = date("F j, Y, g:i a", time());
-      break;
-    case "profile":
-      $json['profile'] = new User(1);
       break;
     case "redeem":
       $user->redeem($id);
