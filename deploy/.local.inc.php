@@ -43,8 +43,6 @@ switch($_SERVER['HTTP_HOST']) {
   case "staging.m.fancychater.com":
     define("ENV", "staging");
     break;
-  case "173.203.81.65":
-  case "50.57.73.16":
   case "50.56.5.76":
   case "fancychater.com":
   case "api.fancychater.com":
