@@ -33,22 +33,16 @@ switch($_SERVER['HTTP_HOST']) {
   case "fancychatter":
   case "api.fancychatter":
   case "b2b.fancychatter":
-  case "m.fancychatter":
-  case "dev.fancychatter.com":
-  case "dev.api.fancychatter.com":
-  case "dev.m.fancychatter.com":
     define("ENV", "dev");
     break;
-  case "50.57.69.124":
-  case "staging.fancychater.com":
-  case "staging.api.fancychater.com":
-  case "staging.m.fancychater.com":
+  case "staging.fancychatter.com":
+  case "staging.api.fancychatter.com":
+  case "staging.b2b.fancychatter.com":
     define("ENV", "staging");
     break;
-  case "50.56.5.76":
-  case "fancychater.com":
-  case "api.fancychater.com":
-  case "m.fancychater.com":
+  case "fancychatter.com":
+  case "api.fancychatter.com":
+  case "b2b.fancychatter.com":
     define("ENV", "production");
     break;
   default:
