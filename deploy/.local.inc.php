@@ -23,13 +23,18 @@ if ($_GET['debug'] === "true" || ($_SESSION['debug'] === "true" && $_GET['debug'
   $_SESSION['debug'] = "false";
 }
 
-if ($_SERVER['HTTP_HOST'] === "b2b.fancychatter") {
-  define("B2B", true);
-} else {
-  define("B2B", false);
+switch ($_SERVER['HTTP_HOST']) {
+  case "b2b.fancychatter":
+  case "b2b.fancychatter.com":
+  case "stgaing.b2b.fancychatter.com":
+    define("B2B", true);
+    break;
+  default:
+    define("B2B", false);
+    break;
 }
 
-switch($_SERVER['HTTP_HOST']) {
+switch ($_SERVER['HTTP_HOST']) {
   case "fancychatter":
   case "api.fancychatter":
   case "b2b.fancychatter":
