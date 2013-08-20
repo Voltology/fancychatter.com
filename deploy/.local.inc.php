@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set("Amercian/Chicago");
 define("LIB_PATH", __DIR__ . "/libs/");
 
 require(LIB_PATH . "Database.class.php");
@@ -38,6 +39,7 @@ switch($_SERVER['HTTP_HOST']) {
   case "dev.m.fancychatter.com":
     define("ENV", "dev");
     break;
+  case "50.57.69.124":
   case "staging.fancychater.com":
   case "staging.api.fancychater.com":
   case "staging.m.fancychater.com":
