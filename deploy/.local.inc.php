@@ -46,6 +46,7 @@ switch ($_SERVER['HTTP_HOST']) {
     define("ENV", "staging");
     break;
   case "fancychatter.com":
+  case "www.fancychatter.com":
   case "api.fancychatter.com":
   case "b2b.fancychatter.com":
     define("ENV", "production");
