@@ -45,6 +45,7 @@ switch ($_SERVER['HTTP_HOST']) {
   case "staging.b2b.fancychatter.com":
     define("ENV", "staging");
     break;
+  case "173.203.81.65":
   case "fancychatter.com":
   case "www.fancychatter.com":
   case "api.fancychatter.com":
