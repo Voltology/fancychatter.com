@@ -45,6 +45,9 @@ switch ($_SERVER['HTTP_HOST']) {
   case "staging.b2b.fancychatter.com":
     define("ENV", "staging");
     break;
+  case "demo.fancychatter.com":
+    define("ENV", "demo");
+    break;
   case "173.203.81.65":
   case "fancychatter.com":
   case "www.fancychatter.com":
@@ -72,6 +75,16 @@ if (ENV === "dev") {
   define("DB_NAME", "staging_fc");
   define("DB_USER", "staging_fc");
   define("DB_PASS", "gXf3RPcvFiEh");
+
+  define("API_URL", "staging.api.fancychatter.com/");
+  define("DESKTOP_URL", "staging.fancychatter.com/");
+
+  define("JQUERY_VERSION", "1.9.1");
+} else if (ENV === "demo") {
+  define("DB_HOST", "localhost");
+  define("DB_NAME", "demo_fc");
+  define("DB_USER", "demo_fc");
+  define("DB_PASS", "&wDp&PHT#edm");
 
   define("API_URL", "staging.api.fancychatter.com/");
   define("DESKTOP_URL", "staging.fancychatter.com/");
