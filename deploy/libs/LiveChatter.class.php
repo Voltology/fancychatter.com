@@ -107,10 +107,10 @@ class LiveChatter {
   }
 
   public static function search($citystatezip, $category, $distance, $amount) {
-    if (preg_match('/^[0-9]{5}$/', $citystatezip)) {
+    if (preg_match('/^[0-9]{5}$/', trim($citystatezip))) {
       $location = getLatLongByZip($citystatezip);
     } else {
-      list($city, $state, $zip) = preg_split('/,\s?|\s/', $citystatezip);
+      list($city, $state, $zip) = preg_split('/,\s/', $citystatezip);
       $location = getLatLongByCityState($city, $state, $zip);
     }
     $livechatter = array();

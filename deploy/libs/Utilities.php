@@ -25,13 +25,13 @@ function getCategoryById($id) {
 
 function getLatLongByZip($zip) {
   $query = sprintf("SELECT latitude,longitude FROM locations WHERE zipcode='%s' LIMIT 1",
-    mysql_real_escape_string($zip));
+    mysql_real_escape_string(trim($zip)));
   $query = mysql_query($query);
   return mysql_fetch_assoc($query);
 }
 
 function getLatLongByCityState($city, $state, $zip) {
-  if (preg_match('/^[0-9]{5}$/', $zip)) {
+  if (preg_match('/^[0-9]{5}$/', trim($zip))) {
     return getLatLongByZip($zip);
   } else {
     $query = sprintf("SELECT latitude,longitude FROM locations WHERE city='%s' AND state='%s' LIMIT 1",
