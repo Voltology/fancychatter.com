@@ -50,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "follow":
-      $user->follow($_REQUEST['id']);
+      $type = $_REQUEST['type'] == "1" ? 1 : 0;
+      $user->follow($_REQUEST['id'], $type);
       break;
     case "getalerts":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
@@ -189,7 +190,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "unfollow":
-      $user->unfollow($_REQUEST['id']);
+      $type = $_REQUEST['type'] == "1" ? 1 : 0;
+      $user->unfollow($_REQUEST['id'], $type);
       break;
     default:
       $json['result'] = "failed";

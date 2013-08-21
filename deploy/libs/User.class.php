@@ -68,15 +68,22 @@ class User {
     mysql_query($query);
   }
 
-  public function follow($id) {
-    $query = sprintf("INSERT INTO followers SET follower_id='%s', followee_id='%s', creation='%s'",
+  public function follow($id, $type) {
+    $query = sprintf("INSERT INTO followers SET type='%s', follower_id='%s', followee_id='%s', creation='%s'",
+      mysql_real_escape_string($type),
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($id),
       mysql_real_escape_string(time()));
     $query = mysql_query($query);
-    $query = sprintf("SELECT followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id WHERE follower_id='%s' AND followee_id='%s' LIMIT 1",
-      mysql_real_escape_string($this->_id),
-      mysql_real_escape_string($id));
+    if ($type === 0) {
+      $query = sprintf("SELECT followers.type,followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id WHERE follower_id='%s' AND followee_id='%s' LIMIT 1",
+        mysql_real_escape_string($this->_id),
+        mysql_real_escape_string($id));
+    } else {
+      $query = sprintf("SELECT followers.type,followee_id,merchants.name,merchants.logo FROM followers LEFT JOIN merchants ON followee_id=merchants.id WHERE follower_id='%s' AND followee_id='%s' LIMIT 1",
+        mysql_real_escape_string($this->_id),
+        mysql_real_escape_string($id));
+    }
     $query = mysql_query($query);
     $this->_followers[] = mysql_fetch_assoc($query);
   }
@@ -329,7 +336,13 @@ class User {
     if ($followers) {
       $this->_followers = $followers;
     } else {
-      $query = sprintf("SELECT type,followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id WHERE follower_id='%s' ORDER BY RAND() LIMIT 8",
+      $query = sprintf("SELECT type,followee_id,users.firstname,users.lastname,users.profile_img FROM followers LEFT JOIN users ON followee_id=users.id WHERE follower_id='%s' AND type='0'",
+        mysql_real_escape_string($this->_id));
+      $query = mysql_query($query);
+      while ($row = mysql_fetch_assoc($query)) {
+        array_push($this->_followers, $row);
+      }
+      $query = sprintf("SELECT followers.type,followee_id,merchants.name,merchants.logo FROM followers LEFT JOIN merchants ON followee_id=merchants.id WHERE follower_id='%s' AND type='1'",
         mysql_real_escape_string($this->_id));
       $query = mysql_query($query);
       while ($row = mysql_fetch_assoc($query)) {
@@ -368,8 +381,9 @@ class User {
     $this->_role = $role;
   }
 
-  public function unfollow($id) {
-    $query = sprintf("DELETE FROM followers WHERE follower_id='%s' AND followee_id='%s'",
+  public function unfollow($id, $type) {
+    $query = sprintf("DELETE FROM followers WHERE type='%s' AND follower_id='%s' AND followee_id='%s'",
+      mysql_real_escape_string($type),
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($id),
       mysql_real_escape_string(time()));

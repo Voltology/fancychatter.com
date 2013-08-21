@@ -10,10 +10,10 @@ $mid = $_GET['mid'] ? $_GET['mid'] : null;
 $cid = $_GET['cid'] ? $_GET['cid'] : null;
 $action = $_GET['a'] ? $_GET['a'] : null;
 if ($mid) {
-  $proftype = "merchant";
+  $proftype = 1;
   $merchant = new Merchant($mid);
 } else {
-  $proftype = "user";
+  $proftype = 0;
   $profile = $id ? new User($id) : $user;
 }
 if (!$profile && !$merchant) {
@@ -49,24 +49,24 @@ if (!$profile && !$merchant) {
             <p style="font-size: 13px;"><i class="icon-pencil"></i> <a href="?a=edit">Edit Profile</a></p>
             <?php } ?>
           <?php } else { ?>
-          <?php
-          $following = $user->getFollowers();
-          $followflag = false;
-          foreach ($following as $follow) {
-            if ($follow['followee_id'] === $profile->getId()) {
-              $followflag = true;
-              break;
+            <?php
+            $following = $user->getFollowers();
+            $followflag = false;
+            foreach ($following as $follow) {
+              if ($follow['followee_id'] === $profile->getId()) {
+                $followflag = true;
+                break;
+              }
             }
-          }
-          if ($followflag) {
-          ?>
-          <button type="button" class="btn btn-mini btn-danger search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.unfollow(<?php echo $profile->getId() ?>, '<?php echo $proftype; ?>');"><i class="icon-minus" style="vertical-align: bottom;"></i> Unfollow</button>
-          <?php
-          } else {
-          ?>
-          <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $profile->getId() ?>, '<?php echo $proftype; ?>');"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
-          <?php
-          }
+            if ($followflag) {
+            ?>
+            <button type="button" class="btn btn-mini btn-danger search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.unfollow(<?php echo $profile->getId() ?>, 0);"><i class="icon-minus" style="vertical-align: bottom;"></i> Unfollow</button>
+            <?php
+            } else {
+            ?>
+            <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $profile->getId() ?>, 0);"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
+            <?php
+            }
           } ?>
         </div>
       </div>
@@ -98,7 +98,11 @@ if (!$profile && !$merchant) {
           echo "<h4>Following (" . count($following) . ")</h4>";
           echo "<ul style=\"list-style-type: none; margin: 0 -4px;\">";
           foreach ($following as $follow) {
-            echo "<li style=\"display: inline-block; height: 80px; margin: 0 5px; width: 64px;\"><a href=\"/profile?id=" . $follow['followee_id'] . "\"><img src=\"/uploads/profile/" . ($follow['profile_img'] ? $follow['profile_img'] : "default.png") . "\" style=\"width: 100%;\" alt=\"" . $follow['firstname'] . " " . $follow['lastname'] . "\" title=\"" . $follow['firstname'] . " " . $follow['lastname'] . "\" /></a></li>";
+            if ($follow['type'] == 0) {
+              echo "<li style=\"display: inline-block; height: 80px; margin: 0 5px; width: 64px;\"><a href=\"/profile?id=" . $follow['followee_id'] . "\"><img src=\"/uploads/profile/" . ($follow['profile_img'] ? $follow['profile_img'] : "default.png") . "\" style=\"width: 100%;\" alt=\"" . $follow['firstname'] . " " . $follow['lastname'] . "\" title=\"" . $follow['firstname'] . " " . $follow['lastname'] . "\" /></a></li>";
+            } else {
+              echo "<li style=\"display: inline-block; height: 80px; margin: 0 5px; width: 64px;\"><a href=\"/profile?mid=" . $follow['followee_id'] . "\"><img src=\"/uploads/logos/" . ($follow['logo'] ? $follow['logo'] : "default.png") . "\" style=\"width: 100%;\" alt=\"" . $follow['name'] . "\" title=\"" . $follow['namename'] . "\" /></a></li>";
+            }
             $count++;
           }
           echo "</ul>";
@@ -354,9 +358,25 @@ if (!$profile && !$merchant) {
             <?php echo $merchant->getCity(); ?>, <?php echo strtoupper($merchant->getState()); ?> <?php echo $merchant->getZipCode(); ?><br />
             <?php echo $merchant->getPhone(); ?>
           </p>
-          <?php if ($user->getIsLoggedIn()) { ?>
-          <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $merchant->getId() ?>);"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
-          <?php } ?>
+          <?php if ($user->getIsLoggedIn()) {
+            $following = $user->getFollowers();
+            $followflag = false;
+            foreach ($following as $follow) {
+              if ($follow['followee_id'] === $mid) {
+                $followflag = true;
+                break;
+              }
+            }
+            if ($followflag) {
+            ?>
+            <button type="button" class="btn btn-mini btn-danger search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.unfollow(<?php echo $merchant->getId() ?>, 1);"><i class="icon-minus" style="vertical-align: bottom;"></i> Unfollow</button>
+            <?php
+            } else {
+            ?>
+            <button type="button" class="btn btn-mini btn-success search-btn" id="follow-button" style="font-size: 18px; width: 140px;" onclick="user.follow(<?php echo $merchant->getId() ?>, 1);"><i class="icon-plus" style="vertical-align: bottom;"></i> Follow</button>
+            <?php
+            }
+         } ?>
         </div>
       </div>
     </div>
