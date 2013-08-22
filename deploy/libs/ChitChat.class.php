@@ -62,10 +62,11 @@ class ChitChat {
     return mysql_num_rows($query);
   }
 
-  public function getResponsesById($id) {
+  public function getResponsesById($cid) {
     $responses = array();
-    $query = sprintf("SELECT chitchat_responses.id,user_id,chitchat_responses.merchant_id,body,users.firstname,users.lastname,merchants.name AS merchant_name,merchants.logo,chitchat_responses.creation FROM chitchat_responses LEFT JOIN users ON users.id=chitchat_responses.user_id LEFT JOIN merchants ON merchants.id=chitchat_responses.merchant_id WHERE chitchat_id='%s' ORDER BY creation ASC",
-      mysql_real_escape_string($id));
+    $query = sprintf("SELECT chitchat_responses.id,user_id,chitchat_responses.merchant_id,last_response,body,users.firstname,users.lastname,merchants.name AS merchant_name,merchants.logo,chitchat_responses.creation FROM chitchat_responses LEFT JOIN users ON users.id=chitchat_responses.user_id LEFT JOIN merchants ON merchants.id=chitchat_responses.merchant_id WHERE chitchat_id='%s' ORDER BY creation ASC",
+      mysql_real_escape_string($cid),
+      mysql_real_escape_string($uid));
     $query = mysql_query($query);
     while ($row = mysql_fetch_assoc($query)) {
       array_push($responses, $row);
@@ -73,11 +74,25 @@ class ChitChat {
     return $responses;
   }
 
-  public static function respond($ccid, $uid, $mid, $msg) {
-    $query = sprintf("INSERT INTO chitchat_responses SET chitchat_id='%s', user_id='%s', merchant_id='%s', body='%s', creation='%s'",
+  public function getResponsesByIdAndUser($cid, $uid, $mid) {
+    $responses = array();
+    $query = sprintf("SELECT chitchat_responses.id,user_id,chitchat_responses.merchant_id,last_response,body,users.firstname,users.lastname,merchants.name AS merchant_name,merchants.logo,chitchat_responses.creation FROM chitchat_responses LEFT JOIN users ON users.id=chitchat_responses.user_id LEFT JOIN merchants ON merchants.id=chitchat_responses.merchant_id WHERE chitchat_id='%s' AND (chitchat_responses.user_id='%s' AND chitchat_responses.merchant_id='%s') ORDER BY creation ASC",
+      mysql_real_escape_string($cid),
+      mysql_real_escape_string($uid),
+      mysql_real_escape_string($mid));
+    $query = mysql_query($query);
+    while ($row = mysql_fetch_assoc($query)) {
+      array_push($responses, $row);
+    }
+    return $responses;
+  }
+
+  public static function respond($ccid, $uid, $mid, $msg, $who) {
+    $query = sprintf("INSERT INTO chitchat_responses SET chitchat_id='%s', user_id='%s', merchant_id='%s', last_response='%s', body='%s', creation='%s'",
       mysql_real_escape_string($ccid),
       mysql_real_escape_string($uid),
       mysql_real_escape_string($mid),
+      mysql_real_escape_string($who),
       mysql_real_escape_string($msg),
       mysql_real_escape_string(time()));
     $query = mysql_query($query);

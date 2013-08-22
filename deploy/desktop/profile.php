@@ -20,7 +20,7 @@ if (!$profile && !$merchant) {
   echo "<div style=\"min-height: 400px; padding-top: 100px; \"><div class=\"error\"><strong>This user does not exist.</strong></div></div>";
 } else if (($id || $profile) && $user->getIsLoggedIn()) {
   if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    ChitChat::respond($_POST['cc-id'], $profile->getId(), null, $_POST['body']);
+    ChitChat::respond($_POST['cc-id'], $profile->getId(), $_POST['merchant-id'], $_POST['body'], "user");
   }
 ?>
 <div class="row-fluid">
@@ -135,13 +135,16 @@ if (!$profile && !$merchant) {
           $feeds = $profile->getFeed();
           foreach ($feeds as $feed) {
             switch($feed['type']) {
-              case "alert": ?>
+              case "alert":
+                if (!$id) {
+                ?>
                 <div style="border-bottom: 1px solid #ccc; font-weight: bold; font-size: 13px; padding: 10px 0; position: relative">
                   <i class="icon-bell"></i> <?php echo $feed['body']; ?>
                   <span style="font-size: 12px; font-weight: normal;"><?php echo date("F j, Y, g:i a", $feed['creation']); ?></span>
                   <div style="font-size: 12px; position: absolute; top: 4px; right: 2px; cursor: pointer;" onclick="profile.removealert(<?php echo $feed['id']; ?>)"><i class="icon-remove-sign"></i></div>
                 </div>
-              <?php
+                  <?php
+                  }
                 break;
               case "post": ?>
                 <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;" id="post-<?php echo $feed['id']; ?>">
@@ -172,7 +175,9 @@ if (!$profile && !$merchant) {
                 </table>
                 <?php
                 break;
-              case "chitchat":?>
+              case "chitchat":
+                if (!$id) {
+                ?>
                 <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
                   <tr>
                     <td rowspan="2" width="60" style="padding-top: 4px;">
@@ -194,6 +199,9 @@ if (!$profile && !$merchant) {
                       <?php
                       $responses = ChitChat::getResponsesById($feed['id']);
                       foreach ($responses as $response) {
+                        if ($response['merchant_id']) {
+                          $merchantid = $response['merchant_id'];
+                        }
                       ?>
                       <tr>
                         <td>&nbsp;</td>
@@ -202,7 +210,7 @@ if (!$profile && !$merchant) {
                             <tr>
                               <td rowspan="2" width="60">
                                 <div style="max-height: 60px; overflow: hidden; width: 60px;">
-                                  <?php if ($response['user_id'] > 0) { ?>
+                                  <?php if ($response['last_response'] === "user") { ?>
                                   <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
                                   <?php } else {?>
                                   <a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><img src="/uploads/logos/<?php echo $response['logo']; ?>" /></a>
@@ -210,15 +218,15 @@ if (!$profile && !$merchant) {
                                 </div>
                               </td>
                               <td valign="top">
-                                <?php if ($response['user_id'] > 0) { ?>
-                                <strong style="font-size: 14px;"><<?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
+                                <?php if ($response['last_response'] === "user") { ?>
+                                <strong style="font-size: 14px;"><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
                                 <?php } else { ?>
                                 <strong style="font-size: 14px;"><a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><?php echo $response['merchant_name']; ?></a></strong><br />
                                 <?php } ?>
                               </td>
                               <td align="right" valign="top" style="padding: 4px 30px 0 0;">
                                 <?php echo date("F j, Y, g:i a", $response['creation']); ?>
-                                <div style="position: absolute; top: 4px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove-sign"></i></div>
+                                <!--<div style="position: absolute; top: 4px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove-sign"></i></div>-->
                               </td>
                             </tr>
                             <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc; padding-left: 5px; font-size: 13px;"><?php echo $response['body']; ?></td></tr>
@@ -234,7 +242,7 @@ if (!$profile && !$merchant) {
                     </td>
                   </tr>
                   <?php
-                  if ($response['merchant_id'] > 0) {
+                  if ($response['last_response'] === "merchant") {
                   ?>
                     <tr>
                       <td></td>
@@ -249,7 +257,8 @@ if (!$profile && !$merchant) {
                             <td valign="top">
                               <form method="post">
                                 <textarea name="body" style="margin-bottom: 8px; height: 74px; width: 100%;"></textarea>
-                                <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" />
+                                <input type="hidden" name="merchant-id" id="merchant-id" value="<?php echo $merchantid; ?>" />
+                                <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $feed['id']; ?>" />
                                 <button type="submit" class="btn btn-mini btn-success search-btn" style="font-size: 18px;"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Response</button>
                               </form>
                             </td>
@@ -260,6 +269,7 @@ if (!$profile && !$merchant) {
                   <?php
                 }
             }
+        }
             $count++;
           }
           echo "</table>";

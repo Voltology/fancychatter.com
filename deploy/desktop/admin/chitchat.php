@@ -2,7 +2,7 @@
 if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
   if ($_SERVER['REQUEST_METHOD'] === "POST") {
     Alerts::add($_POST['user-id'], $merchant->getName() . " has responded to your ChitChat!");
-    ChitChat::respond($_POST['cc-id'], null, $merchant->getId(), $_POST['body']);
+    ChitChat::respond($_POST['cc-id'], $_POST['user-id'], $merchant->getId(), $_POST['body'], "merchant");
   }
   switch ($action) {
     case null:
@@ -24,6 +24,9 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
               <?php
               $chitchats = ChitChat::getByCategory($merchant->getCategory());
               foreach ($chitchats as $chitchat) {
+                if ($chitchat['user_id']) {
+                  $userid = $chitchat['user_id'];
+                }
               ?>
                 <ul style="margin: 0; padding: 0;">
                   <li style="display: inline-block; width: 54px; vertical-align: top; margin-right: 5px;">
@@ -36,9 +39,8 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                   </li>
                 </ul>
                 <?php
-                $responses = ChitChat::getResponsesById($chitchat['id']);
+                $responses = ChitChat::getResponsesByIdAndUser($chitchat['id'], $chitchat['user_id'], $merchant->getId());
                 foreach ($responses as $response) {
-                  $lastresponse = $response['user_id'];
                 ?>
                 <ul>
                   <li style="padding-left: 0; min-height: 60px; list-style-type: none;">
@@ -46,7 +48,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                       <li style="list-style-type: none; padding: 4px 0; width: 55px; display: inline-block;">
                         <div style="height: 50px; width: 50px; border: 1px solid #ccc; overflow: hidden;">
                           <?php
-                          if ($response['user_id'] > 0) {
+                          if ($response['last_response'] === "user") {
                           ?>
                           <img src="/uploads/profile/default.png" width="50" />
                           <?php
@@ -60,7 +62,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                       </li>
                       <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 440px; display: inline-block; vertical-align: top; padding: 4px 0;">
                         <?php
-                        if ($response['user_id'] > 0) {
+                        if ($response['last_response'] === "user") {
                         ?>
                         <strong><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
                         <?php
@@ -77,14 +79,14 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                 </ul>
                 <?php
                 }
-                if ($response['user_id'] > 0 || count($responses) === 0) {
+                if ($response['last_response'] === "user" || count($responses) === 0) {
                 ?>
                 <li>
                   <ul>
                     <li style="list-style-type: none; border-bottom: 1px solid #ccc; margin-bottom: 10px; width: 640px;">
                       <form method="post">
                         <textarea name="body" style="height: 80px; width: 440px; margin: 15px 0 5px 40px;"></textarea>
-                        <input type="hidden" name="user-id" id="user-id" value="<?php echo $chitchat['user_id']; ?>" /><br />
+                        <input type="hidden" name="user-id" id="user-id" value="<?php echo $userid; ?>" /><br />
                         <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" /><br />
                         <button type="submit" class="button" style="margin: 0 0 10px 40px;">Send Response</button>
                       </form>
