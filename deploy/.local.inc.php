@@ -87,8 +87,8 @@ if (ENV === "dev") {
   define("DB_USER", "demo_fc");
   define("DB_PASS", "&wDp&PHT#edm");
 
-  define("API_URL", "staging.api.fancychatter.com/");
-  define("DESKTOP_URL", "staging.fancychatter.com/");
+  define("API_URL", "demo.api.fancychatter.com/");
+  define("DESKTOP_URL", "demo.fancychatter.com/");
 
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "production") {
