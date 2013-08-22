@@ -27,7 +27,7 @@ class Alerts {
     return $alerts;
   }
 
-	public static function delete() {
+	public static function remove($id) {
     $query = sprintf("DELETE FROM alerts WHERE id='%s'",
       mysql_real_escape_string($id));
     mysql_query($query);

@@ -91,7 +91,7 @@ if (!$profile && !$merchant) {
             $count++;
           }
           if ($count === 0) {
-            echo "<p style=\"font-size: 13px;\">You do not have any saved searches.</p>";
+            echo "<p style=\"font-size: 13px;\">" . ($id ? $profile->getFirstName($profile->getId()) . " does " : "You do") . " not have any saved searches.</p>";
           }
           $following = $profile->getFollowers();
           $count = 0;
@@ -107,7 +107,7 @@ if (!$profile && !$merchant) {
           }
           echo "</ul>";
           if ($count === 0) {
-            echo "<p style=\"font-size: 13px;\">You are not following anyone.</p>";
+            echo "<p style=\"font-size: 13px;\">" . ($id ? $profile->getFirstName($profile->getId()) . " is " : "You are") . " not following anyone.</p>";
           }
           ?>
         </div>
@@ -138,9 +138,9 @@ if (!$profile && !$merchant) {
               case "alert":
                 if (!$id) {
                 ?>
-                <div style="border-bottom: 1px solid #ccc; font-weight: bold; font-size: 13px; padding: 10px 0; position: relative">
+                <div style="border-bottom: 1px solid #ccc; font-weight: bold; font-size: 13px; padding: 10px 0; position: relative" id="alert-<?php echo $feed['id']; ?>">
                   <i class="icon-bell"></i> <?php echo $feed['body']; ?>
-                  <span style="font-size: 12px; font-weight: normal;"><?php echo date("F j, Y, g:i a", $feed['creation']); ?></span>
+                  <span style="font-size: 12px; font-weight: normal;"> - <?php echo date("F j, Y, g:i a", $feed['creation']); ?></span>
                   <div style="font-size: 12px; position: absolute; top: 4px; right: 2px; cursor: pointer;" onclick="profile.removealert(<?php echo $feed['id']; ?>)"><i class="icon-remove-sign"></i></div>
                 </div>
                   <?php
@@ -178,7 +178,7 @@ if (!$profile && !$merchant) {
               case "chitchat":
                 if (!$id) {
                 ?>
-                <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
+                <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;" id="chitchat-<?php echo $feed['id'] ;?>">
                   <tr>
                     <td rowspan="2" width="60" style="padding-top: 4px;">
                       <div style="max-height: 60px; overflow: hidden; width: 60px;">
@@ -191,7 +191,7 @@ if (!$profile && !$merchant) {
                     </td>
                     <td align="right" valign="top" style="padding: 4px 30px 0 0;">
                       <?php echo date("F j, Y, g:i a", $feed['creation']); ?>
-                      <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $feed['id']; ?>'"><i class="icon-remove-sign"></i></div>
+                      <div style="position: absolute; top: 0px; right: 5px; cursor: pointer;" onclick="profile.removechitchat(<?php echo $feed['id']; ?>);"><i class="icon-remove-sign"></i></div>
                     </td>
                   </tr>
                   <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc; padding-left: 5px; font-size: 13px;"><?php echo $feed['body']; ?></td></tr>
