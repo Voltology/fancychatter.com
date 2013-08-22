@@ -110,6 +110,7 @@ class User {
 
   public function getFeed() {
     $feed = array();
+    $feed = array_merge($feed, Alerts::get($this->_id));
     $feed = array_merge($feed, $this->getPosts());
     $feed = array_merge($feed, ChitChat::getByUserId($this->_id));
     $feed = array_merge($feed, $this->getRedemptions());

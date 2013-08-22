@@ -14,6 +14,9 @@ class Database {
         $this->_dbpass = $dbpass;
         $this->_dbname = $dbname;
         $this->_dbconn = mysql_connect($this->_dbhost, $this->_dbuser, $this->_dbpass);
+        if (!$this->_dbconn) {
+          die('Could not connect: ' . mysql_error());
+        }
         $db = mysql_select_db($this->_dbname, $this->_dbconn);
     }
 

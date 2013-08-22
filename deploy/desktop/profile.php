@@ -135,6 +135,14 @@ if (!$profile && !$merchant) {
           $feeds = $profile->getFeed();
           foreach ($feeds as $feed) {
             switch($feed['type']) {
+              case "alert": ?>
+                <div style="border-bottom: 1px solid #ccc; font-weight: bold; font-size: 13px; padding: 10px 0; position: relative">
+                  <i class="icon-bell"></i> <?php echo $feed['body']; ?>
+                  <span style="font-size: 12px; font-weight: normal;"><?php echo date("F j, Y, g:i a", $feed['creation']); ?></span>
+                  <div style="font-size: 12px; position: absolute; top: 4px; right: 2px; cursor: pointer;" onclick="profile.removealert(<?php echo $feed['id']; ?>)"><i class="icon-remove-sign"></i></div>
+                </div>
+              <?php
+                break;
               case "post": ?>
                 <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;" id="post-<?php echo $feed['id']; ?>">
                   <tr>

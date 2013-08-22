@@ -13,6 +13,7 @@ require(LIB_PATH . "User.class.php");
 require(LIB_PATH . "Utilities.php");
 
 session_start();
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : preg_replace('/[0-9]{2}$/', "", gethostname());
 if ($_GET['debug'] === "true" || ($_SESSION['debug'] === "true" && $_GET['debug'] !== "false")) {
   $_SESSION['debug'] = "true";
   $starttime = explode(' ', microtime());
@@ -23,9 +24,10 @@ if ($_GET['debug'] === "true" || ($_SESSION['debug'] === "true" && $_GET['debug'
   $_SESSION['debug'] = "false";
 }
 
-switch ($_SERVER['HTTP_HOST']) {
+switch ($host) {
   case "b2b.fancychatter":
   case "b2b.fancychatter.com":
+  case "demo.b2b.fancychatter.com":
   case "stgaing.b2b.fancychatter.com":
     define("B2B", true);
     break;
@@ -34,21 +36,24 @@ switch ($_SERVER['HTTP_HOST']) {
     break;
 }
 
-switch ($_SERVER['HTTP_HOST']) {
+switch ($host) {
   case "fancychatter":
   case "api.fancychatter":
   case "b2b.fancychatter":
     define("ENV", "dev");
     break;
+  case "fc-stage":
   case "stage.fancychatter.com":
   case "staging.fancychatter.com":
   case "staging.api.fancychatter.com":
   case "staging.b2b.fancychatter.com":
     define("ENV", "staging");
     break;
+  case "fc-demo":
   case "demo.fancychatter.com":
     define("ENV", "demo");
     break;
+  case "fc-web":
   case "173.203.81.65":
   case "fancychatter.com":
   case "www.fancychatter.com":
@@ -57,9 +62,9 @@ switch ($_SERVER['HTTP_HOST']) {
     define("ENV", "production");
     break;
   default:
-    die("An error has occurred.  No environment has been set.");
+    define("ENV", "dev");
+    break;
 }
-
 
 if (ENV === "dev") {
   define("DB_HOST", "localhost");
@@ -102,6 +107,7 @@ if (ENV === "dev") {
 
   define("JQUERY_VERSION", "1.9.1");
 }
+
 $db = new Database();
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = new User();
