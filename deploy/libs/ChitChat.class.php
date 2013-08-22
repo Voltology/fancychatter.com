@@ -87,6 +87,12 @@ class ChitChat {
     return $responses;
   }
 
+  public function remove($id) {
+    $query = sprintf("DELETE FROM chitchat WHERE id='%s'",
+      mysql_real_escape_string($id));
+    mysql_query($query);
+  }
+
   public static function respond($ccid, $uid, $mid, $msg, $who) {
     $query = sprintf("INSERT INTO chitchat_responses SET chitchat_id='%s', user_id='%s', merchant_id='%s', last_response='%s', body='%s', creation='%s'",
       mysql_real_escape_string($ccid),

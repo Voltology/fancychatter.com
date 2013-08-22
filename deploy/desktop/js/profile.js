@@ -82,6 +82,20 @@ var profile = {
       });
     }
   },
+  removealert : function(id) {
+    ajax.get('api.php', '&a=removealert&id=' + id, function(response) {
+      $('#alert-' + id).fadeOut(500, function() {
+        $(this).remove();
+      });
+    });
+  },
+  removechitchat: function(id) {
+    ajax.get('api.php', '&a=removechitchat&id=' + id, function(response) {
+      $('#chitchat-' + id).fadeOut(500, function() {
+        $(this).remove();
+      });
+    });
+  },
   removepost : function(id) {
     ajax.get('api.php', '&a=removepost&id=' + id, function(response) {
       $('#post-' + id).fadeOut(500, function() {
