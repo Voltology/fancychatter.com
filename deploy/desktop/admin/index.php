@@ -51,7 +51,11 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
               startDateTextBox.datetimepicker('setDate', testEndDate);
           }
           else {
+<<<<<<< HEAD
             //startDateTextBox.val(dateText);
+=======
+//            startDateTextBox.val(dateText);
+>>>>>>> staging
           }
         },
         onSelect: function (selectedDateTime){
