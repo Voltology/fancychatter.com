@@ -1,5 +1,5 @@
 <?php
-date_default_timezone_set("Amercian/Chicago");
+date_default_timezone_set("America/Chicago");
 define("LIB_PATH", __DIR__ . "/libs/");
 
 require(LIB_PATH . "Database.class.php");
