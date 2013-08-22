@@ -25,7 +25,7 @@ class LiveChatter {
 
   public static function add($merchant_id, $body, $latitude, $longitude, $starttime, $endtime, $gmtoffset) {
     $offset = $gmtoffset * 60 * 60;
-    $query = sprintf("INSERT INTO livechatter SET merchant_id='%s', body='%s', latitude='%s', longitude='%s', starttime='%s', endtime='%s', status='1', creation='%s'",
+    $query = sprintf("INSERT INTO livechatter SET merchant_id='%s', body='%s', latitude='%s', longitude='%s', starttime='%s', endtime='%s', status='1', alerted='0', creation='%s'",
       mysql_real_escape_string($merchant_id),
       mysql_real_escape_string($body),
       mysql_real_escape_string($latitude),

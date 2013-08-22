@@ -34,7 +34,7 @@ var profile = {
         $.each(response.results, function(key, value) {
           if (value.type === 'user') {
             var img = (value.profile_img) ? value.profile_img : 'default.png';
-            var html = '<div class="search-result" id="search-result-' + key + '" style="padding: 3px 5px; cursor: pointer;"><div style="display: inline-block; height: 36px; width: 36px; overflow: hidden;"><img src="/uploads/profile/' + img + '" style="width: 100%;" /></div> ' + value.firstname + ' ' + value.lastname +' <span style="font-size: 12px;">';
+            var html = '<div class="search-result" id="search-result-' + key + '" style="padding: 3px 5px; cursor: pointer;"><div style="display: inline-block; height: 36px; width: 36px; overflow: hidden; vertical-align: middle;"><img src="/uploads/profile/' + img + '" style="width: 100%; vertical-align: middle;" /></div> <span style="font-size: 14px;">' + value.firstname + ' ' + value.lastname + '<span style="font-size: 12px;">';
             if (value.city && value.state) {
               html += '(' + value.city + ', ' + value.state + ')';
             } else if (value.city || value.state) {
@@ -49,7 +49,7 @@ var profile = {
             });
           } else if (value.type === 'merchant') {
             var img = (value.logo) ? value.logo : 'default.png';
-            $autocompletebox.append('<div class="search-result" id="search-result-' + key + '" style="padding: 3px 5px; cursor: pointer;"><div style="display: inline-block; height: 36px; width: 36px; overflow: hidden;"><img src="/uploads/logos/' + img + '" style="width: 100%;" /></div> ' + value.name + '<span style="font-size: 12px;"> (' + value.city + ', ' + value.state + ')</span></div>');
+            $autocompletebox.append('<div class="search-result" id="search-result-' + key + '" style="padding: 3px 5px; cursor: pointer;"><div style="display: inline-block; height: 36px; width: 36px; overflow: hidden; vertical-align: middle;"><img src="/uploads/logos/' + img + '" style="width: 100%;" /></div> <span style="font-size: 14px;">' + value.name + '</span> <span style="font-size: 12px;"> (' + value.city + ', ' + value.state + ')</span></div>');
           $result = $('#search-result-' + key);
           $result.on('click', function() {
             $autocompletebox.css('display', 'none');

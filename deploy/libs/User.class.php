@@ -279,11 +279,19 @@ class User {
   }
 
   public function saveSearch($location, $category, $distance, $saved = 0, $active = 0) {
-    $query = sprintf("INSERT INTO searches SET user_id='%s', location='%s', category_id='%s', distance='%s', saved='%s', active='%s', creation='%s'",
+    if (preg_match('/^[0-9]{5}$/', trim($location))) {
+      $latlng = getLatLongByZip($location);
+    } else {
+      list($city, $state, $zip) = preg_split('/,\s/', $location);
+      $latlng = getLatLongByCityState($city, $state, $zip);
+    }
+    $query = sprintf("INSERT INTO searches SET user_id='%s', location='%s', category_id='%s', distance='%s', latitude='%s', longitude='%s', saved='%s', active='%s', creation='%s'",
       mysql_real_escape_string($this->_id),
       mysql_real_escape_string($location),
       mysql_real_escape_string($category),
       mysql_real_escape_string($distance),
+      mysql_real_escape_string($latlng['latitude']),
+      mysql_real_escape_string($latlng['longitude']),
       mysql_real_escape_string($saved),
       mysql_real_escape_string($active),
       mysql_real_escape_string(time()));
