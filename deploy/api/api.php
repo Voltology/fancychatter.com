@@ -149,6 +149,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
     case "redeem":
       $user->redeem($id);
       break;
+    case "removechitchat":
+      ChitChat::remove($_REQUEST['id']);
+      break;
+    case "removealert":
+      Alerts::remove($_REQUEST['id']);
+      break;
     case "removepost":
       $user->removePost($_REQUEST['id']);
       break;
