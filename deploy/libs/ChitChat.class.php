@@ -64,7 +64,7 @@ class ChitChat {
 
   public function getResponsesById($cid) {
     $responses = array();
-    $query = sprintf("SELECT chitchat_responses.id,user_id,chitchat_responses.merchant_id,last_response,body,users.firstname,users.lastname,merchants.name AS merchant_name,merchants.logo,chitchat_responses.creation FROM chitchat_responses LEFT JOIN users ON users.id=chitchat_responses.user_id LEFT JOIN merchants ON merchants.id=chitchat_responses.merchant_id WHERE chitchat_id='%s' ORDER BY creation ASC",
+    $query = sprintf("SELECT chitchat_responses.id,user_id,chitchat_responses.merchant_id,last_response,body,users.firstname,users.lastname,merchants.name AS merchant_name,merchants.logo,chitchat_responses.creation FROM chitchat_responses LEFT JOIN users ON users.id=chitchat_responses.user_id LEFT JOIN merchants ON merchants.id=chitchat_responses.merchant_id WHERE chitchat_id='%s' ORDER BY merchant_id ASC, creation ASC",
       mysql_real_escape_string($cid),
       mysql_real_escape_string($uid));
     $query = mysql_query($query);

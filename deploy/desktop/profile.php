@@ -198,44 +198,112 @@ if (!$profile && !$merchant) {
                   <!--Needs responses-->
                       <?php
                       $responses = ChitChat::getResponsesById($feed['id']);
+                      $count = 0;
                       foreach ($responses as $response) {
+                        if ($merchantid !== $response['merchant_id'] && $count !== 0) {
+                          if ($response['last_response'] !== "merchant") {
+                        ?>
+                            <tr>
+                              <td></td>
+                              <td colspan="2">
+                                <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
+                                  <tr>
+                                    <td width="60" valign="top" style="padding-left: 66px;">
+                                      <div style="max-height: 60px; overflow: hidden; width: 60px;">
+                                        <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
+                                      </div>
+                                    </td>
+                                    <td valign="top">
+                                      <form method="post">
+                                        <textarea name="body" style="margin-bottom: 8px; height: 74px; width: 100%;"></textarea>
+                                        <input type="hidden" name="merchant-id" id="merchant-id" value="<?php echo $merchantid; ?>" />
+                                        <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $feed['id']; ?>" />
+                                        <button type="submit" class="btn btn-mini btn-success search-btn" style="font-size: 18px;"><i class="icon-reply" style="vertical-align: bottom;"></i> Send Response</button>
+                                      </form>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                            </tr>
+                          <?php
+                          }
+                          $count = 0;
+                        }
                         if ($response['merchant_id']) {
                           $merchantid = $response['merchant_id'];
                         }
-                      ?>
-                      <tr>
-                        <td>&nbsp;</td>
-                        <td colspan="2">
-                          <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
-                            <tr>
-                              <td rowspan="2" width="60">
-                                <div style="max-height: 60px; overflow: hidden; width: 60px;">
-                                  <?php if ($response['last_response'] === "user") { ?>
-                                  <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
-                                  <?php } else {?>
-                                  <a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><img src="/uploads/logos/<?php echo $response['logo']; ?>" /></a>
-                                  <?php } ?>
-                                </div>
-                              </td>
-                              <td valign="top">
-                                <?php if ($response['last_response'] === "user") { ?>
-                                <strong style="font-size: 14px;"><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
-                                <?php } else { ?>
-                                <strong style="font-size: 14px;"><a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><?php echo $response['merchant_name']; ?></a></strong><br />
-                                <?php } ?>
-                              </td>
-                              <td align="right" valign="top" style="padding: 4px 30px 0 0;">
-                                <?php echo date("F j, Y, g:i a", $response['creation']); ?>
-                                <!--<div style="position: absolute; top: 4px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove-sign"></i></div>-->
-                              </td>
-                            </tr>
-                            <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc; padding-left: 5px; font-size: 13px;"><?php echo $response['body']; ?></td></tr>
-                          </table>
+                        if ($count === 0) {
+                        ?>
+                          <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="2">
+                              <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
+                                <tr>
+                                  <td rowspan="2" width="60">
+                                    <div style="max-height: 60px; overflow: hidden; width: 60px;">
+                                      <?php if ($response['last_response'] === "user") { ?>
+                                      <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
+                                      <?php } else {?>
+                                      <a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><img src="/uploads/logos/<?php echo $response['logo']; ?>" /></a>
+                                      <?php } ?>
+                                    </div>
+                                  </td>
+                                  <td valign="top">
+                                    <?php if ($response['last_response'] === "user") { ?>
+                                    <strong style="font-size: 14px;"><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
+                                    <?php } else { ?>
+                                    <strong style="font-size: 14px;"><a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><?php echo $response['merchant_name']; ?></a></strong><br />
+                                    <?php } ?>
+                                  </td>
+                                  <td align="right" valign="top" style="padding: 4px 30px 0 0;">
+                                    <?php echo date("F j, Y, g:i a", $response['creation']); ?>
+                                    <!--<div style="position: absolute; top: 4px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove-sign"></i></div>-->
+                                  </td>
+                                </tr>
+                                <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc; padding-left: 5px; font-size: 13px;"><?php echo $response['body']; ?></td></tr>
+                              </table>
+                              <?php
+                              ?>
+                            </td>
+                          </tr>
                           <?php
+                          $count++;
+                        } else {
                           ?>
-                        </td>
-                      </tr>
-                      <?php
+                          <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="2">
+                              <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
+                                <tr>
+                                  <td rowspan="2" width="60" style="padding-left: 66px">
+                                    <div style="max-height: 60px; overflow: hidden; width: 60px;">
+                                      <?php if ($response['last_response'] === "user") { ?>
+                                      <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
+                                      <?php } else {?>
+                                      <a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><img src="/uploads/logos/<?php echo $response['logo']; ?>" /></a>
+                                      <?php } ?>
+                                    </div>
+                                  </td>
+                                  <td valign="top">
+                                    <?php if ($response['last_response'] === "user") { ?>
+                                    <strong style="font-size: 14px;"><?php echo $response['firstname']; ?> <?php echo $response['lastname']; ?></strong><br />
+                                    <?php } else { ?>
+                                    <strong style="font-size: 14px;"><a href="/profile?mid=<?php echo $response['merchant_id']; ?>"><?php echo $response['merchant_name']; ?></a></strong><br />
+                                    <?php } ?>
+                                  </td>
+                                  <td align="right" valign="top" style="padding: 4px 30px 0 0;">
+                                    <?php echo date("F j, Y, g:i a", $response['creation']); ?>
+                                    <!--<div style="position: absolute; top: 4px; right: 5px; cursor: pointer;" onclick="document.location='?a=delete&cid=<?php echo $response['id']; ?>'"><i class="icon-remove-sign"></i></div>-->
+                                  </td>
+                                </tr>
+                                <tr><td colspan="2" valign="top" style="border-bottom: 1px solid #ccc; padding-left: 5px; font-size: 13px;"><?php echo $response['body']; ?></td></tr>
+                              </table>
+                              <?php
+                              ?>
+                            </td>
+                          </tr>
+                        <?php
+                        }
                       }
                       $count++;
                       ?>
@@ -249,7 +317,7 @@ if (!$profile && !$merchant) {
                       <td colspan="2">
                         <table width="100%" cellpadding="2" cellspacing="0" border="0" style="position: relative; margin-top: 12px;">
                           <tr>
-                            <td width="60" valign="top">
+                            <td width="60" valign="top" style="padding-left: 66px;">
                               <div style="max-height: 60px; overflow: hidden; width: 60px;">
                                 <img src="/uploads/profile/<?php echo $profile->getProfileImage() !== "" ? $profile->getProfileImage() : "default.png"; ?>" />
                               </div>

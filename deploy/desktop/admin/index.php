@@ -23,8 +23,10 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
     <script src="/js/admin.js"></script>
     <script>
     $(document).ready(function() {
-      var startDateTextBox = $('#starttime');
-      var endDateTextBox = $('#endtime');
+      var startDateTextBox = $('#startdate');
+      var endDateTextBox = $('#enddate');
+      $(startDateTextBox).datetimepicker({showTimepicker: false});
+      $(endDateTextBox).datetimepicker({showTimepicker: false});
 
       startDateTextBox.datetimepicker({
         onClose: function(dateText, inst) {
@@ -65,7 +67,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
     <![endif]-->
   </head>
   <body>
-    <div style="position: absolute; top: 5px; right: 5px;"><strong><?php echo date("F j, Y, g:i a", time() - (7 * 3600)); ?></strong></div>
+    <div style="position: absolute; top: 5px; right: 5px;"><strong><?php echo date("F j, Y, g:i a", time()); ?></strong></div>
     <table width="100%" cellspacing="0" cellpadding="0">
       <tr>
         <td colspan="2" valign="middle" class="header">
