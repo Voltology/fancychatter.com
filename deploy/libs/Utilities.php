@@ -1,9 +1,9 @@
 <?php
-function jQueryTimeToUnixTime($time) {
-	$time = explode(" ", $time);
-	$date = explode("/", $time[0]);
+function jQueryTimeToUnixTime($date, $hour, $minute, $suffix) {
+	$date = explode("/", $date);
 	$timestamp = explode(":", $time[1]);
-	return mktime($timestamp[0], $timestamp[1], 0, $date[0], $date[1], $date[2]);
+  $hour = $suffix === "am" ? $hour : $hour + 12;
+	return mktime($hour, $minute, 0, $date[0], $date[1], $date[2]);
 }
 
 function getCategories() {

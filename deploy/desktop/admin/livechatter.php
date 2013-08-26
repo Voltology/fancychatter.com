@@ -15,9 +15,9 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
         if ($_POST['now'] == "true") {
           $start = time();
         } else {
-          $start = jQueryTimeToUnixTime($_POST['starttime']);
+          $start = jQueryTimeToUnixTime($_POST['startdate'], $_POST['starttime-hour'], $_POST['starttime-minute'], $_POST['starttime-suffix']);
         }
-        $end = jQueryTimeToUnixTime($_POST['endtime']);
+        $end = jQueryTimeToUnixTime($_POST['enddate'], $_POST['endtime-hour'], $_POST['endtime-minute'], $_POST['endtime-suffix']);
         $errors = LiveChatter::validate($_POST['body'], $start, $end);
         if ($action === "add") {
           if (count($errors) === 0) {
@@ -83,13 +83,42 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
                 <tr>
                   <td class="edit-label">Start Time</td>
                   <td class="edit-field">
-                    <input type="text" class="field-time" id="starttime" name="starttime" value="<?php if (count($errors) > 0) { echo $_POST['starttime']; } else if ($action === "edit" && $lc->getId()) { echo date("m/d/Y h:i", $lc->getStartTime()); } ?>" placeholder="Enter start time" /> <input type="checkbox" name="now" value="true" /> <span><strong>Now</strong></span>
+                    <input type="text" class="field-time" id="startdate" name="startdate" value="<?php if (count($errors) > 0) { echo $_POST['startdate']; } else if ($action === "edit" && $lc->getId()) { echo date("m/d/Y h:i", $lc->getStartTime()); } ?>" placeholder="Enter start time" />
+                    <select name="starttime-hour" style="vertical-align: middle; width: 50px;">
+                      <?php for ($i = 1; $i <= 12; $i++) { ?>
+                        <option value="<?php echo $i; ?>"<?php echo $i == preg_replace('/^0/', "", date("h")) ? " selected" : ""; ?>><?php echo strlen($i) === 1 ? "0" . $i : $i; ?></option>
+                      <?php } ?>
+                    </select><strong>&nbsp;:</strong>
+                    <select name="starttime-minute" style="width: 50px;">
+                      <?php for ($i = 0; $i <= 59; $i++) { ?>
+                        <option value="<?php echo $i; ?>"<?php echo $i == preg_replace('/^0/', "", date("i")) ? " selected" : ""; ?>><?php echo strlen($i) === 1 ? "0" . $i : $i; ?></option>
+                      <?php } ?>
+                    </select>
+                    <select name="starttime-suffix" style="width: 50px;">
+                      <option value="am"<?php echo date("a") === "am" ? " selected" : ""; ?>>AM</option>
+                      <option value="pm"<?php echo date("a") === "pm" ? " selected" : ""; ?>>PM</option>
+                    </select>
+                    <!--<input type="checkbox" name="now" value="true" /> <span><strong>Now</strong></span>-->
                   </td>
                 </tr>
                 <tr>
                   <td class="edit-label">End Time</td>
                   <td class="edit-field">
-                    <input type="text" class="field-time" id="endtime" name="endtime" value="<?php if (count($errors) > 0) { echo $_POST['endtime']; } else if ($action === "edit" && $lc->getId()) { echo date("m/d/Y h:i", $lc->getEndTime()); } ?>" placeholder="Enter end time" />
+                    <input type="text" class="field-time" id="enddate" name="enddate" value="<?php if (count($errors) > 0) { echo $_POST['enddate']; } else if ($action === "edit" && $lc->getId()) { echo date("m/d/Y h:i", $lc->getEndTime()); } ?>" placeholder="Enter end time" />
+                    <select name="endtime-hour" style="vertical-align: middle; width: 50px;">
+                      <?php for ($i = 1; $i <= 12; $i++) { ?>
+                        <option value="<?php echo $i; ?>"<?php echo $i == preg_replace('/^0/', "", date("h")) ? " selected" : ""; ?>><?php echo strlen($i) === 1 ? "0" . $i : $i; ?></option>
+                      <?php } ?>
+                    </select><strong>&nbsp;:</strong>
+                    <select name="endtime-minute" style="width: 50px;">
+                      <?php for ($i = 0; $i <= 59; $i++) { ?>
+                        <option value="<?php echo $i; ?>"<?php echo $i == preg_replace('/^0/', "", date("i")) ? " selected" : ""; ?>><?php echo strlen($i) === 1 ? "0" . $i : $i; ?></option>
+                      <?php } ?>
+                    </select>
+                    <select name="endtime-suffix" style="width: 50px;">
+                      <option value="am"<?php echo date("a") === "am" ? " selected" : ""; ?>>AM</option>
+                      <option value="pm"<?php echo date("a") === "pm" ? " selected" : ""; ?>>PM</option>
+                    </select>
                   </td>
                 </tr>
                 <tr>
