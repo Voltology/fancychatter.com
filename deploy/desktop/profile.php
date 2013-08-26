@@ -114,7 +114,7 @@ if (!$profile && !$merchant) {
       </div>
     </div>
   </div>
-  <div class="span8">
+  <div class="span8" id="interactions-panel">
     <?php
     switch($action) {
       case null:
@@ -468,7 +468,7 @@ if (!$profile && !$merchant) {
     </div>
     <div class="row-fluid">
       <div class="span12">
-        <div class="profile-recent-activity" style="width: 100%; min-height: 400px;">
+        <div class="profile-recent-activity" style="width: 100%; min-height: 300px;">
           <?php
           $following = $merchant->getFollowers();
           echo "<h4>Followers (" . count($following) . ")</h4>";

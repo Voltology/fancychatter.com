@@ -3766,6 +3766,16 @@ input[type="submit"].btn.btn-mini {
   .profile-image {
     width: 100px !important;
   }
+  .profile-data h4, .profile-recent-activity h4 {
+    text-align: left !important;
+  }
+  .interactions {
+    margin: 5px;
+  }
+  #interactions-panel h4 {
+    margin: 10px 0 0 4px !important;
+    text-align: left !important;
+  }
   #desktop-nav {
     display: none;
   }
