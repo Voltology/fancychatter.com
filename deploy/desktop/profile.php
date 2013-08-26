@@ -73,7 +73,7 @@ if (!$profile && !$merchant) {
     </div>
     <div class="row-fluid">
       <div class="span12">
-        <div class="profile-recent-activity" style="width: 100%; min-height: 400px;">
+        <div class="profile-recent-activity" style="width: 100%; min-height: 300px;">
           <h4><?php echo $id ? $profile->getFirstName($profile->getId()) . "'s" : "My"; ?> Favorite Five</h4>
           <?php
           $searches = $profile->getSavedSearches();
