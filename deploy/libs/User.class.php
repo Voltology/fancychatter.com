@@ -186,7 +186,7 @@ class User {
     return $this->_state;
   }
 
-  public static function getUsers($count = 20, $index = "0", $order = "creation", $direction = "ASC") {
+  public static function getUsers($count = 20, $index = 0, $order = "creation", $direction = "ASC") {
     $users = array();
     $query = sprintf("SELECT users.id,email,firstname,lastname,creation,roles.role as role FROM users JOIN roles ON users.role=roles.id ORDER BY %s %s LIMIT %s,%s",
       mysql_real_escape_string($order),

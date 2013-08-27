@@ -22,8 +22,10 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
           <th>&nbsp;</th>
         </tr>
         <?php
+        $perpage = 20;
+        $index = $_GET['i'] ? $_GET['i'] : 1;
         if ($user->getRole() === "administrator") {
-          $users = User::getUsers();
+          $users = User::getUsers($perpage, ($index - 1) * $perpage);
         } else {
           $users = User::getUsersByMerchant($merchant->getId());
         }
@@ -51,6 +53,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
         ?>
       </table>
       <button type="button" class="button" onclick="document.location='?p=users&a=add'"><i class="icon-plus"></i> Add User</button>
+      <a href="?p=users&i=<?php echo ($index - 1); ?>">&laquo; Previous Page</a> Page <?php echo $index; ?> of <a href="?p=users&i=<?php echo ($index + 1); ?>">Next Page &raquo;</a>
       <?php
       break;
     case "add":
