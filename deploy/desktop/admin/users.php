@@ -53,7 +53,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
         ?>
       </table>
       <button type="button" class="button" onclick="document.location='?p=users&a=add'"><i class="icon-plus"></i> Add User</button>
-      <a href="?p=users&i=<?php echo ($index - 1); ?>">&laquo; Previous Page</a> Page <?php echo $index; ?> of <?php echo ceil(User::getUserCount()[0] / $perpage); ?><a href="?p=users&i=<?php echo ($index + 1); ?>">Next Page &raquo;</a>
+      <?php /*<a href="?p=users&i=<?php echo ($index - 1); ?>">&laquo; Previous Page</a> Page <?php echo $index; ?> of <?php echo ceil(User::getUserCount()[0] / $perpage); ?><a href="?p=users&i=<?php echo ($index + 1); ?>">Next Page &raquo;</a> */ ?>
       <?php
       break;
     case "add":
