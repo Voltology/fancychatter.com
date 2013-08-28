@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
     case "follow":
       $type = $_REQUEST['type'] == "1" ? 1 : 0;
       $user->follow($_REQUEST['id'], $type);
+      Alerts::add($_REQUEST['id'], "<a href=\"/profile?id=" . $user->getId() . "\">" . $user->getFirstName() . " " . $user->getLastName() . "</a> is now following you!");
       break;
     case "getalerts":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
