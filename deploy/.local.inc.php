@@ -75,6 +75,7 @@ if (ENV === "dev") {
   define("API_URL", "http://api.fancychatter/");
   define("DESKTOP_URL", "http://fancychatter/");
 
+  define("GA_ID", "");
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "staging") {
   define("DB_HOST", "localhost");
@@ -85,6 +86,7 @@ if (ENV === "dev") {
   define("API_URL", "staging.api.fancychatter.com/");
   define("DESKTOP_URL", "staging.fancychatter.com/");
 
+  define("GA_ID", "");
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "demo") {
   define("DB_HOST", "localhost");
@@ -95,6 +97,7 @@ if (ENV === "dev") {
   define("API_URL", "demo.api.fancychatter.com/");
   define("DESKTOP_URL", "demo.fancychatter.com/");
 
+  define("GA_ID", "");
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "production") {
   define("DB_HOST", "fc-db01");
@@ -105,6 +108,7 @@ if (ENV === "dev") {
   define("API_URL", "api.fancychatter.com/");
   define("DESKTOP_URL", "fancychatter.com/");
 
+  define("GA_ID", "UA-11868870-8");
   define("JQUERY_VERSION", "1.9.1");
 }
 

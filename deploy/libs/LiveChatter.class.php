@@ -54,6 +54,14 @@ class LiveChatter {
     return $this->_body;
   }
 
+  public static function getById($id) {
+    $livechatter = array();
+    $query = sprintf("SELECT merchant_id,body,starttime FROM livechatter WHERE id='%s' LIMIT 1",
+      mysql_real_escape_string($id));
+    $query = mysql_query($query);
+    return mysql_fetch_assoc($query);;
+  }
+
   public function getEndTime() {
     return $this->_endtime;
   }

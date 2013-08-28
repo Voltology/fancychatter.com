@@ -98,7 +98,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
       <input type="hidden" id="hidden-distance" value="<?php echo $distance; ?>" />
       <div style="margin-bottom: 8px;"><a href="#" class="btn btn-mini btn-success search-btn" style="margin: 0 auto;" onclick="dialog.open('chitchat', 'ChitChat', 356, 486);"><i class="icon-reply" style="vertical-align: bottom;"></i> Send ChitChat</a></div>
       <table cellpadding="8" cellspacing="2" border="0" width="100%" style="border: 1px solid #ccc; padding: 6px; margin: 0; border-radius: 8px 8px 0 0;">
-        <tr style="border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0; font-size: 13px;"><th width="80"></th><th align="left">Business Name/Message</th><th align="left">Distance</th></tr>
+        <tr style="border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0; font-size: 13px;"><th width="80"></th><th align="left">Business Name/Message</th><th align="left">Distance</th><th align="right">Time Left</th><th></th></tr>
       <?php
       $count = 0;
       foreach ($livechatters as $livechatter) {
@@ -116,6 +116,13 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
           </td>
           <td valign="top" style="font-size: 13px;">
             <?php echo round($livechatter['distance'], 2); ?> miles
+          </td>
+          <td align="right" valign="top" style="font-size: 13px;">
+            <?php echo formatTimeLeft($livechatter['endtime'] - time()); ?>
+          </td>
+          <td align="right" valign="top">
+            <button type="button" class="btn btn-mini btn-success" onclick="livechatter.share(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Share</button>
+            <button type="button" class="btn btn-mini btn-success" onclick="livechatter.redeem(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Redeem</button>
           </td>
         </tr>
       <?php

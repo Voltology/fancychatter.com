@@ -6,8 +6,8 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>FancyChatter.com - Find local deals in real time!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FancyChatter.com - Find local deals in real time!</title>
     <meta name="description" content="">
     <meta name="author" content="">
 		<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/<?php echo JQUERY_VERSION; ?>/jquery.min.js"></script>-->
@@ -30,11 +30,21 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
       }, 5000);
     });
     </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '<?php echo GA_ID; ?>']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     <!--[if lt IE 9]>
       <script src="/js/html5shiv.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="<?php echo preg_replace('/\//', "", $_SERVER['REQUEST_URI']); ?>">
     <div class="container">
       <div class="masthead" style="padding: 4px; 0; border: 1px solid #ccc;">
         <div style="display: inline-block; margin: 5px 5px;"><a href="/"><img src="img/logo.png" width="140" border="0" /></a></div>

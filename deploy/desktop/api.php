@@ -147,7 +147,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $json['post']['timestamp'] = date("F j, Y, g:i a", time());
       break;
     case "redeem":
-      $user->redeem($id);
+      $user->redeem($_REQUEST['id']);
+      Alerts::add($user->getId(), "You have redeemed a LiveChatter!");
       break;
     case "removechitchat":
       ChitChat::remove($_REQUEST['id']);
@@ -160,6 +161,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "removesearch":
       $user->removeSearch($_REQUEST['id']);
+      break;
+    case "share":
+      //$livechatter->share($users);
       break;
     case "signup":
       $user = new User();

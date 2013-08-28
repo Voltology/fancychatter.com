@@ -38,7 +38,8 @@ var livechatter = {
   redeem: function(id) {
     ajax.get('api.php', '&a=redeem&id=' + id, function(response) {
       if (response.result === 'success') {
-        $('#redeem-' + id).remove();
+        $('#redeem-' + id).removeClass('btn-success');
+        $('#redeem-' + id).addClass('btn-danger');
         alert('You have redeemed this LiveChatter! It has been posted to your profile.');
       }
     });
@@ -56,5 +57,13 @@ var livechatter = {
     } else {
       $('#livechatter-search-mobile').submit();
     }
-  }
+  },
+  share: function(id) {
+    ajax.get('api.php', '&a=share&id=' + id, function(response) {
+      if (response.result === 'success') {
+        dialog.open('share', 'Share', 356, 486);
+        //$('#share-' + id).remove();
+      }
+    });
+  },
 };
