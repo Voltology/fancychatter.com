@@ -517,8 +517,7 @@ if (!$profile && !$merchant) {
          } ?>
         </div>
       </div>
-      <h4>Description</h4>
-      <p><?php if ($merchant->getDescription() !== "") { echo $merchant->getDescription(); } ?></p>
+      <p><?php if ($merchant->getDescription() !== "") { echo "<h4>Description</h4>" . $merchant->getDescription(); } ?></p>
     </div>
     <div class="row-fluid">
       <div class="span12">
