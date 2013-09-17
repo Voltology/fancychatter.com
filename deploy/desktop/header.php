@@ -26,9 +26,23 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
       var longitude = position.coords.longitude;
       $.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&sensor=true',
         success: function(data) {
-          $('#where').val(data.results[0].address_components[3].long_name + ', ' + data.results[0].address_components[5].short_name);
+//          alert('http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&sensor=true');
+          var citystate = getCityState(data);
+          $('#where').val(citystate);
         }
       });
+    }
+    function getCityState(data) {
+      var city, state;
+      for (var i = 0; i < data.results[0].address_components.length; i++) {
+        if (data.results[0].address_components[i].types[0] === 'locality') {
+          city = data.results[0].address_components[i].long_name;
+        }
+        if (data.results[0].address_components[i].types[0] === 'administrative_area_level_1') {
+          state = data.results[0].address_components[i].short_name;
+        }
+      }
+      return city + ', ' + state;
     }
     $(document).ready(function() {
       getlocation();
@@ -74,7 +88,7 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
           <?php } else { ?>
           <a href="#" onclick="dialog.open('login', 'Log In', 206, 316);">Log In</a>&nbsp;&nbsp;|&nbsp;
           <?php if (!B2B) { ?><a href="#" onclick="dialog.open('signup', 'Sign Up', 336, 316);">Sign Up</a>&nbsp;&nbsp;|&nbsp; <?php } ?>
-          <a href="">Help</a>
+            <!--<a href="/help">Help</a>&nbsp;&nbsp;|&nbsp;-->
           <?php } ?>
         </div>
       </div>
