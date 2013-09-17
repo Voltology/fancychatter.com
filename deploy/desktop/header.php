@@ -24,7 +24,11 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
     function getlatlong(position) {
       var latitude = position.coords.latitude;
       var longitude = position.coords.longitude;
-      //alert(latitude);
+      $.ajax({ url:'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + position.coords.latitude + ',' + position.coords.longitude + '&sensor=true',
+        success: function(data) {
+          $('#where').val(data.results[0].address_components[3].long_name + ', ' + data.results[0].address_components[5].short_name);
+        }
+      });
     }
     $(document).ready(function() {
       getlocation();

@@ -133,7 +133,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
       <?
       if (count($livechatter) === 0) {
       ?>
-      <td colspan="3" align="center"><strong>There are no LiveChatters that match this search.</strong></td>
+      <td colspan="4" align="center"><strong>There are no LiveChatters that match this search.</strong></td>
       <?php
       }
       ?>

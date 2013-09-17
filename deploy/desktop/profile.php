@@ -493,7 +493,8 @@ if (!$profile && !$merchant) {
             <?php echo $merchant->getAddress1(); ?><br />
             <?php if ($merchant->getAddress2() !== "") { echo $merchant->getAddress2(); } ?>
             <?php echo $merchant->getCity(); ?>, <?php echo strtoupper($merchant->getState()); ?> <?php echo $merchant->getZipCode(); ?><br />
-            <?php echo $merchant->getPhone(); ?>
+            <?php echo $merchant->getPhone(); ?><br />
+            <a href="https://maps.google.com/maps?saddr=current+location&daddr=<?php echo $merchant->getAddress1(); ?> <?php if ($merchant->getAddress2() !== "") { echo $merchant->getAddress2(); } ?> <?php echo $merchant->getCity(); ?>, <?php echo strtoupper($merchant->getState()); ?> <?php echo $merchant->getZipCode(); ?>" target="_blank">Get Directions</a>
           </p>
           <?php if ($user->getIsLoggedIn()) {
             $following = $user->getFollowers();
@@ -516,6 +517,8 @@ if (!$profile && !$merchant) {
          } ?>
         </div>
       </div>
+      <h4>Description</h4>
+      <p><?php if ($merchant->getDescription() !== "") { echo $merchant->getDescription(); } ?></p>
     </div>
     <div class="row-fluid">
       <div class="span12">

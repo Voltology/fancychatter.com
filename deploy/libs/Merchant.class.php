@@ -2,6 +2,7 @@
 class Merchant {
   private $_id;
   private $_name;
+  private $_description;
   private $_logo;
   private $_firstname;
   private $_lastname;
@@ -70,6 +71,10 @@ class Merchant {
     return $this->_creation;
   }
 
+  public function getDescription() {
+    return $this->_description;
+  }
+
   public function getEmail() {
     return $this->_email;
   }
@@ -111,7 +116,7 @@ class Merchant {
 
   public static function getMerchants($count = 20, $index = "0", $order = "creation", $direction = "ASC") {
     $merchant = array();
-    $query = sprintf("SELECT id,name,contact_email,address1,address2,city,state,zipcode,phone,latitude,longitude,creation FROM merchants ORDER BY %s %s LIMIT %s,%s",
+    $query = sprintf("SELECT id,name,description,contact_email,address1,address2,city,state,zipcode,phone,latitude,longitude,creation FROM merchants ORDER BY %s %s LIMIT %s,%s",
       mysql_real_escape_string($order),
       mysql_real_escape_string($direction),
       mysql_real_escape_string($index),
@@ -149,12 +154,13 @@ class Merchant {
   }
 
   public function set() {
-    $query = sprintf("SELECT merchants.id,name,merchants.category_id,logo,address1,address2,merchants.city,merchants.state,zipcode,latitude,longitude,phone,users.firstname,users.lastname,users.email FROM merchants LEFT JOIN users ON users.merchant_id=merchants.id WHERE merchants.id='%s' LIMIT 1",
+    $query = sprintf("SELECT merchants.id,name,description,merchants.category_id,logo,address1,address2,merchants.city,merchants.state,zipcode,latitude,longitude,phone,users.firstname,users.lastname,users.email FROM merchants LEFT JOIN users ON users.merchant_id=merchants.id WHERE merchants.id='%s' LIMIT 1",
       mysql_real_escape_string($this->_id));
     $query = mysql_query($query);
     if (mysql_num_rows($query) > 0) {
       $merchant = mysql_fetch_assoc($query);
       $this->_name = $merchant['name'];
+      $this->_description = $merchant['description'];
       $this->_category= $merchant['category_id'];
       $this->_firstname = $merchant['firstname'];
       $this->_lastname = $merchant['lastname'];
@@ -177,6 +183,10 @@ class Merchant {
 
   public function setCategory($category) {
     $this->_category = $category;
+  }
+
+  public function setDescription($description) {
+    $this->_description = $description;
   }
 
   public function setId($id) {
