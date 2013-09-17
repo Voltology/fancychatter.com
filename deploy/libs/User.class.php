@@ -26,6 +26,7 @@ class User {
   }
 
   public function activateSearch($id) {
+    global $mysqli;
     $query = sprintf("UPDATE searches SET active='1' WHERE id='%s' AND user_id='%s'",
       $mysqli->real_escape_string($id),
       $mysqli->real_escape_string($this->_id));
@@ -33,6 +34,7 @@ class User {
   }
 
   public function add($data, $role = 1) {
+    global $mysqli;
     $query = sprintf("INSERT INTO users SET email='%s', password='%s', firstname='%s', lastname='%s', merchant_id='%s', role='%s', creation='%s'",
       $mysqli->real_escape_string($data['email']),
       $mysqli->real_escape_string(md5($data['password1'])),
@@ -346,21 +348,25 @@ class User {
   }
 
   public function setCity($city) {
+    global $mysqli;
     $this->_savequery .= sprintf(" city='%s',", $mysqli->real_escape_string($city));
     $this->_city = $city;
   }
 
   public function setState($state) {
+    global $mysqli;
     $this->_savequery .= sprintf(" state='%s',", $mysqli->real_escape_string($state));
     $this->_state = $state;
   }
 
   public function setEmail($email) {
+    global $mysqli;
     $this->_savequery .= sprintf(" email='%s',", $mysqli->real_escape_string($email));
     $this->_email = $email;
   }
 
   public function setFirstName($firstname) {
+    global $mysqli;
     $this->_savequery .= sprintf(" firstname='%s',", $mysqli->real_escape_string($firstname));
     $this->_firstname = $firstname;
   }
@@ -398,6 +404,7 @@ class User {
   }
 
   public function setLastName($lastname) {
+    global $mysqli;
     $this->_savequery .= sprintf(" lastname='%s',", $mysqli->real_escape_string($lastname));
     $this->_lastname = $lastname;
   }
@@ -407,6 +414,7 @@ class User {
   }
 
   public function setProfileImage($image) {
+    global $mysqli;
     $this->_savequery .= sprintf(" profile_img='%s',", $mysqli->real_escape_string($image));
     $this->_profileimage = $image;
   }
@@ -416,6 +424,7 @@ class User {
   }
 
   public function unfollow($id, $type) {
+    global $mysqli;
     $query = sprintf("DELETE FROM followers WHERE type='%s' AND follower_id='%s' AND followee_id='%s'",
       $mysqli->real_escape_string($type),
       $mysqli->real_escape_string($this->_id),
@@ -431,6 +440,7 @@ class User {
   }
 
   public function update($id, $email, $password, $firstname, $lastname) {
+    global $mysqli;
     $query = sprintf("UPDATE users SET email='%s', password='%s', firstname='%s', lastname='%s' WHERE id='%s'",
       $mysqli->real_escape_string($email),
       $mysqli->real_escape_string(md5($password)),
@@ -441,6 +451,7 @@ class User {
   }
 
   public static function validate($data, $role = 1, $fields = null) {
+    global $mysqli;
     $errors = array();
     $query = sprintf("SELECT id FROM users WHERE email='%s' LIMIT 1",
       $mysqli->real_escape_string($data['email']));
