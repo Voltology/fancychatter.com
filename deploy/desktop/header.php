@@ -14,10 +14,20 @@ $page = $_GET['p'] ? $_GET['p'] : "home";
 		<script src="/js/jquery.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <link rel="stylesheet" href="/css/font-awesome.css">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet">
+    <?php getCityStateByLatLong("41.5949690", "-87.5604480"); ?>
     <script>
+    function getlocation() {
+      navigator.geolocation.getCurrentPosition(getlatlong);
+    }
+    function getlatlong(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      //alert(latitude);
+    }
     $(document).ready(function() {
+      getlocation();
       var count = 1;
       var $element = $('#banner');
       setInterval(function () {

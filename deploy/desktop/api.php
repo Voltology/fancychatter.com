@@ -63,6 +63,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $json['logout'] = true;
       }
       break;
+    case "getcitystatebylatlong":
+      $location = getCityStateByLatLong($_GET['lat'], $_GET['lng']);
+      break;
     case "getfeed":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
         $json['feed'] = $user->getFeed();

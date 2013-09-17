@@ -54,6 +54,15 @@ function getCategoryById($id) {
   return $result['category'];
 }
 
+function getCityStateByLatLong($lat, $lng) {
+    $query = sprintf("SELECT city,state,MIN(SQRT((69.1 * (%s - latitude) * 69.1 * (%s - latitude)) + (53 * (%s - longitude) * 53 * (%s - longitude)))) AS distance FROM locations ORDER BY distance ASC LIMIT 1",
+      mysql_real_escape_string($lat),
+      mysql_real_escape_string($lat),
+      mysql_real_escape_string($lng),
+      mysql_real_escape_string($lng));
+    $query = mysql_query($query);
+}
+
 function getLatLongByZip($zip) {
   $query = sprintf("SELECT latitude,longitude FROM locations WHERE zipcode='%s' LIMIT 1",
     mysql_real_escape_string(trim($zip)));

@@ -112,7 +112,9 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
             </div>
           </td>
           <td valign="top">
-            <strong style="font-size: 14px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong> <span style="color: #666; font-style: italic;">(<?php echo $livechatter['city'] . ", " . $livechatter['state']; ?>)</span><br /><span style="font-size: 13px;"><?php echo $livechatter['body']; ?></span>
+            <strong style="font-size: 14px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong> <span style="color: #666; font-style: italic;">(<?php echo $livechatter['city'] . ", " . $livechatter['state']; ?>)</span><br /><span style="font-size: 13px;"><?php echo $livechatter['body']; ?></span><br />
+            <span class="share-btn share-fb"><a target="_blank" href="https://www.facebook.com/sharer.php?m2w&s=100&p[title]=FancyChatter.com&p[summary]=<?php echo urlencode("Check out this LiveChatter from " . $livechatter['merchant_name'] . " on FancyChatter.com!" . $livechatter['body']); ?>&p[url]=http://www.fancychatter.com&p[images][0]=<?php echo urlencode("http://www.fancychatter.com/uploads/logos/" . $livechatter['logo']); ?>"><img src="/img/share-fb-18x18.png" alt="Facebook" title="Facebook"></a></span>
+            <span class="share-btn share-tw"><a target="_blank" href="https://twitter.com/share?text=<?php echo urlencode("Check out this LiveChatter from " . $livechatter['merchant_name'] . " on FancyChatter.com! " . $livechatter['body']); ?>&url=http://www.fancychatter.com/"><img src="/img/share-tw-19x18.png" alt="Twitter" title="Twitter"></a></span>
           </td>
           <td valign="top" style="font-size: 13px;">
             <?php echo round($livechatter['distance'], 2); ?> miles

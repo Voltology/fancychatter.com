@@ -113,6 +113,7 @@ if (ENV === "dev") {
 }
 
 $db = new Database();
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = new User();
 }

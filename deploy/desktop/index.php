@@ -72,7 +72,6 @@ include("header.php");
     <h3>Get Started.</h3>
     <p>
       <a href="/add">Add Your Business to FancyChatter</a><br />
-      <a href="/admin/">Merchant Administration Area</a>
     </p>
   </div>
 </div>
