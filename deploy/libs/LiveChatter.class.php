@@ -10,9 +10,13 @@ class LiveChatter {
   private $_endtime;
   private $_creation;
 
-  public function __construct($id, $merchantid) {
+  public function __construct($id, $merchantid = null) {
     $this->_id = $id;
-    $this->_merchantid = $merchantid;
+    if ($merchantid) {
+      $this->_merchantid = $merchantid;
+    } else {
+      $this->_merchantid = $this->getMerchantIdByLiveChatterId();
+    }
     $this->set();
   }
 
@@ -91,6 +95,18 @@ class LiveChatter {
       array_push($livechatter, $row);
     }
     return $livechatter;
+  }
+
+  public function getMerchantId() {
+    return $this->_merchantid;
+  }
+
+  public function getMerchantIdByLiveChatterId() {
+    $query = sprintf("SELECT merchant_id FROM livechatter WHERE id='%s' LIMIT 1",
+      mysql_real_escape_string($this->_id));
+    $query = mysql_query($query);
+    $query = mysql_fetch_assoc($query);
+    return $query['merchant_id'];
   }
 
   public function getStartTime() {

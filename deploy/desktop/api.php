@@ -151,8 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $json['post']['timestamp'] = date("F j, Y, g:i a", time());
       break;
     case "redeem":
+      $livechatter = new LiveChatter($_REQUEST['id']);
+      $merchant = new Merchant($livechatter->getMerchantId());
       $user->redeem($_REQUEST['id']);
-      Alerts::add($user->getId(), "You have redeemed a LiveChatter!");
+      Alerts::add($user->getId(), "You have redeemed a LiveChatter from " . $merchant->getName() . "!");
       break;
     case "removechitchat":
       ChitChat::remove($_REQUEST['id']);
