@@ -98,7 +98,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
       <input type="hidden" id="hidden-distance" value="<?php echo $distance; ?>" />
       <div style="margin-bottom: 8px;"><a href="#" class="btn btn-mini btn-success search-btn" style="margin: 0 auto;" onclick="dialog.open('chitchat', 'ChitChat', 356, 486);"><i class="icon-reply" style="vertical-align: bottom;"></i> Send ChitChat</a></div>
       <table cellpadding="8" cellspacing="2" border="0" width="100%" style="border: 1px solid #ccc; padding: 6px; margin: 0; border-radius: 8px 8px 0 0;">
-        <tr style="border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0; font-size: 13px;"><th width="80"></th><th align="left">Business Name/Message</th><th align="left">Distance</th></tr>
+        <tr style="border: 1px solid #ccc; padding: 6px; background-color: #eee; margin: 0; border-radius: 8px 8px 0 0; font-size: 13px;"><th width="80"></th><th align="left">Business Name/Message</th><th align="left">Distance</th><th align="right">Time Left</th><th></th></tr>
       <?php
       $count = 0;
       foreach ($livechatters as $livechatter) {
@@ -112,10 +112,19 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
             </div>
           </td>
           <td valign="top">
-            <strong style="font-size: 14px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong> <span style="color: #666; font-style: italic;">(<?php echo $livechatter['city'] . ", " . $livechatter['state']; ?>)</span><br /><span style="font-size: 13px;"><?php echo $livechatter['body']; ?></span>
+            <strong style="font-size: 14px;"><a href="profile?mid=<?php echo $livechatter['merchant_id']; ?>"><?php echo $livechatter['merchant_name']; ?></a></strong> <span style="color: #666; font-style: italic;">(<?php echo $livechatter['city'] . ", " . $livechatter['state']; ?>)</span><br /><span style="font-size: 13px;"><?php echo $livechatter['body']; ?></span><br />
+            <span class="share-btn share-fb"><a target="_blank" href="https://www.facebook.com/sharer.php?m2w&s=100&p[title]=FancyChatter.com&p[summary]=<?php echo urlencode("Check out this LiveChatter from " . $livechatter['merchant_name'] . " on FancyChatter.com!" . $livechatter['body']); ?>&p[url]=http://www.fancychatter.com&p[images][0]=<?php echo urlencode("http://www.fancychatter.com/uploads/logos/" . $livechatter['logo']); ?>"><img src="/img/share-fb-18x18.png" alt="Facebook" title="Facebook"></a></span>
+            <span class="share-btn share-tw"><a target="_blank" href="https://twitter.com/share?text=<?php echo urlencode("Check out this LiveChatter from " . $livechatter['merchant_name'] . " on FancyChatter.com! " . $livechatter['body']); ?>&url=http://www.fancychatter.com/"><img src="/img/share-tw-19x18.png" alt="Twitter" title="Twitter"></a></span>
           </td>
           <td valign="top" style="font-size: 13px;">
             <?php echo round($livechatter['distance'], 2); ?> miles
+          </td>
+          <td align="right" valign="top" style="font-size: 13px;">
+            <?php echo formatTimeLeft($livechatter['endtime'] - time()); ?>
+          </td>
+          <td align="right" valign="top">
+            <button type="button" class="btn btn-mini btn-success" onclick="livechatter.share(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Share</button>
+            <button type="button" class="btn btn-mini btn-success" onclick="livechatter.redeem(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Save</button>
           </td>
         </tr>
       <?php
@@ -124,7 +133,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
       <?
       if (count($livechatter) === 0) {
       ?>
-      <td colspan="3" align="center"><strong>There are no LiveChatters that match this search.</strong></td>
+      <td colspan="4" align="center"><strong>There are no LiveChatters that match this search.</strong></td>
       <?php
       }
       ?>

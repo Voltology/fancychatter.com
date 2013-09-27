@@ -46,6 +46,9 @@ var dialog = {
           user.login($('#email').val(), $('#password').val());
          }
       });
+    } else if (type === 'share') {
+      var html = 'Select the friends you would like to share this LiveChatter with:';
+      $('#dialog-body').html(html);
     } else if (type === 'signup') {
       var html = '<input type="text" placeholder="First Name" id="firstname" /><br />';
       html += '<input type="text" placeholder="Last Name" id="lastname" /><br />';

@@ -23,6 +23,57 @@ if (!$profile && !$merchant) {
     ChitChat::respond($_POST['cc-id'], $profile->getId(), $_POST['merchant-id'], $_POST['body'], "user");
   }
 ?>
+<div class="mobile-search hidden-desktop hidden-tablet">
+  <div class="search-container">
+    <form method="post" action="/livechatter" id="livechatter-search-mobile">
+      <label for="where">Where are you?</label>
+      <input type="text" name="where" id="where-mobile" placeholder="Enter a Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete('mobile');" />
+      <label for="what">What are you looking for?</label>
+      <select name="what" id="what-mobile">
+        <option value="null">Select Category</option>
+        <?php
+        $categories = getCategories();
+        foreach ($categories as $category) {
+          echo "<option value=\"" . $category['id'] . "\">" . $category['category'] . "</option>";
+        }
+        ?>
+      </select>
+      <label for="distanc">How far do you want to go?</label>
+      <select name="distance" id="distance-mobile">
+        <option value="null">Select Distance</option>
+        <?php for ($i = 5; $i <= 25; $i+=5) { ?>
+        <option value="<?php echo $i; ?>"><?php echo $i; ?> Miles</option>
+        <?php } ?>
+      </select>
+      <input type="hidden" name="mobile" value="true" />
+      <button type="button" class="btn btn-mini btn-success search-btn" onclick="<?php if ($user->getIsLoggedIn()) { echo "livechatter.searchmobile();"; } else { if (!B2B) { echo "dialog.open('signup', 'Sign Up', 320, 310, true);"; } else { echo "dialog.open('login', 'Log In', 180, 310, true);"; } } ?>"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+    </form>
+  </div>
+</div>
+<div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 15px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
+<div class="lead hidden-phone" style="background-color: #eee; border: 1px solid #ccc; border-radius: 6px; text-align: center;">
+  <form method="post" action="/livechatter" id="livechatter-search">
+    <input type="text" name="where" id="where" value="<?php echo $where; ?>" style="padding: 5px;" placeholder="Where are you?" autocomplete="off" onkeyup="livechatter.autocomplete();" />
+    <select name="what" id="what">
+      <option value="null">What are you looking for?</option>
+      <?php
+      $categories = getCategories();
+      foreach ($categories as $category) {
+        echo "<option value=\"" . $category['id'] . "\"";
+        if ($what == $category['id']) { echo " selected"; }
+        echo ">" . $category['category'] . "</option>";
+      }
+      ?>
+    </select>
+    <select name="distance" id="distance">
+      <option value="null">How far do you want to go?</option>
+      <?php for ($i = 5; $i <= 25; $i += 5) { ?>
+      <option value="<?php echo $i; ?>"<?php if ($distance == $i) { echo " selected"; } ?>><?php echo $i; ?> Miles</option>
+      <?php } ?>
+    </select>
+    <button type="button" class="btn btn-mini btn-success search-btn" onclick="livechatter.search();"><i class="icon-search" style="vertical-align: bottom;"></i> Search</button>
+  </form>
+</div>
 <div class="row-fluid">
   <div class="span4">
     <div class="row-fluid">
@@ -73,7 +124,7 @@ if (!$profile && !$merchant) {
     </div>
     <div class="row-fluid">
       <div class="span12">
-        <div class="profile-recent-activity" style="width: 100%; min-height: 400px;">
+        <div class="profile-recent-activity" style="width: 100%; min-height: 300px;">
           <h4><?php echo $id ? $profile->getFirstName($profile->getId()) . "'s" : "My"; ?> Favorite Five</h4>
           <?php
           $searches = $profile->getSavedSearches();
@@ -114,7 +165,7 @@ if (!$profile && !$merchant) {
       </div>
     </div>
   </div>
-  <div class="span8">
+  <div class="span8" id="interactions-panel">
     <?php
     switch($action) {
       case null:
@@ -442,7 +493,8 @@ if (!$profile && !$merchant) {
             <?php echo $merchant->getAddress1(); ?><br />
             <?php if ($merchant->getAddress2() !== "") { echo $merchant->getAddress2(); } ?>
             <?php echo $merchant->getCity(); ?>, <?php echo strtoupper($merchant->getState()); ?> <?php echo $merchant->getZipCode(); ?><br />
-            <?php echo $merchant->getPhone(); ?>
+            <?php echo $merchant->getPhone(); ?><br />
+            <a href="https://maps.google.com/maps?saddr=current+location&daddr=<?php echo $merchant->getAddress1(); ?> <?php if ($merchant->getAddress2() !== "") { echo $merchant->getAddress2(); } ?> <?php echo $merchant->getCity(); ?>, <?php echo strtoupper($merchant->getState()); ?> <?php echo $merchant->getZipCode(); ?>" target="_blank">Get Directions</a>
           </p>
           <?php if ($user->getIsLoggedIn()) {
             $following = $user->getFollowers();
@@ -465,10 +517,11 @@ if (!$profile && !$merchant) {
          } ?>
         </div>
       </div>
+      <p><?php if ($merchant->getDescription() !== "") { echo "<h4>Description</h4>" . $merchant->getDescription(); } ?></p>
     </div>
     <div class="row-fluid">
       <div class="span12">
-        <div class="profile-recent-activity" style="width: 100%; min-height: 400px;">
+        <div class="profile-recent-activity" style="width: 100%; min-height: 300px;">
           <?php
           $following = $merchant->getFollowers();
           echo "<h4>Followers (" . count($following) . ")</h4>";

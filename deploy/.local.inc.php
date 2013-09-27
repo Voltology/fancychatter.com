@@ -75,6 +75,7 @@ if (ENV === "dev") {
   define("API_URL", "http://api.fancychatter/");
   define("DESKTOP_URL", "http://fancychatter/");
 
+  define("GA_ID", "");
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "staging") {
   define("DB_HOST", "localhost");
@@ -85,6 +86,7 @@ if (ENV === "dev") {
   define("API_URL", "staging.api.fancychatter.com/");
   define("DESKTOP_URL", "staging.fancychatter.com/");
 
+  define("GA_ID", "");
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "demo") {
   define("DB_HOST", "localhost");
@@ -95,6 +97,7 @@ if (ENV === "dev") {
   define("API_URL", "demo.api.fancychatter.com/");
   define("DESKTOP_URL", "demo.fancychatter.com/");
 
+  define("GA_ID", "UA-43576117-1");
   define("JQUERY_VERSION", "1.9.1");
 } else if (ENV === "production") {
   define("DB_HOST", "fc-db01");
@@ -105,10 +108,12 @@ if (ENV === "dev") {
   define("API_URL", "api.fancychatter.com/");
   define("DESKTOP_URL", "fancychatter.com/");
 
+  define("GA_ID", "UA-43576117-1");
   define("JQUERY_VERSION", "1.9.1");
 }
 
 $db = new Database();
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if (!isset($_SESSION['user'])) {
     $_SESSION['user'] = new User();
 }

@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
     case "follow":
       $type = $_REQUEST['type'] == "1" ? 1 : 0;
       $user->follow($_REQUEST['id'], $type);
+      Alerts::add($_REQUEST['id'], "<a href=\"/profile?id=" . $user->getId() . "\">" . $user->getFirstName() . " " . $user->getLastName() . "</a> is now following you!");
       break;
     case "getalerts":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
@@ -61,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         array_push($json['errors'], "Not authorized");
         $json['logout'] = true;
       }
+      break;
+    case "getcitystatebylatlong":
+      $location = getCityStateByLatLong($_GET['lat'], $_GET['lng']);
       break;
     case "getfeed":
       if ($user->checkPassword($_GET['email'], $_GET['password'])) {
@@ -147,7 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $json['post']['timestamp'] = date("F j, Y, g:i a", time());
       break;
     case "redeem":
-      $user->redeem($id);
+      $livechatter = new LiveChatter($_REQUEST['id']);
+      $merchant = new Merchant($livechatter->getMerchantId());
+      $user->redeem($_REQUEST['id']);
+      Alerts::add($user->getId(), "You have redeemed a LiveChatter from " . $merchant->getName() . "!");
       break;
     case "removechitchat":
       ChitChat::remove($_REQUEST['id']);
@@ -160,6 +167,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "removesearch":
       $user->removeSearch($_REQUEST['id']);
+      break;
+    case "share":
+      //$livechatter->share($users);
       break;
     case "signup":
       $user = new User();

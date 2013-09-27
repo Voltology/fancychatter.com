@@ -1,4 +1,35 @@
 <?php
+function formatTimeLeft($secondsLeft) {
+  $minuteInSeconds = 60;
+  $hourInSeconds = $minuteInSeconds * 60;
+  $dayInSeconds = $hourInSeconds * 24;
+  $days = floor($secondsLeft / $dayInSeconds);
+  $secondsLeft = $secondsLeft % $dayInSeconds;
+  $hours = floor($secondsLeft / $hourInSeconds);
+  $secondsLeft = $secondsLeft % $hourInSeconds;
+  $minutes= floor($secondsLeft / $minuteInSeconds);
+  $seconds = $secondsLeft % $minuteInSeconds;
+  $timeComponents = array();
+  if ($days > 0) {
+    $timeComponents[] = $days . " day" . ($days > 1 ? "s" : "");
+  } else {
+    if ($hours > 0) {
+      $timeComponents[] = $hours . " hour" . ($hours > 1 ? "s" : "");
+    } else {
+      if ($minutes > 0) {
+        $timeComponents[] = $minutes . " minute" . ($minutes > 1 ? "s" : "");
+      }
+    }
+  }
+  if (count($timeComponents) > 0) {
+    $formattedTimeRemaining = implode(", ", $timeComponents);
+    $formattedTimeRemaining = trim($formattedTimeRemaining);
+  } else {
+    $formattedTimeRemaining = "No time remaining.";
+  }
+  return $formattedTimeRemaining;
+}
+
 function jQueryTimeToUnixTime($date, $hour, $minute, $suffix) {
 	$date = explode("/", $date);
 	$timestamp = explode(":", $time[1]);
@@ -21,6 +52,15 @@ function getCategoryById($id) {
   $query = mysql_query($query);
   $result = mysql_fetch_assoc($query);
   return $result['category'];
+}
+
+function getCityStateByLatLong($lat, $lng) {
+    $query = sprintf("SELECT city,state,MIN(SQRT((69.1 * (%s - latitude) * 69.1 * (%s - latitude)) + (53 * (%s - longitude) * 53 * (%s - longitude)))) AS distance FROM locations ORDER BY distance ASC LIMIT 1",
+      mysql_real_escape_string($lat),
+      mysql_real_escape_string($lat),
+      mysql_real_escape_string($lng),
+      mysql_real_escape_string($lng));
+    $query = mysql_query($query);
 }
 
 function getLatLongByZip($zip) {

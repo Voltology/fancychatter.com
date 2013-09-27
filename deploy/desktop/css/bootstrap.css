@@ -3748,6 +3748,10 @@ input[type="submit"].btn.btn-mini {
   }
 }
 @media (max-width: 480px) {
+  #map-canvas {
+    margin: 0 auto;
+    width: 94% !important;
+  }
   .mobile-search h3, h4 {
     margin: 0 auto !important;
     text-align: center;
@@ -3765,6 +3769,16 @@ input[type="submit"].btn.btn-mini {
   }
   .profile-image {
     width: 100px !important;
+  }
+  .profile-data h4, .profile-recent-activity h4 {
+    text-align: left !important;
+  }
+  .interactions {
+    margin: 5px;
+  }
+  #interactions-panel h4 {
+    margin: 10px 0 0 4px !important;
+    text-align: left !important;
   }
   #desktop-nav {
     display: none;
@@ -4520,6 +4534,10 @@ input[type="submit"].btn.btn-mini {
   }
 }
 @media (max-width: 979px) {
+  #map-canvas {
+    margin: 0 auto;
+    width: 94% !important;
+  }
   .mobile-search {
     display: block;
   }
