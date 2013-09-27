@@ -44,7 +44,7 @@ class User {
       $mysqli->real_escape_string($role),
       $mysqli->real_escape_string(time()));
     $mysqli->query($query);
-    return $mysqli->insert_id();
+    return $mysqli->insert_id;
   }
 
   public function checkPassword($email, $password) {

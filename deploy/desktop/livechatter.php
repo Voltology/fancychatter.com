@@ -124,7 +124,7 @@ $livechatters = LiveChatter::search($where, $what, $distance, 20);
           </td>
           <td align="right" valign="top">
             <button type="button" class="btn btn-mini btn-success" onclick="livechatter.share(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Share</button>
-            <button type="button" class="btn btn-mini btn-success" onclick="livechatter.redeem(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Redeem</button>
+            <button type="button" class="btn btn-mini btn-success" onclick="livechatter.redeem(<?php echo $livechatter['id']; ?>);" style="margin-top: 2px; width: 55px;">Save</button>
           </td>
         </tr>
       <?php
