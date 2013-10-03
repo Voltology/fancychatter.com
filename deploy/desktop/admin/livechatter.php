@@ -9,58 +9,21 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
     case "edit":
     case "pause":
     case "save":
-      $id = $_POST['id'] ? $_POST['id'] : $_GET['id'];
-      if ($_SERVER['REQUEST_METHOD'] === "POST") {
-        $lc = new LiveChatter($id, $user->getMerchantId());
-        if ($_POST['now'] == "true") {
-          $start = time();
-        } else {
-          $start = jQueryTimeToUnixTime($_POST['startdate'], $_POST['starttime-hour'], $_POST['starttime-minute'], $_POST['starttime-suffix']);
+      if (count($errors) > 0) {
+        echo "<div class=\"error\">";
+        foreach ($errors as $error) {
+          echo "<i class=\"icon-remove\"></i> " . $error . "<br />";
         }
-        $end = jQueryTimeToUnixTime($_POST['enddate'], $_POST['endtime-hour'], $_POST['endtime-minute'], $_POST['endtime-suffix']);
-        $errors = LiveChatter::validate($_POST['body'], $start, $end);
-        if ($action === "add") {
-          if (count($errors) === 0) {
-            $errors = LiveChatter::add($user->getMerchantId(), $_POST['body'], $merchant->getLatitude(), $merchant->getLongitude(), $start, $end, $user->getGmtOffset());
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been added.</div>";
-          } else {
-            echo "<div class=\"error\">";
-            foreach ($errors as $error) {
-              echo "<i class=\"icon-remove\"></i> " . $error . "<br />";
-            }
-            echo "</div>";
-          }
-        } else if ($action === "edit") {
-          if (count($errors) === 0) {
-            $lc->setBody($_POST['body']);
-            $lc->setStartTime($start);
-            $lc->setEndTime($end);
-            $lc->save();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been saved.</div>";
-          } else {
-            echo "<div class=\"error\">";
-            foreach ($errors as $error) {
-              echo "<i class=\"icon-remove\"></i> " . $error . "<br />";
-            }
-            echo "</div>";
-          }
-        }
-      } else if($id) {
-        $lc = new LiveChatter($id, $user->getMerchantId());
-        if ($lc->getId()) {
-          if ($action === "activate") {
-            $lc->activate();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been activated.</div>";
-          } else if ($action === "deactivate") {
-            $lc->deactivate();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been deactivated.</div>";
-          } else if ($action === "delete") {
-            $lc->delete();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been deleted.</div>";
-          } else if ($action === "pause") {
-            $lc->pause();
-            echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been paused.</div>";
-          }
+        echo "</div>";
+      } else {
+        if ($action === "activate") {
+          echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been activated.</div>";
+        } else if ($action === "deactivate") {
+          echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been deactivated.</div>";
+        } else if ($action === "delete") {
+          echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been deleted.</div>";
+        } else if ($action === "pause") {
+          echo "<div class=\"success\"><i class=\"icon-ok\"></i> The LiveChatter has been paused.</div>";
         }
       }
       $livechatter = LiveChatter::getByMerchantId($user->getMerchantId());
@@ -129,6 +92,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
                     <?php } else { ?>
                     <input type="hidden" name="a" value="add" />
                     <?php } ?>
+                    <input type="hidden" name="formpage" value="livechatter" />
                     <button type="submit" class="button"><i class="icon-save"></i> Save LiveChatter</button>
                   </td>
                 </tr>
@@ -155,7 +119,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
                     </td>
                   </tr>
                   <tr class="livechatter-controls">
-                    <td align="right" colspan="2"><i class="icon-pencil"> <a href="?p=livechatter&a=edit&id=<?php echo $chatter['id']; ?>">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="icon-pause"> <a href="?p=livechatter&a=pause&id=<?php echo $chatter['id']; ?>">Pause</a></td>
+                    <td align="right" colspan="2"><!--<i class="icon-pencil"> <a href="?p=livechatter&formpage=livechatter&a=edit&id=<?php echo $chatter['id']; ?>">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;--><i class="icon-pause"> <a href="?p=livechatter&formpage=livechatter&a=pause&id=<?php echo $chatter['id']; ?>">Pause</a></td>
                   </tr>
                 <?php
                     $count++;
@@ -195,9 +159,9 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
                   </tr>
                   <tr class="livechatter-controls">
                     <td align="right" colspan="2">
-                      <i class="icon-pencil"> <a href="?p=livechatter&a=edit&id=<?php echo $chatter['id']; ?>">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                      <i class="icon-play"> <a href="?p=livechatter&a=activate&id=<?php echo $chatter['id']; ?>">Activate</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                      <i class="icon-remove"></i> <a href="?p=livechatter&a=delete&id=<?php echo $chatter['id']; ?>">Delete</a></td>
+                      <i class="icon-pencil"> <a href="?p=livechatter&formpage=livechatter&&a=edit&id=<?php echo $chatter['id']; ?>">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                      <i class="icon-play"> <a href="?p=livechatter&formpage=livechatter&a=activate&id=<?php echo $chatter['id']; ?>">Activate</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                      <i class="icon-remove"></i> <a href="?p=livechatter&formpage=livechatter&a=delete&id=<?php echo $chatter['id']; ?>">Delete</a></td>
                   </tr>
                 <?php
                     $count++;

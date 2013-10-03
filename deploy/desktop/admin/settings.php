@@ -1,14 +1,11 @@
 <?php
 if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor", "merchant_publisher"))) {
-  switch($action) {
-    case null:
-      if ($_SERVER['REQUEST_METHOD'] === "POST") {
-        $user->setFirstName($_POST['firstname']);
-        $user->setLastName($_POST['lastname']);
-        $user->setEmail($_POST['email']);
-        $user->save();
-        echo "<div class=\"success\"><i class=\"icon-ok\"></i> Settings saved successfully.</div>";
-      }
+  if ($_SERVER['REQUEST_METHOD'] === "POST") {
+    if (count($errors) === 0) {
+      echo "<div class=\"success\"><i class=\"icon-ok\"></i> Settings saved successfully.</div>";
+    } else {
+    }
+  }
   ?>
       <h1>Settings</h1>
       <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
@@ -38,16 +35,12 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchan
           </tr>
           <tr>
             <td class="edit-field" colspan="2" align="right">
+              <input type="hidden" name="formpage" value="settings" />
               <button type="submit" class="button"><i class="icon-save"></i> Save Settings</button>
             </td>
           </tr>
         </table>
     <?php
-      break;
-    default:
-      echo "<div class=\"error\"><i class=\"icon-remove-sign\"></i> You do not have permission to view this page.</div>";
-      break;
-  }
 } else {
   echo "<div class=\"error\"><i class=\"icon-remove-sign\"></i> You do not have permission to view this page.</div>";
 }

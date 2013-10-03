@@ -1,9 +1,5 @@
 <?php
 if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
-  if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    Alerts::add($_POST['user-id'], $merchant->getName() . " has responded to your ChitChat!");
-    ChitChat::respond($_POST['cc-id'], $_POST['user-id'], $merchant->getId(), $_POST['body'], "merchant");
-  }
   switch ($action) {
     case null:
     case "delete":
@@ -33,7 +29,7 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                     <div style="background-color: #eee; height: 50px; width: 50px; border: 1px solid #ccc;"><img src="/uploads/profile/default.png" height="100%" width="100%" /></div>
                   </li>
                   <li style="display: inline-block; width: 80%; position: relative; border-bottom: 1px solid #ccc; min-height: 80px; padding: 5px;">
-                    <div style="position: absolute; top: 5px; right: 5px; cursor: pointer;" onclick="document.location='?p=chitchat&a=delete&id=<?php echo $chitchat['id']; ?>'"><i class="icon-remove"></i></div>
+                    <!--<div style="position: absolute; top: 5px; right: 5px; cursor: pointer;" onclick="document.location='?p=chitchat&a=delete&id=<?php echo $chitchat['id']; ?>'"><i class="icon-remove"></i></div>-->
                     <strong><?php echo $chitchat['firstname']; ?> <?php echo $chitchat['lastname']; ?></strong><br /><p><?php echo $chitchat['body']; ?></p>
                     <div style="position: absolute; top: 5px; right: 25px; color: #666;"><?php echo date("F j, Y, g:i a", $chitchat['creation']); ?></div>
                   </li>
@@ -79,7 +75,6 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                 </ul>
                 <?php
                 }
-                if ($response['last_response'] === "user" || count($responses) === 0) {
                 ?>
                 <li>
                   <ul>
@@ -88,13 +83,13 @@ if (in_array($user->getRole(), array("administrator", "merchant_admin"))) {
                         <textarea name="body" style="height: 80px; width: 440px; margin: 15px 0 5px 40px;"></textarea>
                         <input type="hidden" name="user-id" id="user-id" value="<?php echo $userid; ?>" /><br />
                         <input type="hidden" name="cc-id" id="cc-id" value="<?php echo $chitchat['id']; ?>" /><br />
+                        <input type="hidden" name="formpage" value="chitchat" />
                         <button type="submit" class="button" style="margin: 0 0 10px 40px;">Send Response</button>
                       </form>
                     </li>
                   </ul>
                 </li>
               <?php
-                }
               }
               ?>
               </ul>

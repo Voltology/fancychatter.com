@@ -8,6 +8,76 @@ if ($user->getMerchantId() != "") {
 }
 $page = $_GET['p'] ? $_GET['p'] : "home";
 $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
+  switch($_REQUEST['formpage']) {
+    case "chitchat":
+      Alerts::add($_POST['user-id'], $merchant->getName() . " has responded to your ChitChat!");
+      ChitChat::respond($_POST['cc-id'], $_POST['user-id'], $merchant->getId(), $_POST['body'], "merchant");
+      header("Location: " . $_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'] . "&action=" . $action);
+      break;
+    case "livechatter":
+      switch ($action) {
+        case null:
+        case "activate":
+        case "add":
+        case "deactivate":
+        case "delete":
+        case "edit":
+        case "pause":
+        case "save":
+          $id = $_POST['id'] ? $_POST['id'] : $_GET['id'];
+          if ($_SERVER['REQUEST_METHOD'] === "POST") {
+            $lc = new LiveChatter($id, $user->getMerchantId());
+            if ($_POST['now'] == "true") {
+              $start = time();
+            } else {
+              $start = jQueryTimeToUnixTime($_POST['startdate'], $_POST['starttime-hour'], $_POST['starttime-minute'], $_POST['starttime-suffix']);
+            }
+            $end = jQueryTimeToUnixTime($_POST['enddate'], $_POST['endtime-hour'], $_POST['endtime-minute'], $_POST['endtime-suffix']);
+            $errors = LiveChatter::validate($_POST['body'], $start, $end);
+            if ($action === "add") {
+              if (count($errors) === 0) {
+                $errors = LiveChatter::add($user->getMerchantId(), $_POST['body'], $merchant->getLatitude(), $merchant->getLongitude(), $start, $end, $user->getGmtOffset());
+              }
+            } else if ($action === "edit") {
+              if (count($errors) === 0) {
+                $lc->setBody($_POST['body']);
+                $lc->setStartTime($start);
+                $lc->setEndTime($end);
+                $lc->save();
+              }
+            }
+          } else if ($id) {
+            $lc = new LiveChatter($id, $user->getMerchantId());
+            if ($lc->getId()) {
+              if ($action === "activate") {
+                $lc->activate();
+              } else if ($action === "deactivate") {
+                $lc->deactivate();
+              } else if ($action === "delete") {
+                $lc->delete();
+              } else if ($action === "pause") {
+                $lc->pause();
+              }
+            }
+          }
+        }
+        header("Location: " . $_SERVER['PHP_SELF'] . "?p=" . $page . "&action=" . $action);
+      break;
+    case "settings":
+      $errors = array();
+      if ($_SERVER['REQUEST_METHOD'] === "POST") {
+        setcookie("email", $_POST['email']);
+        $user->setFirstName($_POST['firstname']);
+        $user->setLastName($_POST['lastname']);
+        $user->setEmail($_POST['email']);
+        if ($_POST['password1'] !== "" && $_POST['password2'] !== "") {
+          $user->setPassword($_POST['password1']);
+          setcookie("password", md5($_POST['password1']));
+        }
+        $user->save();
+      }
+      break;
+  }
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">

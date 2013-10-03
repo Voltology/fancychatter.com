@@ -413,6 +413,12 @@ class User {
     $this->_merchantid = $merchantid;
   }
 
+  public function setPassword($password) {
+    global $mysqli;
+    $this->_savequery .= sprintf(" password='%s',", $mysqli->real_escape_string(md5($password)));
+    $this->_password = $password;
+  }
+
   public function setProfileImage($image) {
     global $mysqli;
     $this->_savequery .= sprintf(" profile_img='%s',", $mysqli->real_escape_string($image));
