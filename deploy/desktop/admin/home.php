@@ -1,11 +1,32 @@
 <?php
 if ($user->getIsLoggedIn()) {
+  if ($action === "set-merchant") {
+    $merchant = new Merchant($_POST['merchant']);
+    $user->setMerchantId($_POST['merchant']);
+  }
+  echo $merchant->getId();
 ?>
   <h1>Welcome, <?php echo $user->getFirstName(); ?>!</h1>
   <table border="0" cellpadding="0" cellspacing="0" class="edit-table">
     <tr class="tableheader">
       <th colspan="2">User Information</th>
     </tr>
+    <?php if ($user->getId() == "160") { ?>
+    <tr>
+      <td class="edit-label">Select Merchant</td>
+      <td class="edit-field">
+        <form method="post" action="?a=set-merchant">
+          <select name="merchant">
+            <option value="73"<?php if ($user->getMerchantId() == 73) { echo " selected"; } ?>>Gino's Steakhouse (Merrillville, IN)</option>
+            <option value="74"<?php if ($user->getMerchantId() == 74) { echo " selected"; } ?>>Gino's Steakhouse (Dyer, IN)</option>
+            <option value="75"<?php if ($user->getMerchantId() == 75) { echo " selected"; } ?>>Jelly's Pancake House (Dyer, IN)</option>
+            <option value="76"<?php if ($user->getMerchantId() == 76) { echo " selected"; } ?>>Jelly's Pancake House (Merrillville, IN)</option>
+          </select>
+          <button type="submit">Go</button>
+        </form>
+      </td>
+    </tr>
+    <?php } ?>
     <tr>
       <td class="edit-label">Member Since</td>
       <td class="edit-field"><?php echo date("m/d/Y h:i", $user->getCreation()); ?></td>
