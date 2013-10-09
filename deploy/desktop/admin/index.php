@@ -175,16 +175,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
         </td>
         <td valign="top" align="left" class="page">
           <?php
-          if ($user->getId() === "160") {
-            $user->setMerchantId(null);
-          ?>
-          <select name="merchant_id">
-            <option></option>
-          </select>
-          <?php
-          } else {
-            require($page . ".php");
-          }
+          require($page . ".php");
           ?>
         </td>
       </tr>
