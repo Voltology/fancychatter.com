@@ -4,14 +4,13 @@ if ($user->getIsLoggedIn()) {
     $merchant = new Merchant($_POST['merchant']);
     $user->setMerchantId($_POST['merchant']);
   }
-  echo $merchant->getId();
 ?>
   <h1>Welcome, <?php echo $user->getFirstName(); ?>!</h1>
   <table border="0" cellpadding="0" cellspacing="0" class="edit-table">
     <tr class="tableheader">
       <th colspan="2">User Information</th>
     </tr>
-    <?php if ($user->getId() == "160") { ?>
+    <?php if ($user->getId() == "162") { ?>
     <tr>
       <td class="edit-label">Select Merchant</td>
       <td class="edit-field">
