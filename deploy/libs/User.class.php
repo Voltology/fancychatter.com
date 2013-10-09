@@ -49,7 +49,7 @@ class User {
 
   public function checkPassword($email, $password) {
     global $mysqli;
-    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,password,profile_img,city,state,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
+    $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,password,profile_img,merchant_id,city,state,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
       $mysqli->real_escape_string($email),
       $mysqli->real_escape_string($password));
     $query = $mysqli->query($query);
@@ -410,6 +410,8 @@ class User {
   }
 
   public function setMerchantId($merchantid) {
+    global $mysqli;
+    $this->_savequery .= sprintf(" merchant_id='%s',", $mysqli->real_escape_string($merchantid));
     $this->_merchantid = $merchantid;
   }
 

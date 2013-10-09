@@ -3,6 +3,7 @@ if ($user->getIsLoggedIn()) {
   if ($action === "set-merchant") {
     $merchant = new Merchant($_POST['merchant']);
     $user->setMerchantId($_POST['merchant']);
+    $user->save();
   }
 ?>
   <h1>Welcome, <?php echo $user->getFirstName(); ?>!</h1>
