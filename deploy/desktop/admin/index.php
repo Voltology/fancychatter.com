@@ -174,9 +174,18 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
           </div>
         </td>
         <td valign="top" align="left" class="page">
-        <?php
-        require($page . ".php");
-        ?>
+          <?php
+          if ($user->getId() === "160") {
+            $user->setMerchantId(null);
+          ?>
+          <select name="merchant_id">
+            <option></option>
+          </select>
+          <?php
+          } else {
+            require($page . ".php");
+          }
+          ?>
         </td>
       </tr>
       <tr>
