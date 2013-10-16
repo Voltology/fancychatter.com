@@ -198,7 +198,8 @@ class User {
     global $mysqli;
     $query = "SELECT COUNT(*) FROM users";
     $query = $mysqli->query($query);
-    return $mysqli->fetch_row($query);
+    $users = $query->fetch_row();
+    return $users[0];
   }
 
   public static function getUsers($count = 20, $index = 0, $order = "creation", $direction = "ASC") {
