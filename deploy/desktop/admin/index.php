@@ -91,6 +91,8 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script src="/js/jquery-timepicker.js"></script>
     <script src="/js/admin.js"></script>
+<style>
+</style>
     <script>
     $(document).ready(function() {
       var startDateTextBox = $('#startdate');
@@ -174,7 +176,30 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
           </div>
         </td>
         <td valign="top" align="left" class="page">
+          <div class="mobile-nav">
           <?php
+          if ($user->getIsLoggedIn()) {
+          ?>
+            <div class="<?php if ($page === "home") { echo "active"; } ?>menuitem"><a href="?p=home">Home</a></div>
+            <?php if (in_array($user->getRole(), array("merchant_admin", "merchant_editor", "merchant_publisher"))) { ?>
+              <div class="<?php if ($page === "livechatter") { echo "active"; } ?>menuitem"><a href="?p=livechatter">LiveChatter</a></div>
+              <div class="<?php if ($page === "chitchat") { echo "active"; } ?>menuitem"><a href="?p=chitchat">ChitChat <span class="green">(<?php echo ChitChat::getCount($merchant->getCategory()); ?>)</span></a></div>
+            <?php } ?>
+            <?php if (in_array($user->getRole(), array("administrator"))) { ?>
+              <div class="<?php if ($page === "merchants") { echo "active"; } ?>menuitem"><a href="?p=merchants">Merchants</a></div>
+              <!--<div class="<?php if ($page === "applications") { echo "active"; } ?>menuitem"><a href="?p=applications">Applications</a></div>-->
+            <?php } ?>
+            <?php if (in_array($user->getRole(), array("administrator", "merchant_admin"))) { ?>
+              <div class="<?php if ($page === "users") { echo "active"; } ?>menuitem"><a href="?p=users">Users</a></div>
+            <?php } ?>
+            <!--<div class="<?php if ($page === "messages") { echo "active"; } ?>menuitem"><a href="?p=messages">Messages <span class="green">(1)</span></a></div>-->
+            <div class="<?php if ($page === "settings") { echo "active"; } ?>menuitem"><a href="?p=settings">Settings</a></div>
+            <div class="menuitem">
+              <a href="/logout.php" class="logout">Log Out</a>
+            </div>
+          <?php
+          }
+          echo "</div>";
           require($page . ".php");
           ?>
         </td>

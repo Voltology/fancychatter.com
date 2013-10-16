@@ -148,6 +148,9 @@ select {
   border-top: 1px solid #000;
   padding: 20px;
 }
+.page .mobile-nav {
+  display: none;
+}
 .page .button {
   border: 1px solid #333;
   border-radius: 4px;
@@ -297,4 +300,63 @@ table.edit-table td input.field-fullsize {
   font-size: 11px;
   padding: 10px;
 }
-feedly mini
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+  .page {
+    padding: 5px;
+  }
+  .page .mobile-nav {
+    border-bottom: 1px solid #000;
+    display: block;
+    margin-bottom: 10px;
+    padding: 0 0 5px 0;
+    text-align: center;
+    width: 100%%;
+  }
+  .mobile-nav div {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px 6px;
+    zoom: 1;
+  }
+  .mobile-nav div.menuitem {
+  }
+  .mobile-nav div.activemenuitem {
+  }
+  #sidebar, .sidebar-cell {
+    display: none;
+  }
+  .header {
+    height: 45px;
+  }
+  .header .header-admin {
+    font-size: 15px;
+    left: 120px;
+    top: 26px;
+  }
+  .header .header-logo img {
+    height: 30px;
+    width: 100px;
+  }
+  h1 {
+    font-size: 15px;
+  }
+  table.edit-table {
+    width: 100%;
+  }
+  table.edit-table th {
+    font-size: 11px;
+  }
+  table.edit-table td {
+    font-size: 11px;
+  }
+  table.edit-table input, textarea {
+    width: 100%;
+  }
+  table.edit-table td.edit-field {
+    font-size: 11px;
+  }
+  table.edit-table td.edit-label {
+    font-size: 12px;
+  }
+}
