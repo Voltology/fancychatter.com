@@ -84,6 +84,7 @@ $action = $_POST['a'] ? $_POST['a'] : $_GET['a'];
   <head>
     <title>FancyChatter &raquo; Admin</title>
     <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/admin.css" />
     <link rel="stylesheet" href="/css/font-awesome.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />

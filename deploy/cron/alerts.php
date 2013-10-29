@@ -1,5 +1,5 @@
 <?php
-require("../.local.inc.php");
+require("/var/www/.local.inc.php");
 $query = sprintf("SELECT livechatter.id,body,livechatter.latitude,livechatter.longitude,starttime,endtime,livechatter_statuses.status AS status,merchants.category_id AS category FROM livechatter LEFT JOIN livechatter_statuses ON livechatter.status=livechatter_statuses.id LEFT JOIN merchants ON livechatter.merchant_id=merchants.id WHERE alerted='0' AND livechatter_statuses.status!='deleted' AND starttime<%s AND endtime>%s",
   mysql_real_escape_string(time()),
   mysql_real_escape_string(time()));
