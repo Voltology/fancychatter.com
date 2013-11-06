@@ -21,6 +21,9 @@ if ($user->getIsLoggedIn()) {
             <option value="74"<?php if ($user->getMerchantId() == 74) { echo " selected"; } ?>>Gino's Steakhouse (Dyer, IN)</option>
             <option value="75"<?php if ($user->getMerchantId() == 75) { echo " selected"; } ?>>Jelly's Pancake House (Dyer, IN)</option>
             <option value="76"<?php if ($user->getMerchantId() == 76) { echo " selected"; } ?>>Jelly's Pancake House (Merrillville, IN)</option>
+            <option value="82"<?php if ($user->getMerchantId() == 82) { echo " selected"; } ?>>Gelsosomos Pizzeria and Pub (Cedar Lake, IN)</option>
+            <option value="83"<?php if ($user->getMerchantId() == 83) { echo " selected"; } ?>>Gelsosomos Pizzeria and Pub (Highland, IN)</option>
+            <option value="84"<?php if ($user->getMerchantId() == 84) { echo " selected"; } ?>>Gelsosomos Pizzeria and Pub (Schererville, IN)</option>
           </select>
           <button type="submit">Go</button>
         </form>
