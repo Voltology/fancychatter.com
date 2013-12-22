@@ -4,9 +4,9 @@ var user = {
       ajax('http://173.203.81.65/api.php?a=login-app-check&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password'), 'user.checklogin');
     } else {
       if (response.result === 'success') {
-        window.location = 'livechatter.html';
+        window.location = 'home.html';
       } else {
-        window.location = 'login.html';
+        window.location = 'index.html';
       }
     }
   },
@@ -20,7 +20,7 @@ var user = {
         localStorage.setItem("password", response.password);
         localStorage.setItem("firstname", response.firstname);
         localStorage.setItem("alert-count", response.alert_count);
-        transition('livechatter.html');
+        transition('home.html');
       } else {
         var errors = '';
         $.each(response.errors, function(key, value) {
@@ -39,7 +39,7 @@ var user = {
     } else {
       if (response.result === 'success') {
         alert('Thank you for signing up to FancyChatter!');
-        transition('login.html');
+        transition('index.html');
       } else {
         var errors = '';
         $.each(response.errors, function(key, value) {

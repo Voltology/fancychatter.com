@@ -63,3 +63,94 @@ Terminating in response to SpringBoard's termination.
 2013-12-21 22:16:00.377 FancyChatterAdmin[72973:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
 2013-12-21 22:16:04.771 FancyChatterAdmin[72973:80b] Resetting plugins due to page load.
 2013-12-21 22:16:04.826 FancyChatterAdmin[72973:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/livechatter.html
+2013-12-21 23:56:59.501 FancyChatterAdmin[75907:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-21 23:56:59.535 FancyChatterAdmin[75907:80b] Unlimited access to network resources
+2013-12-21 23:56:59.793 FancyChatterAdmin[75907:80b] [CDVTimer][splashscreen] 109.171987ms
+2013-12-21 23:56:59.794 FancyChatterAdmin[75907:80b] [CDVTimer][TotalPluginStartup] 110.225976ms
+2013-12-21 23:57:00.113 FancyChatterAdmin[75907:80b] Resetting plugins due to page load.
+2013-12-21 23:57:00.303 FancyChatterAdmin[75907:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-21 23:59:16.662 FancyChatterAdmin[76566:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-21 23:59:16.674 FancyChatterAdmin[76566:80b] Unlimited access to network resources
+2013-12-21 23:59:16.711 FancyChatterAdmin[76566:80b] [CDVTimer][splashscreen] 11.232018ms
+2013-12-21 23:59:16.712 FancyChatterAdmin[76566:80b] [CDVTimer][TotalPluginStartup] 11.855006ms
+2013-12-21 23:59:16.980 FancyChatterAdmin[76566:80b] Resetting plugins due to page load.
+2013-12-21 23:59:17.301 FancyChatterAdmin[76566:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-22 00:01:35.573 FancyChatterAdmin[77243:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:01:35.585 FancyChatterAdmin[77243:80b] Unlimited access to network resources
+2013-12-22 00:01:35.622 FancyChatterAdmin[77243:80b] [CDVTimer][splashscreen] 10.957003ms
+2013-12-22 00:01:35.623 FancyChatterAdmin[77243:80b] [CDVTimer][TotalPluginStartup] 11.601985ms
+2013-12-22 00:01:35.875 FancyChatterAdmin[77243:80b] Resetting plugins due to page load.
+2013-12-22 00:01:36.095 FancyChatterAdmin[77243:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-22 00:01:46.550 FancyChatterAdmin[77243:3f03] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+Terminating in response to SpringBoard's termination.
+2013-12-22 00:10:39.025 FancyChatterAdmin[77970:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:10:39.038 FancyChatterAdmin[77970:80b] Unlimited access to network resources
+2013-12-22 00:10:39.075 FancyChatterAdmin[77970:80b] [CDVTimer][splashscreen] 10.662973ms
+2013-12-22 00:10:39.075 FancyChatterAdmin[77970:80b] [CDVTimer][TotalPluginStartup] 11.301994ms
+2013-12-22 00:10:39.345 FancyChatterAdmin[77970:80b] Resetting plugins due to page load.
+2013-12-22 00:10:39.653 FancyChatterAdmin[77970:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-22 00:11:12.388 FancyChatterAdmin[77970:80b] Resetting plugins due to page load.
+2013-12-22 00:11:12.456 FancyChatterAdmin[77970:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/home.html
+2013-12-22 00:11:24.577 FancyChatterAdmin[77970:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:11:24.578 FancyChatterAdmin[77970:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:11:24.579 FancyChatterAdmin[77970:80b] Resetting plugins due to page load.
+2013-12-22 00:11:24.631 FancyChatterAdmin[77970:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/chitchat.html
+2013-12-22 00:11:27.953 FancyChatterAdmin[77970:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:11:27.954 FancyChatterAdmin[77970:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:11:27.955 FancyChatterAdmin[77970:80b] Resetting plugins due to page load.
+2013-12-22 00:11:27.976 FancyChatterAdmin[77970:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/livechatter.html
+2013-12-22 00:11:48.197 FancyChatterAdmin[77970:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:11:48.198 FancyChatterAdmin[77970:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:11:48.199 FancyChatterAdmin[77970:80b] Resetting plugins due to page load.
+2013-12-22 00:11:48.223 FancyChatterAdmin[77970:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/livechatter.html
+2013-12-22 00:12:04.850 FancyChatterAdmin[77970:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:12:04.850 FancyChatterAdmin[77970:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:12:04.851 FancyChatterAdmin[77970:80b] Resetting plugins due to page load.
+2013-12-22 00:12:04.869 FancyChatterAdmin[77970:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/login.html
+2013-12-22 00:14:21.497 FancyChatterAdmin[78344:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:14:21.512 FancyChatterAdmin[78344:80b] Unlimited access to network resources
+2013-12-22 00:14:21.551 FancyChatterAdmin[78344:80b] [CDVTimer][splashscreen] 12.012959ms
+2013-12-22 00:14:21.553 FancyChatterAdmin[78344:80b] [CDVTimer][TotalPluginStartup] 13.390958ms
+2013-12-22 00:14:21.818 FancyChatterAdmin[78344:80b] Resetting plugins due to page load.
+2013-12-22 00:14:22.094 FancyChatterAdmin[78344:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-12-22 00:19:12.607 FancyChatterAdmin[79353:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:19:12.676 FancyChatterAdmin[79353:80b] Unlimited access to network resources
+2013-12-22 00:19:12.894 FancyChatterAdmin[79353:80b] [CDVTimer][splashscreen] 57.830036ms
+2013-12-22 00:19:12.909 FancyChatterAdmin[79353:80b] [CDVTimer][TotalPluginStartup] 73.107004ms
+2013-12-22 00:19:13.620 FancyChatterAdmin[79353:80b] Resetting plugins due to page load.
+2013-12-22 00:19:14.474 FancyChatterAdmin[79353:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-22 00:19:36.651 FancyChatterAdmin[79353:4003] void SendDelegateMessage(NSInvocation *): delegate (webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:) failed to return after waiting 10 seconds. main run loop mode: kCFRunLoopDefaultMode
+2013-12-22 00:20:51.796 FancyChatterAdmin[80103:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:20:51.808 FancyChatterAdmin[80103:80b] Unlimited access to network resources
+2013-12-22 00:20:51.859 FancyChatterAdmin[80103:80b] [CDVTimer][splashscreen] 21.063983ms
+2013-12-22 00:20:51.859 FancyChatterAdmin[80103:80b] [CDVTimer][TotalPluginStartup] 21.794975ms
+2013-12-22 00:20:52.211 FancyChatterAdmin[80103:80b] Resetting plugins due to page load.
+2013-12-22 00:20:52.503 FancyChatterAdmin[80103:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-22 00:22:11.851 FancyChatterAdmin[80750:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:22:11.864 FancyChatterAdmin[80750:80b] Unlimited access to network resources
+2013-12-22 00:22:11.918 FancyChatterAdmin[80750:80b] [CDVTimer][splashscreen] 12.691021ms
+2013-12-22 00:22:11.919 FancyChatterAdmin[80750:80b] [CDVTimer][TotalPluginStartup] 13.325989ms
+2013-12-22 00:22:12.262 FancyChatterAdmin[80750:80b] Resetting plugins due to page load.
+2013-12-22 00:22:12.531 FancyChatterAdmin[80750:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
+2013-12-22 00:22:50.813 FancyChatterAdmin[80750:80b] Resetting plugins due to page load.
+2013-12-22 00:22:50.862 FancyChatterAdmin[80750:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/home.html
+2013-12-22 00:22:56.200 FancyChatterAdmin[80750:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:22:56.200 FancyChatterAdmin[80750:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:22:56.201 FancyChatterAdmin[80750:80b] Resetting plugins due to page load.
+2013-12-22 00:22:56.224 FancyChatterAdmin[80750:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/settings.html
+2013-12-22 00:23:01.969 FancyChatterAdmin[80750:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:23:01.970 FancyChatterAdmin[80750:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:23:01.971 FancyChatterAdmin[80750:80b] Resetting plugins due to page load.
+2013-12-22 00:23:02.000 FancyChatterAdmin[80750:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/livechatter.html
+2013-12-22 00:23:13.977 FancyChatterAdmin[80750:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:23:13.978 FancyChatterAdmin[80750:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-22 00:23:13.979 FancyChatterAdmin[80750:80b] Resetting plugins due to page load.
+2013-12-22 00:23:13.999 FancyChatterAdmin[80750:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/livechatter.html
+Terminating in response to SpringBoard's termination.
+2013-12-22 00:31:08.312 FancyChatterAdmin[81491:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-22 00:31:08.323 FancyChatterAdmin[81491:80b] Unlimited access to network resources
+2013-12-22 00:31:08.363 FancyChatterAdmin[81491:80b] [CDVTimer][splashscreen] 11.299968ms
+2013-12-22 00:31:08.363 FancyChatterAdmin[81491:80b] [CDVTimer][TotalPluginStartup] 11.932969ms
+2013-12-22 00:31:08.619 FancyChatterAdmin[81491:80b] Resetting plugins due to page load.
+2013-12-22 00:31:08.815 FancyChatterAdmin[81491:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/55EF1FEE-4DDF-4FEC-A298-6314E8F9C0EE/FancyChatterAdmin.app/www/index.html
