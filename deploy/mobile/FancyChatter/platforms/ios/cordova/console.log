@@ -1,0 +1,35 @@
+2013-12-21 18:13:27.113 FancyChatter[64984:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-21 18:13:27.148 FancyChatter[64984:80b] Unlimited access to network resources
+2013-12-21 18:13:27.612 FancyChatter[64984:80b] Resetting plugins due to page load.
+2013-12-21 18:13:27.784 FancyChatter[64984:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-12-21 18:15:13.973 FancyChatter[65628:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-21 18:15:13.986 FancyChatter[65628:80b] Unlimited access to network resources
+2013-12-21 18:15:14.240 FancyChatter[65628:80b] Resetting plugins due to page load.
+2013-12-21 18:15:14.273 FancyChatter[65628:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/index.html
+2013-12-21 18:16:09.059 FancyChatter[66256:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-21 18:16:09.071 FancyChatter[66256:80b] Unlimited access to network resources
+2013-12-21 18:16:09.326 FancyChatter[66256:80b] Resetting plugins due to page load.
+2013-12-21 18:16:09.357 FancyChatter[66256:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/index.html
+Terminating in response to SpringBoard's termination.
+2013-12-21 18:36:06.416 FancyChatter[67110:80b] Multi-tasking -> Device: YES, App: YES
+2013-12-21 18:36:06.450 FancyChatter[67110:80b] Unlimited access to network resources
+2013-12-21 18:36:06.762 FancyChatter[67110:80b] Resetting plugins due to page load.
+2013-12-21 18:36:07.034 FancyChatter[67110:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/index.html
+2013-12-21 18:36:11.680 FancyChatter[67110:80b] Resetting plugins due to page load.
+2013-12-21 18:36:11.798 FancyChatter[67110:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/login.html
+2013-12-21 18:36:35.276 FancyChatter[67110:80b] Resetting plugins due to page load.
+2013-12-21 18:36:35.346 FancyChatter[67110:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/livechatter.html
+2013-12-21 18:36:42.074 FancyChatter[67110:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-21 18:36:42.075 FancyChatter[67110:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-21 18:36:42.076 FancyChatter[67110:80b] Resetting plugins due to page load.
+2013-12-21 18:36:43.308 FancyChatter[67110:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/profile.html
+2013-12-21 18:36:46.903 FancyChatter[67110:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-21 18:36:46.903 FancyChatter[67110:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-21 18:36:46.904 FancyChatter[67110:80b] Resetting plugins due to page load.
+2013-12-21 18:36:47.553 FancyChatter[67110:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/alerts.html
+2013-12-21 18:36:52.329 FancyChatter[67110:80b] CDVWebViewDelegate: Navigation started when state=1
+2013-12-21 18:36:52.329 FancyChatter[67110:80b] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2013-12-21 18:36:52.331 FancyChatter[67110:80b] Resetting plugins due to page load.
+2013-12-21 18:36:52.351 FancyChatter[67110:80b] Finished load of: file:///Users/cvuletich/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8781FE78-D2F5-44C0-889B-476424F23E68/FancyChatter.app/www/settings.html
+Terminating in response to SpringBoard's termination.

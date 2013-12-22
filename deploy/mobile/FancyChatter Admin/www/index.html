@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <link rel="stylesheet" href="css/styles.css" />
+  <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+  <script>
+  $(document).ready(function() {
+    setTimeout(function(){
+      $("body").fadeOut(300, user.checklogin);
+    }, 4000);
+  });
+  </script>
+  </head>
+  <body>
+    <img src="img/logo.png" style="display: block; margin: 45% auto auto auto;" />
+  </body>
+</html>
