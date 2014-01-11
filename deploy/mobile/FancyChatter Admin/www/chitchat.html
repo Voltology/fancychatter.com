@@ -3,7 +3,8 @@
   <head>
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/font-awesome.css">
-  <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+  <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/globals.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/chitchat.js"></script>
@@ -13,7 +14,7 @@
   <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
   </head>
-  <body id="livechatter">
+  <body id="chitchat">
     <nav class="main-nav" id="main-nav">
       <p style="color: white;">&nbsp;Welcome, <span id="nav-firstname"></span>!<a href="#" class="close-menu"><i class="icon-remove-sign"></i></a></p>
       <a href="home.html"><i class="icon-comments"></i>&nbsp;&nbsp;Home</a>
@@ -30,6 +31,41 @@
       </header>
       <div id="livechatter-search">
         <h2>ChitChat</h2>
+        <table width="100%" cellpadding="2" cellspacing="0">
+          <tr>
+            <td valign="top" width="30">
+              <div class="image-placeholder">
+                <img src="http://www.fancychatter.com/uploads/profile/default.png">
+              </div>
+            </td>
+            <td colspan="2">
+              <span class="username-placeholder">Username</span>
+              <span class="date-placeholder"> - (Sent 25 minutes ago)</span><br />
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td valign="top" width="30">
+              <div class="image-placeholder">
+                <img src="http://www.fancychatter.com/uploads/profile/default.png">
+              </div>
+            </td>
+            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td valign="top" width="30">
+              <div class="image-placeholder">
+                <img src="http://www.fancychatter.com/uploads/profile/default.png">
+              </div>
+            </td>
+            <td align="left">
+              <textarea></textarea>
+              <button>Send Response</button>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </body>

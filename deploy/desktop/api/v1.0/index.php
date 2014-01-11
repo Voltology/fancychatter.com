@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/json");
-include("../.local.inc.php");
+include("../../.local.inc.php");
 if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET") {
   $json['errors'] = array();
   $json['result'] = "success";
@@ -51,6 +51,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "create-livechatter":
       break;
+    case "delete-chitchat":
+      $chitchat = new ChitChat($_GET['id']);
+      $chitchat->delete();
+      break;
     case "delete-livechatter":
       break;
     case "follow":
@@ -68,6 +72,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "getchitchat":
+      $json['chitchat'] = array();
+      $chitchats = ChitChat::getByCategory($merchant->getCategory());
+      foreach ($chitchats as $chitchat) {
+        if ($chitchat['user_id']) {
+          $userid = $chitchat['user_id'];
+          $responses = ChitChat::getResponsesByIdAndUser($chitchat['id'], $chitchat['user_id'], $merchant->getId());
+        }
+      }
       break;
     case "getcitystatebylatlong":
       $location = getCityStateByLatLong($_GET['lat'], $_GET['lng']);

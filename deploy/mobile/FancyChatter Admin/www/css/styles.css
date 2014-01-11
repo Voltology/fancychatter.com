@@ -91,7 +91,7 @@ input, textarea, select, button{
   width: 98%;
 }
     h2 {
-      margin-left: 5px;
+      margin: 4px 4px;
       font-size: 22px;
       width: 100%;
     }
@@ -105,10 +105,6 @@ input:focus, textarea:focus, select:focus {
   outline: none;
 }
    
-   textarea {
-     height: 55px;
-     background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #aaa), color-stop(0.05, #fff));
-   }
    
    select {
      padding: .6em;
@@ -192,6 +188,41 @@ header .button i{
 #alerts a {
   color: #000;
   font-size: 14px;
+}
+#chitchat {
+  font-size: 12px;
+}
+#chitchat button {
+  font-size: 12px;
+  margin: 4px 0;
+}
+#chitchat table td {
+  border-bottom: 1px solid #666;
+}
+#chitchat table td .date-placeholder {
+  color: #666;
+  text-style: italic;
+}
+#chitchat table td .image-placeholder {
+  height: 30px;
+  margin-top: 0;
+  width: 30px;
+}
+#chitchat table td .username-placeholder {
+  font-weight: bold;
+}
+#chitchat table img {
+  border: 0;
+  height: 100%;
+  margin: 2px 0;
+  width: 100%;
+}
+#chitchat table textarea {
+  font-size: 12px;
+  height: 70px;
+  margin: 2px 0;
+  padding: 2px;
+  width: 100%;
 }
 #livechatter {
   font-size: 14px;
