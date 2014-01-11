@@ -94,6 +94,7 @@ class LiveChatter {
     while ($row = mysql_fetch_assoc($query)) {
       array_push($livechatter, $row);
     }
+    $livechatter['time'] = time();
     return $livechatter;
   }
 

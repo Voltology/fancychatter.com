@@ -1,18 +1,24 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<link rel="stylesheet" href="css/styles.css" />
-<link rel="stylesheet" href="css/font-awesome.css">
-<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/chitchat.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/dialog.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/livechatter.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/system.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
-</head>
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/globals.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/chitchat.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/dialog.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/livechatter.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/system.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      livechatter.get();
+    });
+    </script>
+  </head>
   <body id="livechatter">
     <nav class="main-nav" id="main-nav">
       <p style="color: white;">&nbsp;Welcome, <span id="nav-firstname"></span>!<a href="#" class="close-menu"><i class="icon-remove-sign"></i></a></p>
@@ -28,11 +34,16 @@
         <a href="#main-nav" class="button open-menu"><i class="icon-reorder"></i></a>
         <!--<a href="#" class="close-menu">Close</a>-->
       </header>
-      <div id="livechatter-search">
+      <div id="livechatter-placeholder">
         <h2>New LiveChatter</h2>
+        <textarea></textarea>
+        <button onclick="livechatter.send()">Save LiveChatter</button>
         <h2>Active LiveChatter</h2>
-        <h2>Paused LiveChatter</h2>
-        <h2>Queued LiveChatter</h2>
+        <div id="livechatter-active">
+        </div>
+        <h2>Queued/Paused LiveChatter</h2>
+        <div id="livechatter-queued">
+        </div>
       </div>
     </div>
   </body>

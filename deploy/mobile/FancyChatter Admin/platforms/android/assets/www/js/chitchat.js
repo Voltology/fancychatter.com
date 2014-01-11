@@ -1,14 +1,11 @@
 var chitchat = {
-  distance : null,
-  category : null,
-  location : null,
-  send : function(response) {
+  respond : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=chitchat-send-app&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&location=' + chitchat.location + '&category=' + chitchat.category + '&distance=' + chitchat.distance + '&msg=' + $('#chitchat-field').val(), 'chitchat.send');
+      ajax(HOSTNAME + '/api.php?a=chitchat-respond&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&msg=' + $('#chitchat-field').val(), 'chitchat.respond');
     } else {
       if (response.result === 'success') {
-        alert('ChitChat sent!');
-        dialog.close();
+        alert('ChitChat response sent!');
+        $('chitchat-field').val('');
       } else {
         var errors = '';
         $.each(response.errors, function(key, value) {

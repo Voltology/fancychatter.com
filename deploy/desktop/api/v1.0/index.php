@@ -1,10 +1,11 @@
 <?php
 header("Content-type: application/json");
-include("../../.local.inc.php");
+include("../../../.local.inc.php");
 if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET") {
   $json['errors'] = array();
   $json['result'] = "success";
   $action = $_REQUEST['a'] ? $_REQUEST['a'] : null;
+  $source = $_REQUEST['s'] ? $_REQUEST['s'] : null;
   switch($action) {
     case "activatesearch":
       $user->activateSearch($_REQUEST['id']);
@@ -19,9 +20,29 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $json['locations'] = getLocationsByCity($_REQUEST['where']);
       }
       break;
+    case "chitchat-get":
+      $merchant = new Merchant($_REQUEST['merchant-token']);
+      $chitchats = ChitChat::getByCategory($merchant->getCategory());
+      $count = 0;
+      foreach ($chitchats as $chitchat) {
+        if ($chitchat['user_id']) {
+          $userid = $chitchat['user_id'];
+          $chitchats[$count]['responses'] = ChitChat::getResponsesByIdAndUser($chitchat['id'], $chitchat['user_id'], $merchant->getId());
+          $count++;
+        }
+      }
+      $json['merchant']['logo'] = $merchant->getLogo();
+      $json['merchant']['name'] = $merchant->getName();
+      $json['chitchat'] = $chitchats;
+      break;
     case "chitchat-respond":
-      $chitchat = new ChitChat();
-      $chitchat->respond($_REQUEST['cc-id'], $profile->getId(), null, $_REQUEST['body']);
+      if ($source === "admin-app") {
+        if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+          $merchant = new Merchant($_REQUEST['merchant-token']);
+          $chitchat = new ChitChat();
+          $chitchat->respond($_REQUEST['chitchat-id'], $user->getId(), null, $_REQUEST['body']);
+        }
+      }
       break;
     case "chitchat-send":
       $msg = $_REQUEST['msg'];
@@ -71,16 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $json['logout'] = true;
       }
       break;
-    case "getchitchat":
-      $json['chitchat'] = array();
-      $chitchats = ChitChat::getByCategory($merchant->getCategory());
-      foreach ($chitchats as $chitchat) {
-        if ($chitchat['user_id']) {
-          $userid = $chitchat['user_id'];
-          $responses = ChitChat::getResponsesByIdAndUser($chitchat['id'], $chitchat['user_id'], $merchant->getId());
-        }
-      }
-      break;
     case "getcitystatebylatlong":
       $location = getCityStateByLatLong($_GET['lat'], $_GET['lng']);
       break;
@@ -124,20 +135,63 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $json['logout'] = true;
       }
       break;
+    case "livechatter-get":
+      if ($source === "admin-app") {
+        $merchant = new Merchant($_REQUEST['merchant-token']);
+        $json['livechatter'] = LiveChatter::getByMerchantId($merchant->getId());
+      }
+      break;
+    case "livechatter-send":
+      if ($source === "admin-app") {
+        $merchant = new Merchant($_REQUEST['merchant-token']);
+        LiveChatter::add($merchant->getId(), $_REQUEST['body'], $merchant->getLatitude(), $merchant->getLongitude(), $start, $end, 0);
+      }
+      break;
     case "login":
-      if (!$user->login($_POST['email'], md5($_POST['password']))) {
-        $json['result'] = "failed";
-        array_push($json['errors'], "Incorrect Username/Password");
-      } else {
-        if (!B2B) {
-          setcookie("email", $_POST['email']);
-          setcookie("password", md5($_POST['password']));
-        } else if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor"))) {
-          setcookie("email", $_POST['email']);
-          setcookie("password", md5($_POST['password']));
-        } else {
+      if ($source === "admin-app") {
+        if (!$user->checkPassword($_GET['email'], md5($_GET['password']))) {
           $json['result'] = "failed";
-          array_push($json['errors'], "You are not authorized for this site.");
+          array_push($json['errors'], "Incorrect Username/Password");
+        } else if ($user->getMerchantId() === ""){
+          $json['result'] = "failed";
+          array_push($json['errors'], "You must have a merchant account to use this application");
+        } else {
+          $json['id'] = $user->getId();
+          $json['email'] = $_GET['email'];
+          $json['firstname'] = $user->getFirstName();
+          $json['password'] = md5($_GET['password']);
+          $json['token'] = md5($_GET['password']);
+          $json['merchant-token'] = $user->getMerchantId();
+          $json['alert_count'] = Alerts::count($user->getId());
+        }
+      } else if ($source === "public-app") {
+        if (!$user->checkPassword($_GET['email'], md5($_GET['password']))) {
+          $json['result'] = "failed";
+          array_push($json['errors'], "Incorrect Username/Password");
+        } else {
+          $json['id'] = $user->getId();
+          $json['email'] = $_GET['email'];
+          $json['firstname'] = $user->getFirstName();
+          $json['password'] = md5($_GET['password']);
+          $json['token'] = md5($_GET['password']);
+          $json['merchant-token'] = $user->getMerchantId();
+          $json['alert_count'] = Alerts::count($user->getId());
+        }
+      } else {
+        if (!$user->login($_POST['email'], md5($_POST['password']))) {
+          $json['result'] = "failed";
+          array_push($json['errors'], "Incorrect Username/Password");
+        } else {
+          if (!B2B) {
+            setcookie("email", $_POST['email']);
+            setcookie("password", md5($_POST['password']));
+          } else if (in_array($user->getRole(), array("administrator", "merchant_admin", "merchant_editor"))) {
+            setcookie("email", $_POST['email']);
+            setcookie("password", md5($_POST['password']));
+          } else {
+            $json['result'] = "failed";
+            array_push($json['errors'], "You are not authorized for this site.");
+          }
         }
       }
       break;
@@ -150,6 +204,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         $json['email'] = $_GET['email'];
         $json['firstname'] = $user->getFirstName();
         $json['password'] = md5($_GET['password']);
+        $json['token'] = md5($_GET['password']);
+        $json['merchant-token'] = $user->getMerchantId();
         $json['alert_count'] = Alerts::count($user->getId());
       }
       break;

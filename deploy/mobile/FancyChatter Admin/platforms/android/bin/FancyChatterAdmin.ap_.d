@@ -43,6 +43,7 @@
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/chitchat.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/cordova.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/dialog.js \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/globals.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/jquery.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/livechatter.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/profile.js \

@@ -36,7 +36,7 @@ class ChitChat {
   public static function getByCategory($category) {
     global $mysqli;
     $chitchat = array();
-    $query = sprintf("SELECT chitchat.id,user_id,category_id,body,chitchat.creation,users.firstname,users.lastname FROM chitchat LEFT JOIN users ON users.id=chitchat.user_id WHERE category_id='%s' ORDER BY creation DESC",
+    $query = sprintf("SELECT chitchat.id,user_id,category_id,body,chitchat.creation,users.firstname,users.lastname,users.profile_img FROM chitchat LEFT JOIN users ON users.id=chitchat.user_id WHERE category_id='%s' ORDER BY creation DESC",
       $mysqli->real_escape_string($category));
     $query = $mysqli->query($query);
     while ($row = $query->fetch_assoc()) {

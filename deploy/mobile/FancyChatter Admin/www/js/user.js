@@ -1,7 +1,7 @@
 var user = {
   checklogin : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=login-app-check&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password'), 'user.checklogin');
+      ajax(HOSTNAME + '/api/' + API_VERSION +'/api.php?a=login-app-check&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password'), 'user.checklogin');
     } else {
       if (response.result === 'success') {
         window.location = 'home.html';
@@ -12,12 +12,14 @@ var user = {
   },
   login : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=login-app&email=' + $('#email').val() + '&password=' + $('#password').val(), 'user.login');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?a=login&s=admin-app&email=' + $('#email').val() + '&password=' + $('#password').val(), 'user.login');
     } else {
       if (response.result === 'success') {
         localStorage.setItem("id", response.id);
         localStorage.setItem("email", response.email);
         localStorage.setItem("password", response.password);
+        localStorage.setItem("user_token", response.token);
+        localStorage.setItem("merchant-token", response['merchant-token']);
         localStorage.setItem("firstname", response.firstname);
         localStorage.setItem("alert-count", response.alert_count);
         transition('home.html');
@@ -35,7 +37,7 @@ var user = {
   },
   signup : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=signup&firstname=' + $('#firstname').val() + '&lastname=' + $('#lastname').val() + '&email=' + $('#email').val() + '&password1=' + $('#password1').val() + '&password2=' + $('#password2').val(), 'user.signup');
+      ajax(HOSTNAME + '/api/' + API_VERSION +'/api.php?a=signup&firstname=' + $('#firstname').val() + '&lastname=' + $('#lastname').val() + '&email=' + $('#email').val() + '&password1=' + $('#password1').val() + '&password2=' + $('#password2').val(), 'user.signup');
     } else {
       if (response.result === 'success') {
         alert('Thank you for signing up to FancyChatter!');

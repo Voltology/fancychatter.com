@@ -12,7 +12,7 @@ var user = {
   },
   login : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=login-app&email=' + $('#email').val() + '&password=' + $('#password').val(), 'user.login');
+      ajax(HOSTNAME + '/api/v1.0/?a=login-app&email=' + $('#email').val() + '&password=' + $('#password').val(), 'user.login');
     } else {
       if (response.result === 'success') {
         localStorage.setItem("id", response.id);

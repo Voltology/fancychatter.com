@@ -225,29 +225,26 @@ header .button i{
   width: 100%;
 }
 #livechatter {
-  font-size: 14px;
+  font-size: 12px;
 }
 #livechatter h2 {
-  margin: 10px 0 0 5px;
+  margin: 5px 0;
 }
 #livechatter h3 {
   font-size: 12px;
   fontt-weight: normal;
   margin: 0 5px;
 }
-#livechatter #livechatter-results-table a {
-  font-size: 13px;
+#livechatter textarea {
+  font-size: 12px;
+  height: 70px;
+  margin: 2px 0;
+  padding: 2px;
+  width: 100%;
 }
-#livechatter .livechatter-results-row img {
-  margin: 0;
-}
-#livechatter .livechatter-results-row td {
-  border-bottom: 1px solid #ccc;
-  font-size: 13px;
-}
-#livechatter .livechatter-results-header td {
-  border-bottom: 1px solid #ccc;
-  font-size: 13px;
+#livechatter button {
+  font-size: 12px;
+  margin: 4px 0;
 }
 .main-nav {
   position: fixed;
