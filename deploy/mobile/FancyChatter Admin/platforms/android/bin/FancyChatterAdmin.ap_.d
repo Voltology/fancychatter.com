@@ -44,8 +44,10 @@
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/cordova.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/dialog.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/globals.js \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/jquery-timepicker.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/jquery.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/livechatter.js \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/merchant.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/profile.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/system.js \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/assets/www/js/transitions.js \

@@ -17,6 +17,7 @@ a { text-decoration: none; }
   float: right;
   width: 100%;
   transition: width 0.2s ease;
+  /*padding-top: 20px; /* iPHONE ONLY */
 }
 
 
@@ -58,7 +59,6 @@ img {
 		
 p {
 		font-size: 1.4em;
-		width: 400px;
 		}
 		
 a:link,		
@@ -112,8 +112,9 @@ input:focus, textarea:focus, select:focus {
      -webkit-background-size: 1600px 32px;
    }
    
-   input[type=text], input[type=password] {
+   input[type=text], input[type=password], input[type=date], input[type=time] {
     display: block;
+    font-family: arial;
     margin: 4px auto;
      padding: 0.6em 0.4em;
 
@@ -164,7 +165,8 @@ header {
   background-color: #51bb4d;
   color: #fff;
   font-size: 24px;
-  height: 46px;
+  height: 44px;
+  /* height: 64px; /* iPHONE ONLY */
   padding: 4px 0;
   text-align: center;
   width: 100%;
@@ -177,9 +179,10 @@ header {
 }
 header .button i{
   color: #fff;
-  font-size: 33px;
+  font-size: 24px;
   position: absolute;
-  top: 5px;
+  top: 8px;
+  /* top: 28px; /* iPHONE ONLY */
   left: 10px;
   height: 30px;
   width: 30px;
@@ -194,10 +197,11 @@ header .button i{
 }
 #chitchat button {
   font-size: 12px;
-  margin: 4px 0;
+  margin: 6px 0;
 }
 #chitchat table td {
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #ccc;
+  padding: 4px 4px;
 }
 #chitchat table td .date-placeholder {
   color: #666;
@@ -220,31 +224,57 @@ header .button i{
 #chitchat table textarea {
   font-size: 12px;
   height: 70px;
-  margin: 2px 0;
+  margin: 4px 0;
   padding: 2px;
   width: 100%;
 }
-#livechatter {
-  font-size: 14px;
+#home table {
+  font-size: 12px;
+  padding: 4px;
+}
+#home table td.label {
+  font-weight: bold;
+}
+#home table td .image-placeholder {
+  height: 150px;
+  width: 150px;
+}
+#home table td img {
+  height: 100%;
+  width: 100%;
+}
+#livechatter p {
+  font-size: 12px;
+  padding: 0 4px;
+  margin: 3px;
 }
 #livechatter h2 {
-  margin: 5px 0;
+  margin: 5px 4px;
 }
 #livechatter h3 {
   font-size: 12px;
   fontt-weight: normal;
   margin: 0 5px;
 }
+#livechatter button {
+  font-size: 12px;
+  margin: 4px auto;
+}
 #livechatter textarea {
   font-size: 12px;
   height: 70px;
-  margin: 2px 0;
+  margin: 2px auto;
   padding: 2px;
-  width: 100%;
+  width: 99%;
 }
-#livechatter button {
+#livechatter .livechatter-container {
+  border-bottom: 1px solid #ccc;
   font-size: 12px;
-  margin: 4px 0;
+  padding-bottom: 4px;
+}
+#livechatter .livechatter-settings {
+  margin: 0 4px;
+  text-align: right;
 }
 .main-nav {
   position: fixed;
@@ -352,7 +382,7 @@ header .button i{
   border: 0;
   cursor: pointer;
   float: right;
-  margin: 0;
+  margin: 0 10px 0 0;
   padding: 0;
 }
 .main-nav .close-menu:hover {

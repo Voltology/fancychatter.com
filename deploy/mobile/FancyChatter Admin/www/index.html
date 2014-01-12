@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/font-awesome.css">
     <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
@@ -10,10 +11,10 @@
     <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
     <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
     <script type="text/javascript" charset="utf-8">
-      //document.addEventListener("deviceready", onDeviceReady, false);
-      //function onDeviceReady() {
-      //  navigator.splashscreen.show();
-      //}
+      document.addEventListener("deviceready", onDeviceReady, false);
+      function onDeviceReady() {
+        navigator.splashscreen.show();
+      }
     </script>
   </head>
   <body>

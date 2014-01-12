@@ -67,6 +67,15 @@ class ChitChat {
     return $query->num_rows;
   }
 
+  public static function getCountByMerchant($id) {
+    global $mysqli;
+    $chitchat = array();
+    $query = sprintf("SELECT id FROM chitchat WHERE merchant_id='%s' ORDER BY creation DESC",
+      $mysqli->real_escape_string($id));
+    $query = $mysqli->query($query);
+    return $query->num_rows;
+  }
+
   public function getResponsesById($cid) {
     global $mysqli;
     $responses = array();

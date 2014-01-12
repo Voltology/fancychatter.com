@@ -1,28 +1,29 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Cordova</title>
-<link rel="stylesheet" href="css/styles.css" />
-<link rel="stylesheet" href="css/font-awesome.css">
-<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/alerts.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/system.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
-<script>
-$(document).ready(function() {
-  alerts.id = localStorage.getItem('id');
-  alerts.get();
-});
-</script>
-</head>
+  <head>
+    <title>Cordova</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/globals.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/alerts.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/system.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+    <script>
+    $(document).ready(function() {
+      alerts.id = localStorage.getItem('id');
+      alerts.get();
+    });
+    </script>
+  </head>
 <body id="alerts">
 <nav class="main-nav" id="main-nav">
   <p style="color: white;">&nbsp;Welcome, <span id="nav-firstname"></span>!<a href="#" class="close-menu"><i class="icon-remove-sign"></i></a></p>
   <a href="home.html"><i class="icon-comments"></i>&nbsp;&nbsp;Home</a>
-  <a href="chitchat.html"><i class="icon-comments"></i>&nbsp;&nbsp;ChitChat</a>
+      <a href="chitchat.html"><i class="icon-comments"></i>&nbsp;&nbsp;ChitChat (<span id="chitchat-count"></span>)</a>
   <a href="livechatter.html"><i class="icon-comments"></i>&nbsp;&nbsp;LiveChatter</a>
   <a href="alerts.html"><i class="icon-bell-alt"></i>&nbsp;&nbsp;&nbsp;Alerts (<span id="alert-count"></span>)</a>
   <a href="settings.html"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;Settings</a>
@@ -32,7 +33,6 @@ $(document).ready(function() {
   <header>
     <a href="#main-nav" class="button open-menu"><i class="icon-reorder"></i></a>
   </header>
-  <h2>Alerts</h2>
   <p>(<a href="">Clear all</a>)</p>
   <table cellpadding="4" cellspacing="2" border="0" width="100%" id="alerts-table"></table>
 </div>

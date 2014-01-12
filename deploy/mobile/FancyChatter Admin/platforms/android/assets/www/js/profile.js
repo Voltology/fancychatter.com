@@ -1,5 +1,19 @@
 var profile = {
   id : null,
+  getaccount : function(response) {
+    if (response == null) {
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?a=getmerchant&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getaccount');
+    } else {
+      if (response.result === 'success') {
+      } else {
+        var errors = '';
+        $.each(response.errors, function(key, value) {
+          errors += value + '\n';
+        });
+        alert(errors);
+      }
+    }
+  },
   getfeed : function(response) {
     if (response == null) {
       ajax('http://173.203.81.65//api.php?a=getfeed&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getfeed');

@@ -1,10 +1,6 @@
 var system = {
   deletesession : function() {
-    //$.removeCookie('id');
-    //$.removeCookie('firstname');
-    //$.removeCookie('email');
-    //$.removeCookie('password');
-    transition('login.html');
+    transition('index.html');
   }
 };
 
@@ -14,4 +10,8 @@ $(document).ready(function() {
   }
   user.setfirstname();
   $('#alert-count').html(localStorage.getItem('alert-count'));
+  $('#chitchat-count').html(localStorage.getItem('chitchat-count'));
+  setInterval(function() {
+    user.update();
+  }, 5000);
 });
