@@ -1,11 +1,12 @@
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes.dex : \
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/BuildConfig.class \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/FancyChatterAdmin.class \
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/R$attr.class \
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/R$drawable.class \
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/R$string.class \
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/R$xml.class \
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatter_admin/R.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/BuildConfig.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/FancyChatterAdmin.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/R$attr.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/R$drawable.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/R$string.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/R$xml.class \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/com/example/fancychatteradmin/R.class \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/org/apache/cordova/dialogs/Notification$1$1.class \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/org/apache/cordova/dialogs/Notification$1$2.class \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/bin/classes/org/apache/cordova/dialogs/Notification$1.class \

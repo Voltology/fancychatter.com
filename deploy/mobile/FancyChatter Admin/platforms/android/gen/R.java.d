@@ -1,4 +1,4 @@
-/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/gen/com/example/fancychatter_admin/R.java \
+/Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/gen/com/example/fancychatteradmin/R.java \
  : /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/res/drawable/icon.png \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/res/drawable-hdpi/icon.png \
 /Users/cvuletich/Development/Web/php/fancychatter/deploy/mobile/FancyChatter Admin/platforms/android/res/drawable-ldpi/icon.png \

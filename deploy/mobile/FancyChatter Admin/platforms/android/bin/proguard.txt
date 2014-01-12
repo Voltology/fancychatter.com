@@ -1,3 +1,3 @@
 # view AndroidManifest.xml #generated:6
--keep class com.example.fancychatter_admin.FancyChatterAdmin { <init>(...); }
+-keep class com.example.fancychatteradmin.FancyChatterAdmin { <init>(...); }
 

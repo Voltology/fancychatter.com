@@ -2,6 +2,15 @@ var chitchat = {
   id : null,
   userId : null,
   response : null,
+  delete : function(response) {
+    if (response == null) {
+      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?a=chitchat-delete&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&merchant-token=' + localStorage.getItem('merchant-token'), 'chitchat.get');
+    } else {
+      if (response.result === 'success') {
+      } else {
+      }
+    }
+  },
   get : function(response) {
     if (response == null) {
       ajax(HOSTNAME + '/api/' + API_VERSION+ '/?a=chitchat-get&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&merchant-token=' + localStorage.getItem('merchant-token'), 'chitchat.get');
@@ -25,7 +34,7 @@ var chitchat = {
           $.each(value.responses, function(key2, respond) {
             html += '<tr>';
             html += '<td></td>';
-            html += '<td valign="top" width="30">';
+            html += '<td valign="top" width="30" style="">';
             if (respond.last_response === 'user') {
               if (value.profile_img) {
                 html += '<div class="image-placeholder"><img src="http://www.fancychatter.com/uploads/profile/' + value.profile_img + '"></div>';
@@ -42,10 +51,11 @@ var chitchat = {
               }
             }
             html += '</td>';
-            html += '<td>' ;
+            html += '<td style="position: relative;">' ;
             if (respond.last_response === 'user') {
               html += '<div class="username-placeholder">' + respond.firstname + ' ' + respond.lastname + '</div>';
             } else {
+              html += '<div style="position: absolute; top: 5px; right: 5px; font-size: 24px;" onclick="chitchat.setId(' + value.id + '); chitchat.delete(' + value.id + ');"><i class="icon-remove"></i></div>';
               html += '<div class="username-placeholder">' + response.merchant.name + '</div>';
             }
             html += respond.body;
