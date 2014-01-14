@@ -12,6 +12,7 @@ class User {
   private $_gmtoffset;
   private $_creation;
   private $_dst = true;
+  private $_token;
 
   private $_merchantid = null;
   private $_isloggedin = false;
@@ -58,6 +59,21 @@ class User {
       $this->_id = $row['id'];
       $this->_isloggedin = true;
       $this->set($row);
+      return true;
+    } else {
+      $this->_isloggedin = false;
+      return false;
+    }
+  }
+
+  public function checkToken($id, $token) {
+    global $mysqli;
+    $query = sprintf("SELECT id FROM user_tokens WHERE id='%s' AND token='%s' LIMIT 1",
+      $mysqli->real_escape_string($id),
+      $mysqli->real_escape_string($token));
+    $query = $mysqli->query($query);
+    if ($query->num_rows > 0) {
+      $this->_isloggedin = true;
       return true;
     } else {
       $this->_isloggedin = false;
@@ -192,6 +208,10 @@ class User {
 
   public function getState() {
     return $this->_state;
+  }
+
+  public function getToken() {
+    return $this->_token;
   }
 
   public static function getUserCount() {
@@ -430,6 +450,10 @@ class User {
 
   public function setRole($role) {
     $this->_role = $role;
+  }
+
+  public function setToken($token) {
+    $this->_token = $token;
   }
 
   public function unfollow($id, $type) {

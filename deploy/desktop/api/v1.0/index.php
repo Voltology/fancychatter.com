@@ -4,8 +4,8 @@ include("../../../.local.inc.php");
 if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET") {
   $json['errors'] = array();
   $json['result'] = "success";
-  $action = $_REQUEST['a'] ? $_REQUEST['a'] : null;
-  $source = $_REQUEST['s'] ? $_REQUEST['s'] : null;
+  $action = $_REQUEST['method'] ? $_REQUEST['method'] : null;
+  $source = $_REQUEST['source'] ? $_REQUEST['source'] : null;
   switch($action) {
     case "activatesearch":
       $user->activateSearch($_REQUEST['id']);
@@ -21,7 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "chitchat-get":
-      $merchant = new Merchant($_REQUEST['merchant-token']);
+      $merchant = new Merchant();
+      //$merchant->setByToken($_REQUEST['merchant-token']);
       $chitchats = ChitChat::getByCategory($merchant->getCategory());
       $count = 0;
       foreach ($chitchats as $chitchat) {
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $json['chitchat'] = $chitchats;
       break;
     case "chitchat-respond":
-      if ($source === "admin-app") {
+      if ($source === "app") {
         if ($user->checkPassword($_GET['email'], $_GET['password'])) {
           $merchant = new Merchant($_REQUEST['merchant-token']);
           $chitchat = new ChitChat();
@@ -140,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $livechatter->delete();
       break;
     case "livechatter-get":
-      if ($source === "admin-app") {
+      if ($source === "app") {
         $merchant = new Merchant($_REQUEST['merchant-token']);
         $json['livechatter'] = LiveChatter::getByMerchantId($merchant->getId());
         $count = 0;
@@ -152,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "livechatter-send":
-      if ($source === "admin-app") {
+      if ($source === "app") {
         $merchant = new Merchant($_REQUEST['merchant-token']);
         $startdate = explode("-", $_REQUEST['startdate']);
         $starttime = explode(":", $_REQUEST['starttime']);
@@ -164,40 +165,30 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "login":
-      if ($source === "admin-app") {
+      if ($source === "app") {
         if (!$user->checkPassword($_GET['email'], md5($_GET['password']))) {
           $json['result'] = "failed";
           array_push($json['errors'], "Incorrect Username/Password");
-        } else if ($user->getMerchantId() === ""){
-          $json['result'] = "failed";
-          array_push($json['errors'], "You must have a merchant account to use this application");
         } else {
-          $merchant = new Merchant($user->getMerchantId());
+          $user->setToken(md5($user->getEmail() . "-" . rand(1,999999) . "-" . microtime()));
           $json['id'] = $user->getId();
           $json['email'] = $_GET['email'];
           $json['firstname'] = $user->getFirstName();
           $json['lastname'] = $user->getLastName();
           $json['member-since'] = $user->getCreation();
-          $json['password'] = md5($_GET['password']);
-          $json['token'] = md5($_GET['password']);
-          $json['merchant-token'] = $user->getMerchantId();
-          $json['merchant-name'] = $merchant->getName();
-          $json['merchant-logo'] = $merchant->getLogo();
-          $json['alert_count'] = Alerts::count($_REQUEST['user-id']);
-          $json['chitchat_count'] = ChitChat::getCount($merchant->getCategory());
-        }
-      } else if ($source === "public-app") {
-        if (!$user->checkPassword($_GET['email'], md5($_GET['password']))) {
-          $json['result'] = "failed";
-          array_push($json['errors'], "Incorrect Username/Password");
-        } else {
-          $json['id'] = $user->getId();
-          $json['email'] = $_GET['email'];
-          $json['firstname'] = $user->getFirstName();
-          $json['password'] = md5($_GET['password']);
-          $json['token'] = md5($_GET['password']);
-          $json['merchant-token'] = $user->getMerchantId();
-          $json['alert_count'] = Alerts::count($user->getId());
+          $json['user-token'] = $user->getToken();
+          $json['alert-count'] = Alerts::count($_REQUEST['user-id']);
+          if ($user->getMerchantId()) {
+            $merchant = new Merchant($user->getMerchantId());
+            $merchant->setToken(md5($merchant->getName() . "-" . rand(1,999999) . "-" . microtime()));
+            $json['merchant-token'] = $merchant->getToken();
+            $json['merchant-name'] = $merchant->getName();
+            $json['merchant-logo'] = $merchant->getLogo();
+            $json['chitchat-count'] = ChitChat::getCount($merchant->getCategory());
+            $json['merchant-admin'] = true;
+          } else {
+            $json['merchant-admin'] = false;
+          }
         }
       } else {
         if (!$user->login($_POST['email'], md5($_POST['password']))) {
@@ -310,11 +301,11 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
     case "unpause-livechatter":
       break;
     case "user-account-info":
-      if ($source === "admin-app") {
+      if ($source === "app") {
       }
       break;
     case "user-update":
-      if ($source === "admin-app") {
+      if ($source === "app") {
         if ($user->checkPassword($_GET['email'], $_GET['password'])) {
           $merchant = new Merchant($_REQUEST['merchant-token']);
           $json['alert_count'] = Alerts::count($_REQUEST['user-id']);

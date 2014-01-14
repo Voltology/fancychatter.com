@@ -1,21 +1,23 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <link rel="stylesheet" href="css/styles.css" />
-  <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
-  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-  <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
-  <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
-  <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
-  <script>
-  $(document).ready(function() {
-    setTimeout(function(){
-      $("body").fadeOut(300, user.checklogin);
-    }, 4000);
-  });
-  </script>
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/globals.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
   </head>
   <body>
-    <img src="img/logo.png" style="display: block; margin: 45% auto auto auto;" />
+    <header></header>
+    <img src="img/logo.png" style="margin-left: 5px;" />
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" />
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" />
+    <button onclick="user.login()"><i class="icon-arrow-up"></i> Log In</button>
+    <div style="text-align: center;"><a href="public/register.html" class="transition">Don't have an account? Click here to sign up!</a></div>
   </body>
 </html>

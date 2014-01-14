@@ -2,7 +2,7 @@ var alerts = {
   id : null,
   get: function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=getalerts&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + alerts.id, 'alerts.get');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=getalerts&source=app&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + alerts.id, 'alerts.get');
     } else {
       if (response.result === 'success') {
         var html = '';

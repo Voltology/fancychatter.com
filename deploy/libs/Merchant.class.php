@@ -17,6 +17,7 @@ class Merchant {
   private $_latitude;
   private $_longitude;
   private $_creation;
+  private $_token;
 
   private $_followers = array();
 
@@ -140,6 +141,10 @@ class Merchant {
     return $this->_state;
   }
 
+  public function getToken() {
+    return $this->_token;
+  }
+
   public function getZipCode() {
     return $this->_zipcode;
   }
@@ -199,6 +204,10 @@ class Merchant {
 
   public function setName($name) {
     $this->_name = $name;
+  }
+
+  public function setToken($token) {
+    $this->_token = $token;
   }
 
   public function update($data) {

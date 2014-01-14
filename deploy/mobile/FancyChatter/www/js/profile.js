@@ -2,7 +2,7 @@ var profile = {
   id : null,
   getfeed : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65//api.php?a=getfeed&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getfeed');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=getfeed&source=app&id=' + localStorage.getItem('id') + '&user-token=' + localStorage.getItem('user-token'), 'profile.getfeed');
     } else {
       if (response.result === 'success') {
         var chitchats = response.feed.chitchats;
@@ -12,8 +12,8 @@ var profile = {
           var html = '<tr><td width="60"></td><td></td></tr>';
           $.each(chitchats, function(key, value) {
             html += '<tr style="background-color: #fff;" class="livechatter-results-row"><td valign="top"><div style="overflow: hidden; width: 60px;">';
-            html += '<img src="http://173.203.81.65/uploads/profile/default.png" style="margin: 0;width: 100%;" /></div></td>';
-            html += '<td valign="top" style="font-size: 13px;"><strong>Chris Vuletich</strong><br />';
+            html += '<img src="' + HOSTNAME + '/uploads/profile/default.png" style="margin: 0;width: 100%;" /></div></td>';
+            html += '<td valign="top" style="font-size: 13px;"><strong>' + localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname') + '</strong><br />';
             html += '<span style="font-style: italic; font-size: 12px; color: #aaa;">Sent to ' + value.category + ' within ' + value.distance + ' miles of ' + value.location + '</span>';
             html += '<br /><span style="font-size: 13px;">' + value.body + '</span></td></tr>';
           });
@@ -30,7 +30,7 @@ var profile = {
   },
   getmerchant : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=getmerchant&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getuser');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=getmerchant&source=app&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getuser');
     } else {
       if (response.result === 'success') {
       } else {
@@ -44,11 +44,11 @@ var profile = {
   },
   getuser : function(response) {
     if (response == null) {
-      ajax('http://173.203.81.65/api.php?a=getuser&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getuser');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=getuser&source=app&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + profile.id, 'profile.getuser');
     } else {
       if (response.result === 'success') {
         var user = response.user;
-        $('#profile-image').attr('src', 'http://173.203.81.65/uploads/profile/' + user.profile_img);
+        $('#profile-image').attr('src', HOSTNAME + '/uploads/profile/' + user.profile_img);
         $('#profile-name').html(user.firstname + ' ' + user.lastname);
         $('#profile-location').html(user.city + ', ' + user.state.toUpperCase());
       } else {

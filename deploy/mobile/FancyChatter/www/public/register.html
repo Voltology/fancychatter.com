@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script type="text/javascript" charset="utf-8" src="../js/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/globals.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/ajax.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/transitions.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/livechatter.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/user.js"></script>
+  </head>
+  <body>
+    <div class="page-wrap" onclick="document.location='#'">
+      <header></header>
+      <h2>Sign Up</h2>
+      <label for="firstname">First Name</label>
+      <input type="text" name="firstname" id="firstname" />
+      <label for="lastname">Last Name</label>
+      <input type="text" name="lasttname" id="lastname" />
+      <label for="email">Email</label>
+      <input type="text" name="email" id="email" />
+      <label for="password1">Password</label>
+      <input type="password" name="password1" id="password1" />
+      <label for="password2">Verify Password</label>
+      <input type="password" name="password2" id="password2" />
+      <input type="submit" value="Sign Up!" onclick="user.signup();" />
+    </div>
+  </body>
+</html>
