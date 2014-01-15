@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "chitchat-respond":
       if ($source === "app") {
-        if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
           $merchant = new Merchant($_REQUEST['merchant-token']);
           $chitchat = new ChitChat();
           $chitchat->respond($_REQUEST['chitchat-id'], $_REQUEST['user-id'], $merchant->getId(), $_REQUEST['body'], 'merchant');
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "chitchat-send-app":
       $msg = $_REQUEST['msg'];
-      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+      if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
         if ($msg == "") {
           $json['result'] = "failed";
           array_push($json['errors'], "ChitChat message cannot be blank");
@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       Alerts::add($_REQUEST['id'], "<a href=\"/profile?id=" . $user->getId() . "\">" . $user->getFirstName() . " " . $user->getLastName() . "</a> is now following you!");
       break;
     case "getalerts":
-      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+      if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
         $json['alerts'] = Alerts::get($id);
       } else {
         $json['result'] = "failed";
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $location = getCityStateByLatLong($_GET['lat'], $_GET['lng']);
       break;
     case "getfeed":
-      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+      if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
         $json['feed'] = $user->getFeed();
       } else {
         $json['result'] = "failed";
@@ -106,8 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "getmerchant":
-      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
-        $json['user'] = User::getById($_REQUEST['id']);
+      if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
+        $json['user'] = User::getById($_REQUEST['user-id']);
       } else {
         $json['result'] = "failed";
         array_push($json['errors'], "Not authorized");
@@ -115,8 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       }
       break;
     case "getuser":
-      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
-        $json['user'] = User::getById($_REQUEST['id']);
+      if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
+        $json['user'] = User::getById($_REQUEST['user-id']);
       } else {
         $json['result'] = "failed";
         array_push($json['errors'], "Not authorized");
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       $user->inactivateSearch($_REQUEST['id']);
       break;
     case "livechatter":
-      if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+      if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
         $json['category_name'] = getCategoryById($_REQUEST['what']);
         $json['livechatter'] = LiveChatter::search($_REQUEST['where'], $_REQUEST['what'], $_REQUEST['distance'], 20);
       } else {
@@ -171,16 +171,19 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
           array_push($json['errors'], "Incorrect Username/Password");
         } else {
           $user->setToken(md5($user->getEmail() . "-" . rand(1,999999) . "-" . microtime()));
-          $json['id'] = $user->getId();
+          $user->addToken($user->getId(), $user->getToken());
+          $json['user-id'] = $user->getId();
+          $json['user-token'] = $user->getToken();
           $json['email'] = $_GET['email'];
           $json['firstname'] = $user->getFirstName();
           $json['lastname'] = $user->getLastName();
           $json['member-since'] = $user->getCreation();
-          $json['user-token'] = $user->getToken();
           $json['alert-count'] = Alerts::count($_REQUEST['user-id']);
           if ($user->getMerchantId()) {
             $merchant = new Merchant($user->getMerchantId());
             $merchant->setToken(md5($merchant->getName() . "-" . rand(1,999999) . "-" . microtime()));
+            $merchant->addToken($merchant->getId(), $merchant->getToken());
+            $json['merchant-id'] = $merchant->getId();
             $json['merchant-token'] = $merchant->getToken();
             $json['merchant-name'] = $merchant->getName();
             $json['merchant-logo'] = $merchant->getLogo();
@@ -208,22 +211,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
         }
       }
       break;
-    case "login-app":
-      if (!$user->checkPassword($_GET['email'], md5($_GET['password']))) {
-        $json['result'] = "failed";
-        array_push($json['errors'], "Incorrect Username/Password");
-      } else {
-        $json['id'] = $user->getId();
-        $json['email'] = $_GET['email'];
-        $json['firstname'] = $user->getFirstName();
-        $json['password'] = md5($_GET['password']);
-        $json['token'] = md5($_GET['password']);
-        $json['merchant-token'] = $user->getMerchantId();
-        $json['alert_count'] = Alerts::count($user->getId());
-      }
-      break;
     case "login-app-check":
-      if (!$user->checkPassword($_GET['email'], $_GET['password'])) {
+      if (!$user->checkToken($_GET['user-id'], $_GET['user-token'])) {
         $json['result'] = "failed";
         array_push($json['errors'], "Incorrect Username/Password");
       }
@@ -262,35 +251,35 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       break;
     case "signup":
       $user = new User();
-      $data = $_POST;
-      $errors = $user->validate($data);
-      if (count($errors) === 0) {
-        setcookie("email", $_POST['email']);
-        setcookie("password", md5($_POST['password1']));
-        $id = $user->add($data, 1);
-        $user->setId($id);
-        $user->set();
-      } else {
-        $json['result'] = "failed";
-        foreach ($errors as $error) {
-          array_push($json['errors'], $error);
+      if ($source === "app") {
+        $data = $_GET;
+        $errors = $user->validate($data);
+        if (count($errors) === 0) {
+          setcookie("email", $_GET['email']);
+          setcookie("password", md5($_GET['password1']));
+          $id = $user->add($_GET['email'], $_GET['password1'], $_GET['firstname'], $_GET['lastname'], 1);
+          $user->setId($id);
+          $user->set();
+        } else {
+          $json['result'] = "failed";
+          foreach ($errors as $error) {
+            array_push($json['errors'], $error);
+          }
         }
-      }
-      break;
-    case "signup-app":
-      $user = new User();
-      $data = $_POST;
-      $errors = $user->validate($data);
-      if (count($errors) === 0) {
-        setcookie("email", $_GET['email']);
-        setcookie("password", md5($_GET['password1']));
-        $id = $user->add($_GET['email'], $_GET['password1'], $_GET['firstname'], $_GET['lastname'], 1);
-        $user->setId($id);
-        $user->set();
       } else {
-        $json['result'] = "failed";
-        foreach ($errors as $error) {
-          array_push($json['errors'], $error);
+        $data = $_POST;
+        $errors = $user->validate($data);
+        if (count($errors) === 0) {
+          setcookie("email", $_POST['email']);
+          setcookie("password", md5($_POST['password1']));
+          $id = $user->add($data, 1);
+          $user->setId($id);
+          $user->set();
+        } else {
+          $json['result'] = "failed";
+          foreach ($errors as $error) {
+            array_push($json['errors'], $error);
+          }
         }
       }
       break;
@@ -304,9 +293,17 @@ if ($_SERVER['REQUEST_METHOD'] === "POST" || $_SERVER['REQUEST_METHOD'] === "GET
       if ($source === "app") {
       }
       break;
+    case "user-change-password":
+      if ($source === "app") {
+        if ($user->checkPassword($_GET['email'], $_GET['old-password'])) {
+          $user->setPassword($_GET['password1']);
+          $user->save();
+        }
+      }
+      break;
     case "user-update":
       if ($source === "app") {
-        if ($user->checkPassword($_GET['email'], $_GET['password'])) {
+        if ($user->checkToken($_GET['user-id'], $_GET['user-token'])) {
           $merchant = new Merchant($_REQUEST['merchant-token']);
           $json['alert_count'] = Alerts::count($_REQUEST['user-id']);
           $json['chitchat_count'] = ChitChat::getCount($merchant->getCategory());

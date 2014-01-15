@@ -2,12 +2,12 @@ var alerts = {
   id : null,
   get: function(response) {
     if (response == null) {
-      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=getalerts&source=app&email=' + localStorage.getItem('email') + '&password=' + localStorage.getItem('password') + '&id=' + alerts.id, 'alerts.get');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=getalerts&source=app&user-id=' + localStorage.getItem('user-id') + '&user-token=' + localStorage.getItem('user-token'), 'alerts.get');
     } else {
       if (response.result === 'success') {
         var html = '';
         $.each(response.alerts, function(key, value) {
-          html += '<tr><td style="border-bottom: 1px solid #ccc; font-size: 13px;"><i class="icon-comment-alt"></i> <a href="profile.html">' + value.message + '</a></td></tr>';
+          html += '<tr><td style="border-bottom: 1px solid #ccc; font-size: 13px;"><i class="icon-comment-alt"></i> <a href="profile.html">' + value.body + '</a></td></tr>';
         });
         $('#alerts-table').html(html);
 

@@ -46,6 +46,15 @@ class Merchant {
     return mysql_insert_id();
   }
 
+  public function addToken($id, $token) {
+    global $mysqli;
+    $query = sprintf("INSERT INTO merchant_tokens SET merchant_id='%s', token='%s', creation='%s'",
+      $mysqli->real_escape_string($id),
+      $mysqli->real_escape_string($token),
+      $mysqli->real_escape_string(time()));
+    $query = $mysqli->query($query);
+  }
+
   public function delete($id) {
     $query = sprintf("DELETE FROM merchants WHERE id='%s'",
       mysql_real_escape_string($id));

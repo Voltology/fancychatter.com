@@ -48,6 +48,15 @@ class User {
     return $mysqli->insert_id;
   }
 
+  public function addToken($id, $token) {
+    global $mysqli;
+    $query = sprintf("INSERT INTO user_tokens SET user_id='%s', token='%s', creation='%s'",
+      $mysqli->real_escape_string($id),
+      $mysqli->real_escape_string($token),
+      $mysqli->real_escape_string(time()));
+    $query = $mysqli->query($query);
+  }
+
   public function checkPassword($email, $password) {
     global $mysqli;
     $query = sprintf("SELECT users.id,roles.role,firstname,lastname,email,password,profile_img,merchant_id,city,state,gmt_offset,creation FROM users LEFT JOIN roles on users.role=roles.id WHERE email='%s' AND password='%s' LIMIT 1",
@@ -68,7 +77,7 @@ class User {
 
   public function checkToken($id, $token) {
     global $mysqli;
-    $query = sprintf("SELECT id FROM user_tokens WHERE id='%s' AND token='%s' LIMIT 1",
+    $query = sprintf("SELECT id FROM user_tokens WHERE user_id='%s' AND token='%s' LIMIT 1",
       $mysqli->real_escape_string($id),
       $mysqli->real_escape_string($token));
     $query = $mysqli->query($query);

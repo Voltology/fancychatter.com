@@ -1,18 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link rel="stylesheet" href="css/styles.css" />
-<link rel="stylesheet" href="css/font-awesome.css">
-<!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
-<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/ajax.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/profile.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/system.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/transitions.js"></script>
-<script type="text/javascript" charset="utf-8" src="js/user.js"></script>
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="stylesheet" href="../css/font-awesome.css">
+<script type="text/javascript" charset="utf-8" src="../js/cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/globals.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/ajax.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/profile.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/system.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/transitions.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/user.js"></script>
 <script>
 $(document).ready(function() {
-  profile.id = localStorage.getItem('id');
+  profile.id = localStorage.getItem('user-id');
   profile.getuser();
   profile.getfeed();
 });

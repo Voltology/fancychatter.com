@@ -7,7 +7,7 @@ var chitchat = {
   userId : null,
   delete : function(response) {
     if (response == null) {
-      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?method=chitchat-delete&source=app&id=' + localStorage.getItem('id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token'), 'chitchat.get');
+      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?method=chitchat-delete&source=app&user-id=' + localStorage.getItem('user-id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token'), 'chitchat.get');
     } else {
       if (response.result === 'success') {
       } else {
@@ -16,7 +16,7 @@ var chitchat = {
   },
   get : function(response) {
     if (response == null) {
-      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?method=chitchat-get&source=app&id=' + localStorage.getItem('id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token'), 'chitchat.get');
+      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?method=chitchat-get&source=app&user-id=' + localStorage.getItem('user-id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token'), 'chitchat.get');
     } else {
       if (response.result === 'success') {
         var $container = $('#chitchat-container');
@@ -89,7 +89,7 @@ var chitchat = {
   },
   respond : function(response) {
     if (response == null) {
-      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?method=chitchat-respond&source=app&chitchat-id=' + this.id + '&id=' + localStorage.getItem('id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token') + '&body=' + $('#chitchat-body-' + this.id).val(), 'chitchat.respond');
+      ajax(HOSTNAME + '/api/' + API_VERSION+ '/?method=chitchat-respond&source=app&chitchat-id=' + this.id + '&user-id=' + localStorage.getItem('user-id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token') + '&body=' + $('#chitchat-body-' + this.id).val(), 'chitchat.respond');
     } else {
       if (response.result === 'success') {
         var html = '<tr>';
@@ -127,7 +127,7 @@ var chitchat = {
   },
   send : function(response) {
     if (response == null) {
-      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=chitchat-send&source=app&id=' + localStorage.getItem('id') + '&user-token=' + localStorage.getItem('user-token') + '&location=' + chitchat.location + '&category=' + chitchat.category + '&distance=' + chitchat.distance + '&msg=' + $('#chitchat-field').val(), 'chitchat.send');
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=chitchat-send&source=app&user-id=' + localStorage.getItem('user-id') + '&user-token=' + localStorage.getItem('user-token') + '&location=' + chitchat.location + '&category=' + chitchat.category + '&distance=' + chitchat.distance + '&msg=' + $('#chitchat-field').val(), 'chitchat.send');
     } else {
       if (response.result === 'success') {
         alert('ChitChat sent!');
