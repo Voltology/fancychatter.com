@@ -92,7 +92,6 @@ var livechatter = {
         }
       } else {
         var errors = '';
-      alert(localStorage.getItem('user-id'));
         $.each(response.errors, function(key, value) {
           errors += value + '\n';
         });

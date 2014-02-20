@@ -24,6 +24,6 @@ switch(url) {
     break;
   default:
     var API_VERSION  = 'v1.0';
-    var HOSTNAME = 'http://fancychatter';
+    var HOSTNAME = 'http://www.fancychatter.com';
     break;
 }

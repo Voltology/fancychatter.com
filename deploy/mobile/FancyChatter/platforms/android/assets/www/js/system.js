@@ -1,16 +1,16 @@
 var system = {
-  deletesession : function() {
+  deleteSession : function() {
     //$.removeCookie('id');
     //$.removeCookie('firstname');
     //$.removeCookie('email');
     //$.removeCookie('password');
-    transition('login.html');
+    transition('../index.html');
   }
 };
 
 $(document).ready(function() {
   if (localStorage.getItem('id') === '' || localStorage.getItem('id')  === null) {
-    system.deletesession();
+    system.deleteSession();
   }
   user.setfirstname();
   $('#alert-count').html(localStorage.getItem('alert-count'));
