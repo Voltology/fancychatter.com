@@ -22,7 +22,7 @@ var user = {
       if (response.result === 'success') {
         window.location = 'public/livechatter.html';
       } else {
-        window.location = 'index.html';
+        //window.location = 'index.html';
       }
     }
   },
@@ -78,7 +78,7 @@ var user = {
           localStorage.setItem("chitchat-count", response['chitchat-count']);
           transition('admin/home.html');
         } else {
-          transition('public/livechatter.html');
+          transition('public/test.html');
         }
       } else {
         var errors = '';
@@ -98,7 +98,7 @@ var user = {
     } else {
       if (response.result === 'success') {
         alert('Thank you for signing up to FancyChatter!');
-        transition('index.html');
+        //transition('index.html');
       } else {
         var errors = '';
         $.each(response.errors, function(key, value) {

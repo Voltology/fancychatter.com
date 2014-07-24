@@ -29,14 +29,21 @@
     <!--<a href="#" class="close-menu">Close</a>-->
   </header>
   <div id="livechatter-search">
+    <form>
     <label for="where">Where are you?</label>
     <input type="text" name="where" id="where" placeholder="Enter Zip Code or City, State" />
     <label for="what">What are you looking for?</label>
     <select name="what" id="what">
       <option>Select Category</option>
-      <option value="1">Automotive</option><option value="2">Community</option><option value="3">Dental</option><option value="4">Grocery</option><option value="5">Home & Garden</option><option value="6">Restaurants</option><option value="7">Sports & Outdoor</option>        
+      <option value="1">Automotive</option>
+      <option value="2">Community</option>
+      <option value="3">Dental</option>
+      <option value="4">Grocery</option>
+      <option value="5">Home &amp; Garden</option>
+      <option value="6">Restaurants</option>
+      <option value="7">Sports &amp; Outdoor</option>
     </select>
-    <label for="what">How far do you want to go?</label>
+    <label for="distance">How far do you want to go?</label>
     <select name="distance" id="distance">
       <option>Select Distance</option>
       <option value="5">5 miles</option>
@@ -45,8 +52,8 @@
       <option value="20">20 miles</option>
       <option value="25">25 miles</option>
     </select>
-    <button onclick="livechatter.search()"><i class="icon-search"></i> Search</button>
-
+    <button type="button" onclick="livechatter.search()"><i class="icon-search"></i> Search</button>
+    </form>
   </div>
   <div id="livechatter-results" style="display: none;">
     <h2>LiveChatter Results</h2>
@@ -54,6 +61,7 @@
     &nbsp;<a href="#" onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');" style="font-size: 12px; margin-left; 5px;">See nothing you like? Click here to send a ChitChat!</a>
     <table cellpadding="2" cellspacing="2" border="0" width="100%" id="livechatter-results-table">
     </table>
+    <button onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');">Send ChitChat</button>
   </div>
 </div>
     <div class="dialog" id="dialog">
