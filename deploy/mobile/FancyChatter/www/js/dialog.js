@@ -6,7 +6,6 @@ var dialog = {
   open : function(type, header, height, width, searchwall) {
     $('#dialog').css({
       'display' : 'block',
-      'height' : height,
       'left' : ($(window).width() / 2) - (width / 2),
       'top' : ($(window).height() / 2) - (height / 2),
       'width' : width

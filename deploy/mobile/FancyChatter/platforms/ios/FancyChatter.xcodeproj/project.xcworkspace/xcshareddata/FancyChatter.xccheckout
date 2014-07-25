@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>54B704CC-753B-46FC-8C96-DCA3C854AF84</string>
+	<key>IDESourceControlProjectName</key>
+	<string>FancyChatter</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C8A6BF91-DB6B-4FEB-8DF0-EB27E8858206</key>
+		<string>https://github.com/cvuletich/fancychatter.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>deploy/mobile/FancyChatter/platforms/ios/FancyChatter.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C8A6BF91-DB6B-4FEB-8DF0-EB27E8858206</key>
+		<string>../../../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cvuletich/fancychatter.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C8A6BF91-DB6B-4FEB-8DF0-EB27E8858206</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C8A6BF91-DB6B-4FEB-8DF0-EB27E8858206</string>
+			<key>IDESourceControlWCCName</key>
+			<string>fancychatter</string>
+		</dict>
+	</array>
+</dict>
+</plist>

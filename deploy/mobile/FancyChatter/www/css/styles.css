@@ -236,9 +236,7 @@ header .button i{
     background: linear-gradient(left, rgba(black, 0), rgba(black, 0.4));
 }
 .dialog {
-  background-color: #eee;
-  border: 1px solid #666;
-  border-radius: 6px 6px;
+  background-color: #fff;
   display: none;
   left: 0px;
   position: absolute;
@@ -251,6 +249,10 @@ header .button i{
 .dialog-body {
   padding: 4px;
 }
+.dialog button {
+  display: inline-block;
+  width: 45%;
+}
 .dialog-body input, textarea {
   margin: 4px;
   width: 290px;
@@ -261,7 +263,7 @@ header .button i{
   padding: 0;
 }
 .dialog-body p {
-  font-size: 12px;
+  font-size: 14px;
 }
 .dialog-body textarea {
   height: 100px;
@@ -284,6 +286,7 @@ header .button i{
   z-index: 10000;
 }
 .dialog-close {
+  color: #fff;
   cursor: pointer;
   font-size: 16px;
   position: absolute;
@@ -291,16 +294,9 @@ header .button i{
   top: 6px;
 }
 .dialog-header {
-  background-color: #bababa;
-  background: -moz-linear-gradient(top, #eeeeee 0%, #bababa 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#bababa));
-  background: -webkit-linear-gradient(top, #eeeeee 0%,#bababa 100%);
-  background: -o-linear-gradient(top, #eeeeee 0%,#bababa 100%);
-  background: -ms-linear-gradient(top, #eeeeee 0%,#bababa 100%);
-  background: linear-gradient(to bottom, #eeeeee 0%,#bababa 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#bababa',GradientType=0 );
+  background-color: #4ebc52;
   border-bottom: 1px solid #999;
-  border-radius: 6px 6px 0 0;
+  color: #fff;
   font-size: 18px;
   font-weight: bold;
   padding: 4px;

@@ -78,7 +78,7 @@ var user = {
           localStorage.setItem("chitchat-count", response['chitchat-count']);
           transition('admin/home.html');
         } else {
-          transition('public/test.html');
+          transition('public/livechatter.html');
         }
       } else {
         var errors = '';

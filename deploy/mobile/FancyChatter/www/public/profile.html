@@ -1,52 +1,83 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<link rel="stylesheet" href="../css/styles.css" />
-<link rel="stylesheet" href="../css/font-awesome.css">
-<script type="text/javascript" charset="utf-8" src="../js/cordova.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/globals.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/ajax.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/profile.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/system.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/transitions.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/user.js"></script>
-<script>
-$(document).ready(function() {
-  profile.id = localStorage.getItem('user-id');
-  profile.getuser();
-  profile.getfeed();
-});
-</script>
-</head>
-<body id="profile">
-<nav class="main-nav" id="main-nav">
-  <p style="color: white;">&nbsp;Welcome, <span id="nav-firstname"></span>!</p>
-  <a href="livechatter.html"><i class="icon-comments"></i>&nbsp;&nbsp;LiveChatter</a>
-  <a href="profile.html"><i class="icon-user"></i>&nbsp;&nbsp;&nbsp;Profile</a>
-  <a href="alerts.html"><i class="icon-bell-alt"></i>&nbsp;&nbsp;&nbsp;Alerts (<span id="alert-count"></span>)</a>
-  <a href="settings.html"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;Settings</a>
-  <a href="#" class="transition" onclick="system.deletesession();"><i class="icon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Log Out</a>
-</nav>
-<div class="page-wrap" onclick="document.location='#'">
-  <header>
-    <a href="#main-nav" class="button open-menu"><i class="icon-reorder"></i></a>
-    <!--<a href="#" class="close-menu">Close</a>-->
-  </header>
-  <table cellpadding="6" width="100%">
-    <tr>
-      <td width="100">
-        <div style="max-height: 100px; width: 100px;"><img src="" id="profile-image" width="100%" style="margin: 0;" /></div>
-      </td>
-      <td valign="top" style="font-size: 17px;">
-        <strong><span id="profile-name" style="font-size: 18px;"></span></strong><br />
-        <span id="profile-location" style="font-size: 14px;"></span>
-      </td>
-    </tr>
-  </table>
-  <h3 style="margin: 2px 0 0 7px;">Recent Activity</h3>
-  <table cellpadding="4" cellspacing="2" border="0" width="100%" id="recent-activity-table">
-  </table>
-</div>
-</body>
+<!DOCTYPE html>
+<html class="wf-sourcesanspro-n4-active wf-sourcesanspro-n6-active wf-sourcecodepro-n3-active wf-sourcesanspro-n3-active wf-active">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FancyChatter</title>
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <script type="text/javascript" charset="utf-8" src="../js/cordova.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/globals.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/ajax.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/profile.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/system.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/transitions.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/user.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script>
+    $(document).ready(function() {
+      profile.id = localStorage.getItem('user-id');
+      profile.getuser();
+      profile.getfeed();
+    });
+    </script>
+  </head>
+  <body>
+    <div class="topcoat-navigation-bar">
+      <div class="topcoat-navigation-bar__item left quarter">
+        <a id="slide-menu-button" class="topcoat-icon-button--quiet slide-menu-button">
+          <span class="topcoat-icon topcoat-icon--menu-stack"></span>
+        </a>
+      </div>
+      <div class="topcoat-navigation-bar__item center half">
+        <h1 class="topcoat-navigation-bar__title">FancyChatter</h1>
+      </div>
+      <div class="topcoat-navigation-bar__item right quarter">
+        <a class="topcoat-icon-button--quiet">
+          <span class="topcoat-icon topcoat-icon--edit"></span>
+        </a>
+      </div>
+    </div>
+    <nav class="side-nav">
+      <div class="topcoat-list__container side-nav__list__container">
+        <ul class="topcoat-list side-nav__list">
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="./livechatter.html" class="side-nav__button"><i class="icon-comments"></i>&nbsp;&nbsp;LiveChatter</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item is-active">
+            <a href="./profile.html" class="side-nav__button"><i class="icon-user"></i>&nbsp;&nbsp;&nbsp;Profile</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="./alerts.html" class="side-nav__button"><i class="icon-bell-alt"></i>&nbsp;&nbsp;&nbsp;Alerts (<span id="alert-count"></span>)</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="./settings.html" class="side-nav__button"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;Settings</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="#" onclick="system.deleteSession();" class="side-nav__button"><i class="icon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="main-content">
+      <table cellpadding="6" width="100%">
+        <tr>
+          <td width="100">
+            <div style="max-height: 100px; width: 100px;"><img src="" id="profile-image" width="100%" style="margin: 0;" /></div>
+          </td>
+          <td valign="top" style="font-size: 17px;">
+            <strong><span id="profile-name" style="font-size: 18px;"></span></strong><br />
+            <span id="profile-location" style="font-size: 14px;"></span>
+          </td>
+        </tr>
+      </table>
+      <h3 style="margin: 2px 0 0 7px;">Recent Activity</h3>
+      <table cellpadding="4" cellspacing="2" border="0" width="100%" id="recent-activity-table">
+      </table>
+    </div>
+    <script src="../css/source-sans-pro-n3,n4,n6"></script>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

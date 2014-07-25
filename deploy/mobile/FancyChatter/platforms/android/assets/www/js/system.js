@@ -1,10 +1,11 @@
 var system = {
   deleteSession : function() {
-    $.removeCookie('id');
-    $.removeCookie('firstname');
-    $.removeCookie('email');
-    $.removeCookie('password');
-    //transition('../index.html');
+    //$.removeCookie('id');
+    //$.removeCookie('firstname');
+    //$.removeCookie('email');
+    //$.removeCookie('password');
+    localStorage.setItem('email', '');
+    transition('../index.html');
   }
 };
 

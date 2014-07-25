@@ -17,6 +17,40 @@ var livechatter = {
       }
     }
   },
+  autocomplete : function(response) {
+    $searchfield = $('#where');
+    if (response == null) {
+      ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=autocomplete-where&source=app&where=' + $searchfield.val(), 'livechatter.autocomplete');
+    } else {
+      if (response.result === 'success') {
+        $autocompletebox = $('#autocomplete-box');
+        $autocompletebox.html('');
+        $autocompletebox.css({
+          'display' : 'block',
+          'left' :  5,
+          'top' :  $searchfield.offset().top + 38,
+          'width' :  $searchfield.width() + 12
+        });
+        if ($searchfield.val() === '') {
+          $autocompletebox.css('display', 'none');
+        }
+        var count = 0;
+        $.each(response.locations, function(key, value) {
+          $autocompletebox.append('<div class="search-result" id="search-result-' + key + '" style="padding: 3px 5px; cursor: pointer;">' + value.location + '</div>');
+          $result = $('#search-result-' + key);
+          $result.on('click', function() {
+            $searchfield.focus();
+            $searchfield.val($(this).html());
+            $autocompletebox.css('display', 'none');
+          });
+          count++;
+        });
+        if (count === 0) {
+          $autocompletebox.append('<div style="padding: 3px 5px;">No results found</div>');
+        }
+      }
+    }
+  },
   delete : function(response) {
     if (response == null) {
       ajax(HOSTNAME + '/api/' + API_VERSION + '/?method=livechatter-delete&source=app&user-id=' + localStorage.getItem('user-id') + '&user-token=' + localStorage.getItem('user-token') + '&merchant-token=' + localStorage.getItem('merchant-token') + '&id=' + this.id, 'livechatter.delete');

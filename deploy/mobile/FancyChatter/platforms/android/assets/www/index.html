@@ -11,7 +11,14 @@
     <script type="text/javascript" charset="utf-8" src="js/user.js"></script>
     <script>
       $(document).ready(function() {
-        //alert(localStorage.getItem('user-token'));
+        if (localStorage.getItem('email') !== null && localStorage.getItem('email') !== '') {
+          document.location = 'public/livechatter.html';
+        }
+        $('#email, #password').bind('keypress', function(event) {
+          if(event.which == 13) {
+            user.login();
+          }
+        });
       });
     </script>
   </head>

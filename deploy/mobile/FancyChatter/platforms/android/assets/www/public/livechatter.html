@@ -1,7 +1,10 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html class="wf-sourcesanspro-n4-active wf-sourcesanspro-n6-active wf-sourcecodepro-n3-active wf-sourcesanspro-n3-active wf-active">
   <head>
-    <link rel="stylesheet" href="../css/styles.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FancyChatter</title>
     <link rel="stylesheet" href="../css/font-awesome.css">
     <script type="text/javascript" charset="utf-8" src="../js/cordova.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
@@ -13,62 +16,86 @@
     <script type="text/javascript" charset="utf-8" src="../js/system.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/transitions.js"></script>
     <script type="text/javascript" charset="utf-8" src="../js/user.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
-  <body id="livechatter">
-    <nav class="main-nav" id="main-nav">
-      <p style="color: white;">&nbsp;Welcome, <span id="nav-firstname"></span>!</p>
-      <a href="livechatter.html"><i class="icon-comments"></i>&nbsp;&nbsp;LiveChatter</a>
-      <a href="profile.html"><i class="icon-user"></i>&nbsp;&nbsp;&nbsp;Profile</a>
-      <a href="alerts.html"><i class="icon-bell-alt"></i>&nbsp;&nbsp;&nbsp;Alerts (<span id="alert-count"></span>)</a>
-      <a href="settings.html"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;Settings</a>
-      <a href="#" class="transition" onclick="system.deleteSession();"><i class="icon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Log Out</a>
+  <body>
+    <div class="topcoat-navigation-bar">
+      <div class="topcoat-navigation-bar__item left quarter">
+        <a id="slide-menu-button" class="topcoat-icon-button--quiet slide-menu-button">
+          <span class="topcoat-icon topcoat-icon--menu-stack"></span>
+        </a>
+      </div>
+      <div class="topcoat-navigation-bar__item center half">
+        <h1 class="topcoat-navigation-bar__title">FancyChatter</h1>
+      </div>
+      <div class="topcoat-navigation-bar__item right quarter">
+        <a class="topcoat-icon-button--quiet">
+          <span class="topcoat-icon topcoat-icon--edit"></span>
+        </a>
+      </div>
+    </div>
+    <nav class="side-nav">
+      <div class="topcoat-list__container side-nav__list__container">
+        <ul class="topcoat-list side-nav__list">
+          <li class="topcoat-list__item side-nav__list__item is-active">
+            <a href="./livechatter.html" class="side-nav__button"><i class="icon-comments"></i>&nbsp;&nbsp;LiveChatter</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="./profile.html" class="side-nav__button"><i class="icon-user"></i>&nbsp;&nbsp;&nbsp;Profile</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="./alerts.html" class="side-nav__button"><i class="icon-bell-alt"></i>&nbsp;&nbsp;&nbsp;Alerts (<span id="alert-count"></span>)</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="./settings.html" class="side-nav__button"><i class="icon-cog"></i>&nbsp;&nbsp;&nbsp;Settings</a>
+          </li>
+          <li class="topcoat-list__item side-nav__list__item">
+            <a href="#" onclick="system.deleteSession();" class="side-nav__button"><i class="icon-arrow-left"></i>&nbsp;&nbsp;&nbsp;Log Out</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-    <div class="page-wrap" onclick="document.location='#'">
-    <header>
-    <a href="#main-nav" class="button open-menu"><i class="icon-reorder"></i></a>
-    <!--<a href="#" class="close-menu">Close</a>-->
-  </header>
-  <div id="livechatter-search">
-    <form>
-    <label for="where">Where are you?</label>
-    <input type="text" name="where" id="where" placeholder="Enter Zip Code or City, State" />
-    <label for="what">What are you looking for?</label>
-    <select name="what" id="what">
-      <option>Select Category</option>
-      <option value="1">Automotive</option>
-      <option value="2">Community</option>
-      <option value="3">Dental</option>
-      <option value="4">Grocery</option>
-      <option value="5">Home &amp; Garden</option>
-      <option value="6">Restaurants</option>
-      <option value="7">Sports &amp; Outdoor</option>
-    </select>
-    <label for="distance">How far do you want to go?</label>
-    <select name="distance" id="distance">
-      <option>Select Distance</option>
-      <option value="5">5 miles</option>
-      <option value="10">10 miles</option>
-      <option value="15">15 miles</option>
-      <option value="20">20 miles</option>
-      <option value="25">25 miles</option>
-    </select>
-    <button type="button" onclick="livechatter.search()"><i class="icon-search"></i> Search</button>
-    </form>
-  </div>
-  <div id="livechatter-results" style="display: none;">
-    <h2>LiveChatter Results</h2>
-    <h3 id="livechatter-info"></h3>
-    &nbsp;<a href="#" onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');" style="font-size: 12px; margin-left; 5px;">See nothing you like? Click here to send a ChitChat!</a>
-    <table cellpadding="2" cellspacing="2" border="0" width="100%" id="livechatter-results-table">
-    </table>
-    <button onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');">Send ChitChat</button>
-  </div>
-</div>
+    <div class="main-content">
+      <div id="livechatter-search">
+        <form>
+          <label for="where">Where are you?</label>
+          <input type="text" name="where" id="where" placeholder="Enter Zip Code or City, State" autocomplete="off" onkeyup="livechatter.autocomplete();"/>
+          <label for="what">What are you looking for?</label>
+          <select name="what" id="what">
+            <option>Select Category</option>
+            <option value="1">Automotive</option><option value="8">Beauty</option><option value="2">Community</option><option value="3">Dental</option><option value="10">Entertainment</option><option value="4">Grocery</option><option value="5">Home &amp; Garden</option><option value="11">Ice Cream/Candy</option><option value="9">Jewelry</option><option value="12">Landscaping</option><option value="6">Restaurants</option><option value="7">Sports &amp; Outdoor</option>
+          </select>
+          <label for="distance">How far do you want to go?</label>
+          <select name="distance" id="distance">
+            <option>Select Distance</option>
+            <option value="5">5 miles</option>
+            <option value="10">10 miles</option>
+            <option value="15">15 miles</option>
+            <option value="20">20 miles</option>
+            <option value="25">25 miles</option>
+          </select>
+          <button type="button" onclick="livechatter.search()"><i class="icon-search"></i> Search</button>
+        </form>
+        <div id="autocomplete-box" style="background-color: #fff; border: 1px solid #ccc; font-size: 20px; position: absolute; display: none; top: 42px; width: 280px; z-index: 1000;"></div>
+      </div>
+      <div id="livechatter-results" style="display: none;">
+        <h2>LiveChatter Results</h2>
+        <h3 id="livechatter-info"></h3>
+        &nbsp;<a href="#" onclick="dialog.open('chitchat', 'ChitChat', 480, '100%');" style="font-size: 12px; margin-left; 5px;">See nothing you like? Click here to send a ChitChat!</a>
+        <table cellpadding="2" cellspacing="2" border="0" width="100%" id="livechatter-results-table">
+        </table>
+        <button onclick="dialog.open('chitchat', 'ChitChat', 380, '100%');">Send ChitChat</button>
+      </div>
+    </div>
     <div class="dialog" id="dialog">
       <div class="dialog-close" onclick="dialog.close()"><i class="icon-remove"></i></div>
       <div class="dialog-header" id="dialog-header"></div>
       <div class="dialog-body" id="dialog-body"></div>
     </div>
     <div class="dialog-blanket" id="dialog-blanket"></div>
+    </div>
+    <script src="../css/source-sans-pro-n3,n4,n6"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>
